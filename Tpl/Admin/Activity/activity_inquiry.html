@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <title>产品订单</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <!--公用样式文件，不加版本号，通过url参数控制cache -->
+    <link rel="stylesheet" rev="stylesheet" href="__CDN_STATIC_URL__css/gdt-css-api.css" type="text/css" media="screen">
+    <link rel="stylesheet" rev="stylesheet" href="__CDN_STATIC_URL__css/gdt-toufang-layout-20150325.css" type="text/css"
+          media="screen">
+    <link rev="stylesheet" rel="stylesheet" href="__CDN_STATIC_URL__css/gdt-toufang-global-20150323.css" media="screen"
+          type="text/css">
+    <link rel="stylesheet" href="__CDN_STATIC_URL__css/myjd-2015.css">
+    <link rel="stylesheet" href="__CDN_STATIC_URL__css/component-min.css">
+    <link rel="stylesheet" href="__CDN_STATIC_URL__css/jbox-min.css">
+    <link rel="stylesheet" href="__CDN_STATIC_URL__css/style.css">
+    <link rel="stylesheet" href="__CDN_STATIC_URL__css/diy.css">
+
+    <script src="__CDN_STATIC_URL__js/jquery.js" type="text/javascript" charset="utf-8"></script>
+    <script src="__CDN_STATIC_URL__js/scrollheight.js" type="text/javascript" charset="utf-8"></script>
+    <style>
+        table td {
+            min-width: 50px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        #picsethere {
+            width: 510px;
+            display: block;
+        }
+
+        #picsethere img {
+            max-width: 500px;
+            display: block;
+        }
+
+        .coupons_conbox_ri {
+            padding-top: 5px;
+        }
+
+        #lr-img-btn {
+            position: relative;
+            display: inline-block;
+            padding: 0 12px;
+            height: 30px;
+            line-height: 28px;
+            font-size: 12px;
+            text-align: center;
+            vertical-align: top;
+            cursor: pointer;
+            color: #FFF;
+            background-color: #fff;
+            border-radius: 2px;
+            border: 1px solid #ccc;
+            background-color: #428bca;
+            border-color: #357ebd;
+        }
+
+        .red {
+            color: #ee0505;
+            margin: 0 5px;
+        }
+
+        .prompt {
+            height: 32px;
+            line-height: 32px;
+            display: inline-block;
+            float: left;
+            color: #666;
+            font-size: 14px;
+        }
+
+        .control-group {
+            margin-bottom: 20px;
+        }
+
+        .control-label {
+            float: left;
+            width: 160px;
+            padding-top: 5px;
+            text-align: right;
+        }
+
+        .form-horizontal .controls {
+            margin-left: 180px;
+        }
+
+        input.span4, textarea.span4, .uneditable-input.span4 {
+            width: 356px;
+        }
+
+        .maroon {
+            color: #D20000;
+            padding-left: 2px;
+            font-family: "SimSun";
+        }
+    </style>
+</head>
+<body>
+
+<div class="wrapper clearfix" id="root">
+    <include file="Public/header"/>
+    <div class="top" style="height:56px;;width:100%;"><!--顶部占位--></div>
+    <div class="top" style="height: 31px; width: 100%;display:none;" id="ErrorStatusTipsHolder"><!--顶部小黄条占位--></div>
+    <define name="DEFINE_SIDE_MENU_CURRENT" value="activity"/>
+    <include file="Public/sideMenu"/>
+    <div class="main home" id="main" style="/*height: 400px;*/ overflow: auto;">
+        <div class="side clearfix" style="width:56px;height:100px;float:left;"></div>
+
+        <div class="main-container" style="height:auto;">
+            <div class="gdt-toufang gdt-toufang-account">
+                <div class="tuiguang-tab small-tab" id="_hSubNav">
+                    <ul>
+                        <li style="width:56px"></li>
+
+                        <li><a href="{:U('Home/Index/activity')}" onclick="">优惠券</a></li>
+                        <li><a href="{:U('Home/Index/activity_seckill')}" onclick="">秒杀</a></li>
+                        <li><a href="{:U('Home/Index/activity_presale')}" onclick="">预售</a></li>
+                        <li><a href="{:U('Home/Index/activity_group')}" onclick="">阶梯团购</a></li>
+                        <li><a href="{:U('Home/Index/activity_now')}" onclick="">返现</a></li>
+                        <li><a href="#" onclick="">直降</a></li>
+                        <li><a href="#" onclick="">新品拍卖</a></li>
+                        <li><a href="{:U('Home/Index/activity_wof')}" onclick="">大转盘</a></li>
+                        <li><a href="{:U('Home/Index/activity_redpacket')}" onclick="">发红包</a></li>
+                        <li class="on"><a href="{:U('Home/Index/activity_inquiry')}" onclick="">调研</a></li>
+
+                    </ul>
+
+                </div>
+
+
+                <div class="content-right fl">
+
+
+                    <h1 class="content-right-title">创建新调研问卷</h1>
+
+                    <form action="" method="post" class="form-horizontal form-validate" novalidate id="lbsForm"><input
+                            type="hidden" value="55cde9a15594c" name="YYUC_FORM_TOKEN"/><input type="hidden" value=""
+                                                                                               name="V1QUZkVCQxVUSGdQVQ=="
+                                                                                               id="new_surveyid"/>
+
+                        <div class="control-group">
+                            <label for="keyword" class="control-label">触发关键词：</label>
+
+                            <div class="controls">
+                                <input type="text" value="" name="V1QUZkVCQxVUSGdeWx4=" id="new_surveygjz"
+                                       class="input-xlarge" required/><span class="maroon">*</span>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label for="title" class="control-label">调研名称：</label>
+
+                            <div class="controls">
+                                <input type="text" value="" name="V1QUZkVCQxVUSGdNWBA=" id="new_surveytit"
+                                       class="input-xlarge" required/><span class="maroon">*</span>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label for="picurl" class="control-label">图文封面：</label>
+
+                            <div class="controls" id="twfmpicarea">
+                                <img class="thumb_img" src="__CDN_STATIC_URL__res/yy_pic.jpg"
+                                     style="max-height: 100px;">
+                                <input type="hidden" value="/res/yy_pic.jpg" name="V1QUZkVCQxVUSGdJWAc="
+                                       id="new_surveypic"/> <span class="help-inline"><button class="btn select_img"
+                                                                                              onclick="setpic('twfmpicarea')"
+                                                                                              type="button">选择
+                            </button></span><span class="help-inline">推荐大小为720x400</span>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label for="address" class="control-label">关联地址：</label>
+
+                            <div class="controls">
+                                <input type="text" value="" name="V1QUZkVCQxVUSGdYVQBF" id="new_surveyaddr"
+                                       class="input-xlarge"/><span class="maroon">*</span>如青岛市五四广场万科广场
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label for="tel" class="control-label">联系电话：</label>
+
+                            <div class="controls">
+                                <input type="text" value="" name="V1QUZkVCQxVUSGdNVAg=" id="new_surveytel"
+                                       class="input-xlarge"/><span class="maroon">*</span>如0532-55660899
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label for="headpic" class="control-label">订单页头部图片：</label>
+
+                            <div class="controls" id="twfmheadpicarea">
+                                <img class="thumb_img" src="__CDN_STATIC_URL__res/yy_pic.jpg"
+                                     style="max-height: 100px;">
+                                <input type="hidden" value="/res/yy_pic.jpg" name="V1QUZkVCQxVUSGdRVAVTRl4F"
+                                       id="new_surveyheadpic"/> <span class="help-inline"><button class="btn select_img"
+                                                                                                  onclick="setpic('twfmheadpicarea')"
+                                                                                                  type="button">选择
+                            </button></span><span class="help-inline">宽度不超过740,高度自适应</span>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label for="background_image" class="control-label">背景图片：</label>
+
+                            <div class="controls" id="twfmheadpicarea2">
+                                <img class="thumb_img" src="" style="max-height: 100px;">
+                                <input type="hidden" value="" name="V1QUZkVCQxVUSGdbUAdcUUUJRl1XaVkOUgUA"
+                                       id="new_surveybackground_image"/> <span class="help-inline"><button
+                                    class="btn select_img" onclick="setpic('twfmheadpicarea2')" type="button">选择
+                            </button></span><span class="help-inline">不限制,自动平铺</span>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label for="address" class="control-label">背景16位颜色值：</label>
+
+                            <div class="controls">
+                                <input type="text" value="" name="V1QUZkVCQxVUSGdbUAdcUUUJRl1XaVMMXw0X"
+                                       id="new_surveybackground_color" class="input-xlarge"/><span
+                                    class="maroon">*</span>默认#FFFFFF
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="">地图标识</label>
+
+                            <div class="controls">
+                                <div class="input-append">
+                                    <input type="text" value="" name="V1QUZkVCQxVUSGdYVQBFVE0=" id="new_surveyaddrbz"
+                                           class="input-xlarge mapkw"/>
+                                    <button class="btn" type="button" id="positioning">搜索</button>
+                                </div>
+                                <span class="maroon">注意：这个只是模糊定位，准确位置请地图上标注！</span>
+
+                                <div id="l-map">
+                                    <i class="icon-spinner icon-spin icon-large"></i>地图加载中...
+                                </div>
+                                <div id="r-result">
+                                    <input type="text" value="116.403694" name="V1QUZkVCQxVUSGdTVQ==" id="new_surveyjd"
+                                           class="mapjd"/> <input type="text" value="39.916042"
+                                                                  name="V1QUZkVCQxVUSGdOVQ==" id="new_surveywd"
+                                                                  class="mapwd"/></div>
+                            </div>
+
+
+                            <div class="control-group" style="margin-top:10px;">
+                                <label for="endinfo" class="control-label">图文消息描述</label>
+
+                                <div class="controls">
+                                    <textarea name="V1QUZkVCQxVUSGddVBc=" id="new_surveydes" class="input-xlarge"
+                                              style="height:100px;"></textarea></div>
+                            </div>
+                            <div class="control-group">
+                                <label for="endinfo" class="control-label">调研简介：</label>
+
+                                <div class="controls">
+                                    <div class="ke-container ke-container-simple" style="width: 81%;">
+                                        <textarea style="width:100%;height:150px;" width="100%" height="150px"
+                                                  name="V1QUZkVCQxVUSGdUQgM=" id="new_surveymsg"></textarea><input
+                                            type="hidden" relobj="kindeditor" rel="yyuc" editorid="new_surveymsg"
+                                            value="{langType:&quot;zh-cn&quot;,allowImageUpload:true,allowFlashUpload:true,allowMediaUpload:true,allowFileManager:false,items:kindeditor_item1}"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label for="endinfo" class="control-label" onclick="addbookingline();">调研内容设置：</label>
+
+                                <div class="controls">
+                                    <span class="help-inline">填写你要收集的内容！调研默认选项不可以修改删除！</span>
+                                    <table class="table table-bordered table-hover dataTable" id="bookingtb">
+                                        <tr>
+                                            <th>字段类型</th>
+                                            <th>字段名称</th>
+                                            <th>初始内容</th>
+                                            <th>必填?</th>
+                                            <th>操作</th>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <input type="hidden"
+                                       value="[{&quot;type&quot;:&quot;text&quot;,&quot;name&quot;:&quot;联系人&quot;,&quot;holder&quot;:&quot;请输入您的名字&quot;,&quot;issys&quot;:&quot;1&quot;,&quot;need_require&quot;:&quot;1&quot;},{&quot;type&quot;:&quot;text&quot;,&quot;name&quot;:&quot;联系电话&quot;,&quot;holder&quot;:&quot;请输入您的电话&quot;,&quot;issys&quot;:&quot;1&quot;,&quot;need_require&quot;:&quot;1&quot;},{&quot;type&quot;:&quot;date&quot;,&quot;name&quot;:&quot;预约日期&quot;,&quot;holder&quot;:&quot;请选择预约日期&quot;,&quot;issys&quot;:&quot;2&quot;},{&quot;type&quot;:&quot;text&quot;,&quot;name&quot;:&quot;自定义字段&quot;,&quot;holder&quot;:&quot;请输入&quot;},{&quot;type&quot;:&quot;select&quot;,&quot;name&quot;:&quot;自定义下拉框&quot;,&quot;holder&quot;:&quot;选择1|选择2&quot;},{&quot;type&quot;:&quot;textarea&quot;,&quot;name&quot;:&quot;备注&quot;,&quot;holder&quot;:&quot;请留言&quot;,&quot;issys&quot;:&quot;2&quot;}]"
+                                       name="V1QUZkVCQxVUSGdbXgtcX1kBQFZH" id="new_surveybookingset"
+                                       class="bookingset"/></div>
+                            <div class="control-group">
+                                <label for="success_2_url" class="control-label">成功后跳转地址：</label>
+
+                                <div class="controls">
+                                    <input type="text" value="" name="V1QUZkVCQxVUSGdKRAdUU0QVbAFsQ0IP"
+                                           id="new_surveysuccess_2_url" class="input-xlarge"/>不跳转请留空不填.如http://wap.youCompany.com.
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label for="limit_num" class="control-label">调研限制人数：</label>
+
+                                <div class="controls">
+                                    <input type="text" value="0" name="V1QUZkVCQxVUSGdVWAleQmgIRl4="
+                                           id="new_surveylimit_num" class="input-xlarge"/>调研限制人数，如不需要请留空
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label for="endinfo" class="control-label">调研成功详情：</label>
+
+                                <div class="controls">
+                                    <span class="help-inline">如果调研成功后需要展示邀请函等内容,请在此填入.如不使用此功能,请留空.</span>
+
+                                    <div class="ke-container ke-container-simple" style="width: 81%;">
+                                        <textarea style="width:100%;height:150px;" width="100%" height="150px"
+                                                  name="V1QUZkVCQxVUSGdKRAdUU0QVbFBcWEQGXRY="
+                                                  id="new_surveysuccess_content"></textarea><input type="hidden"
+                                                                                                   relobj="kindeditor"
+                                                                                                   rel="yyuc"
+                                                                                                   editorid="new_surveysuccess_content"
+                                                                                                   value="{langType:&quot;zh-cn&quot;,allowImageUpload:true,allowFlashUpload:true,allowMediaUpload:true,allowFileManager:false,items:kindeditor_item1}"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label for="address" class="control-label">订单独立后台用户名：</label>
+
+                                <div class="controls">
+                                    <input type="text" value="" name="V1QUZkVCQxVUSGdbXgtcX1kBbEZAU0INUg8A"
+                                           id="new_surveybooking_username" class="input-xlarge"/><span
+                                        class="maroon">*</span>请尽量复杂,防止重复导致无法登陆
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label for="tel" class="control-label">订单独立后台密码：</label>
+
+                                <div class="controls">
+                                    <input type="text" value="" name="V1QUZkVCQxVUSGdbXgtcX1kBbENSRUMUXBAB"
+                                           id="new_surveybooking_password" class="input-xlarge"/><span
+                                        class="maroon">*</span>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label for="picurl" class="control-label">订单独立后台地址：</label>
+
+                                <div class="controls" id="twfmpicarea">
+                                    http://wx.com/manager/new_survey/index-1.html
+                                </div>
+                            </div>
+
+
+                            <div class="form-actions">
+                                <button id="bsubmit" type="submit" data-loading-text="提交中..." class="btn btn-primary">
+                                    保存
+                                </button>
+                                <button type="button" class="btn" onclick="window.history.go(-1)">取消</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+</body>
+</html>

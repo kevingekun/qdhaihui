@@ -1,0 +1,127 @@
+<include file="Public:header" title="我的优惠券"  />
+<body>
+    <div class="page">
+        <header class="bar bar-nav">
+            <h1 class="title his-color">粉丝福利</h1>
+        </header>
+        <!-- 底部 -->
+        <include file="Public:nav" />
+        <div class="content voucper-row">
+            <div class="buttons-tab">
+                <a href="#tab1" class="time-btn active">
+                    <span>待使用
+                     <i class="badge">{$count_unuse}</i>
+                    </span>
+                </a>
+                <a href="#tab2" class="time-btn tab-left">
+                    <span>已过期
+                     <i class="badge badge-color">{$count_used}</i>
+                    </span>
+                </a>
+            </div>
+            <div class="tabs">
+                <div id="tab1" class="tab active">
+                    <div class="voucher-content">
+                        <volist name="list_unuse" id="v">
+                            <ul class="use">
+                                <!--<li class="voucher-num">-->
+
+                                <!--</li>-->
+                                <li class="voucher-text">
+
+                                        <h2>{$v.money_cut|convert_money=###}元优惠券</h2>
+                                        <span>{$v.start_time|date='Y.m.d',###}-{$v.end_time|date='Y.m.d',###}</span>
+                                        <a class="change openRule" onclick="view('{$v.id}')">使用规则<span class="icon icon-right"></span></a>
+
+                                </li>
+                                <li class="voucher-state">
+                                    <ol class="voucher-arc">
+                                        <li></li>
+                                        <li></li>
+                                        <li></li>
+                                        <li></li>
+                                        <li></li>
+                                        <li></li>
+                                    </ol>
+                                    <a href="{:U('Mall/Index/coupanGoodsList', array('id'=>$v['id']))}" class="external">立即使用</a>
+                                </li>
+                            </ul>
+                            <i></i>
+                        </volist>
+                    </div>
+                </div>
+                <div id="tab2" class="tab">
+                    <div class="voucher-content">
+                        <volist name="list_used" id="v">
+                            <ul class="state">
+
+                                <li class="voucher-text">
+                                    <h2>{$v.money_cut|convert_money=###}元优惠券</h2>
+                                    <span>{$v.start_time|date='Y.m.d',###}-{$v.end_time|date='Y.m.d',###}</span>
+                                    <div class="voucher-del">
+                                        <span class="icon icon-remove"></span>
+                                    </div>
+
+                                </li>
+                                <li class="voucher-state">
+                                    <ol class="voucher-arc">
+                                        <li></li>
+                                        <li></li>
+                                        <li></li>
+                                        <li></li>
+                                        <li></li>
+                                        <li></li>
+                                    </ol>
+                                    <a href="welfare.html">已过期</a>
+                                </li>
+                            </ul>
+                            <i></i>
+                        </volist>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="popup popup-about">
+        <header class="bar bar-nav">
+            <a class="button button-link button-nav pull-right close-popup">
+                关闭
+            </a>
+            <h1 class="title his-color">优惠券规则</h1>
+        </header>
+        <div class="content native-scroll">
+            <div class="content-inner">
+                <div class="content-block" id="use_rule">
+                    <!--<p>一、活动时间：</p>-->
+                    <!--<p> 2015年11月1日00:00:00至11月11日23:59:59</p>-->
+                    <!--<p>二、 参与条件：</p>-->
+                    <!--<p>商城合伙人用户</p>-->
+                    <!--<p>三、 参与方式：</p>-->
+                    <!--<p>活动期间，在特定时间进入PC淘宝首页、PC天猫首页、淘宝手机客户端首页、天猫手机客户端首页、淘宝Ipad首页、天猫Ipad首页，“2015天猫双十一全球狂欢节”天猫主会场、天猫分会场、狂欢城、天猫宝贝详情页、天猫店铺活动承接页、天猫付款成功页（无线端）、天猫客户端、天猫超市、滴滴、花呗、旺旺（旺信）等入口，均可参与互动抽奖游戏，即有机会获得双11购物券，双11购物券单张面额为10元。所有消费者预计将获得约30亿元人民币的优惠（具体发放金额以天猫最终统计公布的为准），在以下各渠道发放时奖池共用。-->
+                    <!--</p>-->
+                    <!--<p>四、 购物券发放细则：</p>-->
+                    <!--<p>1. 天猫双十一主会场</p>-->
+                    <!--<p>发放时间：2015年11月1日10:00:00~2015年11月3日21:59:59</p>-->
+                    <!--<p>发放方式：在天猫双十一主会场，每天12个整点准时开抢（即10点整、11点整、12点整、13点整、14点整、15点整、16点整、17点整、18点整、19点整、20点整、21点整），用户点击马上抢按钮进行抽券，先到先得，抢完即止。-->
+                    <!--</p>-->
+                    <!--<p><a class="button close-popup">确定</a></p>-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function view(id){
+            $.post("{:U('Ucenter/getRule')}",{id:id},function(data){
+//                alert(data);
+             $('#use_rule').html(data);
+
+            })
+        }
+
+    </script>
+    <script src="__ASSETS__/dist/js/sm.js"></script>
+    <script src="__ASSETS__/js/demos.js"></script>
+
+</body>
+<include file="Public:share" />
+</html>

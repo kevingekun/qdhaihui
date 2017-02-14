@@ -1,0 +1,40 @@
+<include file="Public:header" title="活动专区"  />
+<body>
+<!-- page 容器 -->
+<div class="page page-current">
+    <div class="content con-nav native-scroll" style="background-color: #ffcf00;">
+        <div class="group-head">
+            <img src="__ASSETS__/img/n/group-head.png" alt=""/>
+        </div>
+        <div class="group-list">
+        <volist name="list" id="l">
+            <div class="group-item">
+                <div class="img">
+                    <img src="/uploads/{$l.act_image}">
+                    <a class="group-buy" href="{:U('bespoke', array('id'=>$l['goods_id'],'aid'=>$l['act_id']))}">马上团</a>
+                </div>
+                <div class="group-goods">{$l.goods_info.name}</div>
+                <div class="group-bar">
+                    <div class="group-flex">
+                    <volist name="l.ext_info" id="vo" key="k">
+                        <div class="s-{$k}">{$vo.num}人</div>
+                    </volist>
+                    </div>
+                    <div class="group-flex">
+                        <div class="s-1 rec-1"></div>
+                        <div class="s-2 rec-2"></div>
+                        <div class="s-3 rec-3"></div>
+                    </div>
+                    <div class="group-flex text-center">
+                    <volist name="l.ext_info" id="vo" key="k">
+                        <div class="s-{$k}">￥{$vo.price|convert_money}</div>
+                    </volist>
+                    </div>
+                </div>
+            </div>
+        </volist>
+        </div>
+    </div>
+</div>
+</body>
+</html>

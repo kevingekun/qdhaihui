@@ -1,0 +1,84 @@
+<include file="Public/header" title="用户资料修改"/>
+<define name="DEFINE_SIDE_MENU_CURRENT" value="Partner"/>
+<include file="Public/sideMenu"/>
+<div class="main home" id="main" style="/*height: 400px;*/ overflow: auto;">
+    <div class="side clearfix" style="width:56px;height:100px;float:left;"></div>
+    <div class="main-container" style="height:auto;">
+        <div class="gdt-toufang gdt-toufang-account">
+            <div class="tuiguang-tab" id="_hSubNav">
+                <ul>
+                    <li style="width:56px"></li>
+                    <li class="goback"><a href="javascript:history.back(-1)"><i></i></a></li>
+                    <li class="on"><a href="#" onclick="">合伙人列表</a></li>
+                    <li><a href="{:U('Admin/Partner/fans')}" onclick="">合伙人粉丝统计</a></li>
+                    <li><a href="{:U('Admin/Partner/rule')}" onclick="">合伙人规则设置</a></li>
+                    <li><a href="{:U('Admin/Partner/audit')}" onclick="">合伙人审核</a></li>
+                    <li><a href="{:U('Admin/Partner/tag')}">标签管理</a></li>
+                    <li><a href="{:U('Admin/Partner/group')}">分组管理</a></li>
+                </ul>
+            </div>
+            <div class="content-right fl" style="width:60%;">
+                <div class="tablesWrap">
+                    <form name="form1" method="post" action="partneredit">
+                        <input type="hidden" name="uid" value="{$user.uid}"/>
+                        <!-- end tables-searchbox -->
+                        <table class="wxtables">
+                            <thead>
+                            <tr>
+                                <td colspan="6" align="center">用户资料修改</td>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td height="30" width="8%">合伙人姓名：</td>
+                                <td width="25%"><input type="text" name="realname" value="{$user.realname}"/></td>
+                            </tr>
+                            <tr>
+                                <td height="30" width="8%">微信昵称：</td>
+                                <td width="25%">{$user.nickname}</td>
+                            </tr>
+                            <tr>
+                                <td height="30" width="8%">联系电话：</td>
+                                <td width="25%"><input type="text" name="phone" value="{$user.phone}"/></td>
+                            </tr>
+                            <tr>
+                                <td height="30" width="8%">分组：</td>
+                                <td><select name="group_id">
+                                    <option value="" selected>所有分组</option>
+                                    <volist name="groups" id="group">
+                                        <option value="{$group.id}" <eq name="group['id']" value="$user['group_id']">selected</eq>>{$group.title}</option>
+                                    </volist>
+                                </select></td>
+                            </tr>
+                            <tr>
+                                <td height="30" width="8%">标签：</td>
+                                <td><select name="label_id">
+                                    <option value="" selected>标签</option>
+                                    <volist name="labels" id="label">
+                                        <option value="{$label.id}" <eq name="label['id']" value="$user['label_id']">selected</eq>>{$label.title}</option>
+                                    </volist>
+                                </select></td>
+                            </tr>
+                            <tr>
+                                <td height="30" width="8%">推荐人：</td>
+                                <td width="25%">{$inviteNickname|}</td>
+                            </tr>
+                            <tr>
+                                <td height="30" width="8%">注册时间：</td>
+                                <td width="25%">{$user.create_time|format_date=###,"Y-m-d"}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" align="center">
+                                    <input type="submit" name="button" id="button" value="保存修改"
+                                           style="padding:5px 8px;">
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </form>
+                </div>
+                <!-- end tablesWrap -->
+            </div>
+        </div>
+    </div>
+    <include file="Public/footer"/>

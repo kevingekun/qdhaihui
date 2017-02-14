@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="format-detection" content="email=no">
+	<meta name="screen-orientation" content="portrait">
+
+	<title>团购</title>
+	<script src="__ASSETS__/activity/js/flexible.debug.js"></script>
+    <link href="__ASSETS__/activity/css/style.css" rel="stylesheet">
+
+</head>
+<body>
+	<div class="container">
+		<div class="content">
+	    	<div class="header"><img src="__ASSETS__/activity/img/event.png"></div>
+	    	<ul class="tags">
+				<foreach name="info.goods_tags" item="vo">
+					<li>{$vo}</li>
+				</foreach>
+	    	</ul>
+	    	<div class="stage">
+	            <div class="stage-flex" style="text-align:center;">
+				<volist name="info.ext_info" id="ext" key="k">
+					<div class="s-{$k}">{$ext.num}人</div>
+				</volist>
+	            </div>
+	            <div class="stage-flex">
+					<volist name="info.ext_info" id="ext" key="k">
+						<div class="s-{$k} rec rec-3" <gt name="count" value="$ext[num]">style="background: #e60012"</gt>></div>
+					</volist>
+	            </div>
+	            <div class="stage-flex" style="text-align: center;">
+					<volist name="info.ext_info" id="ext" key="k">
+						<div class="s-{$k}">￥{$ext.price|convert_money}</div>
+					</volist>
+	            </div>
+	        </div>
+	        <p class="data text-center">{$info.end_time|format_date=###,'m/d'} 火爆开团，不要错过哦</p>
+	        <div class="tv">
+	        	<img src="{$info.goods_info.image}">
+	        </div>
+	    </div>
+	    <div class="rule">
+	    	<h2>活动规则</h2>
+	    	<div class="rule-icon">
+	    		<span></span>
+	    		<span></span>
+	    		<span></span>
+	    		<span></span>
+	    	</div>
+	    	<p class="rule-text">
+				参团商品：{$info.goods_info.name}</br>
+				截止时间：{$info.end_time|format_date=###,'Y年m月d日'}</br>
+	    		团购价格：凡是参与团购的消费者皆可享受本次团购提供的优惠价格，本次团购采用阶梯团购的形式，参与人数越多，价格越低。
+	    	</p>
+	    	<h2>团购介绍</h2>
+	    	<p>点击“立即参团”，留下您的相关信息，我们将视为您已参团成功，等待活动正式开团后，您将有权享受本次团购提供的最终优惠价格。</p>
+	    </div>
+
+	    <div class="images">
+	    	{$info.act_desc|htmlspecialchars_decode}
+	    </div>
+
+	</div>
+	<eq name="info.is_finished" value="0">
+		<form action="__SELF__" method="post">
+			<a class="join">
+				<img src="__ASSETS__/activity/img/shares.png" />
+				我要参团
+			</a>
+		</form>
+	</eq>
+
+	<eq name="info.is_finished" value="1">
+		<a class="join" href="{:U('groupDetails', array('id'=>$info['goods_id'],'aid'=>$info['act_id']))}">
+			<img src="__ASSETS__/activity/img/shares.png" />
+			马上购买
+		</a>
+	</eq>
+
+<script type="text/javascript" src="__ASSETS__/activity/js/zepto.js"></script>
+<script type="text/javascript">
+$(function(){
+	$('a.join').click(function(){
+		$.post("__SELF__", function(data){
+			if (data.code ==1) {
+				alert(data.msg);
+			} else {
+				alert(data.msg);
+				location.href = '' + data.url + '';
+			}
+		});
+	});
+});
+</script>
+</body>
+</html>

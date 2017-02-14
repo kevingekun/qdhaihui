@@ -1,0 +1,285 @@
+<include file="Public/header_new" title="合伙人管理"/>
+<define name="DEFINE_SIDE_MENU_CURRENT" value="Partner"/>
+<include file="Public/sideMenu_new"/>
+    <div class="main home" id="main" style="overflow: auto;">
+        <div class="side clearfix" style="width:56px;height:100px;float:left;">
+        </div>
+        <div class="main-container" style="height:auto;">
+            <div class="gdt-toufang gdt-toufang-account">
+                <div class="tuiguang-tab" id="_hSubNav">
+                    <ul>
+                        <li style="width:56px"></li>
+                        <li class="goback"><a href="javascript:history.back(-1)"><i></i></a></li>
+                        <li class="on"><a href="index.html">数据中心</a></li>
+                    </ul>
+                </div>
+                <div class="container-box">
+                    <div class="row mb15">
+                        <div class="newcearchbox">
+                            <form class="form-inline" action="" method="post" id="filter_form">
+                                <label class="control-label"> 快速查看：</label>
+                                <p id="sevenDaysbtn"  class="btn btn-primary">最近七天</p>
+                                <p id="thirtyDaysbtn" class="btn btn-primary btn-bordered">最近30天</p>
+                                <label class="control-label"> 筛选日期：</label>
+                                <div class="form-group input-daterange" data-toggle="datepicker">
+                                    <input id="startdateTime" type="text" class="form-control input-date" placeholder="开始日期" name="startdate" value='2015-01-01'/> -
+                                    <input id="enddateTime" type="text" class="form-control input-date" placeholder="结束日期" name="enddate" value='2015-01-31'/>
+                                </div>
+
+                                <button type="button" id="submitBtn" class="btn btn-info">筛选</button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <table class="table table-vstriped table-bordered">
+                            <tbody>
+                            <tr class="text-center">
+                                <td><h5>基础<br>数据</h5></td>
+                                <td><h5>{$CommonData.pv}</h5>浏览PV</td>
+                                <td><h5>{$CommonData.uv}</h5>浏览UV</td>
+                                <td><h5>{$CommonData.shared_to}</h5>外部分享</td>
+                                <td><h5>{$CommonData.click_shared}</h5>分享导入</td>
+                                <td><h5>{$CommonData.subscribe}</h5>关注</td>
+                                <td><h5>{$CommonData.unsubscribe}</h5>取消关注</td>
+                            </tr>
+
+                            <tr class="text-center">
+                                <td><h5>基础<br>数据</h5></td>
+                                <td><h5>{$CommonData.show_good}</h5>商品曝光次数</td>
+                                <td><h5 class="text-primary">{$CommonData.submit_order}</h5>下单笔数</td>
+                                <td><h5 class="text-primary">{$CommonData.pay_start}</h5>开始支付</td>
+                                <td><h5 class="text-primary">{$CommonData.pay_success}</h5>实际付款</td>
+                                <td><h5>￥{$OtherData.sum_pay_price}</h5>付款金额</td>
+                                <td><h5>{$OtherData.show_pay_rate}%</h5>曝光购买付款率</td>
+                            </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="row" id="echarts">
+                        <div class="col-sm-6 col-md-6">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">页面类型</div>
+                                <div class="panel-body" id="echarts1">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-6">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">访问来源</div>
+                                <div class="panel-body" id="echarts2">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/new_theme/common/sui/jquery.min.js"></script>
+<script src="/new_theme/common/sui/sui.min.js"></script>
+<script src="/new_theme/common/echarts/echarts.min.js"></script>
+<script type="text/javascript">
+
+    // 图表1页面类型
+    var myChart = echarts.init(document.getElementById('echarts1'));
+
+    var option1 = {
+        tooltip: {
+            trigger: 'item',
+            formatter: "{a} <br/>{b}: {c} ({d}%)"
+        },
+        legend: {
+            orient: 'vertical',
+            x: 'left',
+            data:['店铺主页','商品详情','合伙人主页','商品分类','用户中心']
+        },
+        series: [
+            {
+                name:'页面浏览',
+                type:'pie',
+                radius: ['50%', '70%'],
+                avoidLabelOverlap: false,
+                label: {
+                    normal: {
+                        show: false,
+                        position: 'center'
+                    },
+                    emphasis: {
+                        show: true,
+                        textStyle: {
+                            fontSize: '24',
+                            fontWeight: 'bold'
+                        }
+                    }
+                },
+                labelLine: {
+                    normal: {
+                        show: false
+                    }
+                },
+                data:[
+                    {value: {$EchartsPageData['home']}, name:'店铺主页'},
+                    {value: {$EchartsPageData['show_good']}, name:'商品详情'},
+                    {value: {$EchartsPageData['partner']}, name:'合伙人主页'},
+                    {value: {$EchartsPageData['menu_list']}, name:'商品分类'},
+                    {value: {$EchartsPageData['ucenter']}, name:'用户中心'}
+                ]
+            }
+        ]
+    };
+    myChart.setOption(option1);
+    // 图表2访问来源
+    var myChart = echarts.init(document.getElementById('echarts2'));
+    var option2 = {
+        tooltip: {
+            trigger: 'item',
+            formatter: "{a} <br/>{b}: {c} ({d}%)"
+        },
+        legend: {
+            orient: 'vertical',
+            x: 'left',
+            data:['菜单','扫码','活动页','分享页']
+        },
+        series: [
+            {
+                name:'页面浏览',
+                type:'pie',
+                radius: ['50%', '70%'],
+                avoidLabelOverlap: false,
+                label: {
+                    normal: {
+                        show: false,
+                        position: 'center'
+                    },
+                    emphasis: {
+                        show: true,
+                        textStyle: {
+                            fontSize: '24',
+                            fontWeight: 'bold'
+                        }
+                    }
+                },
+                labelLine: {
+                    normal: {
+                        show: false
+                    }
+                },
+                data:[
+                    {value: {$EchartsSourceData['in_menu']} , name:'菜单'},
+                    {value: {$EchartsSourceData['in_qrcode']} , name:'扫码'},
+                    {value: {$EchartsSourceData['in_activity']} , name:'活动页'},
+                    {value: {$EchartsSourceData['shared_to']} , name:'分享页'}
+                ]
+            }
+        ]
+    };
+    myChart.setOption(option2);
+    // 图表2访问来源
+</script>
+<script>
+    var nowTime = new Date();
+    var nowYear = nowTime.getFullYear();
+    var nowMonth = nowTime.getMonth() + 1;
+    var nowDate = nowTime.getDate() - 1;
+
+    function leapYear(year) {
+        return (((year % 4 === 0) && (year % 100 !== 0)) || (year % 400 === 0));
+    }
+
+    function inMonth(year, month) {
+        return [31, (leapYear(year) ? 29 : 28), 31, 30, 31, 30, 31, 31, 30, 31, 30, 31][month];
+    }
+
+    function sevenDays() {
+
+        var beforeYear;
+        var beforeMonth;
+        var beforeDate;
+
+        if(nowDate - 6 > 0){
+            beforeYear = nowYear;
+            beforeMonth = nowMonth;
+            beforeDate = nowDate - 6;
+        }else{
+            if(nowMonth == 1){
+                beforeYear = nowYear - 1;
+                beforeMonth = 12;
+                beforeDate = 31- (6 - nowDate);
+            }else{
+                beforeYear = nowYear;
+                beforeMonth = nowMonth - 1;
+                beforeDate = inMonth(beforeYear, beforeMonth-1) -(6 - nowDate);
+            }
+        }
+
+        pushendTime = nowYear + '-' + nowMonth + '-' + nowDate;
+        pushstartTime = beforeYear + '-' + beforeMonth + '-' + beforeDate;
+
+        $('#enddateTime').val(pushendTime);
+        $('#startdateTime').val(pushstartTime);
+    };
+
+    sevenDays();
+
+    function thirtyDays() {
+
+        var beforeYear;
+        var beforeMonth;
+        var beforeDate;
+
+        if(nowDate - 29 > 0){
+            beforeYear = nowYear;
+            beforeMonth = nowMonth;
+            beforeDate = nowDate - 29;
+        }else{
+            if(nowMonth == 1){
+                beforeYear = nowYear - 1;
+                beforeMonth = 12;
+                beforeDate = 31 - (29 - nowDate);
+            }else{
+                beforeYear = nowYear;
+                if(inMonth(beforeYear, nowMonth - 2) - (29 - nowDate) < 0){
+                    console.log(0);
+                    beforeMonth = 1;
+                    beforeDate = 31 - (29 - nowDate - inMonth(beforeYear, 2));
+                }else{
+                    beforeYear = nowYear;
+                    beforeMonth = nowMonth - 1;
+                    beforeDate = inMonth(beforeYear,beforeMonth-1) -(29 - nowDate);
+                    if(beforeDate == 0){
+                        beforeMonth = 1;
+                        beforeDate = 31
+                    }
+                }
+            }
+        }
+
+        pushendTime = nowYear + '-' + nowMonth + '-' + nowDate;
+        pushstartTime = beforeYear + '-' + beforeMonth + '-' + beforeDate;
+
+        $('#enddateTime').val(pushendTime);
+        $('#startdateTime').val(pushstartTime);
+    };
+
+    $('#sevenDaysbtn').click(function(){
+        $('#sevenDaysbtn').removeClass('btn-bordered');
+        $('#thirtyDaysbtn').addClass('btn-bordered');
+        sevenDays()
+    });
+    $('#thirtyDaysbtn').click(function(){
+        $('#thirtyDaysbtn').removeClass('btn-bordered');
+        $('#sevenDaysbtn').addClass('btn-bordered');
+        thirtyDays()
+    });
+    $('#submitBtn').click(function(){
+        $("#filter_form").submit();
+    });
+
+
+</script>
+</body>
+</html>

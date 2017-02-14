@@ -1,0 +1,297 @@
+<include file="Public/header_new" title="活动"/>
+<define name="DEFINE_SIDE_MENU_CURRENT" value="activity"/>
+<include file="Public/sideMenu_new"/>
+<link rel="stylesheet" href="/new_theme/common/css/diy.css"/>
+
+    <div class="main home" id="main" style="overflow: auto;">
+        <div class="side clearfix" style="width:56px;height:100px;float:left;">
+        </div>
+        <div class="main-container" style="height:auto;">
+            <div class="gdt-toufang gdt-toufang-account">
+                <div class="tuiguang-tab" id="_hSubNav">
+                    <ul>
+                        <li style="width:56px"></li>
+                        <li class="goback"><a href="javascript:history.back(-1)"><i></i></a></li>
+                        <li class="on"><a href="{:U('Activity/couponlist')}">优惠券</a></li>
+                        <!-- <li><a href="seckill.html">秒杀</a></li>
+                        <li><a href="seckill.html">抢购</a></li>
+                        <li><a href="seckill.html">团购</a></li> -->
+                    </ul>
+                </div>
+                <div class="container-box clearfix">
+
+                    <div class="row">
+                        <div class="bs-callout bs-callout-info">
+                            <h4>新建优惠券活动</h4>
+                        </div>
+                        <form action="{:U('Activity/couponadd')}" class="form-horizontal" method="post" id="couponForm" enctype="multipart/form-data">
+                            <input type="hidden" name="couponid" value="">
+                            <div class="diy clearfix">
+                                <div id="diy-phone">
+                                    <div class="diy-phone-header">
+                                        <i class="diy-phone-receiver"></i>
+
+                                        <div class="diy-phone-title">优惠券</div>
+                                    </div>
+                                    <div class="diy-phone-contain">
+                                        <section class="coupons_con">
+                                            <ul>
+                                                <li style="display: list-item;">
+                                                    <section class="coupons_conbox g-box">
+                                                        <section class="coupons_conbox_le"></section>
+                                                        <section class="coupons_conbox_ri g-flex">
+                                                        </section>
+                                                    </section>
+                                                </li>
+                                            </ul>
+                                        </section>
+                                    </div>
+                                    <i class="diy-phone-footer"></i>
+                                </div>
+
+                                <div id="diy-ctrl">
+                                    <div class="diy-ctrl-item">
+
+                                        <div class="panel-body">
+                                            <div class="form-group">
+                                                <label class="col-sm-3 control-label"></label>
+                                                <div class="col-sm-5">
+                                                    <span class="text-danger">*</span>为必填内容
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-3 control-label"><span class="text-danger">*</span>活动名称：</label>
+
+                                                <div class="col-sm-5">
+                                                    <input type="text" class="form-control" name="coupon_name" placeholder="" data-rule-required="true">
+                                                </div>
+                                            </div>
+                                            <!-- <div class="form-group">
+                                                <label class="col-sm-3 control-label"><span class="text-danger">*</span>自定义图片：</label>
+
+                                                <div class="col-sm-5">
+                                                    <input multiple="multiple" type="file" name="image" class="form-control" data-rule-required="true">
+                                                    <p class="help-block">允许的附件文件类型: jpg,gif,png,jpeg并且图片大小小于200k.</p>
+                                                </div>
+                                            </div> -->
+                                            <div class="form-group">
+                                                <label class="col-sm-3 control-label"><span class="text-danger">*</span>面值：</label>
+                                                <div class="col-sm-5">
+                                                    <input type="text" name="money_cut" class="form-control" placeholder="" data-rule-required="true">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-3 control-label">订单金额：</label>
+                                                <div class="checkbox">
+                                                    <label>
+                                                        <input type="radio" id="moneyNone" name="setleast" value="" checked="checked"> 不限制
+                                                    </label>
+                                                    <label>
+                                                        <input type="radio" name="setleast" value="1" id="man">
+                                                        满<input type="text"  id="moneyMall" name="money_over" style="width: 50px;" onclick="document.getElementById('man').checked='checked';">可使用
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-3 control-label"><span class="text-danger">*</span>发放总量：</label>
+                                                <div class="col-sm-5">
+                                                    <input type="text" name="total_num" class="form-control" placeholder="" data-rule-required="true">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-3 control-label"><span class="text-danger">*</span>限领数量：</label>
+                                                <div class="col-sm-5">
+                                                    <input type="text"  name="per_num" class="form-control" placeholder="" data-rule-required="true">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-3 control-label">限定分类：</label>
+                                                <div class="checkbox">
+                                                    <label>
+                                                        <input type="radio" id="allow_class_1" name="allow_class" value="" checked="" onclick="showclass(0)"> 不限制
+                                                    </label>
+                                                    <label>
+                                                        <input type="radio" name="allow_class" value="1" onclick="showclass(1)"> 限制
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="form-group" id="class_list" style="display: none">
+                                                <label class="col-sm-3 control-label"></label>
+                                                <div class="col-sm-7">
+                                                    <div class="panel panel-default">
+                                                        <div class="panel-heading bg-info">
+                                                            商品分类列表
+                                                        </div>
+                                                        <div class="panel-body" id="show_class_list"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-3 control-label">限定商品：</label>
+                                                <div class="checkbox">
+                                                    <label>
+                                                        <input type="radio" id="all_goods_1" name="allow_goods" value="" checked="" onclick="showlist(0)"> 不限制
+                                                    </label>
+                                                    <label>
+                                                        <input type="radio" name="allow_goods" value="1"
+                                                               onclick="showlist(1)"> 限制
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="form-group" id="show_list" style="display: none">
+                                                <label class="col-sm-3 control-label"></label>
+                                                <div class="col-sm-7">
+                                                    <div class="panel panel-default">
+                                                        <div class="panel-heading bg-info">
+                                                            商品列表
+                                                        </div>
+                                                        <div class="panel-body" id="goods_list"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group form-inline">
+                                                <label class="col-sm-3 control-label"><span class="text-danger">*</span>日期选择：</label>
+                                                <div class="input-daterange" data-toggle="datepicker">
+                                                    <input type="text" name="start_time" class="form-control input-date"
+                                                           placeholder="入账日期" data-rule-required="true"> 至
+                                                    <input type="text" name="end_time" class="form-control input-date"
+                                                           placeholder="入账时间" data-rule-required="true">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-3 control-label"><span class="text-danger">*</span>活动介绍：</label>
+                                                <textarea name="use_rule" class="pull-left" id="myEditor"  style="width:400px;height:240px;"></textarea>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-3 control-label"></label>
+                                                <button type="submit" class="btn btn-primary" name="st">保存</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+<script src="/new_theme/common/sui/jquery.min.js"></script>
+<script src="/new_theme/common/sui/sui.min.js"></script>
+<script src="/new_theme/common/ueditor/ueditor.config.js"></script>
+<script src="/new_theme/common/ueditor/ueditor.all.min.js"></script>
+<script>
+    function changeclass(id, type) {
+        if (type == 0) {
+            check_all = $("[tag='tag" + id + "']").get(0).checked;
+            if (check_all == true) {
+                $("[parentid='" + id + "']").each(function () {
+                    this.checked = true;
+                });
+            } else {
+                $("[parentid='" + id + "']").each(function () {
+                    this.checked = false;
+                });
+            }
+        }
+        getlist();
+    }
+
+    function showclass(type) {
+        if (type == 1) {
+            $.post('getClassList', '', function (data) {
+                $('#show_class_list').html(data);
+            });
+            $('#class_list').show();
+        } else {
+            $('#show_class_list').html('');
+            $('#class_list').hide();
+        }
+        getlist();
+    }
+
+    function getlist() {
+        allow_class = $("input[name='allow_class']:checked").val();
+        allow_goods = $("input[name='allow_goods']:checked").val();
+
+        if (allow_goods == 1) {
+            if (allow_class == 0) {
+                class_id = 0;
+            } else {
+                class_id = getchecked();
+            }
+            console.log(class_id);
+            $.post('getGoodsList', {class_id: class_id}, function (data) {
+                $('#goods_list').html(data);
+            });
+        }
+    }
+
+    function showlist(type) {
+        if (type == 1) {
+            getlist();
+            $('#show_list').show();
+        } else {
+            $('#show_list').hide();
+        }
+    }
+
+    //订单满
+    function avaiLable(){
+        if($('#man')[0].checked){
+            $('#moneyMall').addClass('required');
+        };
+    };
+
+    $('#moneyMall').click(function(){
+        $('#man')[0].checked = "true";
+        avaiLable();
+    });
+
+    $('#moneyNone').click(function(){
+        $('#moneyMall').removeClass('required');
+    });
+
+    //获取全部选中产品分类
+    function getchecked() {
+        obj = document.getElementsByName("allow_classes[]");
+        check_val = [];
+        for (k in obj) {
+            if (obj[k].checked)
+                check_val.push(obj[k].value);
+        }
+        return check_val;
+    }
+
+    $(function () {
+        var ue = UE.getEditor('myEditor', {
+
+            serverUrl: "{:U('Admin/Goods/editor')}"
+            , toolbars: [[
+                'undo', 'redo', '|',
+                'bold', 'italic', 'underline', 'fontborder', 'strikethrough', 'superscript', 'subscript', '|', 'forecolor', 'backcolor', 'lineheight', '|',
+                'fontfamily', 'fontsize', '|',
+                'indent', '|',
+                'justifyleft', 'justifycenter', 'justifyright', 'justifyjustify', '|',
+
+                'simpleupload', 'insertimage', 'attachment', 'insertframe', 'pagebreak', 'template', 'background', '|',
+                'horizontal', 'spechars', 'snapscreen', 'wordimage', '|',
+                'inserttable', 'deletetable', 'insertparagraphbeforetable', 'insertrow', 'deleterow', 'insertcol', 'deletecol', 'mergecells', 'mergeright', 'mergedown', 'splittocells', 'splittorows', 'splittocols', 'charts',
+            ]]
+            , zIndex: 1
+        });
+    })
+</script>
+
+<script>
+    $().ready(function() {
+        $("#couponForm").validate();
+    });
+</script>
+</body>
+</html>

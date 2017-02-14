@@ -1,0 +1,127 @@
+<include file="Public/header_new" title="合伙人管理"/>
+<define name="DEFINE_SIDE_MENU_CURRENT" value="Tools"/>
+<include file="Public/sideMenu_new"/>
+
+    <div class="main home" id="main" style="overflow: auto;">
+        <div class="side clearfix" style="width:56px;height:100px;float:left;">
+        </div>
+        <div class="main-container" style="height:auto;">
+            <div class="gdt-toufang gdt-toufang-account">
+                <div class="tuiguang-tab" id="_hSubNav">
+                    <ul>
+                      <li style="width:56px"></li>
+                      <li class="goback"><a href="javascript:history.back(-1)"><i></i></a></li>
+                      <li class="on"><a href="#" onclick="">用户信息列表</a></li>
+                    </ul>
+                </div>
+                <div class="container-box">
+                    <div class="row">
+                        <div class="newcearchbox">
+                            <form class="form-inline" name="form1" action="{:U('Admin/User/updateFansInfo')}" method="get">
+                                <div class="form-group" >
+                                    <input type="text" name="p" class="form-control" value="1" placeholder=""/>页 -
+                                    <input type="text" name="end" class="form-control" value="10" placeholder=""/>页
+                                </div>
+                                <button type="submit" class="btn btn-success">刷新粉丝信息</button>
+                            </form>
+                        </div>
+                        <div class="newcearchbox">
+                            <form class="form-inline" name="form1" action="" method="get">
+                                <div class="input-group small">
+                                    <input type="text" name="nickname" value="{$map.nickname}" placeholder="微信昵称" class="form-control">
+                                </div>
+                                <div class="input-group">
+                                    <input type="text" name="phone" value="{$map.phone}" class="form-control" placeholder="手机号码">
+                                </div>
+                                <div class="form-group">
+                                  <select name="group_id" class="form-control">
+                                      <option value="0">所有分组</option>
+                                      <volist name="groups" id="group">
+                                          <option value="{$group.id}" <eq name="group['id']" value="$map['group_id']">selected</eq>>{$group.title}</option>
+                                      </volist>
+                                  </select>
+                                </div>
+                                <div class="form-group">
+                                  <select name="label_id" class="form-control">
+                                      <option value="0" selected>标签</option>
+                                      <volist name="labels" id="label">
+                                          <option value="{$label.id}" <eq name="label['id']" value="$map['label_id']">selected</eq>>{$label.title}</option>
+                                      </volist>
+                                  </select>
+                                </div>
+                                <div class="form-group input-daterange" data-toggle="datepicker" >
+                                    <input type="text" name="start_time" class="form-control input-date" value="{$map.start_time}" placeholder="注册时间"/> 至
+                                    <input type="text" name="end_time" class="form-control input-date" value="{$map.end_time}" placeholder="注册时间"/>
+                                </div>
+                                <div class="form-group">
+                                  <select name="order" class="form-control">
+                                      <option value="">选择排序</option>
+                                      <option value="1" <eq name="map['order']" value="1">selected</eq>>下级粉丝数</option>
+                                      <option value="2" <eq name="map['order']" value="2">selected</eq>>订单笔数</option>
+                                  </select>
+                                </div>
+                                <button type="submit" class="btn btn-success">查询</button>
+                                <a href="{:U('Admin/User/index?action=export', $map)}" class="btn btn-primary"><i class="gicon-search white"></i>导出</a>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="row newcearchbox">
+                        <table class="table table-primary">
+                            <thead>
+                            <tr class="">
+                                <th width="2%"></th>
+                                <th width="10%">用户openid</th>
+                                <th width="5%">头像</th>
+                                <th width="10%">昵称(点击查看粉丝数)	</th>
+                                <th width="5%">真实姓名|手机号</th>
+                                <th width="5%">支付宝</th>
+                                <th width="3%">性别</th>
+                                <th width="5%">标签</th>
+                                <th width="5%">所在分组</th>
+                                <th width="5%">国家/省/城市</th>
+                                <th width="5%">推荐人</th>
+                                <th width="5%">是否合伙人</th>
+                                <th width="5%">关注时间</th>
+                                <th width="5%">注册时间</th>
+                                <th width="5%">操作</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                              <volist name="list" id="vo">
+                                  <tr>
+                                      <th class="center" scope="row">{$vo.uid}</th>
+                                      <td>{$vo.openid}</td>
+                                      <td><img src="{$vo.headimgurl|avatar}" height="70" alt=""/></td>
+                                      <td><a href="{:U('Admin/Partner/fans', array('id'=>$vo['uid']))}">{$vo.nickname}</a></td>
+                                      <td>{$vo.realname}<br>{$vo.phone}</td>
+                                      <td>{$vo.uid|get_pay_account}</td>
+                                      <td>{$vo.sex|gender}</td>
+                                      <td>{$vo.label_id|get_attr_title}</td>
+                                      <td>{$vo.group_id|get_attr_title}</td>
+                                      <td>{$vo.country}/{$vo.province}/{$vo.city}</td>
+                                      <td>{$vo.invite_id|get_invite_user}</td>
+                                      <td>{$vo.partner_status|partner_status=###,true}</td>
+                                      <td>{$vo.subscribe_time|format_date=###,"Y-m-d H:i:s"}</td>
+                                      <td>{$vo.create_time|format_date=###,"Y-m-d H:i:s"}</td>
+                                      <td>
+                                          <a href="{:U('Admin/User/edit', array('id'=>$vo['uid']))}">查看详情</a><br>
+                                          <a href="{:U('Admin/User/edit', array('id'=>$vo['uid']))}">修改</a><br>
+                                          <a href="{:U('Admin/User/del', array('id'=>$vo['uid']))}" onclick="return confirm('删除后不能恢复, 确定要删除此用户吗?')">删除</a>
+                                      </td>
+                                  </tr>
+                              </volist>
+                            </tbody>
+                        </table>
+                        <div id="page">
+                          {$page}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/new_theme/common/sui/jquery.min.js"></script>
+<script src="/new_theme/common/sui/sui.min.js"></script>
+</body>
+</html>

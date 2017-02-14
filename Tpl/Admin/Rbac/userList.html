@@ -1,0 +1,68 @@
+<include file="Public/header_new" title="权限管理"/>
+<define name="DEFINE_SIDE_MENU_CURRENT" value="Tools"/>
+<include file="Public/sideMenu_new"/>
+
+    <div class="main home" id="main" style="overflow: auto;">
+        <div class="side clearfix" style="width:56px;height:100px;float:left;">
+        </div>
+        <div class="main-container" style="height:auto;">
+            <div class="gdt-toufang gdt-toufang-account">
+                <div class="tuiguang-tab" id="_hSubNav">
+                    <ul>
+                      <li style="width:56px"></li>
+                      <li class="goback"><a href="javascript:history.back(-1)"><i></i></a></li>
+                      <li class="on"><a href="{:U('Rbac/userList')}">用户管理</a></li>
+                      <li><a href="{:U('Rbac/roleList')}">角色管理</a></li>
+                      <li><a href="{:U('Rbac/nodeList')}">节点管理</a></li>
+                    </ul>
+                </div>
+                <div class="container-box">
+                    <div class="row">
+                        <a class="btn btn-success" href="{:U('Rbac/addUser')}">增加用户</a>
+                    </div>
+                    <div class="row newcearchbox ">
+                        <table class="table table-primary table-bordered">
+                            <thead>
+                                <tr class="">
+                                    <th scope="">#</th>
+                                    <th width="10%">用户名</th>
+                                    <th width="15%">昵称</th>
+                                    <th width="10%">邮箱</th>
+                                    <th width="20%">登录时间</th>
+                                    <th width="10%">手机</th>
+                                    <th width="30%">操作</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                  <volist name="list" id="l">
+                                      <tr>
+                                          <td class="center" scope="row">{$l.user_id}</td>
+                                          <td>{$l.username}</td>
+                                          <td>{$l.nickname}</td>
+                                          <td>{$l.email}</td>
+                                          <td>{$l.regdate|date='Y-m-d H:i',###}</td>
+                                          <td>{$l.mobile}</td>
+                                          <td>
+                                              <a href="{:U('upUser',array('id'=>$l['user_id']))}">修改</a>
+                                              <a href="{:U('delUser',array('id'=>$l['user_id']))}" onclick="return confirm('确定要删除该用户吗?')">删除</a>
+                                          </td>
+                                      </tr>
+                                  </volist>
+                            </tbody>
+                        </table>
+                        <div id="page">
+                          {$page}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../sui/jquery.min.js"></script>
+<script src="../sui/sui.min.js"></script>
+<script>
+
+</script>
+</body>
+</html>

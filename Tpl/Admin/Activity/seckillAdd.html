@@ -1,0 +1,183 @@
+<include file="Public/header_new" title="活动"/>
+<define name="DEFINE_SIDE_MENU_CURRENT" value="activity"/>
+<include file="Public/sideMenu_new"/>
+
+    <div class="main home" id="main" style="overflow: auto;">
+        <div class="side clearfix" style="width:56px;height:100px;float:left;">
+        </div>
+        <div class="main-container" style="height:auto;">
+            <div class="gdt-toufang gdt-toufang-account">
+                <div class="tuiguang-tab" id="_hSubNav">
+                    <ul>
+                        <li style="width:56px"></li>
+                        <li class="goback"><a href="javascript:history.back(-1)"><i></i></a></li>
+                        <li><a href="{:U('Admin/Activity/menu')}">菜单设置</a></li>
+                        <li><a href="{:U('Admin/Activity/couponlist')}">优惠券</a></li>
+                        <li class="on"><a href="{:U('Admin/Activity/seckill')}">秒杀</a></li>
+                        <li><a href="{:U('Admin/Activity/bookingList')}">预售</a></li>
+                        <li><a href="{:U('Admin/Activity/group')}">团购</a></li>
+                    </ul>
+                </div>
+
+                <div class="container-box clearfix">
+                    <div class="col-md-9">
+                        <div class="row">
+                            <div class="bs-callout bs-callout-info">
+                                <h4>{$op}秒杀活动</h4>
+                            </div>
+                            <div class="panel">
+                                <form novalidate="novalidate" data-toggle="validate" id="seckillForm" class="form-horizontal" method="post" enctype="multipart/form-data">
+                                    <input type="hidden" value="{$id}" name="id" >
+                                    <div class="panel-body">
+                                        <div class="form-group" id="warning" style="display: none">
+                                            <label class="col-sm-2 control-label"></label>
+                                            <div class="col-sm-4">
+                                                <span class="text-danger">*</span>为必填内容
+                                            </div>
+                                        </div>
+                                        <!--<div class="form-group">-->
+                                            <!--<label class="col-sm-2 control-label"><span class="text-danger">*</span>关键词：</label>-->
+                                            <!--<div class="col-sm-4">-->
+                                                <!--<input type="text" name="reply_keyword" value="{$result.reply_keyword}" class="form-control" placeholder="" data-rule-required="true">-->
+                                                <!--<div class="help-block color-danger">微信回复关键词</div>-->
+                                            <!--</div>-->
+                                            <!--<div class="col-sm-4 error-container"></div>-->
+                                        <!--</div>-->
+                                        <!--<div class="form-group">-->
+                                            <!--<label class="col-sm-2 control-label"><span class="text-danger">*</span>回复标题：</label>-->
+                                            <!--<div class="col-sm-4">-->
+                                                <!--<input type="text" name="reply_title" value="{$result.reply_title}" class="form-control" placeholder="" data-rule-required="true">-->
+                                            <!--</div>-->
+                                            <!--<div class="col-sm-4 error-container"></div>-->
+                                        <!--</div>-->
+                                        <!--<div class="form-group">-->
+                                            <!--<label class="col-sm-2 control-label"><span class="text-danger">*</span>回复内容：</label>-->
+                                            <!--<div class="col-sm-4">-->
+                                                <!--<textarea name="reply_content" style="width:560px;height:75px" name="reply_content" id="info" class="px" data-rule-required="true">{$result.reply_content}</textarea>-->
+                                                <!--<div class="help-block color-danger">最多填写120个字</div>-->
+                                            <!--</div>-->
+                                            <!--<div class="col-sm-4 error-container"></div>-->
+                                        <!--</div>-->
+                                        <!--<div class="form-group">-->
+                                            <!--<label for="newImage" class="col-sm-2 control-label">-->
+                                                <!--<span class="text-danger">*</span>回复图片：-->
+                                            <!--</label>-->
+                                            <!--<div class="col-sm-4">-->
+                                                <!--<input id="newImage" name="reply_pic" placeholder="" data-rule-required="true" type="file" aria-required="true">-->
+                                                <!--<div class="help-block color-danger">建议图片尺寸365*158，图片大小不超过200K</div>-->
+                                            <!--</div>-->
+                                            <!--<div class="col-sm-4 error-container"></div>-->
+                                        <!--</div>-->
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label"><span class="text-danger">*</span>活动名称：</label>
+                                            <div class="col-sm-4">
+                                                <input type="text" name="action_name" value="{$result.action_name}" class="form-control" placeholder="" data-rule-required="true">
+                                            </div>
+                                            <div class="col-sm-4 error-container">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label"><span class="text-danger">*</span>活动图片：</label>
+                                            <div class="col-sm-4">
+                                                <if condition="$result.action_header_img neq ''">
+                                                    <img class="thumb_img" id="picurl_src" src="/uploads/{$result.action_header_img}" style="max-height:100px;max-width: 200px;">
+                                                </if>
+                                                <input type="file" name="action_header_img" {$result['action_id']?'':'data-rule-required="true"'}>
+                                                <div class="help-block color-danger">建议图片尺寸540*168，图片大小不超过200K</div>
+                                            </div>
+                                            <div class="col-sm-4 error-container">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label"><span class="text-danger">*</span>一阶段活动开始结束时间：</label>
+                                            <div class="col-sm-4">
+                                                <input type="text" name="action_sdate"  value="{$result.action_sdate|format_date=###,'Y-m-d H:i:s'}"  id="sdate" class="Wdate" data-rule-required="true" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',readOnly:true,minDate:'%y-%M-%d %H:%i:%s'})" /> - <input type="text" name="action_edate" value="{$result.action_edate|format_date=###,'Y-m-d H:i:s'}" id="edate" class="Wdate" data-rule-required="true" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',readOnly:true,minDate:'#F{$dp.$D(\'sdate\')}'})" />
+                                            </div>
+                                            <div class="col-sm-4 error-container"></div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">二阶段活动开始结束时间：</label>
+                                            <div class="col-sm-4">
+                                                <input type="text" name="second_sdate"  value="{$result.second_sdate|format_date=###,'Y-m-d H:i:s'}" id="second" class="Wdate" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',readOnly:true,minDate:'%y-%M-%d %H:%i:%s'})" /> - <input type="text" name="second_edate" value="{$result.second_edate|format_date=###,'Y-m-d H:i:s'}" class="Wdate" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',readOnly:true,minDate:'#F{$dp.$D(\'second\')}'})" />
+                                            </div>
+                                            <div class="col-sm-4 error-container"></div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">三阶段活动开始结束时间：</label>
+                                            <div class="col-sm-4">
+                                                <input type="text" name="third_sdate"  value="{$result.third_sdate|format_date=###,'Y-m-d H:i:s'}" id="third" class="Wdate" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',readOnly:true,minDate:'%y-%M-%d %H:%i:%s'})" /> - <input type="text" name="third_edate" value="{$result.third_edate|format_date=###,'Y-m-d H:i:s'}" class="Wdate" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',readOnly:true,minDate:'#F{$dp.$D(\'third\')}'})" />
+                                            </div>
+                                            <div class="col-sm-4 error-container"></div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">选择秒杀商品：</label>
+                                            <div class="col-sm-8">
+                                               <volist name="goods_list" id="gl">
+                                                   <input type="radio" name="goods_id" value="{$gl.id}" {$gl['id']==$result['goods_id']?'checked':''}> {$gl.name} <br>
+                                               </volist>
+                                            </div>
+                                            <div class="col-sm-4 error-container"></div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">设置秒杀价格：</label>
+                                            <div class="col-sm-4">
+                                                <input type="text" name="seckill_price" class="form-control" value="{$result.seckill_price|convert_money}" />
+                                            </div>
+                                            <div class="col-sm-4 error-container"></div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">设置秒杀数量：</label>
+                                            <div class="col-sm-4">
+                                                <input type="text" name="seckill_nums" class="form-control" value="{$result.seckill_nums}" />
+                                            </div>
+                                            <div class="col-sm-4 error-container"></div>
+                                        </div>
+                                        <!--<div class="form-group">-->
+                                            <!--<label class="col-sm-2 control-label"><span class="text-danger">*</span>好友分享提前时间：</label>-->
+                                            <!--<div class="col-sm-4">-->
+                                                <!--<input type="text" name="share_time_min" value="{$result.action_rule}" class="form-control" placeholder="" data-rule-required="true" style="width:100px; display: inline;">-->
+                                                <!-- - <input type="text" name="share_time_max" value="{$result.action_rule}" class="form-control" placeholder="" data-rule-required="true" style="width:100px; display: inline;">-->
+                                                <!--<div class="help-block color-danger">好友分享获得时间的范围，单位秒</div>-->
+                                            <!--</div>-->
+                                            <!--<div class="col-sm-4 error-container"></div>-->
+                                        <!--</div>-->
+                                        <!--<div class="form-group">-->
+                                            <!--<label class="col-sm-2 control-label"><span class="text-danger">*</span>活动规则：</label>-->
+                                            <!--<div class="col-sm-4">-->
+                                                <!--<input type="text" name="action_rule" value="{$result.action_rule}" class="form-control" placeholder="" data-rule-required="true">-->
+                                            <!--</div>-->
+                                            <!--<div class="col-sm-4 error-container">-->
+                                            <!--</div>-->
+                                        <!--</div>-->
+
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label"><span class="text-danger">*</span>是否开启：</label>
+                                            <div class="col-sm-4">
+                                                <input type="radio" name="action_open" value="0" data-rule-required="true" <?php echo $result['action_open'] == 0 ? 'checked' : '' ?>> 开启　　
+                                                <input type="radio" name="action_open" value="1" data-rule-required="true" <?php echo $result['action_open'] == 1 ? 'checked' : '' ?>> 关闭
+                                            </div>
+                                            <div class="col-sm-4 error-container">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label"></label>
+                                            <div class="col-sm-4">
+                                                <input value="完成" class="btn btn-primary" type="submit">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/new_theme/common/sui/jquery.min.js"></script>
+<script src="/new_theme/common/sui/sui.min.js"></script>
+<script src="/new_theme/common/datepicker/WdatePicker.js"></script>
+
+</body>
+</html>

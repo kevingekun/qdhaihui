@@ -1,0 +1,56 @@
+<include file="Public:header" title="待收货"  />
+<body>
+    <!-- page 容器 -->
+    <div class="page">
+        <!-- 底部 -->
+        <include file="Public:nav" />
+        <!-- 内容 -->
+        <div class="content con-nav">
+            <div class="order-content">
+                <div class="mui-flex vertical-text order-text">
+                    <a href="{:U('Mall/Ucenter/orders')}" class="shortcut-item cell external">
+                        <img class="shortcut-icon" src="__ASSETS__/img/center/notes.png" width="35" height="35">
+                        <span>全部订单</span>
+                    </a>
+                    <a href="{:U('Mall/Ucenter/waitForPay')}" class="shortcut-item cell external">
+                        <img class="shortcut-icon" src="__ASSETS__/img/center/wallet.png" width="35" height="35">
+                        <span>待付款</span>
+                    </a>
+                    <a href="{:U('Mall/Ucenter/waitForReceive')}" class="shortcut-item cell purple external">
+                        <img class="shortcut-icon" src="__ASSETS__/img/center/car1.png" width="35" height="35">
+                        <span>待收货</span>
+                    </a>
+                    <a href="{:U('Mall/Ucenter/service')}" class="shortcut-item cell external">
+                        <img class="shortcut-icon" src="__ASSETS__/img/center/lock.png" width="35" height="35">
+                        <span>售后</span>
+                    </a>
+                </div>
+            </div>
+            <div class="order-list" id="ordersList">
+                <ul></ul>
+            </div>
+            <section class="share_box">
+                <div id="loading_box" class="clear" style="display: none;">
+                    <img src="__ASSETS__/img/loading_tip.gif" class="loading_tip">
+                    <span id="loading_span">加载中……</span>
+                </div>
+                <div class="waterfall_tip hidden"></div>
+                <div id="click_for_more_sec" class="click_for_more_sec" style="display: block;">
+                    <span href="javascript:;" class="click_for_more_btn">点击加载更多</span>
+                </div>
+            </section>
+        </div>
+    </div>
+</body>
+<script>
+    var count = {$count};
+    var pageSize = {$pageSize};
+    var URL = "{:U('Mall/Ucenter/waitForReceive', '', true, true)}";
+    var confirmUrl = "{:U('Mall/Ucenter/confirmReceive', '', true, true)}";
+    var logisticsUrl = "{:U('Mall/Ucenter/showLogisticsPage', '', true, true)}";
+
+</script>
+<script src="__ASSETS__/js/ucenter/waitForReceive.js"></script>
+<script src="__ASSETS__/dist/js/sm.js"></script>
+<include file="Public:share" />
+</html>

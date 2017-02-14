@@ -1,0 +1,1075 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <title>产品订单</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <!--公用样式文件，不加版本号，通过url参数控制cache -->
+    <link rel="stylesheet" rev="stylesheet" href="__CDN_STATIC_URL__css/gdt-css-api.css" type="text/css" media="screen">
+    <link rel="stylesheet" rev="stylesheet" href="__CDN_STATIC_URL__css/gdt-toufang-layout-20150325.css" type="text/css"
+          media="screen">
+    <link rev="stylesheet" rel="stylesheet" href="__CDN_STATIC_URL__css/gdt-toufang-global-20150323.css" media="screen"
+          type="text/css">
+    <link rel="stylesheet" href="__CDN_STATIC_URL__css/myjd-2015.css">
+    <link rel="stylesheet" href="__CDN_STATIC_URL__css/component-min.css">
+    <link rel="stylesheet" href="__CDN_STATIC_URL__css/jbox-min.css">
+    <link rel="stylesheet" href="__CDN_STATIC_URL__css/style.css">
+    <link rel="stylesheet" href="__CDN_STATIC_URL__css/diy.css">
+    <link rel="stylesheet" href="__CDN_STATIC_URL__css/admin.css">
+    <!--<link rel="stylesheet" href="__CDN_STATIC_URL__css/bootstrap.min.css">-->
+
+    <script src="__CDN_STATIC_URL__js/jquery.js" type="text/javascript" charset="utf-8"></script>
+    <script src="__CDN_STATIC_URL__js/scrollheight.js" type="text/javascript" charset="utf-8"></script>
+    <style>
+        table td {
+            min-width: 50px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        #picsethere {
+            width: 510px;
+            display: block;
+        }
+
+        #picsethere img {
+            max-width: 500px;
+            display: block;
+        }
+
+        .coupons_conbox_ri {
+            padding-top: 5px;
+        }
+
+        #lr-img-btn {
+            position: relative;
+            display: inline-block;
+            padding: 0 12px;
+            height: 30px;
+            line-height: 28px;
+            font-size: 12px;
+            text-align: center;
+            vertical-align: top;
+            cursor: pointer;
+            color: #FFF;
+            background-color: #fff;
+            border-radius: 2px;
+            border: 1px solid #ccc;
+            background-color: #428bca;
+            border-color: #357ebd;
+        }
+
+        .red {
+            color: #ee0505;
+            margin: 0 5px;
+        }
+
+        .prompt {
+            height: 32px;
+            line-height: 32px;
+            display: inline-block;
+            float: left;
+            color: #666;
+            font-size: 14px;
+        }
+
+        .control-group {
+            margin-bottom: 20px;
+        }
+
+        .control-label {
+            float: left;
+            width: 160px;
+            padding-top: 5px;
+            text-align: right;
+        }
+
+        .form-horizontal .controls {
+            margin-left: 180px;
+        }
+
+        input.span4, textarea.span4, .uneditable-input.span4 {
+            width: 356px;
+        }
+
+        .maroon {
+            color: #D20000;
+            padding-left: 2px;
+            font-family: "SimSun";
+        }
+    </style>
+</head>
+<body>
+
+<div class="wrapper clearfix" id="root">
+    <include file="Public/header"/>
+    <div class="top" style="height:56px;;width:100%;"><!--顶部占位--></div>
+    <div class="top" style="height: 31px; width: 100%;display:none;" id="ErrorStatusTipsHolder"><!--顶部小黄条占位--></div>
+    <define name="DEFINE_SIDE_MENU_CURRENT" value="activity"/>
+    <include file="Public/sideMenu"/>
+    <div class="main home" id="main" style="/*height: 400px;*/ overflow: auto;">
+        <div class="side clearfix" style="width:56px;height:100px;float:left;"></div>
+
+        <div class="main-container" style="height:auto;">
+            <div class="gdt-toufang gdt-toufang-account">
+                <div class="tuiguang-tab small-tab" id="_hSubNav">
+                    <ul>
+                        <li style="width:56px"></li>
+                        <li><a href="{:U('Home/Index/activity')}" onclick="">优惠券</a></li>
+                        <li><a href="{:U('Home/Index/activity_seckill')}" onclick="">秒杀</a></li>
+                        <li><a href="{:U('Home/Index/activity_presale')}" onclick="">预售</a></li>
+                        <li><a href="{:U('Home/Index/activity_group')}" onclick="">阶梯团购</a></li>
+                        <li><a href="{:U('Home/Index/activity_now')}" onclick="">返现</a></li>
+                        <li><a href="#" onclick="">直降</a></li>
+                        <li><a href="#" onclick="">新品拍卖</a></li>
+                        <li class="on"><a href="{:U('Home/Index/activity_wof')}" onclick="">大转盘</a></li>
+                        <li><a href="{:U('Home/Index/activity_redpacket')}" onclick="">发红包</a></li>
+                        <li><a href="{:U('Home/Index/activity_inquiry')}" onclick="">调研</a></li>
+                    </ul>
+                </div>
+
+
+                <div class="content-right fl">
+
+
+                    <h1 class="content-right-title">添加优惠券</h1>
+
+
+                    <form class="form-horizontal" id="lbsForm" action="" method="post"><input type="hidden"
+                                                                                              value="55cdebbd5c989"
+                                                                                              name="YYUC_FORM_TOKEN"/><input
+                            type="hidden" value="" name="XUFWDxs7QFwQXVNFQlRmXgc=" id="lucky_rouletteid"/>
+
+                        <div class="control-group">
+                            <label class="control-label" for="keyword">幸运大转盘名称</label>
+
+                            <div class="controls">
+                                <input type="text" value="" name="XUFWDxs7QFwQXVNFQlRmQwoXW1I=" id="lucky_roulettetitle"
+                                       class="span4"/> <span class="maroon">*</span>
+                                <span class="help-inline">最多只能输入128个字符。</span>
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <label class="control-label" for="location_p">活动开始时间</label>
+
+                            <div class="controls">
+                                <input type="text" value="" id="lucky_roulettestart_time" class="span4"
+                                       name="XUFWDxs7QFwQXVNFQlRmRBcCRUM5El5YAw=="
+                                       onfocus="WdatePicker({ dateFmt:'yyyy-MM-dd HH:mm:ss'})" relobj="yyuccalendar"
+                                       rel="yyuc"/></div>
+                        </div>
+
+                        <div class="control-group">
+                            <label class="control-label" for="category_f">活动结束时间</label>
+
+                            <div class="controls">
+                                <input type="text" value="" id="lucky_rouletteend_time" class="span4"
+                                       name="XUFWDxs7QFwQXVNFQlRmUg0HaEMPC1I="
+                                       onfocus="WdatePicker({ dateFmt:'yyyy-MM-dd HH:mm:ss'})" relobj="yyuccalendar"
+                                       rel="yyuc"/></div>
+                        </div>
+
+
+                        <div class="control-group">
+                            <label class="control-label" for="detail">活动简述:</label>
+
+                            <div class="controls">
+                                <textarea name="XUFWDxs7QFwQXVNFQlRmUwYQVEUPFkNcCV8=" id="lucky_roulettedescription"
+                                          class="span5" style="height:90px;width:520px;"></textarea> <span
+                                    class="maroon">*</span><br><span class="help-inline">最多为1000个字符。</span>
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <label class="control-label" for="keyword">按钮文字</label>
+
+                            <div class="controls">
+                                <input type="text" value="" name="XUFWDxs7QFwQXVNFQlRmVRYXQ1gIOUNQHkU="
+                                       id="lucky_roulettebutton_text" class="span4"/> <span class="maroon">*</span>
+                                <span class="help-inline">最多只能输入16个汉字。</span>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="keyword">按钮网址</label>
+
+                            <div class="controls">
+                                <input type="text" value="" name="XUFWDxs7QFwQXVNFQlRmVRYXQ1gIOUJHCg=="
+                                       id="lucky_roulettebutton_url" class="span4"/> <span class="maroon">*</span>
+                                <span class="help-inline">最多只能输入128个字符。</span>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="detail">统计代码</label>
+
+                            <div class="controls">
+                                <textarea name="XUFWDxs7QFwQXVNFQlRmRBcCQ14VEl5WFW4CVlZW"
+                                          id="lucky_roulettestatistics_code" class="span5"
+                                          style="height:90px;width:520px;"></textarea> <span class="maroon">*</span><br><span
+                                    class="help-inline">最多为1000个字符。</span>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="detail">模板选择:</label>
+
+                            <div class="controls">
+                                <input type="radio" name="XUFWDxs7QFwQXVNFQlRmQwYOR1sHElI=" value="default"
+                                       checked="checked" class="radio"/>通用模板<img
+                                    src='__CDN_STATIC_URL__images/sample.jpg'>&nbsp;&nbsp; <span class="maroon">*</span><br><span
+                                    class="help-inline">默认选择项为基础模板,定制请联系您的专属客户经理</span>
+                            </div>
+                        </div>
+                        <div class="cont fn-clear control-group">
+                            <h3 style="text-align: center;">分享设置</h3>
+
+                            <div class="control-group">
+                                <label class="control-label" for="detail">分享描述:</label>
+
+                                <div class="controls">
+                                    <input type="text" value="" name="XUFWDxs7QFwQXVNFQlRmRAsCRVICOVNQFVITUEJHXlxf"
+                                           id="lucky_rouletteshared_description" class="span4"/> <span
+                                        class="maroon">*</span><br><span class="help-inline">最多为64个汉字。</span>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label" for="">分享图片</label>
+
+                                <div class="controls">
+                                    <div class="cover-area">
+                                        <table style="height: 30px;overflow: hidden;">
+                                            <tr>
+                                                <td>
+                                                    <iframe name="YYUC_6fbe364943ddcd663fd4c5b56b3775f2_if"
+                                                            style="position:absolute; left:-10000px;"></iframe>
+                                                    <table style="border:none;padding:0;margin:0;width:auto;display: inline-block;">
+                                                        <tr style="border:none;padding:0;margin:0;">
+                                                            <td style="border:none;padding:0;margin:0;width:auto;">
+                                                                <div style="display:none"
+                                                                     id="YYUC_6fbe364943ddcd663fd4c5b56b3775f2_div"
+                                                                     action="/@system/upload.html" method="post"
+                                                                     enctype="multipart/form-data"
+                                                                     target="YYUC_6fbe364943ddcd663fd4c5b56b3775f2_if">
+<span style="display:-moz-inline-box;display:inline-block;width:100px;height:32px;line-height: 32px;position: relative;">
+<input name="YYUC_UPLOAD_file" style="position: absolute;height: 100%;width:100px;right: 0;z-index:2" type="file"/>
+<input src="" type="button"
+       style="display:block; position: absolute;height: 100%;width:100%;z-index:1;line-height: 25px;font-size:15px;color:#000000;text-align: center;"
+       value="上传图片"/>
+</span>
+                                                                    <input type="hidden" name="YYUC_UPLOAD_SIZE"
+                                                                           value="600"/>
+                                                                    <input type="hidden" name="YYUC_UPLOAD_ID"
+                                                                           value="YYUC_6fbe364943ddcd663fd4c5b56b3775f2"/>
+                                                                </div>
+                                                            </td>
+                                                            <td style="border:none;padding:0;margin:0;width:auto;">
+<span id="YYUC_6fbe364943ddcd663fd4c5b56b3775f2_span"
+      style="display:-moz-inline-box;display:inline-block;width:100px;height:32px;">
+</span>
+                                                            </td>
+                                                            <td style="border:none;padding:0;margin:0;width:auto;"><span
+                                                                    id="YYUC_6fbe364943ddcd663fd4c5b56b3775f2_del"
+                                                                    style="display: none;height:32px;line-height: 32px;"></span>
+                                                            </td>
+                                                            <td style="border:none;padding:0;margin:0;width:auto;"><span
+                                                                    id="YYUC_6fbe364943ddcd663fd4c5b56b3775f2_loadpic"
+                                                                    style="display: none;"></span></td>
+                                                        </tr>
+                                                    </table>
+                                                    <input type="hidden"
+                                                           name="lucky_rouletteT08d9e827ffbba2efe4413cb064bbf847shared_image"
+                                                           id="YYUC_6fbe364943ddcd663fd4c5b56b3775f2_text" value=""/>
+                                                    <script>
+                                                        $(function () {
+                                                            window.YYUC_6fbe364943ddcd663fd4c5b56b3775f2_clear = function () {
+                                                                $('#YYUC_6fbe364943ddcd663fd4c5b56b3775f2_bfb').html('');
+                                                                $('#YYUC_6fbe364943ddcd663fd4c5b56b3775f2_name').html('');
+                                                                if ('shared_image0' != '') {
+                                                                    $('#shared_image0').html('');
+                                                                }
+                                                                $('#YYUC_6fbe364943ddcd663fd4c5b56b3775f2_del').hide();
+                                                                var oldkey = $.trim($('#YYUC_6fbe364943ddcd663fd4c5b56b3775f2_text').val());
+                                                                if (oldkey != '' && oldkey.indexOf('/') == 0) {
+                                                                    $('#YYUC_6fbe364943ddcd663fd4c5b56b3775f2_text').val('@-@' + oldkey);
+                                                                } else if (oldkey.indexOf('@-@') != -1) {
+                                                                    var oldkey2 = oldkey.split('@-@');
+                                                                    $('#YYUC_6fbe364943ddcd663fd4c5b56b3775f2_text').val('@-@' + oldkey2[1]);
+                                                                } else {
+                                                                    $('#YYUC_6fbe364943ddcd663fd4c5b56b3775f2_text').val('');
+                                                                }
+                                                            }
+                                                            $('#YYUC_6fbe364943ddcd663fd4c5b56b3775f2_del').click(function () {
+                                                                if (!confirm('确定要删除吗？')) {
+                                                                    return;
+                                                                }
+                                                                window.YYUC_6fbe364943ddcd663fd4c5b56b3775f2_clear();
+                                                                if (false) {
+                                                                    false('oldkey', 'YYUC_6fbe364943ddcd663fd4c5b56b3775f2');
+                                                                }
+                                                            });
+                                                            var YYUC_6fbe364943ddcd663fd4c5b56b3775f2_form = window.YYUC_6fbe364943ddcd663fd4c5b56b3775f2_form = $('<form style="position: absolute;left:-10000px;" id="YYUC_6fbe364943ddcd663fd4c5b56b3775f2" action="/@system/upload.html" method="post" enctype="multipart/form-data" target="YYUC_6fbe364943ddcd663fd4c5b56b3775f2_if"></form>');
+                                                            $('body').append(YYUC_6fbe364943ddcd663fd4c5b56b3775f2_form);
+                                                            YYUC_6fbe364943ddcd663fd4c5b56b3775f2_form.html($('#YYUC_6fbe364943ddcd663fd4c5b56b3775f2_div').html());
+                                                            $('#YYUC_6fbe364943ddcd663fd4c5b56b3775f2_div').remove();
+                                                            window.YYUC_6fbe364943ddcd663fd4c5b56b3775f2_resize = function () {
+                                                                if ($('#YYUC_6fbe364943ddcd663fd4c5b56b3775f2_span').is(':hidden')) {
+                                                                    YYUC_6fbe364943ddcd663fd4c5b56b3775f2_form.hide();
+                                                                } else {
+                                                                    YYUC_6fbe364943ddcd663fd4c5b56b3775f2_form.show();
+                                                                    var YYUC_6fbe364943ddcd663fd4c5b56b3775f2_offset = $('#YYUC_6fbe364943ddcd663fd4c5b56b3775f2_span').offset();
+                                                                    YYUC_6fbe364943ddcd663fd4c5b56b3775f2_form.css('left', YYUC_6fbe364943ddcd663fd4c5b56b3775f2_offset.left).css('top', YYUC_6fbe364943ddcd663fd4c5b56b3775f2_offset.top);
+                                                                }
+
+                                                            };
+                                                            setInterval(window.YYUC_6fbe364943ddcd663fd4c5b56b3775f2_resize, 55);
+                                                            var YYUC_6fbe364943ddcd663fd4c5b56b3775f2pic = $('#YYUC_6fbe364943ddcd663fd4c5b56b3775f2').find('input[name="YYUC_UPLOAD_file"]');
+                                                            YYUC_6fbe364943ddcd663fd4c5b56b3775f2pic.css('opacity', 0);
+                                                            YYUC_6fbe364943ddcd663fd4c5b56b3775f2pic.change(function () {
+                                                                var thefiles = $(this).val().replaceAll('\\', '/').split('/');
+                                                                var filename = thefiles[thefiles.length - 1];
+                                                                //后缀校验
+                                                                var needsuffixs = ',png,jpeg,jpg,gif,bmp,'.toLowerCase();
+                                                                var suffixs = filename.split('.');
+                                                                if (needsuffixs.indexOf((',' + suffixs[suffixs.length - 1] + ',').toLowerCase()) == -1) {
+                                                                    if (alert) {
+                                                                        alert('文件格式不被允许', $('#YYUC_6fbe364943ddcd663fd4c5b56b3775f2'), 1, 'YYUC_6fbe364943ddcd663fd4c5b56b3775f2');
+                                                                    }
+                                                                } else {
+                                                                    $('#YYUC_6fbe364943ddcd663fd4c5b56b3775f2_name').html(filename);
+                                                                    window.YYUC_6fbe364943ddcd663fd4c5b56b3775f2_jd = 0;
+                                                                    YYUC_6fbe364943ddcd663fd4c5b56b3775f2_process()
+                                                                    $('#YYUC_6fbe364943ddcd663fd4c5b56b3775f2').submit();
+                                                                    $('#YYUC_6fbe364943ddcd663fd4c5b56b3775f2_loadpic').show();
+
+                                                                    $('iframe[name="YYUC_6fbe364943ddcd663fd4c5b56b3775f2_if"]').unbind('load').load(function () {
+                                                                        if (!window.YYUC_6fbe364943ddcd663fd4c5b56b3775f2) {
+                                                                            $('#YYUC_6fbe364943ddcd663fd4c5b56b3775f2_loadpic').hide();
+                                                                            $('#YYUC_6fbe364943ddcd663fd4c5b56b3775f2_bfb').html('');
+                                                                            if (alert) {
+                                                                                alert('网络连接超时或文件大小超出', $('#ttid'), 3, 'YYUC_6fbe364943ddcd663fd4c5b56b3775f2');
+                                                                                clearTimeout(window.YYUC_6fbe364943ddcd663fd4c5b56b3775f2jdproc);
+                                                                            }
+                                                                        }
+                                                                    });
+                                                                }
+                                                            });
+
+                                                        });
+                                                        function YYUC_6fbe364943ddcd663fd4c5b56b3775f2_process() {
+                                                            if (window.YYUC_6fbe364943ddcd663fd4c5b56b3775f2_jd < 99) {
+                                                                var nexttime = parseInt(Math.sqrt(window.YYUC_6fbe364943ddcd663fd4c5b56b3775f2_jd) * 100) * 2;
+                                                                window.YYUC_6fbe364943ddcd663fd4c5b56b3775f2_jd = window.YYUC_6fbe364943ddcd663fd4c5b56b3775f2_jd + 1;
+                                                                $('#YYUC_6fbe364943ddcd663fd4c5b56b3775f2_bfb').html(window.YYUC_6fbe364943ddcd663fd4c5b56b3775f2_jd + '%');
+                                                                window.YYUC_6fbe364943ddcd663fd4c5b56b3775f2jdproc = setTimeout(function () {
+                                                                    YYUC_6fbe364943ddcd663fd4c5b56b3775f2_process();
+                                                                }, nexttime);
+                                                            } else {
+                                                                $('#YYUC_6fbe364943ddcd663fd4c5b56b3775f2_bfb').html('');
+                                                                $('#YYUC_6fbe364943ddcd663fd4c5b56b3775f2_loadpic').hide();
+                                                                if (alert) {
+                                                                    alert('网络连接超时或文件大小超出', $('#ttid'), 3, 'YYUC_6fbe364943ddcd663fd4c5b56b3775f2');
+                                                                }
+                                                            }
+                                                        }
+                                                        function YYUC_6fbe364943ddcd663fd4c5b56b3775f2_success(url, key) {
+                                                            $('#YYUC_6fbe364943ddcd663fd4c5b56b3775f2_del').show();
+                                                            window.YYUC_6fbe364943ddcd663fd4c5b56b3775f2_jd = 100;
+                                                            $('#YYUC_6fbe364943ddcd663fd4c5b56b3775f2_bfb').html('100%');
+                                                            $('#YYUC_6fbe364943ddcd663fd4c5b56b3775f2_loadpic').hide();
+                                                            clearTimeout(window.YYUC_6fbe364943ddcd663fd4c5b56b3775f2jdproc);
+                                                            var oldkey = $('#YYUC_6fbe364943ddcd663fd4c5b56b3775f2_text').val();
+                                                            if (oldkey.indexOf('@-@') != -1) {
+                                                                var oldkey2 = oldkey.split('@-@');
+                                                                $('#YYUC_6fbe364943ddcd663fd4c5b56b3775f2_text').val(key + '@-@' + oldkey2[1]);
+                                                            } else if (oldkey.indexOf('/') == 0) {
+                                                                $('#YYUC_6fbe364943ddcd663fd4c5b56b3775f2_text').val(key + '@-@' + oldkey);
+                                                            } else {
+                                                                $('#YYUC_6fbe364943ddcd663fd4c5b56b3775f2_text').val(key);
+                                                            }
+                                                            window.YYUC_6fbe364943ddcd663fd4c5b56b3775f2_upimg = $('<img id="YYUC_6fbe364943ddcd663fd4c5b56b3775f2_realpic" src="' + url + '"/>');
+                                                            $('#shared_image0').html('').append(window.YYUC_6fbe364943ddcd663fd4c5b56b3775f2_upimg);
+                                                        }
+                                                        function YYUC_6fbe364943ddcd663fd4c5b56b3775f2_failure(size, type) {
+                                                            if (alert) {
+                                                                if (type == 2) {
+                                                                    alert('文件大小为：' + size + 'K，超出了600K的限制,上传失败！', $('#ttid'), 2, 'YYUC_6fbe364943ddcd663fd4c5b56b3775f2');
+                                                                } else {
+                                                                    alert('文件上传发生未知错误22', $('#ttid'), 4, 'YYUC_6fbe364943ddcd663fd4c5b56b3775f2');
+                                                                }
+                                                                clearTimeout(window.YYUC_6fbe364943ddcd663fd4c5b56b3775f2jdproc);
+                                                                $('#YYUC_6fbe364943ddcd663fd4c5b56b3775f2_bfb').html('');
+                                                                $('#YYUC_6fbe364943ddcd663fd4c5b56b3775f2_name').html('');
+                                                                $('#YYUC_6fbe364943ddcd663fd4c5b56b3775f2_loadpic').hide();
+                                                            }
+                                                        }
+                                                    </script>
+                                                </td>
+                                                <td valign="top" style="line-height: 30px;color:gray;">建议尺寸范围：120像素 *
+                                                    120像素
+                                                </td>
+                                            </tr>
+                                        </table>
+                                        <p class="img-area cover-bd" id="shared_image0">
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cont fn-clear control-group">
+                            <h3 style="text-align: center;">个性设置</h3>
+
+                            <div class="control-group">
+                                <label class="control-label" for="">转盘图</label>
+
+                                <div class="controls">
+                                    <div class="cover-area">
+                                        <table style="height: 30px;overflow: hidden;">
+                                            <tr>
+                                                <td>
+                                                    <iframe name="YYUC_e7aa7e4424e180640636efc1ea051b03_if"
+                                                            style="position:absolute; left:-10000px;"></iframe>
+                                                    <table style="border:none;padding:0;margin:0;width:auto;display: inline-block;">
+                                                        <tr style="border:none;padding:0;margin:0;">
+                                                            <td style="border:none;padding:0;margin:0;width:auto;">
+                                                                <div style="display:none"
+                                                                     id="YYUC_e7aa7e4424e180640636efc1ea051b03_div"
+                                                                     action="/@system/upload.html" method="post"
+                                                                     enctype="multipart/form-data"
+                                                                     target="YYUC_e7aa7e4424e180640636efc1ea051b03_if">
+<span style="display:-moz-inline-box;display:inline-block;width:100px;height:32px;line-height: 32px;position: relative;">
+<input name="YYUC_UPLOAD_file" style="position: absolute;height: 100%;width:100px;right: 0;z-index:2" type="file"/>
+<input src="" type="button"
+       style="display:block; position: absolute;height: 100%;width:100%;z-index:1;line-height: 25px;font-size:15px;color:#000000;text-align: center;"
+       value="上传图片"/>
+</span>
+                                                                    <input type="hidden" name="YYUC_UPLOAD_SIZE"
+                                                                           value="600"/>
+                                                                    <input type="hidden" name="YYUC_UPLOAD_ID"
+                                                                           value="YYUC_e7aa7e4424e180640636efc1ea051b03"/>
+                                                                </div>
+                                                            </td>
+                                                            <td style="border:none;padding:0;margin:0;width:auto;">
+<span id="YYUC_e7aa7e4424e180640636efc1ea051b03_span"
+      style="display:-moz-inline-box;display:inline-block;width:100px;height:32px;">
+</span>
+                                                            </td>
+                                                            <td style="border:none;padding:0;margin:0;width:auto;"><span
+                                                                    id="YYUC_e7aa7e4424e180640636efc1ea051b03_del"
+                                                                    style="display: none;height:32px;line-height: 32px;"></span>
+                                                            </td>
+                                                            <td style="border:none;padding:0;margin:0;width:auto;"><span
+                                                                    id="YYUC_e7aa7e4424e180640636efc1ea051b03_loadpic"
+                                                                    style="display: none;"></span></td>
+                                                        </tr>
+                                                    </table>
+                                                    <input type="hidden"
+                                                           name="lucky_rouletteT08d9e827ffbba2efe4413cb064bbf847image_roulette"
+                                                           id="YYUC_e7aa7e4424e180640636efc1ea051b03_text"
+                                                           value="http://wx.com/marketingPromotion/luckyRoulette/default/images/luck01.png"/>
+                                                    <script>
+                                                        $(function () {
+                                                            $("#YYUC_e7aa7e4424e180640636efc1ea051b03_del").css("cursor", "pointer").show();
+                                                            $('#picsethere0').html('<img src="http://wx.com/marketingPromotion/luckyRoulette/default/images/luck01.png?_=' + (new Date()).getTime() + '"/>');
+                                                            window.YYUC_e7aa7e4424e180640636efc1ea051b03_clear = function () {
+                                                                $('#YYUC_e7aa7e4424e180640636efc1ea051b03_bfb').html('');
+                                                                $('#YYUC_e7aa7e4424e180640636efc1ea051b03_name').html('');
+                                                                if ('picsethere0' != '') {
+                                                                    $('#picsethere0').html('');
+                                                                }
+                                                                $('#YYUC_e7aa7e4424e180640636efc1ea051b03_del').hide();
+                                                                var oldkey = $.trim($('#YYUC_e7aa7e4424e180640636efc1ea051b03_text').val());
+                                                                if (oldkey != '' && oldkey.indexOf('/') == 0) {
+                                                                    $('#YYUC_e7aa7e4424e180640636efc1ea051b03_text').val('@-@' + oldkey);
+                                                                } else if (oldkey.indexOf('@-@') != -1) {
+                                                                    var oldkey2 = oldkey.split('@-@');
+                                                                    $('#YYUC_e7aa7e4424e180640636efc1ea051b03_text').val('@-@' + oldkey2[1]);
+                                                                } else {
+                                                                    $('#YYUC_e7aa7e4424e180640636efc1ea051b03_text').val('');
+                                                                }
+                                                            }
+                                                            $('#YYUC_e7aa7e4424e180640636efc1ea051b03_del').click(function () {
+                                                                if (!confirm('确定要删除吗？')) {
+                                                                    return;
+                                                                }
+                                                                window.YYUC_e7aa7e4424e180640636efc1ea051b03_clear();
+                                                                if (false) {
+                                                                    false('oldkey', 'YYUC_e7aa7e4424e180640636efc1ea051b03');
+                                                                }
+                                                            });
+                                                            var YYUC_e7aa7e4424e180640636efc1ea051b03_form = window.YYUC_e7aa7e4424e180640636efc1ea051b03_form = $('<form style="position: absolute;left:-10000px;" id="YYUC_e7aa7e4424e180640636efc1ea051b03" action="/@system/upload.html" method="post" enctype="multipart/form-data" target="YYUC_e7aa7e4424e180640636efc1ea051b03_if"></form>');
+                                                            $('body').append(YYUC_e7aa7e4424e180640636efc1ea051b03_form);
+                                                            YYUC_e7aa7e4424e180640636efc1ea051b03_form.html($('#YYUC_e7aa7e4424e180640636efc1ea051b03_div').html());
+                                                            $('#YYUC_e7aa7e4424e180640636efc1ea051b03_div').remove();
+                                                            window.YYUC_e7aa7e4424e180640636efc1ea051b03_resize = function () {
+                                                                if ($('#YYUC_e7aa7e4424e180640636efc1ea051b03_span').is(':hidden')) {
+                                                                    YYUC_e7aa7e4424e180640636efc1ea051b03_form.hide();
+                                                                } else {
+                                                                    YYUC_e7aa7e4424e180640636efc1ea051b03_form.show();
+                                                                    var YYUC_e7aa7e4424e180640636efc1ea051b03_offset = $('#YYUC_e7aa7e4424e180640636efc1ea051b03_span').offset();
+                                                                    YYUC_e7aa7e4424e180640636efc1ea051b03_form.css('left', YYUC_e7aa7e4424e180640636efc1ea051b03_offset.left).css('top', YYUC_e7aa7e4424e180640636efc1ea051b03_offset.top);
+                                                                }
+
+                                                            };
+                                                            setInterval(window.YYUC_e7aa7e4424e180640636efc1ea051b03_resize, 55);
+                                                            var YYUC_e7aa7e4424e180640636efc1ea051b03pic = $('#YYUC_e7aa7e4424e180640636efc1ea051b03').find('input[name="YYUC_UPLOAD_file"]');
+                                                            YYUC_e7aa7e4424e180640636efc1ea051b03pic.css('opacity', 0);
+                                                            YYUC_e7aa7e4424e180640636efc1ea051b03pic.change(function () {
+                                                                var thefiles = $(this).val().replaceAll('\\', '/').split('/');
+                                                                var filename = thefiles[thefiles.length - 1];
+                                                                //后缀校验
+                                                                var needsuffixs = ',png,jpeg,jpg,gif,bmp,'.toLowerCase();
+                                                                var suffixs = filename.split('.');
+                                                                if (needsuffixs.indexOf((',' + suffixs[suffixs.length - 1] + ',').toLowerCase()) == -1) {
+                                                                    if (alert) {
+                                                                        alert('文件格式不被允许', $('#YYUC_e7aa7e4424e180640636efc1ea051b03'), 1, 'YYUC_e7aa7e4424e180640636efc1ea051b03');
+                                                                    }
+                                                                } else {
+                                                                    $('#YYUC_e7aa7e4424e180640636efc1ea051b03_name').html(filename);
+                                                                    window.YYUC_e7aa7e4424e180640636efc1ea051b03_jd = 0;
+                                                                    YYUC_e7aa7e4424e180640636efc1ea051b03_process()
+                                                                    $('#YYUC_e7aa7e4424e180640636efc1ea051b03').submit();
+                                                                    $('#YYUC_e7aa7e4424e180640636efc1ea051b03_loadpic').show();
+
+                                                                    $('iframe[name="YYUC_e7aa7e4424e180640636efc1ea051b03_if"]').unbind('load').load(function () {
+                                                                        if (!window.YYUC_e7aa7e4424e180640636efc1ea051b03) {
+                                                                            $('#YYUC_e7aa7e4424e180640636efc1ea051b03_loadpic').hide();
+                                                                            $('#YYUC_e7aa7e4424e180640636efc1ea051b03_bfb').html('');
+                                                                            if (alert) {
+                                                                                alert('网络连接超时或文件大小超出', $('#ttid'), 3, 'YYUC_e7aa7e4424e180640636efc1ea051b03');
+                                                                                clearTimeout(window.YYUC_e7aa7e4424e180640636efc1ea051b03jdproc);
+                                                                            }
+                                                                        }
+                                                                    });
+                                                                }
+                                                            });
+
+                                                        });
+                                                        function YYUC_e7aa7e4424e180640636efc1ea051b03_process() {
+                                                            if (window.YYUC_e7aa7e4424e180640636efc1ea051b03_jd < 99) {
+                                                                var nexttime = parseInt(Math.sqrt(window.YYUC_e7aa7e4424e180640636efc1ea051b03_jd) * 100) * 2;
+                                                                window.YYUC_e7aa7e4424e180640636efc1ea051b03_jd = window.YYUC_e7aa7e4424e180640636efc1ea051b03_jd + 1;
+                                                                $('#YYUC_e7aa7e4424e180640636efc1ea051b03_bfb').html(window.YYUC_e7aa7e4424e180640636efc1ea051b03_jd + '%');
+                                                                window.YYUC_e7aa7e4424e180640636efc1ea051b03jdproc = setTimeout(function () {
+                                                                    YYUC_e7aa7e4424e180640636efc1ea051b03_process();
+                                                                }, nexttime);
+                                                            } else {
+                                                                $('#YYUC_e7aa7e4424e180640636efc1ea051b03_bfb').html('');
+                                                                $('#YYUC_e7aa7e4424e180640636efc1ea051b03_loadpic').hide();
+                                                                if (alert) {
+                                                                    alert('网络连接超时或文件大小超出', $('#ttid'), 3, 'YYUC_e7aa7e4424e180640636efc1ea051b03');
+                                                                }
+                                                            }
+                                                        }
+                                                        function YYUC_e7aa7e4424e180640636efc1ea051b03_success(url, key) {
+                                                            $('#YYUC_e7aa7e4424e180640636efc1ea051b03_del').show();
+                                                            window.YYUC_e7aa7e4424e180640636efc1ea051b03_jd = 100;
+                                                            $('#YYUC_e7aa7e4424e180640636efc1ea051b03_bfb').html('100%');
+                                                            $('#YYUC_e7aa7e4424e180640636efc1ea051b03_loadpic').hide();
+                                                            clearTimeout(window.YYUC_e7aa7e4424e180640636efc1ea051b03jdproc);
+                                                            var oldkey = $('#YYUC_e7aa7e4424e180640636efc1ea051b03_text').val();
+                                                            if (oldkey.indexOf('@-@') != -1) {
+                                                                var oldkey2 = oldkey.split('@-@');
+                                                                $('#YYUC_e7aa7e4424e180640636efc1ea051b03_text').val(key + '@-@' + oldkey2[1]);
+                                                            } else if (oldkey.indexOf('/') == 0) {
+                                                                $('#YYUC_e7aa7e4424e180640636efc1ea051b03_text').val(key + '@-@' + oldkey);
+                                                            } else {
+                                                                $('#YYUC_e7aa7e4424e180640636efc1ea051b03_text').val(key);
+                                                            }
+                                                            window.YYUC_e7aa7e4424e180640636efc1ea051b03_upimg = $('<img id="YYUC_e7aa7e4424e180640636efc1ea051b03_realpic" src="' + url + '"/>');
+                                                            $('#picsethere0').html('').append(window.YYUC_e7aa7e4424e180640636efc1ea051b03_upimg);
+                                                        }
+                                                        function YYUC_e7aa7e4424e180640636efc1ea051b03_failure(size, type) {
+                                                            if (alert) {
+                                                                if (type == 2) {
+                                                                    alert('文件大小为：' + size + 'K，超出了600K的限制,上传失败！', $('#ttid'), 2, 'YYUC_e7aa7e4424e180640636efc1ea051b03');
+                                                                } else {
+                                                                    alert('文件上传发生未知错误22', $('#ttid'), 4, 'YYUC_e7aa7e4424e180640636efc1ea051b03');
+                                                                }
+                                                                clearTimeout(window.YYUC_e7aa7e4424e180640636efc1ea051b03jdproc);
+                                                                $('#YYUC_e7aa7e4424e180640636efc1ea051b03_bfb').html('');
+                                                                $('#YYUC_e7aa7e4424e180640636efc1ea051b03_name').html('');
+                                                                $('#YYUC_e7aa7e4424e180640636efc1ea051b03_loadpic').hide();
+                                                            }
+                                                        }
+                                                    </script>
+                                                </td>
+                                                <td valign="top" style="line-height: 30px;color:gray;">建议尺寸范围：480像素 *
+                                                    480像素
+                                                </td>
+                                            </tr>
+                                        </table>
+                                        <p class="img-area cover-bd" id="picsethere0">
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label" for="">Logo</label>
+
+                                <div class="controls">
+                                    <div class="cover-area">
+                                        <table style="height: 30px;overflow: hidden;">
+                                            <tr>
+                                                <td>
+                                                    <iframe name="YYUC_1727d12cbb31d283b8a0483c7788b646_if"
+                                                            style="position:absolute; left:-10000px;"></iframe>
+                                                    <table style="border:none;padding:0;margin:0;width:auto;display: inline-block;">
+                                                        <tr style="border:none;padding:0;margin:0;">
+                                                            <td style="border:none;padding:0;margin:0;width:auto;">
+                                                                <div style="display:none"
+                                                                     id="YYUC_1727d12cbb31d283b8a0483c7788b646_div"
+                                                                     action="/@system/upload.html" method="post"
+                                                                     enctype="multipart/form-data"
+                                                                     target="YYUC_1727d12cbb31d283b8a0483c7788b646_if">
+<span style="display:-moz-inline-box;display:inline-block;width:100px;height:32px;line-height: 32px;position: relative;">
+<input name="YYUC_UPLOAD_file" style="position: absolute;height: 100%;width:100px;right: 0;z-index:2" type="file"/>
+<input src="" type="button"
+       style="display:block; position: absolute;height: 100%;width:100%;z-index:1;line-height: 25px;font-size:15px;color:#000000;text-align: center;"
+       value="上传图片"/>
+</span>
+                                                                    <input type="hidden" name="YYUC_UPLOAD_SIZE"
+                                                                           value="600"/>
+                                                                    <input type="hidden" name="YYUC_UPLOAD_ID"
+                                                                           value="YYUC_1727d12cbb31d283b8a0483c7788b646"/>
+                                                                </div>
+                                                            </td>
+                                                            <td style="border:none;padding:0;margin:0;width:auto;">
+<span id="YYUC_1727d12cbb31d283b8a0483c7788b646_span"
+      style="display:-moz-inline-box;display:inline-block;width:100px;height:32px;">
+</span>
+                                                            </td>
+                                                            <td style="border:none;padding:0;margin:0;width:auto;"><span
+                                                                    id="YYUC_1727d12cbb31d283b8a0483c7788b646_del"
+                                                                    style="display: none;height:32px;line-height: 32px;"></span>
+                                                            </td>
+                                                            <td style="border:none;padding:0;margin:0;width:auto;"><span
+                                                                    id="YYUC_1727d12cbb31d283b8a0483c7788b646_loadpic"
+                                                                    style="display: none;"></span></td>
+                                                        </tr>
+                                                    </table>
+
+                                                    <script>
+                                                        $(function () {
+                                                            $("#YYUC_1727d12cbb31d283b8a0483c7788b646_del").css("cursor", "pointer").show();
+// $('#picsethere1').html('<img src="http://wsdl3.aqingdao.com/res/whd/jfxydzp.jpg?_='+(new Date()).getTime()+'"/>');
+                                                            window.YYUC_1727d12cbb31d283b8a0483c7788b646_clear = function () {
+                                                                $('#YYUC_1727d12cbb31d283b8a0483c7788b646_bfb').html('');
+                                                                $('#YYUC_1727d12cbb31d283b8a0483c7788b646_name').html('');
+                                                                if ('picsethere1' != '') {
+                                                                    $('#picsethere1').html('');
+                                                                }
+                                                                $('#YYUC_1727d12cbb31d283b8a0483c7788b646_del').hide();
+                                                                var oldkey = $.trim($('#YYUC_1727d12cbb31d283b8a0483c7788b646_text').val());
+                                                                if (oldkey != '' && oldkey.indexOf('/') == 0) {
+                                                                    $('#YYUC_1727d12cbb31d283b8a0483c7788b646_text').val('@-@' + oldkey);
+                                                                } else if (oldkey.indexOf('@-@') != -1) {
+                                                                    var oldkey2 = oldkey.split('@-@');
+                                                                    $('#YYUC_1727d12cbb31d283b8a0483c7788b646_text').val('@-@' + oldkey2[1]);
+                                                                } else {
+                                                                    $('#YYUC_1727d12cbb31d283b8a0483c7788b646_text').val('');
+                                                                }
+                                                            }
+                                                            $('#YYUC_1727d12cbb31d283b8a0483c7788b646_del').click(function () {
+                                                                if (!confirm('确定要删除吗？')) {
+                                                                    return;
+                                                                }
+                                                                window.YYUC_1727d12cbb31d283b8a0483c7788b646_clear();
+                                                                if (false) {
+                                                                    false('oldkey', 'YYUC_1727d12cbb31d283b8a0483c7788b646');
+                                                                }
+                                                            });
+                                                            var YYUC_1727d12cbb31d283b8a0483c7788b646_form = window.YYUC_1727d12cbb31d283b8a0483c7788b646_form = $('<form style="position: absolute;left:-10000px;" id="YYUC_1727d12cbb31d283b8a0483c7788b646" action="/@system/upload.html" method="post" enctype="multipart/form-data" target="YYUC_1727d12cbb31d283b8a0483c7788b646_if"></form>');
+                                                            $('body').append(YYUC_1727d12cbb31d283b8a0483c7788b646_form);
+                                                            YYUC_1727d12cbb31d283b8a0483c7788b646_form.html($('#YYUC_1727d12cbb31d283b8a0483c7788b646_div').html());
+                                                            $('#YYUC_1727d12cbb31d283b8a0483c7788b646_div').remove();
+                                                            window.YYUC_1727d12cbb31d283b8a0483c7788b646_resize = function () {
+                                                                if ($('#YYUC_1727d12cbb31d283b8a0483c7788b646_span').is(':hidden')) {
+                                                                    YYUC_1727d12cbb31d283b8a0483c7788b646_form.hide();
+                                                                } else {
+                                                                    YYUC_1727d12cbb31d283b8a0483c7788b646_form.show();
+                                                                    var YYUC_1727d12cbb31d283b8a0483c7788b646_offset = $('#YYUC_1727d12cbb31d283b8a0483c7788b646_span').offset();
+                                                                    YYUC_1727d12cbb31d283b8a0483c7788b646_form.css('left', YYUC_1727d12cbb31d283b8a0483c7788b646_offset.left).css('top', YYUC_1727d12cbb31d283b8a0483c7788b646_offset.top);
+                                                                }
+
+                                                            };
+                                                            setInterval(window.YYUC_1727d12cbb31d283b8a0483c7788b646_resize, 55);
+                                                            var YYUC_1727d12cbb31d283b8a0483c7788b646pic = $('#YYUC_1727d12cbb31d283b8a0483c7788b646').find('input[name="YYUC_UPLOAD_file"]');
+                                                            YYUC_1727d12cbb31d283b8a0483c7788b646pic.css('opacity', 0);
+                                                            YYUC_1727d12cbb31d283b8a0483c7788b646pic.change(function () {
+                                                                var thefiles = $(this).val().replaceAll('\\', '/').split('/');
+                                                                var filename = thefiles[thefiles.length - 1];
+                                                                //后缀校验
+                                                                var needsuffixs = ',png,jpeg,jpg,gif,bmp,'.toLowerCase();
+                                                                var suffixs = filename.split('.');
+                                                                if (needsuffixs.indexOf((',' + suffixs[suffixs.length - 1] + ',').toLowerCase()) == -1) {
+                                                                    if (alert) {
+                                                                        alert('文件格式不被允许', $('#YYUC_1727d12cbb31d283b8a0483c7788b646'), 1, 'YYUC_1727d12cbb31d283b8a0483c7788b646');
+                                                                    }
+                                                                } else {
+                                                                    $('#YYUC_1727d12cbb31d283b8a0483c7788b646_name').html(filename);
+                                                                    window.YYUC_1727d12cbb31d283b8a0483c7788b646_jd = 0;
+                                                                    YYUC_1727d12cbb31d283b8a0483c7788b646_process()
+                                                                    $('#YYUC_1727d12cbb31d283b8a0483c7788b646').submit();
+                                                                    $('#YYUC_1727d12cbb31d283b8a0483c7788b646_loadpic').show();
+
+                                                                    $('iframe[name="YYUC_1727d12cbb31d283b8a0483c7788b646_if"]').unbind('load').load(function () {
+                                                                        if (!window.YYUC_1727d12cbb31d283b8a0483c7788b646) {
+                                                                            $('#YYUC_1727d12cbb31d283b8a0483c7788b646_loadpic').hide();
+                                                                            $('#YYUC_1727d12cbb31d283b8a0483c7788b646_bfb').html('');
+                                                                            if (alert) {
+                                                                                alert('网络连接超时或文件大小超出', $('#ttid'), 3, 'YYUC_1727d12cbb31d283b8a0483c7788b646');
+                                                                                clearTimeout(window.YYUC_1727d12cbb31d283b8a0483c7788b646jdproc);
+                                                                            }
+                                                                        }
+                                                                    });
+                                                                }
+                                                            });
+
+                                                        });
+                                                        function YYUC_1727d12cbb31d283b8a0483c7788b646_process() {
+                                                            if (window.YYUC_1727d12cbb31d283b8a0483c7788b646_jd < 99) {
+                                                                var nexttime = parseInt(Math.sqrt(window.YYUC_1727d12cbb31d283b8a0483c7788b646_jd) * 100) * 2;
+                                                                window.YYUC_1727d12cbb31d283b8a0483c7788b646_jd = window.YYUC_1727d12cbb31d283b8a0483c7788b646_jd + 1;
+                                                                $('#YYUC_1727d12cbb31d283b8a0483c7788b646_bfb').html(window.YYUC_1727d12cbb31d283b8a0483c7788b646_jd + '%');
+                                                                window.YYUC_1727d12cbb31d283b8a0483c7788b646jdproc = setTimeout(function () {
+                                                                    YYUC_1727d12cbb31d283b8a0483c7788b646_process();
+                                                                }, nexttime);
+                                                            } else {
+                                                                $('#YYUC_1727d12cbb31d283b8a0483c7788b646_bfb').html('');
+                                                                $('#YYUC_1727d12cbb31d283b8a0483c7788b646_loadpic').hide();
+                                                                if (alert) {
+                                                                    alert('网络连接超时或文件大小超出', $('#ttid'), 3, 'YYUC_1727d12cbb31d283b8a0483c7788b646');
+                                                                }
+                                                            }
+                                                        }
+                                                        function YYUC_1727d12cbb31d283b8a0483c7788b646_success(url, key) {
+                                                            $('#YYUC_1727d12cbb31d283b8a0483c7788b646_del').show();
+                                                            window.YYUC_1727d12cbb31d283b8a0483c7788b646_jd = 100;
+                                                            $('#YYUC_1727d12cbb31d283b8a0483c7788b646_bfb').html('100%');
+                                                            $('#YYUC_1727d12cbb31d283b8a0483c7788b646_loadpic').hide();
+                                                            clearTimeout(window.YYUC_1727d12cbb31d283b8a0483c7788b646jdproc);
+                                                            var oldkey = $('#YYUC_1727d12cbb31d283b8a0483c7788b646_text').val();
+                                                            if (oldkey.indexOf('@-@') != -1) {
+                                                                var oldkey2 = oldkey.split('@-@');
+                                                                $('#YYUC_1727d12cbb31d283b8a0483c7788b646_text').val(key + '@-@' + oldkey2[1]);
+                                                            } else if (oldkey.indexOf('/') == 0) {
+                                                                $('#YYUC_1727d12cbb31d283b8a0483c7788b646_text').val(key + '@-@' + oldkey);
+                                                            } else {
+                                                                $('#YYUC_1727d12cbb31d283b8a0483c7788b646_text').val(key);
+                                                            }
+                                                            window.YYUC_1727d12cbb31d283b8a0483c7788b646_upimg = $('<img id="YYUC_1727d12cbb31d283b8a0483c7788b646_realpic" src="' + url + '"/>');
+                                                            $('#picsethere1').html('').append(window.YYUC_1727d12cbb31d283b8a0483c7788b646_upimg);
+                                                        }
+                                                        function YYUC_1727d12cbb31d283b8a0483c7788b646_failure(size, type) {
+                                                            if (alert) {
+                                                                if (type == 2) {
+                                                                    alert('文件大小为：' + size + 'K，超出了600K的限制,上传失败！', $('#ttid'), 2, 'YYUC_1727d12cbb31d283b8a0483c7788b646');
+                                                                } else {
+                                                                    alert('文件上传发生未知错误22', $('#ttid'), 4, 'YYUC_1727d12cbb31d283b8a0483c7788b646');
+                                                                }
+                                                                clearTimeout(window.YYUC_1727d12cbb31d283b8a0483c7788b646jdproc);
+                                                                $('#YYUC_1727d12cbb31d283b8a0483c7788b646_bfb').html('');
+                                                                $('#YYUC_1727d12cbb31d283b8a0483c7788b646_name').html('');
+                                                                $('#YYUC_1727d12cbb31d283b8a0483c7788b646_loadpic').hide();
+                                                            }
+                                                        }
+                                                    </script>
+                                                </td>
+                                                <td valign="top" style="line-height: 30px;color:gray;">建议尺寸范围：700像素 *
+                                                    380像素
+                                                </td>
+                                            </tr>
+                                        </table>
+                                        <p class="img-area cover-bd" id="picsethere1">
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label" for="">背景图</label>
+
+                                <div class="controls">
+                                    <div class="cover-area">
+                                        <table style="height: 30px;overflow: hidden;">
+                                            <tr>
+                                                <td>
+                                                    <iframe name="YYUC_9f06a1dcda08f9adb77d0f4f2c6b2814_if"
+                                                            style="position:absolute; left:-10000px;"></iframe>
+                                                    <table style="border:none;padding:0;margin:0;width:auto;display: inline-block;">
+                                                        <tr style="border:none;padding:0;margin:0;">
+                                                            <td style="border:none;padding:0;margin:0;width:auto;">
+                                                                <div style="display:none"
+                                                                     id="YYUC_9f06a1dcda08f9adb77d0f4f2c6b2814_div"
+                                                                     action="/@system/upload.html" method="post"
+                                                                     enctype="multipart/form-data"
+                                                                     target="YYUC_9f06a1dcda08f9adb77d0f4f2c6b2814_if">
+<span style="display:-moz-inline-box;display:inline-block;width:100px;height:32px;line-height: 32px;position: relative;">
+<input name="YYUC_UPLOAD_file" style="position: absolute;height: 100%;width:100px;right: 0;z-index:2" type="file"/>
+<input src="" type="button"
+       style="display:block; position: absolute;height: 100%;width:100%;z-index:1;line-height: 25px;font-size:15px;color:#000000;text-align: center;"
+       value="上传图片"/>
+</span>
+                                                                    <input type="hidden" name="YYUC_UPLOAD_SIZE"
+                                                                           value="600"/>
+                                                                    <input type="hidden" name="YYUC_UPLOAD_ID"
+                                                                           value="YYUC_9f06a1dcda08f9adb77d0f4f2c6b2814"/>
+                                                                </div>
+                                                            </td>
+                                                            <td style="border:none;padding:0;margin:0;width:auto;">
+<span id="YYUC_9f06a1dcda08f9adb77d0f4f2c6b2814_span"
+      style="display:-moz-inline-box;display:inline-block;width:100px;height:32px;">
+</span>
+                                                            </td>
+                                                            <td style="border:none;padding:0;margin:0;width:auto;"><span
+                                                                    id="YYUC_9f06a1dcda08f9adb77d0f4f2c6b2814_del"
+                                                                    style="display: none;height:32px;line-height: 32px;"></span>
+                                                            </td>
+                                                            <td style="border:none;padding:0;margin:0;width:auto;"><span
+                                                                    id="YYUC_9f06a1dcda08f9adb77d0f4f2c6b2814_loadpic"
+                                                                    style="display: none;"></span></td>
+                                                        </tr>
+                                                    </table>
+                                                    <input type="hidden"
+                                                           name="lucky_rouletteT08d9e827ffbba2efe4413cb064bbf847image_background"
+                                                           id="YYUC_9f06a1dcda08f9adb77d0f4f2c6b2814_text" value=""/>
+                                                    <script>
+                                                        $(function () {
+                                                            window.YYUC_9f06a1dcda08f9adb77d0f4f2c6b2814_clear = function () {
+                                                                $('#YYUC_9f06a1dcda08f9adb77d0f4f2c6b2814_bfb').html('');
+                                                                $('#YYUC_9f06a1dcda08f9adb77d0f4f2c6b2814_name').html('');
+                                                                if ('picsethere2' != '') {
+                                                                    $('#picsethere2').html('');
+                                                                }
+                                                                $('#YYUC_9f06a1dcda08f9adb77d0f4f2c6b2814_del').hide();
+                                                                var oldkey = $.trim($('#YYUC_9f06a1dcda08f9adb77d0f4f2c6b2814_text').val());
+                                                                if (oldkey != '' && oldkey.indexOf('/') == 0) {
+                                                                    $('#YYUC_9f06a1dcda08f9adb77d0f4f2c6b2814_text').val('@-@' + oldkey);
+                                                                } else if (oldkey.indexOf('@-@') != -1) {
+                                                                    var oldkey2 = oldkey.split('@-@');
+                                                                    $('#YYUC_9f06a1dcda08f9adb77d0f4f2c6b2814_text').val('@-@' + oldkey2[1]);
+                                                                } else {
+                                                                    $('#YYUC_9f06a1dcda08f9adb77d0f4f2c6b2814_text').val('');
+                                                                }
+                                                            }
+                                                            $('#YYUC_9f06a1dcda08f9adb77d0f4f2c6b2814_del').click(function () {
+                                                                if (!confirm('确定要删除吗？')) {
+                                                                    return;
+                                                                }
+                                                                window.YYUC_9f06a1dcda08f9adb77d0f4f2c6b2814_clear();
+                                                                if (false) {
+                                                                    false('oldkey', 'YYUC_9f06a1dcda08f9adb77d0f4f2c6b2814');
+                                                                }
+                                                            });
+                                                            var YYUC_9f06a1dcda08f9adb77d0f4f2c6b2814_form = window.YYUC_9f06a1dcda08f9adb77d0f4f2c6b2814_form = $('<form style="position: absolute;left:-10000px;" id="YYUC_9f06a1dcda08f9adb77d0f4f2c6b2814" action="/@system/upload.html" method="post" enctype="multipart/form-data" target="YYUC_9f06a1dcda08f9adb77d0f4f2c6b2814_if"></form>');
+                                                            $('body').append(YYUC_9f06a1dcda08f9adb77d0f4f2c6b2814_form);
+                                                            YYUC_9f06a1dcda08f9adb77d0f4f2c6b2814_form.html($('#YYUC_9f06a1dcda08f9adb77d0f4f2c6b2814_div').html());
+                                                            $('#YYUC_9f06a1dcda08f9adb77d0f4f2c6b2814_div').remove();
+                                                            window.YYUC_9f06a1dcda08f9adb77d0f4f2c6b2814_resize = function () {
+                                                                if ($('#YYUC_9f06a1dcda08f9adb77d0f4f2c6b2814_span').is(':hidden')) {
+                                                                    YYUC_9f06a1dcda08f9adb77d0f4f2c6b2814_form.hide();
+                                                                } else {
+                                                                    YYUC_9f06a1dcda08f9adb77d0f4f2c6b2814_form.show();
+                                                                    var YYUC_9f06a1dcda08f9adb77d0f4f2c6b2814_offset = $('#YYUC_9f06a1dcda08f9adb77d0f4f2c6b2814_span').offset();
+                                                                    YYUC_9f06a1dcda08f9adb77d0f4f2c6b2814_form.css('left', YYUC_9f06a1dcda08f9adb77d0f4f2c6b2814_offset.left).css('top', YYUC_9f06a1dcda08f9adb77d0f4f2c6b2814_offset.top);
+                                                                }
+
+                                                            };
+                                                            setInterval(window.YYUC_9f06a1dcda08f9adb77d0f4f2c6b2814_resize, 55);
+                                                            var YYUC_9f06a1dcda08f9adb77d0f4f2c6b2814pic = $('#YYUC_9f06a1dcda08f9adb77d0f4f2c6b2814').find('input[name="YYUC_UPLOAD_file"]');
+                                                            YYUC_9f06a1dcda08f9adb77d0f4f2c6b2814pic.css('opacity', 0);
+                                                            YYUC_9f06a1dcda08f9adb77d0f4f2c6b2814pic.change(function () {
+                                                                var thefiles = $(this).val().replaceAll('\\', '/').split('/');
+                                                                var filename = thefiles[thefiles.length - 1];
+                                                                //后缀校验
+                                                                var needsuffixs = ',png,jpeg,jpg,gif,bmp,'.toLowerCase();
+                                                                var suffixs = filename.split('.');
+                                                                if (needsuffixs.indexOf((',' + suffixs[suffixs.length - 1] + ',').toLowerCase()) == -1) {
+                                                                    if (alert) {
+                                                                        alert('文件格式不被允许', $('#YYUC_9f06a1dcda08f9adb77d0f4f2c6b2814'), 1, 'YYUC_9f06a1dcda08f9adb77d0f4f2c6b2814');
+                                                                    }
+                                                                } else {
+                                                                    $('#YYUC_9f06a1dcda08f9adb77d0f4f2c6b2814_name').html(filename);
+                                                                    window.YYUC_9f06a1dcda08f9adb77d0f4f2c6b2814_jd = 0;
+                                                                    YYUC_9f06a1dcda08f9adb77d0f4f2c6b2814_process()
+                                                                    $('#YYUC_9f06a1dcda08f9adb77d0f4f2c6b2814').submit();
+                                                                    $('#YYUC_9f06a1dcda08f9adb77d0f4f2c6b2814_loadpic').show();
+
+                                                                    $('iframe[name="YYUC_9f06a1dcda08f9adb77d0f4f2c6b2814_if"]').unbind('load').load(function () {
+                                                                        if (!window.YYUC_9f06a1dcda08f9adb77d0f4f2c6b2814) {
+                                                                            $('#YYUC_9f06a1dcda08f9adb77d0f4f2c6b2814_loadpic').hide();
+                                                                            $('#YYUC_9f06a1dcda08f9adb77d0f4f2c6b2814_bfb').html('');
+                                                                            if (alert) {
+                                                                                alert('网络连接超时或文件大小超出', $('#ttid'), 3, 'YYUC_9f06a1dcda08f9adb77d0f4f2c6b2814');
+                                                                                clearTimeout(window.YYUC_9f06a1dcda08f9adb77d0f4f2c6b2814jdproc);
+                                                                            }
+                                                                        }
+                                                                    });
+                                                                }
+                                                            });
+
+                                                        });
+                                                        function YYUC_9f06a1dcda08f9adb77d0f4f2c6b2814_process() {
+                                                            if (window.YYUC_9f06a1dcda08f9adb77d0f4f2c6b2814_jd < 99) {
+                                                                var nexttime = parseInt(Math.sqrt(window.YYUC_9f06a1dcda08f9adb77d0f4f2c6b2814_jd) * 100) * 2;
+                                                                window.YYUC_9f06a1dcda08f9adb77d0f4f2c6b2814_jd = window.YYUC_9f06a1dcda08f9adb77d0f4f2c6b2814_jd + 1;
+                                                                $('#YYUC_9f06a1dcda08f9adb77d0f4f2c6b2814_bfb').html(window.YYUC_9f06a1dcda08f9adb77d0f4f2c6b2814_jd + '%');
+                                                                window.YYUC_9f06a1dcda08f9adb77d0f4f2c6b2814jdproc = setTimeout(function () {
+                                                                    YYUC_9f06a1dcda08f9adb77d0f4f2c6b2814_process();
+                                                                }, nexttime);
+                                                            } else {
+                                                                $('#YYUC_9f06a1dcda08f9adb77d0f4f2c6b2814_bfb').html('');
+                                                                $('#YYUC_9f06a1dcda08f9adb77d0f4f2c6b2814_loadpic').hide();
+                                                                if (alert) {
+                                                                    alert('网络连接超时或文件大小超出', $('#ttid'), 3, 'YYUC_9f06a1dcda08f9adb77d0f4f2c6b2814');
+                                                                }
+                                                            }
+                                                        }
+                                                        function YYUC_9f06a1dcda08f9adb77d0f4f2c6b2814_success(url, key) {
+                                                            $('#YYUC_9f06a1dcda08f9adb77d0f4f2c6b2814_del').show();
+                                                            window.YYUC_9f06a1dcda08f9adb77d0f4f2c6b2814_jd = 100;
+                                                            $('#YYUC_9f06a1dcda08f9adb77d0f4f2c6b2814_bfb').html('100%');
+                                                            $('#YYUC_9f06a1dcda08f9adb77d0f4f2c6b2814_loadpic').hide();
+                                                            clearTimeout(window.YYUC_9f06a1dcda08f9adb77d0f4f2c6b2814jdproc);
+                                                            var oldkey = $('#YYUC_9f06a1dcda08f9adb77d0f4f2c6b2814_text').val();
+                                                            if (oldkey.indexOf('@-@') != -1) {
+                                                                var oldkey2 = oldkey.split('@-@');
+                                                                $('#YYUC_9f06a1dcda08f9adb77d0f4f2c6b2814_text').val(key + '@-@' + oldkey2[1]);
+                                                            } else if (oldkey.indexOf('/') == 0) {
+                                                                $('#YYUC_9f06a1dcda08f9adb77d0f4f2c6b2814_text').val(key + '@-@' + oldkey);
+                                                            } else {
+                                                                $('#YYUC_9f06a1dcda08f9adb77d0f4f2c6b2814_text').val(key);
+                                                            }
+                                                            window.YYUC_9f06a1dcda08f9adb77d0f4f2c6b2814_upimg = $('<img id="YYUC_9f06a1dcda08f9adb77d0f4f2c6b2814_realpic" src="' + url + '"/>');
+                                                            $('#picsethere2').html('').append(window.YYUC_9f06a1dcda08f9adb77d0f4f2c6b2814_upimg);
+                                                        }
+                                                        function YYUC_9f06a1dcda08f9adb77d0f4f2c6b2814_failure(size, type) {
+                                                            if (alert) {
+                                                                if (type == 2) {
+                                                                    alert('文件大小为：' + size + 'K，超出了600K的限制,上传失败！', $('#ttid'), 2, 'YYUC_9f06a1dcda08f9adb77d0f4f2c6b2814');
+                                                                } else {
+                                                                    alert('文件上传发生未知错误22', $('#ttid'), 4, 'YYUC_9f06a1dcda08f9adb77d0f4f2c6b2814');
+                                                                }
+                                                                clearTimeout(window.YYUC_9f06a1dcda08f9adb77d0f4f2c6b2814jdproc);
+                                                                $('#YYUC_9f06a1dcda08f9adb77d0f4f2c6b2814_bfb').html('');
+                                                                $('#YYUC_9f06a1dcda08f9adb77d0f4f2c6b2814_name').html('');
+                                                                $('#YYUC_9f06a1dcda08f9adb77d0f4f2c6b2814_loadpic').hide();
+                                                            }
+                                                        }
+                                                    </script>
+                                                </td>
+                                                <td valign="top" style="line-height: 30px;color:gray;">建议尺寸范围：700像素 *
+                                                    380像素
+                                                </td>
+                                            </tr>
+                                        </table>
+                                        <p class="img-area cover-bd" id="picsethere2">
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label" for="keyword">背景色</label>
+
+                                <div class="controls">
+                                    <input type="text" required="required" value="ffffff"
+                                           name="XUFWDxs7QFwQXVNFQlRmVQIAXFAUCUJbAm4CVl5cRQ=="
+                                           id="lucky_roulettebackground_color" class="span4"/> <span
+                                        class="maroon">*</span>
+                                    <span class="help-inline">6位颜色值,无需#号,默认ffffff</span>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="cont fn-clear other-setting">
+                            <div class="cont-left msg-preview">
+                                <h3 style="text-align: center;">其他设置</h3>
+                            </div>
+                            <div class="cont-right">
+                                <div class="form-horizontal">
+                                    <div class="control-group">
+                                        <label class="control-label" for="showamount">整体中奖率</label>
+
+                                        <div class="controls">
+                                            <input type="text" value="0" name="XUFWDxs7QFwQXVNFQlRmWxYAXE45FFZBAw=="
+                                                   id="lucky_roulettelucky_rate" class="span1" isint="1"/>
+                                            <span class="maroon">*</span><span class="help-inline">程序首先按整体中奖率抛色子判断某人是否中奖,然后再根据各项目中奖率抛色子判断中某项 </span>
+                                        </div>
+                                    </div>
+                                    <div class="control-group">
+                                        <label class="control-label" for="showamount">是否显示奖品数量</label>
+
+                                        <div class="controls">
+                                            <input type="hidden" name="XUFWDxs7QFwQXVNFQlRmRAsMQGgHEVZHAm4PTF8="
+                                                   value="0"/><input type="checkbox" value="1"
+                                                                     name="XUFWDxs7QFwQXVNFQlRmRAsMQGgHEVZHAm4PTF8="
+                                                                     checked="checked" id="lucky_rouletteshow_award_num"
+                                                                     style="margin: 8px;"/>
+                                            <span class="maroon">*</span><span
+                                                class="help-inline">取消选择后在活动页面中将不会显示奖品数量 </span>
+                                        </div>
+                                    </div>
+                                    <div class="control-group">
+                                        <label class="control-label" for="playtotal">每人参与的总次数</label>
+
+                                        <div class="controls">
+                                            <input type="text" value="0"
+                                                   name="XUFWDxs7QFwQXVNFQlRmUgIAX2gWClZMA0M+WlpSWVBUa0ELFgVe"
+                                                   id="lucky_rouletteeach_player_chance_total" class="span1" isint="1"/>
+                                            <span class="maroon">*</span><span
+                                                class="help-inline">必填 ，数量必须是大于1且小于100000</span>
+                                        </div>
+                                    </div>
+                                    <div class="control-group">
+                                        <label class="control-label" for="playperday">每人每天可参与次数</label>
+
+                                        <div class="controls">
+                                            <input type="text" value="0"
+                                                   name="XUFWDxs7QFwQXVNFQlRmUgIAX2gWClZMA0M+XVNKaFBZVVsHBztGXBFQWg=="
+                                                   id="lucky_rouletteeach_player_day_chance_total" class="span1"
+                                                   isint="1"/> <span class="maroon">*</span><span class="help-inline">必填 ，数量必须是大于1且不能大于每人可以参与刮奖的总次数</span>
+                                        </div>
+                                    </div>
+                                    <div class="control-group">
+                                        <label class="control-label" for="playperday">每天最多出奖数量</label>
+
+                                        <div class="controls">
+                                            <input type="text" value="0"
+                                                   name="XUFWDxs7QFwQXVNFQlRmUgIAX2gCB05qBVkAV1FWaEdeQFQI"
+                                                   id="lucky_rouletteeach_day_chance_total" class="span1" isint="1"/>
+                                            <span class="maroon">*</span><span class="help-inline">必填 ，0为不限制出奖数</span>
+                                        </div>
+                                    </div>
+                                    <div class="control-group">
+                                        <label class="control-label" for="playfee">每次抽奖消耗积分数</label>
+
+                                        <div class="controls">
+                                            <input type="text" required="required" value="0"
+                                                   name="XUFWDxs7QFwQXVNFQlRmXg0XUlAUB1tqAlQC"
+                                                   id="lucky_rouletteintegral_dec" class="span1" isint="1"/> <span
+                                                class="maroon">*</span><span class="help-inline">每次抽奖消耗一定积分，积分不足时将无法抽奖，默认为0，不消耗积分</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <div class="controls">
+
+                                <button id="save-btn" type="submit" class="btn btn-primary btn-large">保存并开启</button>
+
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+</body>
+</html>

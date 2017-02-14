@@ -1,0 +1,51 @@
+<include file="Public:header" title="售后"  />
+<body>
+    <!-- page 容器 -->
+    <div class="page">
+        <!-- 标题栏 -->
+        <header class="bar bar-nav ser-row">
+            <div class="buttons-tab">
+                <a href="{:U('Mall/Ucenter/orders')}" class="time-btn  active external">我要申请</a>
+                <a href="{:U('Mall/Ucenter/progress')}" class="time-btn tab-left external">进度查询</a>
+            </div>
+        </header>
+        <!-- 底部 -->
+        <include file="Public:nav" />
+        <!-- 内容 -->
+        <div class="content">
+            <div class="order-list" id="ordersList">
+                <ul></ul>
+            </div>
+            <section class="share_box">
+                <div id="loading_box" class="clear" style="display: none;">
+                    <img src="__ASSETS__/img/loading_tip.gif" class="loading_tip">
+                    <span id="loading_span">加载中……</span>
+                </div>
+                <div class="waterfall_tip hidden"></div>
+                <div id="click_for_more_sec" class="click_for_more_sec" style="display: block;">
+                    <span href="javascript:;" class="click_for_more_btn">点击加载更多</span>
+                </div>
+            </section>
+        </div>
+    </div>
+</body>
+<script src="__ASSETS__/dist/js/sm.js"></script>
+<script src="__ASSETS__/dist/js/sm-extend.js"></script>
+<script src="__ASSETS__/dist/js/sm-city-picker.js"></script>
+<script src="__ASSETS__/js/demos.js"></script>
+<script>
+    $("#city-picker").cityPicker({
+        toolbarTemplate: '<header class="bar bar-nav">\
+            <button class="button button-link pull-right close-picker">确定</button>\
+            <h1 class="title">选择收货地址</h1>\
+            </header>'
+    });
+
+    var count = {$count};
+    var pageSize = {$pageSize};
+    var URL = "{:U('Mall/Ucenter/service', '', true, true)}";
+    var serviceUrl = "{:U('Mall/Ucenter/serviceList', '', true, true)}";
+</script>
+<script src="__ASSETS__/js/ucenter/service.js"></script>
+<include file="Public:share" />
+</html>

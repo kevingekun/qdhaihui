@@ -1,0 +1,117 @@
+<div class="aside">
+    <div class="menu-tree" id="_hNav">
+        <div class="inner">
+            <a href="{:U('Admin/Index/index')}" class="menu <eq name="Think.const.DEFINE_SIDE_MENU_CURRENT"
+            value="index">current</eq>">
+            <span class="currentline"></span>
+            <i class="ico ico-home"></i>
+
+            <p>首 页</p>
+            </a>
+            <a href="{:U('Admin/Partner/index')}" class="menu <eq name="Think.const.DEFINE_SIDE_MENU_CURRENT"
+            value="Partner">current</eq>">
+            <span class="currentline"></span>
+            <i class="ico ico-partner"></i>
+            <p>合伙人</p>
+            </a>
+
+            <a href="{:U('Goods/index')}" class="menu <eq name="Think.const.DEFINE_SIDE_MENU_CURRENT"
+            value="Goods">current</eq>">
+            <span class="currentline"></span>
+            <i class="ico ico-sheet"></i>
+            <p>商 品</p>
+            </a>
+            <a href="{:U('Orders/index')}" class="menu <eq name="Think.const.DEFINE_SIDE_MENU_CURRENT"
+            value="Orders">current</eq>" >
+            <span class="currentline"></span>
+            <i class="ico ico-generalize"></i>
+
+            <p>订 单</p>
+            </a>
+            <a href="{:U('Admin/Commission/index')}" class="menu <eq name="Think.const.DEFINE_SIDE_MENU_CURRENT"
+            value="commission">current</eq>">
+            <span class="currentline"></span>
+            <i class="ico ico-finance"></i>
+            <p>佣 金</p>
+            </a>
+            <a href="{:U('Admin/Activity/couponlist')}" class="menu <eq name="Think.const.DEFINE_SIDE_MENU_CURRENT"
+            value="activity">current</eq>" >
+            <span class="currentline"></span>
+            <i class="ico ico-finance"></i>
+
+            <p>活 动</p>
+            </a>
+            <a href="{:U('Admin/Tools/index')}" class="menu <eq name="Think.const.DEFINE_SIDE_MENU_CURRENT"
+            value="tools">current</eq>">
+            <span class="currentline"></span>
+            <i class="ico ico-tool"></i>
+
+            <p>工具箱</p>
+            </a>
+        </div>
+    </div>
+
+    <script src="__ASSETS__/js/jquery.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#menu-more").click(function () {
+                $("#customer").slideToggle("slow");
+                $("#menu-more").hide(100);
+            });
+            $("#customer").mouseleave(function () {
+                $("#menu-more").show(50);
+                $("#customer").slideToggle("hide");
+            });
+            $("#weixin-click").click(function () {
+                $("#show-detail").show(100);
+            });
+        });
+    </script>
+</div>
+<div class="extra-menu-tree _shensuo" id="__extraAside" style="display:none;">
+    <div style="display: block;" class="menu-more" id="menu-more" title="点击">
+        <span class="newtip _newicon" style="display:none">new</span>
+    </div>
+    <div class="inner clearfix" style="display:none" id="customer">
+        <div class="menu weixin" title="点击展开微信二维码">
+            <a class="" href="javascript:;" id="weixin-click"><i class="ico ico-weixin"></i><span class="invisible">微信</span></a>
+
+            <div class="show-detail" id="show-detail">
+                <i class="show-bor-c"><span class="show-bor-i"></span></i>
+
+                <div class="show-detail-con">
+                    <div class="word">
+                        <p><strong>DSP服务平台</strong></p>
+
+                        <p><span>微信“扫一扫”扫描二维码，关注DSP服务平台。账户推广动态随身掌握。</span></p>
+                    </div>
+                    <div class="erweima">
+                        <!-- <span>ADSP服务平台二维码</span> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="menu service" data-hottag="atlas.cornerIcons.qq">
+            <a class="menu" href="javascript:;" title="点击联系客服" onclick="window.open('http://wpa.qq.com/msgrd?v=3&uin=237033948&site=qq&menu=yes', '_blank', 'height=544, width=644,toolbar=no,scrollbars=no,menubar=no,status=no');return false;"><i class="ico ico-service"></i><span class="invisible">客服</span></a>
+
+            <div class="show-detail">
+                <i class="show-bor-c"><span class="show-bor-i"></span></i>
+
+                <div class="show-detail-con">
+                    点击联系客服
+                </div>
+            </div>
+        </div>
+        <div class="menu help" data-hottag="atlas.cornerIcons.help">
+            <a class="menu" title="点击新闻公告" href="#" target="_blank"><i class="ico ico-help"></i><span class="invisible">帮助</span></a>
+
+            <div class="show-detail">
+                <i class="show-bor-c"><span class="show-bor-i"></span></i>
+
+                <div class="show-detail-con">
+                    点击进入新闻公告
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

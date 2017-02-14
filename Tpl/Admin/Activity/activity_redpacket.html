@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <title>产品订单</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <!--公用样式文件，不加版本号，通过url参数控制cache -->
+    <link rel="stylesheet" rev="stylesheet" href="__CDN_STATIC_URL__css/gdt-css-api.css" type="text/css" media="screen">
+    <link rel="stylesheet" rev="stylesheet" href="__CDN_STATIC_URL__css/gdt-toufang-layout-20150325.css" type="text/css"
+          media="screen">
+    <link rev="stylesheet" rel="stylesheet" href="__CDN_STATIC_URL__css/gdt-toufang-global-20150323.css" media="screen"
+          type="text/css">
+    <link rel="stylesheet" href="__CDN_STATIC_URL__css/myjd-2015.css">
+    <link rel="stylesheet" href="__CDN_STATIC_URL__css/component-min.css">
+    <link rel="stylesheet" href="__CDN_STATIC_URL__css/jbox-min.css">
+    <link rel="stylesheet" href="__CDN_STATIC_URL__css/style.css">
+    <link rel="stylesheet" href="__CDN_STATIC_URL__css/diy.css">
+
+    <script src="__CDN_STATIC_URL__js/jquery.js" type="text/javascript" charset="utf-8"></script>
+    <script src="__CDN_STATIC_URL__js/scrollheight.js" type="text/javascript" charset="utf-8"></script>
+    <style>
+        table td {
+            min-width: 50px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        #picsethere {
+            width: 510px;
+            display: block;
+        }
+
+        #picsethere img {
+            max-width: 500px;
+            display: block;
+        }
+
+        .coupons_conbox_ri {
+            padding-top: 5px;
+        }
+
+        #lr-img-btn {
+            position: relative;
+            display: inline-block;
+            padding: 0 12px;
+            height: 30px;
+            line-height: 28px;
+            font-size: 12px;
+            text-align: center;
+            vertical-align: top;
+            cursor: pointer;
+            color: #FFF;
+            background-color: #fff;
+            border-radius: 2px;
+            border: 1px solid #ccc;
+            background-color: #428bca;
+            border-color: #357ebd;
+        }
+
+        .red {
+            color: #ee0505;
+            margin: 0 5px;
+        }
+
+        .prompt {
+            height: 32px;
+            line-height: 32px;
+            display: inline-block;
+            float: left;
+            color: #666;
+            font-size: 14px;
+        }
+
+        .control-group {
+            margin-bottom: 20px;
+        }
+
+        .control-label {
+            float: left;
+            width: 160px;
+            padding-top: 5px;
+            text-align: right;
+        }
+
+        .form-horizontal .controls {
+            margin-left: 180px;
+        }
+
+        input.span4, textarea.span4, .uneditable-input.span4 {
+            width: 356px;
+        }
+
+        .maroon {
+            color: #D20000;
+            padding-left: 2px;
+            font-family: "SimSun";
+        }
+    </style>
+</head>
+<body>
+
+<div class="wrapper clearfix" id="root">
+    <include file="Public/header"/>
+    <div class="top" style="height:56px;;width:100%;"><!--顶部占位--></div>
+    <div class="top" style="height: 31px; width: 100%;display:none;" id="ErrorStatusTipsHolder"><!--顶部小黄条占位--></div>
+    <define name="DEFINE_SIDE_MENU_CURRENT" value="activity"/>
+    <include file="Public/sideMenu"/>
+    <div class="main home" id="main" style="/*height: 400px;*/ overflow: auto;">
+        <div class="side clearfix" style="width:56px;height:100px;float:left;"></div>
+
+        <div class="main-container" style="height:auto;">
+            <div class="gdt-toufang gdt-toufang-account">
+                <div class="tuiguang-tab small-tab" id="_hSubNav">
+                    <ul>
+                        <li style="width:56px"></li>
+
+                        <li><a href="{:U('Home/Index/activity')}" onclick="">优惠券</a></li>
+                        <li><a href="{:U('Home/Index/activity_seckill')}" onclick="">秒杀</a></li>
+                        <li><a href="{:U('Home/Index/activity_presale')}" onclick="">预售</a></li>
+                        <li><a href="{:U('Home/Index/activity_group')}" onclick="">阶梯团购</a></li>
+                        <li><a href="{:U('Home/Index/activity_now')}" onclick="">返现</a></li>
+                        <li><a href="#" onclick="">直降</a></li>
+                        <li><a href="#" onclick="">新品拍卖</a></li>
+                        <li><a href="{:U('Home/Index/activity_wof')}" onclick="">大转盘</a></li>
+                        <li class="on"><a href="{:U('Home/Index/activity_redpacket')}" onclick="">发红包</a></li>
+                        <li><a href="{:U('Home/Index/activity_inquiry')}" onclick="">调研</a></li>
+
+                    </ul>
+
+                </div>
+
+
+                <div class="content-right fl">
+
+
+                    <h1 class="content-right-title">新增红包</h1>
+
+                    <form class="form-horizontal" id="lbsForm" action="" method="post"><input type="hidden"
+                                                                                              value="55cdead5e6dac"
+                                                                                              name="YYUC_FORM_TOKEN"/><input
+                            type="hidden" value="" name="FlcCU1cFNwhc" id="redbagid"/>
+
+                        <div class="control-group">
+                            <label class="control-label" for="keyword">活动名称</label>
+
+                            <div class="controls">
+                                <input type="text" value="" name="FlcCU1cFNw9ZWFA=" id="redbagname" class="span4"/>
+                                <span class="maroon">*</span>
+                                <span class="help-inline">最多只能输入30个字符。</span>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="keyword">活动关键字</label>
+
+                            <div class="controls">
+                                <input type="text" value="" name="FlcCU1cFNwZSTw==" id="redbaggjz" class="span4"/> <span
+                                    class="maroon">*</span>
+                                <span class="help-inline">最多只能输入20个字符。</span>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="brief">图文消息简介</label>
+
+                            <div class="controls">
+                                <textarea name="FlcCU1cFNwxL" id="redbagms" class="input-large"
+                                          style="height:80px;width:380px;"></textarea>
+                                <span class="maroon">*</span>
+                                <span class="help-block">150文字以内</span>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="">奖品介绍图片</label>
+
+                            <div class="controls">
+                                <div class="cover-area">
+                                    <table style="height: 30px;overflow: hidden;">
+                                        <tr>
+                                            <td>
+                                                <iframe name="YYUC_5194a6b1a23de6e335764399be5a198d_if"
+                                                        style="position:absolute; left:-10000px;"></iframe>
+                                                <table style="border:none;padding:0;margin:0;width:auto;display: inline-block;">
+                                                    <tr style="border:none;padding:0;margin:0;">
+                                                        <td style="border:none;padding:0;margin:0;width:auto;">
+                                                            <div style="display:none"
+                                                                 id="YYUC_5194a6b1a23de6e335764399be5a198d_div"
+                                                                 action="/@system/upload.html" method="post"
+                                                                 enctype="multipart/form-data"
+                                                                 target="YYUC_5194a6b1a23de6e335764399be5a198d_if">
+<span style="display:-moz-inline-box;display:inline-block;width:100px;height:32px;line-height: 32px;position: relative;">
+<input name="YYUC_UPLOAD_file" style="position: absolute;height: 100%;width:100px;right: 0;z-index:2" type="file"/>
+<input src="" type="button"
+       style="display:block; position: absolute;height: 100%;width:100%;z-index:1;line-height: 25px;font-size:15px;color:#000000;text-align: center;"
+       value="上传图片"/>
+</span>
+                                                                <input type="hidden" name="YYUC_UPLOAD_SIZE"
+                                                                       value="600"/>
+                                                                <input type="hidden" name="YYUC_UPLOAD_ID"
+                                                                       value="YYUC_5194a6b1a23de6e335764399be5a198d"/>
+                                                            </div>
+                                                        </td>
+                                                        <td style="border:none;padding:0;margin:0;width:auto;">
+<span id="YYUC_5194a6b1a23de6e335764399be5a198d_span"
+      style="display:-moz-inline-box;display:inline-block;width:100px;height:32px;">
+</span>
+                                                        </td>
+                                                        <td style="border:none;padding:0;margin:0;width:auto;"><span
+                                                                id="YYUC_5194a6b1a23de6e335764399be5a198d_loadpic"
+                                                                style="display: none;"><img
+                                                                src="/@system/img/loading/18.gif"/></span></td>
+                                                    </tr>
+                                                </table>
+                                                <input type="hidden"
+                                                       name="redbagT08d9e827ffbba2efe4413cb064bbf847prize_pic"
+                                                       id="YYUC_5194a6b1a23de6e335764399be5a198d_text" value=""/>
+                                                <script>
+                                                    $(function () {
+                                                        var YYUC_5194a6b1a23de6e335764399be5a198d_form = window.YYUC_5194a6b1a23de6e335764399be5a198d_form = $('<form style="position: absolute;left:-10000px;" id="YYUC_5194a6b1a23de6e335764399be5a198d" action="/@system/upload.html" method="post" enctype="multipart/form-data" target="YYUC_5194a6b1a23de6e335764399be5a198d_if"></form>');
+                                                        $('body').append(YYUC_5194a6b1a23de6e335764399be5a198d_form);
+                                                        YYUC_5194a6b1a23de6e335764399be5a198d_form.html($('#YYUC_5194a6b1a23de6e335764399be5a198d_div').html());
+                                                        $('#YYUC_5194a6b1a23de6e335764399be5a198d_div').remove();
+                                                        window.YYUC_5194a6b1a23de6e335764399be5a198d_resize = function () {
+                                                            if ($('#YYUC_5194a6b1a23de6e335764399be5a198d_span').is(':hidden')) {
+                                                                YYUC_5194a6b1a23de6e335764399be5a198d_form.hide();
+                                                            } else {
+                                                                YYUC_5194a6b1a23de6e335764399be5a198d_form.show();
+                                                                var YYUC_5194a6b1a23de6e335764399be5a198d_offset = $('#YYUC_5194a6b1a23de6e335764399be5a198d_span').offset();
+                                                                YYUC_5194a6b1a23de6e335764399be5a198d_form.css('left', YYUC_5194a6b1a23de6e335764399be5a198d_offset.left).css('top', YYUC_5194a6b1a23de6e335764399be5a198d_offset.top);
+                                                            }
+
+                                                        };
+                                                        setInterval(window.YYUC_5194a6b1a23de6e335764399be5a198d_resize, 55);
+                                                        var YYUC_5194a6b1a23de6e335764399be5a198dpic = $('#YYUC_5194a6b1a23de6e335764399be5a198d').find('input[name="YYUC_UPLOAD_file"]');
+                                                        YYUC_5194a6b1a23de6e335764399be5a198dpic.css('opacity', 0);
+                                                        YYUC_5194a6b1a23de6e335764399be5a198dpic.change(function () {
+                                                            var thefiles = $(this).val().replaceAll('\\', '/').split('/');
+                                                            var filename = thefiles[thefiles.length - 1];
+                                                            //后缀校验
+                                                            var needsuffixs = ',png,jpeg,jpg,gif,bmp,'.toLowerCase();
+                                                            var suffixs = filename.split('.');
+                                                            if (needsuffixs.indexOf((',' + suffixs[suffixs.length - 1] + ',').toLowerCase()) == -1) {
+                                                                if (alert) {
+                                                                    alert('文件格式不被允许', $('#YYUC_5194a6b1a23de6e335764399be5a198d'), 1, 'YYUC_5194a6b1a23de6e335764399be5a198d');
+                                                                }
+                                                            } else {
+                                                                $('#YYUC_5194a6b1a23de6e335764399be5a198d_name').html(filename);
+                                                                window.YYUC_5194a6b1a23de6e335764399be5a198d_jd = 0;
+                                                                YYUC_5194a6b1a23de6e335764399be5a198d_process()
+                                                                $('#YYUC_5194a6b1a23de6e335764399be5a198d').submit();
+                                                                $('#YYUC_5194a6b1a23de6e335764399be5a198d_loadpic').show();
+
+                                                                $('iframe[name="YYUC_5194a6b1a23de6e335764399be5a198d_if"]').unbind('load').load(function () {
+                                                                    if (!window.YYUC_5194a6b1a23de6e335764399be5a198d) {
+                                                                        $('#YYUC_5194a6b1a23de6e335764399be5a198d_loadpic').hide();
+                                                                        $('#YYUC_5194a6b1a23de6e335764399be5a198d_bfb').html('');
+                                                                        if (alert) {
+                                                                            alert('网络连接超时或文件大小超出', $('#ttid'), 3, 'YYUC_5194a6b1a23de6e335764399be5a198d');
+                                                                            clearTimeout(window.YYUC_5194a6b1a23de6e335764399be5a198djdproc);
+                                                                        }
+                                                                    }
+                                                                });
+                                                            }
+                                                        });
+
+                                                    });
+                                                    function YYUC_5194a6b1a23de6e335764399be5a198d_process() {
+                                                        if (window.YYUC_5194a6b1a23de6e335764399be5a198d_jd < 99) {
+                                                            var nexttime = parseInt(Math.sqrt(window.YYUC_5194a6b1a23de6e335764399be5a198d_jd) * 100) * 2;
+                                                            window.YYUC_5194a6b1a23de6e335764399be5a198d_jd = window.YYUC_5194a6b1a23de6e335764399be5a198d_jd + 1;
+                                                            $('#YYUC_5194a6b1a23de6e335764399be5a198d_bfb').html(window.YYUC_5194a6b1a23de6e335764399be5a198d_jd + '%');
+                                                            window.YYUC_5194a6b1a23de6e335764399be5a198djdproc = setTimeout(function () {
+                                                                YYUC_5194a6b1a23de6e335764399be5a198d_process();
+                                                            }, nexttime);
+                                                        } else {
+                                                            $('#YYUC_5194a6b1a23de6e335764399be5a198d_bfb').html('');
+                                                            $('#YYUC_5194a6b1a23de6e335764399be5a198d_loadpic').hide();
+                                                            if (alert) {
+                                                                alert('网络连接超时或文件大小超出', $('#ttid'), 3, 'YYUC_5194a6b1a23de6e335764399be5a198d');
+                                                            }
+                                                        }
+                                                    }
+                                                    function YYUC_5194a6b1a23de6e335764399be5a198d_success(url, key) {
+                                                        $('#YYUC_5194a6b1a23de6e335764399be5a198d_del').show();
+                                                        window.YYUC_5194a6b1a23de6e335764399be5a198d_jd = 100;
+                                                        $('#YYUC_5194a6b1a23de6e335764399be5a198d_bfb').html('100%');
+                                                        $('#YYUC_5194a6b1a23de6e335764399be5a198d_loadpic').hide();
+                                                        clearTimeout(window.YYUC_5194a6b1a23de6e335764399be5a198djdproc);
+                                                        var oldkey = $('#YYUC_5194a6b1a23de6e335764399be5a198d_text').val();
+                                                        if (oldkey.indexOf('@-@') != -1) {
+                                                            var oldkey2 = oldkey.split('@-@');
+                                                            $('#YYUC_5194a6b1a23de6e335764399be5a198d_text').val(key + '@-@' + oldkey2[1]);
+                                                        } else if (oldkey.indexOf('/') == 0) {
+                                                            $('#YYUC_5194a6b1a23de6e335764399be5a198d_text').val(key + '@-@' + oldkey);
+                                                        } else {
+                                                            $('#YYUC_5194a6b1a23de6e335764399be5a198d_text').val(key);
+                                                        }
+                                                        window.YYUC_5194a6b1a23de6e335764399be5a198d_upimg = $('<img id="YYUC_5194a6b1a23de6e335764399be5a198d_realpic" src="' + url + '"/>');
+                                                        $('#picsethere').html('').append(window.YYUC_5194a6b1a23de6e335764399be5a198d_upimg);
+                                                    }
+                                                    function YYUC_5194a6b1a23de6e335764399be5a198d_failure(size, type) {
+                                                        if (alert) {
+                                                            if (type == 2) {
+                                                                alert('文件大小为：' + size + 'K，超出了600K的限制,上传失败！', $('#ttid'), 2, 'YYUC_5194a6b1a23de6e335764399be5a198d');
+                                                            } else {
+                                                                alert('文件上传发生未知错误22', $('#ttid'), 4, 'YYUC_5194a6b1a23de6e335764399be5a198d');
+                                                            }
+                                                            clearTimeout(window.YYUC_5194a6b1a23de6e335764399be5a198djdproc);
+                                                            $('#YYUC_5194a6b1a23de6e335764399be5a198d_bfb').html('');
+                                                            $('#YYUC_5194a6b1a23de6e335764399be5a198d_name').html('');
+                                                            $('#YYUC_5194a6b1a23de6e335764399be5a198d_loadpic').hide();
+                                                        }
+                                                    }
+                                                </script>
+                                            </td>
+                                            <td valign="top" style="line-height: 30px;color:gray;">建议尺寸：700像素 * 380像素
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <p class="img-area cover-bd" id="picsethere">
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="">规则介绍图片</label>
+
+                            <div class="controls">
+                                <div class="cover-area">
+                                    <table style="height: 30px;overflow: hidden;">
+                                        <tr>
+                                            <td>
+                                                <iframe name="YYUC_0ff9678eff0b816a84684d0104705dd4_if"
+                                                        style="position:absolute; left:-10000px;"></iframe>
+                                                <table style="border:none;padding:0;margin:0;width:auto;display: inline-block;">
+                                                    <tr style="border:none;padding:0;margin:0;">
+                                                        <td style="border:none;padding:0;margin:0;width:auto;">
+                                                            <div style="display:none"
+                                                                 id="YYUC_0ff9678eff0b816a84684d0104705dd4_div"
+                                                                 action="/@system/upload.html" method="post"
+                                                                 enctype="multipart/form-data"
+                                                                 target="YYUC_0ff9678eff0b816a84684d0104705dd4_if">
+<span style="display:-moz-inline-box;display:inline-block;width:100px;height:32px;line-height: 32px;position: relative;">
+<input name="YYUC_UPLOAD_file" style="position: absolute;height: 100%;width:100px;right: 0;z-index:2" type="file"/>
+<input src="" type="button"
+       style="display:block; position: absolute;height: 100%;width:100%;z-index:1;line-height: 25px;font-size:15px;color:#000000;text-align: center;"
+       value="上传图片"/>
+</span>
+                                                                <input type="hidden" name="YYUC_UPLOAD_SIZE"
+                                                                       value="600"/>
+                                                                <input type="hidden" name="YYUC_UPLOAD_ID"
+                                                                       value="YYUC_0ff9678eff0b816a84684d0104705dd4"/>
+                                                            </div>
+                                                        </td>
+                                                        <td style="border:none;padding:0;margin:0;width:auto;">
+<span id="YYUC_0ff9678eff0b816a84684d0104705dd4_span"
+      style="display:-moz-inline-box;display:inline-block;width:100px;height:32px;">
+</span>
+                                                        </td>
+                                                        <td style="border:none;padding:0;margin:0;width:auto;"><span
+                                                                id="YYUC_0ff9678eff0b816a84684d0104705dd4_loadpic"
+                                                                style="display: none;"><img
+                                                                src="/@system/img/loading/18.gif"/></span></td>
+                                                    </tr>
+                                                </table>
+                                                <input type="hidden"
+                                                       name="redbagT08d9e827ffbba2efe4413cb064bbf847rule_pic"
+                                                       id="YYUC_0ff9678eff0b816a84684d0104705dd4_text" value=""/>
+                                                <script>
+                                                    $(function () {
+                                                        var YYUC_0ff9678eff0b816a84684d0104705dd4_form = window.YYUC_0ff9678eff0b816a84684d0104705dd4_form = $('<form style="position: absolute;left:-10000px;" id="YYUC_0ff9678eff0b816a84684d0104705dd4" action="/@system/upload.html" method="post" enctype="multipart/form-data" target="YYUC_0ff9678eff0b816a84684d0104705dd4_if"></form>');
+                                                        $('body').append(YYUC_0ff9678eff0b816a84684d0104705dd4_form);
+                                                        YYUC_0ff9678eff0b816a84684d0104705dd4_form.html($('#YYUC_0ff9678eff0b816a84684d0104705dd4_div').html());
+                                                        $('#YYUC_0ff9678eff0b816a84684d0104705dd4_div').remove();
+                                                        window.YYUC_0ff9678eff0b816a84684d0104705dd4_resize = function () {
+                                                            if ($('#YYUC_0ff9678eff0b816a84684d0104705dd4_span').is(':hidden')) {
+                                                                YYUC_0ff9678eff0b816a84684d0104705dd4_form.hide();
+                                                            } else {
+                                                                YYUC_0ff9678eff0b816a84684d0104705dd4_form.show();
+                                                                var YYUC_0ff9678eff0b816a84684d0104705dd4_offset = $('#YYUC_0ff9678eff0b816a84684d0104705dd4_span').offset();
+                                                                YYUC_0ff9678eff0b816a84684d0104705dd4_form.css('left', YYUC_0ff9678eff0b816a84684d0104705dd4_offset.left).css('top', YYUC_0ff9678eff0b816a84684d0104705dd4_offset.top);
+                                                            }
+
+                                                        };
+                                                        setInterval(window.YYUC_0ff9678eff0b816a84684d0104705dd4_resize, 55);
+                                                        var YYUC_0ff9678eff0b816a84684d0104705dd4pic = $('#YYUC_0ff9678eff0b816a84684d0104705dd4').find('input[name="YYUC_UPLOAD_file"]');
+                                                        YYUC_0ff9678eff0b816a84684d0104705dd4pic.css('opacity', 0);
+                                                        YYUC_0ff9678eff0b816a84684d0104705dd4pic.change(function () {
+                                                            var thefiles = $(this).val().replaceAll('\\', '/').split('/');
+                                                            var filename = thefiles[thefiles.length - 1];
+                                                            //后缀校验
+                                                            var needsuffixs = ',png,jpeg,jpg,gif,bmp,'.toLowerCase();
+                                                            var suffixs = filename.split('.');
+                                                            if (needsuffixs.indexOf((',' + suffixs[suffixs.length - 1] + ',').toLowerCase()) == -1) {
+                                                                if (alert) {
+                                                                    alert('文件格式不被允许', $('#YYUC_0ff9678eff0b816a84684d0104705dd4'), 1, 'YYUC_0ff9678eff0b816a84684d0104705dd4');
+                                                                }
+                                                            } else {
+                                                                $('#YYUC_0ff9678eff0b816a84684d0104705dd4_name').html(filename);
+                                                                window.YYUC_0ff9678eff0b816a84684d0104705dd4_jd = 0;
+                                                                YYUC_0ff9678eff0b816a84684d0104705dd4_process()
+                                                                $('#YYUC_0ff9678eff0b816a84684d0104705dd4').submit();
+                                                                $('#YYUC_0ff9678eff0b816a84684d0104705dd4_loadpic').show();
+
+                                                                $('iframe[name="YYUC_0ff9678eff0b816a84684d0104705dd4_if"]').unbind('load').load(function () {
+                                                                    if (!window.YYUC_0ff9678eff0b816a84684d0104705dd4) {
+                                                                        $('#YYUC_0ff9678eff0b816a84684d0104705dd4_loadpic').hide();
+                                                                        $('#YYUC_0ff9678eff0b816a84684d0104705dd4_bfb').html('');
+                                                                        if (alert) {
+                                                                            alert('网络连接超时或文件大小超出', $('#ttid'), 3, 'YYUC_0ff9678eff0b816a84684d0104705dd4');
+                                                                            clearTimeout(window.YYUC_0ff9678eff0b816a84684d0104705dd4jdproc);
+                                                                        }
+                                                                    }
+                                                                });
+                                                            }
+                                                        });
+
+                                                    });
+                                                    function YYUC_0ff9678eff0b816a84684d0104705dd4_process() {
+                                                        if (window.YYUC_0ff9678eff0b816a84684d0104705dd4_jd < 99) {
+                                                            var nexttime = parseInt(Math.sqrt(window.YYUC_0ff9678eff0b816a84684d0104705dd4_jd) * 100) * 2;
+                                                            window.YYUC_0ff9678eff0b816a84684d0104705dd4_jd = window.YYUC_0ff9678eff0b816a84684d0104705dd4_jd + 1;
+                                                            $('#YYUC_0ff9678eff0b816a84684d0104705dd4_bfb').html(window.YYUC_0ff9678eff0b816a84684d0104705dd4_jd + '%');
+                                                            window.YYUC_0ff9678eff0b816a84684d0104705dd4jdproc = setTimeout(function () {
+                                                                YYUC_0ff9678eff0b816a84684d0104705dd4_process();
+                                                            }, nexttime);
+                                                        } else {
+                                                            $('#YYUC_0ff9678eff0b816a84684d0104705dd4_bfb').html('');
+                                                            $('#YYUC_0ff9678eff0b816a84684d0104705dd4_loadpic').hide();
+                                                            if (alert) {
+                                                                alert('网络连接超时或文件大小超出', $('#ttid'), 3, 'YYUC_0ff9678eff0b816a84684d0104705dd4');
+                                                            }
+                                                        }
+                                                    }
+                                                    function YYUC_0ff9678eff0b816a84684d0104705dd4_success(url, key) {
+                                                        $('#YYUC_0ff9678eff0b816a84684d0104705dd4_del').show();
+                                                        window.YYUC_0ff9678eff0b816a84684d0104705dd4_jd = 100;
+                                                        $('#YYUC_0ff9678eff0b816a84684d0104705dd4_bfb').html('100%');
+                                                        $('#YYUC_0ff9678eff0b816a84684d0104705dd4_loadpic').hide();
+                                                        clearTimeout(window.YYUC_0ff9678eff0b816a84684d0104705dd4jdproc);
+                                                        var oldkey = $('#YYUC_0ff9678eff0b816a84684d0104705dd4_text').val();
+                                                        if (oldkey.indexOf('@-@') != -1) {
+                                                            var oldkey2 = oldkey.split('@-@');
+                                                            $('#YYUC_0ff9678eff0b816a84684d0104705dd4_text').val(key + '@-@' + oldkey2[1]);
+                                                        } else if (oldkey.indexOf('/') == 0) {
+                                                            $('#YYUC_0ff9678eff0b816a84684d0104705dd4_text').val(key + '@-@' + oldkey);
+                                                        } else {
+                                                            $('#YYUC_0ff9678eff0b816a84684d0104705dd4_text').val(key);
+                                                        }
+                                                        window.YYUC_0ff9678eff0b816a84684d0104705dd4_upimg = $('<img id="YYUC_0ff9678eff0b816a84684d0104705dd4_realpic" src="' + url + '"/>');
+                                                        $('#picsethere1').html('').append(window.YYUC_0ff9678eff0b816a84684d0104705dd4_upimg);
+                                                    }
+                                                    function YYUC_0ff9678eff0b816a84684d0104705dd4_failure(size, type) {
+                                                        if (alert) {
+                                                            if (type == 2) {
+                                                                alert('文件大小为：' + size + 'K，超出了600K的限制,上传失败！', $('#ttid'), 2, 'YYUC_0ff9678eff0b816a84684d0104705dd4');
+                                                            } else {
+                                                                alert('文件上传发生未知错误22', $('#ttid'), 4, 'YYUC_0ff9678eff0b816a84684d0104705dd4');
+                                                            }
+                                                            clearTimeout(window.YYUC_0ff9678eff0b816a84684d0104705dd4jdproc);
+                                                            $('#YYUC_0ff9678eff0b816a84684d0104705dd4_bfb').html('');
+                                                            $('#YYUC_0ff9678eff0b816a84684d0104705dd4_name').html('');
+                                                            $('#YYUC_0ff9678eff0b816a84684d0104705dd4_loadpic').hide();
+                                                        }
+                                                    }
+                                                </script>
+                                            </td>
+                                            <td valign="top" style="line-height: 30px;color:gray;">建议尺寸：240像素 * 145像素
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <p class="img-area cover-bd" id="picsethere1">
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <label class="control-label" for="keyword">首次进入奖励金额</label>
+
+                            <div class="controls">
+                                <input type="text" value="0" name="FlcCU1cFNwdRR0ZCaERWRwQUBQ==" id="redbagfirst_reward"
+                                       class="span4" isint="1"/> <span class="maroon">*</span>
+                                <span class="help-inline">请输入整数。</span>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="keyword">一级分享奖励金额</label>
+
+                            <div class="controls">
+                                <input type="text" value="0" name="FlcCU1cFNwdRR0ZCaEVbURcDPkAEQwRCAg=="
+                                       id="redbagfirst_share_reward" class="span4" isint="1"/> <span
+                                    class="maroon">*</span>
+                                <span class="help-inline">请输入整数。朋友点击分享链接后奖励的金额。</span>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="keyword">二级分享奖励金额</label>
+
+                            <div class="controls">
+                                <input type="text" value="" name="FlcCU1cFNxJdVlpYU2lAWAQUBG0TURJRFFM="
+                                       id="redbagsecond_share_reward" class="span4" isint="1"/> <span
+                                    class="maroon">*</span>
+                                <span class="help-inline">请输入整数。朋友的朋友点击分享链接后奖励的金额。</span>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="keyword">企业名称</label>
+
+                            <div class="controls">
+                                <input type="text" value="" name="FlcCU1cFNwJXWEVXWU9sXgQLBA==" id="redbagcompany_name"
+                                       class="span4"/> <span class="maroon">*</span>
+                                <span class="help-inline">最多只能输入20个字符。</span>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="keyword">企业电话</label>
+
+                            <div class="controls">
+                                <input type="text" value="" name="FlcCU1cFNxVdWQ==" id="redbagtel" class="span4"/> <span
+                                    class="maroon">*</span>
+                                <span class="help-inline"></span>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="keyword">活动详情说明</label>
+
+                            <div class="controls">
+                                <input type="text" value="" name="FlcCU1cFNwBbQWpeRVNV" id="redbagact_href"
+                                       class="span4"/> <span class="maroon">*</span>
+                                <span class="help-inline">活动详情说明链接地址（微信后台发布的文章地址）</span>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label for="endinfo" class="control-label">活动奖项设置：</label>
+
+                            <div class="controls">
+                                <div class="span12"><a href="javascript:addsjtp('sjtptr')" class="btn" id="add_menu"><i
+                                        class="icon-plus"></i>添加奖项</a></div>
+                                <table id="listTable" class="table table-bordered table-hover dataTable">
+                                    <thead>
+                                    <tr>
+                                        <th>奖品名称</th>
+                                        <th>奖品图片地址&nbsp;&nbsp;&nbsp;推荐大小为120x120</th>
+                                        <th>奖品说明</th>
+                                        <th>兑换所需金额（整数）</th>
+                                        <th>操作</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody id="sjtptr">
+                                    <tr style="display: none;">
+                                        <td>
+                                            <input type="text" value="" name="FlcCU1cFNxFWVFhTBg==" id="redbagpname1"
+                                                   class="input-small"/><span class="maroon">*</span>
+                                        </td>
+                                        <td id="spicsettd1">
+                                            <img class="thumb_img" src="" style="max-height: 100px;"><input
+                                                type="hidden" value="" name="FlcCU1cFNxFLR1YH" id="redbagpsrc1"/>                <span>
+                    <button class="btn select_img" type="button" onclick="setpic('spicsettd1')">选择图片</button>
+                </span>
+                                        </td>
+                                        <td>
+                                            <input type="text" value="" name="FlcCU1cFNxFLWAQ=" id="redbagpsm1"
+                                                   class="input-large"/></td>
+                                        <td>
+                                            <input type="text" value="" name="FlcCU1cFNxFcXQQ=" id="redbagpdh1"
+                                                   class="input-small"/></td>
+                                        <td>
+                                            <a href="javascript:void(0);" onclick="delsjtp(this,'sjtptr')" class="del">删除 </a>
+                                        </td>
+                                    </tr>
+                                    <tr style="display: none;">
+                                        <td>
+                                            <input type="text" value="" name="FlcCU1cFNxFWVFhTBQ==" id="redbagpname2"
+                                                   class="input-small"/><span class="maroon">*</span>
+                                        </td>
+                                        <td id="spicsettd2">
+                                            <img class="thumb_img" src="" style="max-height: 100px;"><input
+                                                type="hidden" value="" name="FlcCU1cFNxFLR1YE" id="redbagpsrc2"/>                <span>
+                    <button class="btn select_img" type="button" onclick="setpic('spicsettd2')">选择图片</button>
+                </span>
+                                        </td>
+                                        <td>
+                                            <input type="text" value="" name="FlcCU1cFNxFLWAc=" id="redbagpsm2"
+                                                   class="input-large"/></td>
+                                        <td>
+                                            <input type="text" value="" name="FlcCU1cFNxFcXQc=" id="redbagpdh2"
+                                                   class="input-small"/></td>
+                                        <td>
+                                            <a href="javascript:void(0);" onclick="delsjtp(this,'sjtptr')" class="del">删除 </a>
+                                        </td>
+                                    </tr>
+                                    <tr style="display: none;">
+                                        <td>
+                                            <input type="text" value="" name="FlcCU1cFNxFWVFhTBA==" id="redbagpname3"
+                                                   class="input-small"/><span class="maroon">*</span>
+                                        </td>
+                                        <td id="spicsettd3">
+                                            <img class="thumb_img" src="" style="max-height: 100px;"><input
+                                                type="hidden" value="" name="FlcCU1cFNxFLR1YF" id="redbagpsrc3"/>                <span>
+                    <button class="btn select_img" type="button" onclick="setpic('spicsettd3')">选择图片</button>
+                </span>
+                                        </td>
+                                        <td>
+                                            <input type="text" value="" name="FlcCU1cFNxFLWAY=" id="redbagpsm3"
+                                                   class="input-large"/></td>
+                                        <td>
+                                            <input type="text" value="" name="FlcCU1cFNxFcXQY=" id="redbagpdh3"
+                                                   class="input-small"/></td>
+                                        <td>
+                                            <a href="javascript:void(0);" onclick="delsjtp(this,'sjtptr')" class="del">删除 </a>
+                                        </td>
+                                    </tr>
+                                    <tr style="display: none;">
+                                        <td>
+                                            <input type="text" value="" name="FlcCU1cFNxFWVFhTAw==" id="redbagpname4"
+                                                   class="input-small"/><span class="maroon">*</span>
+                                        </td>
+                                        <td id="spicsettd4">
+                                            <img class="thumb_img" src="" style="max-height: 100px;"><input
+                                                type="hidden" value="" name="FlcCU1cFNxFLR1YC" id="redbagpsrc4"/>                <span>
+                    <button class="btn select_img" type="button" onclick="setpic('spicsettd4')">选择图片</button>
+                </span>
+                                        </td>
+                                        <td>
+                                            <input type="text" value="" name="FlcCU1cFNxFLWAE=" id="redbagpsm4"
+                                                   class="input-large"/></td>
+                                        <td>
+                                            <input type="text" value="" name="FlcCU1cFNxFcXQE=" id="redbagpdh4"
+                                                   class="input-small"/></td>
+                                        <td>
+                                            <a href="javascript:void(0);" onclick="delsjtp(this,'sjtptr')" class="del">删除 </a>
+                                        </td>
+                                    </tr>
+                                    <tr style="display: none;">
+                                        <td>
+                                            <input type="text" value="" name="FlcCU1cFNxFWVFhTAg==" id="redbagpname5"
+                                                   class="input-small"/><span class="maroon">*</span>
+                                        </td>
+                                        <td id="spicsettd5">
+                                            <img class="thumb_img" src="" style="max-height: 100px;"><input
+                                                type="hidden" value="" name="FlcCU1cFNxFLR1YD" id="redbagpsrc5"/>                <span>
+                    <button class="btn select_img" type="button" onclick="setpic('spicsettd5')">选择图片</button>
+                </span>
+                                        </td>
+                                        <td>
+                                            <input type="text" value="" name="FlcCU1cFNxFLWAA=" id="redbagpsm5"
+                                                   class="input-large"/></td>
+                                        <td>
+                                            <input type="text" value="" name="FlcCU1cFNxFcXQA=" id="redbagpdh5"
+                                                   class="input-small"/></td>
+                                        <td>
+                                            <a href="javascript:void(0);" onclick="delsjtp(this,'sjtptr')" class="del">删除 </a>
+                                        </td>
+                                    </tr>
+                                    <tr style="display: none;">
+                                        <td>
+                                            <input type="text" value="" name="FlcCU1cFNxFWVFhTAQ==" id="redbagpname6"
+                                                   class="input-small"/><span class="maroon">*</span>
+                                        </td>
+                                        <td id="spicsettd6">
+                                            <img class="thumb_img" src="" style="max-height: 100px;"><input
+                                                type="hidden" value="" name="FlcCU1cFNxFLR1YA" id="redbagpsrc6"/>                <span>
+                    <button class="btn select_img" type="button" onclick="setpic('spicsettd6')">选择图片</button>
+                </span>
+                                        </td>
+                                        <td>
+                                            <input type="text" value="" name="FlcCU1cFNxFLWAM=" id="redbagpsm6"
+                                                   class="input-large"/></td>
+                                        <td>
+                                            <input type="text" value="" name="FlcCU1cFNxFcXQM=" id="redbagpdh6"
+                                                   class="input-small"/></td>
+                                        <td>
+                                            <a href="javascript:void(0);" onclick="delsjtp(this,'sjtptr')" class="del">删除 </a>
+                                        </td>
+                                    </tr>
+                                    <tr style="display: none;">
+                                        <td>
+                                            <input type="text" value="" name="FlcCU1cFNxFWVFhTAA==" id="redbagpname7"
+                                                   class="input-small"/><span class="maroon">*</span>
+                                        </td>
+                                        <td id="spicsettd7">
+                                            <img class="thumb_img" src="" style="max-height: 100px;"><input
+                                                type="hidden" value="" name="FlcCU1cFNxFLR1YB" id="redbagpsrc7"/>                <span>
+                    <button class="btn select_img" type="button" onclick="setpic('spicsettd7')">选择图片</button>
+                </span>
+                                        </td>
+                                        <td>
+                                            <input type="text" value="" name="FlcCU1cFNxFLWAI=" id="redbagpsm7"
+                                                   class="input-large"/></td>
+                                        <td>
+                                            <input type="text" value="" name="FlcCU1cFNxFcXQI=" id="redbagpdh7"
+                                                   class="input-small"/></td>
+                                        <td>
+                                            <a href="javascript:void(0);" onclick="delsjtp(this,'sjtptr')" class="del">删除 </a>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <div class="controls">
+
+                                <button id="save-btn" type="submit" class="btn btn-primary btn-large">保存</button>
+
+                            </div>
+                        </div>
+                    </form>
+
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+</body>
+</html>

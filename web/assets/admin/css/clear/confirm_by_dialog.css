@@ -1,0 +1,21 @@
+/*-- 图标 开始 --*/
+.qz_dialog_layer_icon {width:25px; height:24px; background:url(../images/confirm_icon.png) left top no-repeat; font-size:0; line-height:100px; overflow:hidden;}
+.qz_dialog_layer_icon_question {background-position:left top;}
+.qz_dialog_layer_icon_error {background-position:left -30px;}
+.qz_dialog_layer_icon_notice {background-position:left -60px;}
+.qz_dialog_layer_icon_done {background-position:left -90px;}
+
+.qz_dialog_layer_icon_s {width:18px; height:10px; font-size:0; line-height:0; position:relative; display:inline-block; *display:inline; *zoom:1;}
+.qz_dialog_layer_icon_s i {width:15px; height:15px; display:block; position:absolute; background:url(../images/confirm_icon.png) left top no-repeat;}
+
+.qz_dialog_layer_icon_s_error i {background-position:left -120px;}
+.qz_dialog_layer_icon_s_done i {background-position:left -145px;}
+.qz_dialog_layer_icon_s_notice i {background-position:left -170px;}
+/*-- 图标 结束 --*/
+
+.qz_dialog_layer_confirm_content {margin:40px auto; position:relative;}
+.qz_dialog_layer_confirm_content h3,
+.qz_dialog_layer_confirm_content .qz_dialog_layer_confirm_content_p {padding-left:35px;}
+.qz_dialog_layer_confirm_content h3 {font-size:14px; margin-bottom:10px; line-height:130%;}
+.qz_dialog_layer_confirm_content .qz_dialog_layer_confirm_content_p {margin-bottom:6px; line-height:130%; font-size:12px;}
+.qz_dialog_layer_confirm_content .qz_dialog_layer_icon {left:0; top:-2px; position:absolute;}/*  |xGv00|b12348a9a3dda13218fe4ca7c292ed67 */

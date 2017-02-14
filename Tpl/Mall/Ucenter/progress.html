@@ -1,0 +1,242 @@
+<include file="Public:header" title="进度查询"  />
+<body>
+<div class="page">
+    <header class="bar bar-nav ser-row">
+        <div class="buttons-tab">
+            <a href="{:U('Mall/Ucenter/orders')}" class="time-btn
+              external">我要申请</a>
+            <a href="{:U('Mall/Ucenter/progress')}" class="time-btn
+              tab-left active external">进度查询</a>
+        </div>
+    </header>
+    <!-- 底部 -->
+    <include file="Public:nav" />
+    <!-- 内容 -->
+    <div class="content">
+        <div class="progress">
+
+            <volist name="service_list" id="vo"> 
+            
+            <if condition="($vo.type eq 'install') OR ($vo.type eq 'repair')">
+            
+            <div class="progress-content" style="margin-bottom: 25px">
+                <i class="rect"></i>
+
+                <p class="porgress-text">您的
+                <eq name="vo.type" value="install">安装申请</eq>
+                <eq name="vo.type" value="repair">维修申请</eq>
+                正在进行中</p>
+
+                <div class="progress-list">
+                    <ul>
+                      <li class="big-rect <if condition="$vo.progress lt 0"
+                      >color</if>">
+                      <notempty name="vo['create_at']">
+                      <p>{$vo.create_at|date="y-m-d", ###}</p>
+                      </notempty>
+                            <img src="__ASSETS__/img/r.png" alt="">
+                            <p>
+                            <eq name="vo.type"
+                            value="install">申请安装</eq>
+                            <eq name="vo.type"
+                            value="repair">申请维修</eq>
+                            </p>
+                        </li>
+                        <li class="samll-rect <if condition="$vo.progress lt 0"
+                      >color</if>">
+                            <img src="__ASSETS__/img/arrow.png" alt="">
+                        </li>
+                      <li class="big-rect <if condition="$vo.progress lt 0"
+                      >color</if>">
+                            <notempty name="vo['create_at']">
+                            <p>{$vo.create_at|date="y-m-d", ###}</p>
+                            </notempty>
+                            <p><img src="__ASSETS__/img/r.png" alt=""></p>
+                            <p>审核申请
+                            </p>
+                        </li>
+                        <li class="samll-rect <if condition="$vo.progress lt 3"
+                      >color</if>">
+                            <img src="__ASSETS__/img/arrow.png" alt="">
+                        </li>
+                      <li class="big-rect <if condition="$vo.progress lt 3"
+                      >color</if>">
+                            <notempty name="vo[proved_at]">
+                            <p>{$vo.proved_at|date="y-m-d", ###}</p>
+                            </notempty>
+                            <p><img src="__ASSETS__/img/r.png" alt=""></p>
+                            <p>
+                            <eq name="vo.type"
+                            value="install">已审核</eq>
+                            <eq name="vo.type"
+                            value="repair">已审核</eq>
+                            
+                            </p>
+                        </li>
+                    </ul>
+                    <div class="arrow <if condition="$vo.progress lt 4">
+                      color</if>">
+                        <p><img src="__ASSETS__/img/arrow.png" alt=""></p>
+                    </div>
+                    <ul class="arrow-down">
+                      <li class="big-rect <if condition="$vo.progress lt 4"
+                      >color</if>">
+                            <p><img src="__ASSETS__/img/r.png" alt=""></p>
+                            <p>
+                            <eq name="vo.type"
+                            value="install">已录单</eq>
+                            <eq name="vo.type"
+                            value="repair">已录单</eq>
+                            </p>
+                            <notempty name="vo['proved_at']">
+                            <p>{$vo.proved_at|date="y-m-d", ###}</p>
+                            </notempty>
+                        </li>
+                        <li class="samll-rect <if condition="$vo.progress lt 4"
+                      >color</if>">
+                            <img src="__ASSETS__/img/arrow.png" alt="">
+                        </li>
+                      <li class="big-rect <if condition="$vo.progress lt 4"
+                      >color</if>">
+                            <p><img src="__ASSETS__/img/r.png" alt=""></p>
+                            <p>
+                            <eq name="vo.type"
+                            value="install">已派工</eq>
+                            <eq name="vo.type"
+                            value="repair">已派工</eq>
+                            </p>
+                            <notempty name="vo['proved_at']">
+                            <p>{$vo.proved_at|date="y-m-d", ###}</p>
+                            </notempty>
+                        </li>
+                        <li class="samll-rect <if condition="$vo.progress lt 9"
+                      >color</if>">
+                            <img src="__ASSETS__/img/arrow.png" alt="">
+                        </li>
+                      <li class="big-rect <if condition="$vo.progress lt 9"
+                      >color</if>">
+                            <p><img src="__ASSETS__/img/r.png" alt=""></p>
+                            <p>
+                            <eq name="vo.type"
+                            value="install">已完成</eq>
+                            <eq name="vo.type"
+                            value="repair">已完成</eq>
+                            </p>
+                            <notempty name="vo['closed_at']">
+                            <p>{$vo.closed_at|date="y-m-d", ###}</p>
+                            </notempty>
+                        </li>
+                    </ul>
+                </div>
+                <p class="progress-foot">编号：<span>{$vo.order_number}</span></p>
+            </div>
+            <else />
+
+            <div class="progress-content" style="margin-bottom: 25px">
+                <i class="rect"></i>
+
+                <p class="porgress-text">您的
+                退款申请
+                正在进行中</p>
+
+                <div class="progress-list">
+                    <ul>
+                      <li class="big-rect <if condition="$vo.status lt 0"
+                      >color</if>">
+                      <notempty name="vo['create_at']">
+                      <p>{$vo.create_at|date="y-m-d", ###}</p>
+                      </notempty>
+                            <img src="__ASSETS__/img/r.png" alt="">
+                            <p>
+                            申请退款
+                            </p>
+                        </li>
+                        <li class="samll-rect <if condition="$vo.status lt 2"
+                      >color</if>">
+                            <img src="__ASSETS__/img/arrow.png" alt="">
+                        </li>
+                      <li class="big-rect <if condition="$vo.status lt 2"
+                      >color</if>">
+                      <notempty name="vo['proved_at']">
+                            <p>{$vo.proved_at|date="y-m-d", ###}</p>
+                            </notempty>
+                            <p><img src="__ASSETS__/img/r.png" alt=""></p>
+                            <p>审核通过
+                            </p>
+                        </li>
+                        <li class="samll-rect <if condition="$vo.status lt 4"
+                      >color</if>">
+                            <img src="__ASSETS__/img/arrow.png" alt="">
+                        </li>
+                      <li class="big-rect <if condition="$vo.status lt 4"
+                      >color</if>">
+                      <notempty name="vo['proved_at']">
+                            <p>{$vo.proved_at|date="y-m-d", ###}</p>
+                            </notempty>
+                            <p><img src="__ASSETS__/img/r.png" alt=""></p>
+                            <p>
+                            等待返库
+                            </p>
+                        </li>
+                    </ul>
+                    <div class="arrow <if condition="$vo.status lt 5">
+                      color</if>">
+                        <p><img src="__ASSETS__/img/arrow.png" alt=""></p>
+                    </div>
+                    <ul class="arrow-down">
+                      <li class="big-rect <if condition="$vo.status lt 5"
+                      >color</if>">
+                            <p><img src="__ASSETS__/img/r.png" alt=""></p>
+                            <p>
+                            卖家已收货 
+                            </p>
+                            <notempty name="vo['returned_at']">
+                            <p>{$vo.returned_at|date="y-m-d", ###}</p>
+                            </notempty>
+                        </li>
+                        <li class="samll-rect <if condition="$vo.status lt 6"
+                      >color</if>">
+                            <img src="__ASSETS__/img/arrow.png" alt="">
+                        </li>
+                      <li class="big-rect <if condition="$vo.status lt 6"
+                      >color</if>">
+                            <p><img src="__ASSETS__/img/r.png" alt=""></p>
+                            <p>
+                            打款成功
+                            </p>
+                            <notempty name="vo['paid_at']">
+                            <p>{$vo.paid_at|date="y-m-d",
+                            ###}</p>
+                            </notempty>
+                        </li>
+                        <li class="samll-rect <if condition="$vo.status lt 9"
+                      >color</if>">
+                            <img src="__ASSETS__/img/arrow.png" alt="">
+                        </li>
+                      <li class="big-rect <if condition="$vo.status lt 9"
+                      >color</if>">
+                            <p><img src="__ASSETS__/img/r.png" alt=""></p>
+                            <p>
+                            退货完成
+                            </p>
+                            <notempty name="vo['paid_at']">
+                            <p>{$vo.paid_at|date="y-m-d", ###}</p>
+                            </notempty>
+                        </li>
+                    </ul>
+                </div>
+                <p class="progress-foot">编号：<span>{$vo.order_number}</span></p>
+            </div>
+            </if>
+
+            </volist>
+        </div>
+    </div>
+
+</div>
+<script src="__ASSETS__/dist/js/sm.js"></script>
+<script src="__ASSETS__/dist/js/sm-extend.js"></script>
+<script src="__ASSETS__/dist/js/sm-city-picker.js"></script>
+<script src="__ASSETS__/js/demos.js"></script>
+</body>
+</html>

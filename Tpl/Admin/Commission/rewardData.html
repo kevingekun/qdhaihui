@@ -1,0 +1,176 @@
+<include file="Public/header_new" title="激励佣金"/>
+<define name="DEFINE_SIDE_MENU_CURRENT" value="Commission"/>
+<include file="Public/sideMenu_new"/>
+
+    <div class="main home" id="main" style="overflow: auto;">
+        <div class="side clearfix" style="width:56px;height:100px;float:left;">
+        </div>
+        <div class="main-container" style="height:auto;">
+            <div class="gdt-toufang gdt-toufang-account">
+                <div class="tuiguang-tab" id="_hSubNav">
+                    <ul>
+                      <li style="width:56px"></li>
+                      <li class="goback"><a href="javascript:history.back(-1)"><i></i></a></li>
+                      <li><a href="{:U('Admin/Commission/reward')}" onclick="">激励佣金任务</a></li>
+                      <li class="on"><a onclick="">任务详情</a></li>
+                    </ul>
+                </div>
+                <div class="container-box">
+                    <div class="alert alert-warning" role="alert">
+                        说明: 在这里可以通过排序筛选出想要的给予激励佣金的合伙人进行奖励
+                    </div>
+                    <div class="newcearchbox">
+                        <form class="form-inline" action="" name="form1" method="get">
+                            <div class="form-group">
+                                <select name="type" class="form-control">
+                                    <option value="">排序</option>
+                                    <option value="1" <?php echo $type==1? 'selected' : '';?>>销售佣金</option>
+                                    <option value="2" <?php echo $type==2? 'selected' : '';?>>推广佣金</option>
+                                    <option value="3" <?php echo $type==3? 'selected' : '';?>>粉丝数量</option>
+                                </select>
+                            </div>
+                            <!--<div class="form-group">
+                                <select name="way" class="form-control">
+                                    <option value="1" <?php echo $type==1? 'selected' : '';?>>倒序</option>
+                                    <option value="2" <?php echo $type==2? 'selected' : '';?>>正序</option>
+                                </select>
+                            </div>-->
+                            <button type="submit" class="btn btn-primary">排序</button>
+                            <a class="btn btn-success auditing_1" data-toggle="modal" data-target="#toExamine_1" data-type="all">全部奖励</a>
+                            <a class="btn btn-success auditing_1" data-toggle="modal" data-target="#toExamine_1" data-type="check">选中奖励</a>
+                        </form>
+                    </div>
+                    <div class="row newcearchbox ">
+                        <table class="table table-bordered  table-primary">
+                            <thead>
+                                <tr class="">
+                                    <th class="center">
+                                        <input id="checkedAll" type="checkbox" class="ace"> <span class="lbl"></span>
+                                    </th>
+                                    <th width="5%">ID</th>
+                                    <th width="10%">任务ID</th>
+                                    <th width="10%">昵称</th>
+                                    <th width="10%">真实姓名</th>
+                                    <th width="10%">手机号</th>
+                                    <th width="10%">销售佣金</th>
+                                    <th width="10%">推广佣金</th>
+                                    <th width="10%">粉丝数量</th>
+                                    <th width="30%">操作</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                  <volist name="list" id="vo">
+                                      <tr>
+                                          <td class="center"><input type="checkbox" class="ace checkSingle" data-id="{$vo.id}"></td>
+                                          <td>{$vo.id}</td>
+                                          <td>{$vo.task_id}</td>
+                                          <td>{$vo.uid|get_user_field}</td>
+                                          <td>{$vo.uid|get_user_field=###,realname}</td>
+                                          <td>{$vo.uid|get_user_field=###,phone}</td>
+                                          <td>{$vo.product_commission|convert_money}</td>
+                                          <td>{$vo.spread_commission|convert_money}</td>
+                                          <td>{$vo.fans_num}</td>
+                                          <td>
+                                              <a href="{:U('Admin/Commission/rewardDataDel', array('id'=>$vo['id']))}"  class="btn btn-danger btn-info" onclick="return confirm('确定要删除吗?');">删除</a>
+                                          </td>
+                                      </tr>
+                                  </volist>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div id="page">
+                          {$page}
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/new_theme/common/sui/jquery.min.js"></script>
+<script src="/new_theme/common/sui/sui.min.js"></script>
+<div class="modal fade" id="toExamine_1" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                <h5 class="modal-title">设置激励佣金</h5>
+            </div>
+            <form class="form-horizontal" data-toggle="validate" action="{:U('Admin/Commission/setReward')}" method="post">
+                <input type="hidden" id="task_id" name="task_id" value="{$taskId}" />
+                <input type="hidden" id="type_id" name="type" value="" />
+                <input type="hidden" id="ids_id" name="ids" value="" />
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">奖励金额:</label>
+                        <div class="col-sm-8">
+                            <input class="form-control input-lg required" type="text" name="money" >
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label  class="col-sm-3 control-label">备注:</label>
+                        <div class="col-sm-8">
+                            <textarea class="form-control input-lg required" name="remark" ></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary btn-lg">确定</button>
+                    <button type="button" class="btn btn-default btn-lg" data-dismiss="modal">取消</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function(){
+        $("#checkedAll").change(function(){
+            if(this.checked){
+                $(".checkSingle").each(function(){
+                    this.checked=true;
+                })
+            }else{
+                $(".checkSingle").each(function(){
+                    this.checked=false;
+                })
+            }
+        });
+
+        $(".checkSingle").click(function () {
+            if ($(this).is(":checked")){
+                var isAllChecked = 0;
+                $(".checkSingle").each(function(){
+                    if(!this.checked)
+                        isAllChecked = 1;
+                })
+                if(isAllChecked == 0){ $("#select_all").prop("checked", true); }
+            }
+            else {
+                $("#checkedAll").prop("checked", false);
+            }
+        });
+
+        // 全部奖励
+        $('a.auditing_1').click(function(){
+            var uid = $(this).data('uid');
+            var type = $(this).data('type');
+
+            if(type == 'all'){
+                $("#type_id").val(type);
+            } else if(type == 'check'){
+                $("#type_id").val(type);
+                var ids = "";
+                $(".checkSingle").each(function(k,v){
+                    if(this.checked){
+                        ids += $(this).attr('data-id') + ',';
+                    }
+                })
+                $("#ids_id").val(ids);
+            }
+
+
+        });
+    })
+</script>
+</body>
+</html>

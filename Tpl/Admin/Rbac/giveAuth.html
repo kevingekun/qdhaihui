@@ -1,0 +1,127 @@
+<include file="Public/header_new" title="工具箱"/>
+<define name="DEFINE_SIDE_MENU_CURRENT" value="tools"/>
+<link rel="stylesheet" rev="stylesheet" href="__ASSETS__/css/gdt-css-api.css" type="text/css" media="screen">
+<include file="Public/sideMenu_new"/>
+<div class="main home" id="main" style="/*height: 400px;*/ overflow: auto;">
+    <div class="side clearfix" style="width:56px;height:100px;float:left;"></div>
+
+    <div class="main-container" style="height:auto;">
+        <div class="gdt-toufang gdt-toufang-account">
+            <div class="tuiguang-tab" id="_hSubNav">
+                <ul>
+                    <li style="width:56px"></li>
+                    <li class="goback"><a href="javascript:history.back(-1)"><i></i></a></li>
+                    <li><a href="{:U('Rbac/userList')}">用户管理</a></li>
+                    <li class="on"><a href="{:U('Rbac/roleList')}">角色管理</a></li>
+                    <li><a href="{:U('Rbac/nodeList')}">节点管理</a></li>
+                </ul>
+            </div>
+            <div class="container-box">
+                <form class="form-horizontal" action="__SELF__" method="post">
+                    <div class="checkbox clearfix">
+                        <div class="row col-md-9">
+                            <div class="alert alert-info alert-dismissible" role="alert">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                                        aria-hidden="true">&times;</span></button>
+                                <strong>正在为 {$role.name} 分配权限</strong>
+                            </div>
+                            <div class="role-all">
+                                <div class="panel clearfix">
+                                    <h3 class="pull-left">后台权限管理
+                                        <!--<small>
+                                            <label class="checkbox-inline">
+                                                <input type="checkbox">全选
+                                            </label>
+                                        </small>-->
+                                    </h3>
+                                </div>
+                                <foreach name='list' item='l'>
+                                    <input style="display: none;" type="checkbox" name="node_id[]" value="{$l.id}_1" level='1' <if condition="$l.checked eq '1'">checked='checked'</if>  />
+                                    <foreach name='l.child' item='c'>
+                                        <div class="panel panel-default">
+                                            <div class="panel-heading">
+                                                <label>
+                                                    <input name="node_id[]" type="checkbox" value="{$c.id}_2" level='2' <if condition="$c.checked eq '1'">checked='checked'</if>>{$c.title}
+                                                </label>
+                                            </div>
+                                            <div class="panel-body">
+                                                <foreach name='c.child' item='d'>
+                                                <label class="checkbox-inline">
+                                                    <input type="checkbox" name="node_id[]" value="{$d.id}_3" level='3' <if condition="$d.checked eq '1'">checked='checked'</if> >{$d.title}
+                                                </label>
+                                                </foreach>
+                                            </div>
+                                        </div>
+                                    </foreach>
+                                </foreach>
+                            </div>
+                            <input type="hidden" name="rid" value="{$_GET['id']}" />
+                            <button type="submit" class="btn btn-primary">确认保存</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+<script src="/new_theme/common/sui/jquery.min.js"></script>
+<script src="/new_theme/common/sui/sui.min.js"></script>
+<script>
+    $('.panel-heading').click(function () {
+        var checkAll = $(this).find('input');
+        if (checkAll[0].checked) {
+            $(this).next().find('input').each(function () {
+                this.checked = true;
+            })
+        } else {
+            $(this).next().find('input').each(function () {
+                this.checked = false;
+            })
+        }
+    });
+    $('.panel-body input').click(function () {
+        num = 0;
+        if (this.checked) {
+            $(this).parents('.panel-body').prev().find('input').each(function () {
+                this.checked = true
+            });
+        } else {
+            $(this).parents('.panel-body').find('input').each(function () {
+                var inputHeard = $(this).parents('.panel-body');
+                var inputNum = inputHeard.find('input').length;
+                if (this.checked) {
+                } else {
+                    num = num + 1;
+                }
+                if (num == inputNum) {
+                    inputHeard.prev().find('input').each(function () {
+                        this.checked = false;
+                    });
+                }
+            })
+        }
+    });
+    $('h3 input').click(function () {
+        var  roleAll = $(this).parents('.role-all');
+        if (this.checked) {
+            roleAll.find('input').each(function () {
+                this.checked = true;
+            })
+        }else{
+            roleAll.find('input').each(function () {
+                this.checked = false;
+            })
+        }
+    });
+    $('.role-all').click(function () {
+        $(this).find('input').each(function () {
+            if(!this.checked){
+                console.log($(this).parents('.role-all').find('h3 input'));
+                $(this).parents('.role-all').find('h3 input').each(function () {
+                    this.checked = false;
+                });
+            }
+        })
+    })
+</script>
+</body>
+</html>

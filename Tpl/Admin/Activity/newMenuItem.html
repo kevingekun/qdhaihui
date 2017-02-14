@@ -1,0 +1,102 @@
+<include file="Public/header_new" title="活动"/>
+<define name="DEFINE_SIDE_MENU_CURRENT" value="activity"/>
+<include file="Public/sideMenu_new"/>
+
+    <div class="main home" id="main" style="overflow: auto;">
+        <div class="side clearfix" style="width:56px;height:100px;float:left;">
+        </div>
+        <div class="main-container" style="height:auto;">
+            <div class="gdt-toufang gdt-toufang-account">
+                <div class="tuiguang-tab" id="_hSubNav">
+                    <ul>
+                        <li style="width:56px"></li>
+                        <li class="goback"><a href="javascript:history.back(-1)"><i></i></a></li>
+                        <li class="on"><a href="{:U('Admin/Activity/menu')}">菜单设置</a></li>
+                        <li><a href="{:U('Admin/Activity/couponlist')}">优惠券</a></li>
+                        <li><a href="{:U('Admin/Activity/seckill')}">秒杀</a></li>
+                        <li><a href="{:U('Admin/Activity/bookingList')}">预售</a></li>
+                        <li><a href="{:U('Admin/Activity/groupList')}">团购</a></li>
+                    </ul>
+                </div>
+
+                <div class="container-box clearfix">
+                    <div class="col-md-9">
+                        <div class="row">
+                            <div class="bs-callout bs-callout-info">
+                                <h4>添加菜单项</h4>
+                            </div>
+                            <div class="panel">
+                                <form novalidate="novalidate" data-toggle="validate" id="seckillForm" class="form-horizontal" method="post" enctype="multipart/form-data">
+                                    <div class="panel-body">
+                                        <div class="form-group" id="warning" style="display: none">
+                                            <label class="col-sm-2 control-label"></label>
+                                            <div class="col-sm-4">
+                                                <span class="text-danger">*</span>为必填内容
+                                            </div>
+                                        </div>
+
+
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label"><span class="text-danger">*</span>菜单项：</label>
+                                            <div class="col-sm-4">
+                                                <select  name="item_id">
+                                                  <volist name="item_list"
+                                                  id="vo">
+                                                  <option
+                                                  value="{$vo.id}">{$vo.title}</option>
+                                                  </volist>
+                                                  </select>
+                                            </div>
+                                            <div class="col-sm-4 error-container">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-sm-2
+                                              control-label"><span
+                                                class="text-danger">*</span>菜单项优先级：</label>
+                                            <div class="col-sm-4">
+                                              <select id="priority"
+                                                name="priority">
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                                <option value="6">6</option>
+                                                <option value="7">7</option>
+                                                <option value="8">8</option>
+                                                <option value="9">9</option>
+                                              </select>
+                                            </div>
+                                            <div>
+                                              请输入1-10之间的整数，数字越大菜单项位置越靠上
+                                            </div>
+                                            <div class="col-sm-4 error-container">
+                                            </div>
+                                        </div>
+
+
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label"></label>
+                                            <div class="col-sm-4">
+                                                <input value="完成" class="btn btn-primary" type="submit">
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/new_theme/common/sui/jquery.min.js"></script>
+<script src="/new_theme/common/sui/sui.min.js"></script>
+<script src="/new_theme/common/datepicker/WdatePicker.js"></script>
+
+</body>
+</html>

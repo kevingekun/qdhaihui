@@ -1,0 +1,65 @@
+<nav class="bar bar-tab bar-tab-t">
+    <a class="tab-item <if condition="(MODULE_NAME eq 'Mall') AND (CONTROLLER_NAME eq 'Index') AND (ACTION_NAME eq 'index')">active</if>" external href="{:U('Mall/Index/index')}">
+        <span class="hicon hicon-home"></span>
+        <span class="tab-label">首页</span>
+    </a>
+    <a class="tab-item <if condition="(MODULE_NAME eq 'Mall') AND (CONTROLLER_NAME eq 'Index') AND (ACTION_NAME eq 'category')">active</if> external" href="{:U('Mall/Index/category')}">
+        <span class="hicon hicon-me"></span>
+        <span class="tab-label">分类</span>
+    </a>
+    <a id="activityList" class="tab-item <if condition="(MODULE_NAME eq 'Mall') AND (CONTROLLER_NAME eq 'Ucenter') AND (ACTION_NAME eq 'welfare')">active</if> external">
+        <span class="hicon hicon-star"></span>
+        <span class="tab-label">活动专区</span>
+    </a>
+    <a class="tab-item <if condition="(MODULE_NAME eq 'Mall') AND (CONTROLLER_NAME eq 'Index') AND (ACTION_NAME eq 'shoppingcart')">active</if> external" href="{:U('Mall/Index/shoppingcart')}">
+        <span class="hicon hicon-cart"></span>
+        <span class="tab-label">购物车</span>
+        <if condition="$count_in_cart gt 0"><span class="badge">{$count_in_cart}</span></if>
+    </a>
+    <a class="tab-item <if condition="(MODULE_NAME eq 'Mall') AND (CONTROLLER_NAME eq 'Ucenter')">active</if> external" href="{:U('Mall/Ucenter/index')}">
+        <span class="hicon hicon-settings"></span>
+        <span class="tab-label">个人中心</span>
+    </a>
+</nav>
+<!--<div class="modal-overlay"></div>-->
+<!--<div class="actions-modal">-->
+    <!--<div class="actions-modal-group">-->
+        <!--<span class="actions-modal-button actions-modal-button-bold color-danger">卖出</span>-->
+        <!--<span class="actions-modal-button">买入</span>-->
+    <!--</div>-->
+<!--</div>-->
+<script>
+
+    $(document).on('click', '#activityList', function () {
+      
+      var menu_items = {$menu_items};
+      var buttons = new Array();
+
+      for (var i=0; i<menu_items.length; i++) {
+        obj = menu_items[i];
+        url = obj.url;
+
+        buttons[i] = [
+          {
+            text: obj.title,
+            bold: true,
+            color: 'danger',
+            url2 : url,
+            onClick: function() {
+              window.location.href = this.url2;
+            }
+          }
+        ];        
+      }
+
+      buttons.push([
+            {
+                text: '取消',
+                bg: 'danger'
+            }
+        ]);
+
+      $.actions(buttons);
+    });
+
+</script>

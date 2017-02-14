@@ -1,0 +1,120 @@
+<include file="Index/header" title="个人中心" />
+<div class="content closenav">
+    <div class="par-center">
+        <div class="par-center-bg">
+            <img src="__ASSETS__/index/img/bg1.jpg" alt="" width="100%"/>
+        </div>
+        <div class="par-center-head">
+            <a class="partnername external" href="{:U('Partner/Index/apply')}">
+                <img class="mehead" src="{$user.headimgurl|avatar}" alt=""/>
+                <p class="metext">
+                    {$user.nickname}<br>
+                    <span class="text-blue">我的个人中心</span>
+                </p>
+            </a>
+            <if condition="$inviteUser">
+                <a class="partnername2">
+                    <img class="pushhead" src="{$inviteUser.headimgurl|avatar}" alt=""/>
+                    <p class="metext">
+                        {$inviteUser.nickname}<br>
+                        <span class="text-blue">我的推荐人</span>
+                    </p>
+                </a>
+            <else/>
+                <a class="partnername2">
+                    <img class="pushhead" src="__ASSETS__/index/img/hisense.jpg" alt=""/>
+                    <p class="metext">
+                        系统<br>
+                        <span class="text-blue">我的推荐人</span>
+                    </p>
+                </a>
+            </if>
+        </div>
+    </div>
+    <div class="content-padded par-center-con">
+        <div class="list-block">
+            <ul>
+                <li>
+                    <a href="{:U('Partner/Index/qrcode')}" class="item-link item-content external">
+                        <div class="item-inner">
+                            <div class="item-title">我的专属二维码</div>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="{:U('Partner/Index/fans')}" class="item-link item-content external">
+                        <div class="item-inner">
+                            <div class="item-title">我的粉丝总数（{$fansTotalNum}）</div>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="{:U('Partner/Index/partners')}" class="item-link item-content external">
+                        <div class="item-inner">
+                            <div class="item-title">我的二级合伙人（{$partnerNum}）</div>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="commission.html" class="item-link item-content external">
+                        <div class="item-inner">
+                            <div class="item-title">我的总收益</div>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="content-padded par-center-mo">
+        <div class="list-block">
+            <ul>
+                <li class="item-content">
+                    <div class="item-inner">
+                        <div class="item-title">销售提成</div>
+                        <div class="item-after">
+                            <p class="gold">
+                                <img src="__ASSETS__/index/img/bo.png" alt="" width="20" height="20"/>
+                                ￥{$saleReward}
+                            </p>
+                        </div>
+                    </div>
+                </li>
+                <li class="item-content">
+                    <div class="item-inner">
+                        <div class="item-title">销售佣金</div>
+                        <div class="item-after">
+                            <p class="gold">
+                                <img src="__ASSETS__/index/img/bo.png" alt="" width="20" height="20"/>
+                                ￥{$saleCommission}
+                            </p>
+                        </div>
+                    </div>
+                </li>
+                <li class="item-content">
+                    <div class="item-inner">
+                        <div class="item-title">推广佣金</div>
+                        <div class="item-after">
+                            <p class="gold">
+                                <img src="__ASSETS__/index/img/bo.png" alt="" width="20" height="20"/>
+                                ￥{$spreadCommission}
+                            </p>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="list-block comm-foot">
+    <ul>
+        <li>
+            <a href="{:U('Partner/Index/xuzhi')}" class="item-link item-content external">
+                <div class="item-inner">
+                    <div class="item-title"></div>
+                    <div class="item-after">合伙人须知（如何赚取佣金）</div>
+                </div>
+            </a>
+        </li>
+    </ul>
+</div>
+<include file="Index/footer" />

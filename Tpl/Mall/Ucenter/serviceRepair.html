@@ -1,0 +1,202 @@
+<include file="Public:header" title="申请维修"/>
+<body>
+<div class="page">
+    <header class="bar bar-nav">
+        <h1 class="title his-color">申请维修</h1>
+    </header>
+    <!-- 底部 -->
+    <include file="Public:nav" />
+    <!-- 内容 -->
+    <div class="content con-nav">
+        <div class="list-block list-block-pa">
+            <form action="" id="form1" onsubmit="return false;">
+                <input type="hidden" name="order_id"
+                       value="{$order.id}">
+                <input type="hidden" name="order_number" value="{$order.order_number}">
+
+                <ul>
+                    <li>
+                        <div class="item-content">
+                            <div class="item-inner">
+                                订单编号：{$order.order_number}
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title
+                                  label">上门维修日期
+                                </div>
+                                <div class="item-input">
+                                    <input type="text"
+                                           name="need_time" placeholder="日期选择" id="datetime-picker">
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item-content">
+
+                            <div class="item-inner">
+                                <div class="item-title label">默认地址</div>
+                                <div class="add-check" id="repairRadio">
+                                    <label class="label-checkbox">
+                                        <input type="radio" name="radio2"
+                                               value="1" checked>
+
+                                        <div class="item-media"><i class="icon icon-form-checkbox"></i>是</div>
+                                    </label>
+                                    <label class="label-checkbox">
+                                        <input type="radio" name="radio2"
+                                               value="0" id="newRadio">
+
+                                        <div class="item-media"><i class="icon icon-form-checkbox"></i>否</div>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li id="repairAdd">
+                        <div class="item-content">
+                            <div class="item-inner">
+                                <div class="item-add">
+                                    {$address.province}省{$address.city}市{$address.county}区{$address.full_address}
+                                    <input type="hidden" name="address"
+                                           value="{$address.province}{$address.city}{$address.country}{$address.full_address}"/>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="newAdd">
+                        <div class="item-content">
+                            <div class="item-title label">新增收货地址</div>
+                            <div class="item-inner">
+                                <div class="item-input">
+                                    <input type="text"
+                                           name="address_name" placeholder="姓名">
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="newAdd">
+                        <div class="item-content">
+                            <div class="item-title label"></div>
+                            <div class="item-inner">
+                                <div class="item-input">
+                                    <input type="tel"
+                                           name="address_mobile" placeholder="手机号">
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="newAdd">
+                        <div class="item-content">
+                            <div class="item-title label"></div>
+                            <div class="item-inner">
+                                <div class="item-input">
+                                    <input type="text"
+                                           name="address_pcc" placeholder=""
+                                           id="city-picker" readonly="" value="山东省 青岛市">
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="newAdd">
+                        <div class="item-content">
+
+                            <div class="item-inner">
+                                <div class="item-title label"></div>
+                                <div class="item-input">
+                                    <input type="text"
+                                           name="address_full_address" placeholder="详细地址">
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="align-top">
+                        <div class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title label">维修服务描述</div>
+                                <div class="item-input">
+                                    <textarea name="note" placeholder="描述详情"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </form>
+            <div class="add-foot">
+                <div>服务电话：<i></i>400-6111-111</div>
+                <p>如有需要请直接拨打人工服务电话</p>
+            </div>
+            <div class="row row-button row-bottom">
+                <div class=""><a href="#" id="submit" class="button button-del">提交</a></div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="__ASSETS__/dist/js/sm.js"></script>
+<script src="__ASSETS__/dist/js/sm-extend.js"></script>
+<script src="__ASSETS__/dist/js/sm-city-picker.js"></script>
+<script src="__ASSETS__/js/demos.js"></script>
+<script>
+    $("#city-picker").cityPicker({
+        toolbarTemplate: '<header class="bar bar-nav">\
+              <button class="button button-link pull-right close-picker">确定</button>\
+              <h1 class="title">选择收货地址</h1>\
+              </header>'
+    });
+    $("#datetime-picker").calendar();
+    $(document).on('click', '#repairRadio', function () {
+        if ($('#newRadio')[0].checked) {
+            $('#repairAdd').hide();
+            for (var i = 0; i < $('.newAdd').length; i++) {
+                $('.newAdd').show();
+            }
+        } else {
+            $('#repairAdd').show();
+            for (var i = 0; i < $('.newAdd').length; i++) {
+                $('.newAdd').hide();
+            }
+        }
+    });
+
+    // 提交
+    $("#submit").click(function () {
+        $.showPreloader();
+        $.ajax({
+            type: "post",
+            url: "{:U('Mall/Ucenter/serviceRepair')}",
+            //async:false,
+            timeout: 20000,
+            data: $("#form1").serialize(),
+            success: function (data) {
+                $.hidePreloader();
+                console.log(data);
+                if (data.code != 0) {
+                    $.toast(data.msg);
+                } else {
+                    $.toast('提交成功');
+
+                    window.location.href = data.url;
+                }
+            },
+            complete: function (XMLHttpRequest, textStatus) {
+                if (textStatus != 'success') {
+                    $.hidePreloader();
+                }
+            },
+            error: function (xhr, status, type) {
+                if (status == "timeout") {
+                    $.toast("请求超时");
+                }
+                $.hidePreloader();
+            }
+        });
+    });
+
+</script>
+</body>
+<include file="Public:share"/>
+</html>

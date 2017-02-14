@@ -1,0 +1,259 @@
+<include file="Public/header_new" title="商品管理"/>
+<define name="DEFINE_SIDE_MENU_CURRENT" value="Goods"/>
+<include file="Public/sideMenu_new"/>
+
+<link rel="stylesheet" href="/new_theme/common/tablesorter/css/theme.blue.css"/>
+<style type="text/css">
+.goods_url:hover{text-decoration: underline;}
+.goods_url:active{text-decoration: underline;}
+</style>
+<div class="main home" id="main" style="overflow: auto;">
+    <div class="side clearfix" style="width:56px;height:100px;float:left;">
+    </div>
+    <div class="main-container" style="height:auto;">
+        <div class="gdt-toufang gdt-toufang-account">
+            <div class="tuiguang-tab" id="_hSubNav">
+                <ul>
+                    <li style="width:56px"></li>
+                    <li class="goback"><a href="javascript:history.back(-1)"><i></i></a></li>
+                    <li><a href="{:U('MallMenu/index')}" onclick="">商品分类</a></li>
+                    <li><a href="{:U('Tag/index')}" onclick="">商品标签库</a></li>
+                    <li class="on"><a href="{:U('Goods/index')}" onclick="">商品列表</a></li>
+                    <li><a href="{:U('Goods/category')}" onclick="">产品大类</a></li>
+                    <li><a href="{:U('Goods/addGoods')}" onclick="">新增修改</a></li>
+                </ul>
+            </div>
+            <div class="container-box">
+                <div class="row">
+                    <!--<a href="{:U('PartnerApi/Inventory/updateInventory')}" class="btn btn-primary">从ECP商品同步</a>-->
+                    <a href="{:U('Goods/addGoods')}" class="btn btn-success">新增商品</a>
+                </div>
+                <div class="row">
+                    <div class="newcearchbox">
+                        <form class="form-inline" action="" method="get">
+                            <div class="form-group">
+                                <label class="select">
+                                    <select name="menu_id" class="form-control input-lg ">
+                                        <option value="0" selected>所有分类</option>
+                                        {$category}
+                                    </select>
+                                </label>
+                            </div>
+
+                            <div class="input-group">
+                                <input type="text" class="form-control" name="name" placeholder="商品名称">
+                            </div>
+                            <div class="input-group">
+                                <input type="text" class="form-control" name="tags" placeholder="标签">
+                            </div>
+                            <div class="input-group small">
+                                <input type="text" class="form-control" name="sku_id" placeholder="SKU码">
+                            </div>
+                            <!--<div class="form-group">
+                                <label class="select">
+                                    <select name="status" class="form-control input-lg ">
+                                        <option value="-1">状态</option>
+                                        <foreach name="status" item="v">
+                                            <option value="{$key}"
+                                            <eq name="map['status']" value="$key">selected</eq>
+                                            >{$v}</option>
+                                        </foreach>
+                                    </select>
+                                </label>
+                            </div>-->
+                            <button type="submit" class="btn btn-success">查询</button>
+                            <a href="{:U('Admin/Goods/index?action=export', $map)}" class="btn btn-info">导出商品</a>
+                        </form>
+                    </div>
+                </div>
+                <div class="row">
+                    <ul class="nav nav-tabs nav-primary newcearchbox">
+                        <li role="presentation" <eq name='map[status]' value='1'>class="active"</eq>><a href="{:U('Admin/Goods/index',array('status'=>1))}">出售中 ({$statusNum[1] ? $statusNum[1] : 0})</a></li>
+                        <li role="presentation" <eq name='map[status]' value='0'>class="active"</eq>><a href="{:U('Admin/Goods/index',array('status'=>0))}">仓库中 ({$statusNum[1] ? $statusNum[0] : 0})</a></li>
+                        <li role="presentation" <eq name='map[status]' value='2'>class="active"</eq>><a href="{:U('Admin/Goods/index',array('status'=>2))}">已删除 ({$statusNum[1] ? $statusNum[2] : 0})</a></li>
+                    </ul>
+                </div>
+                <div class="row newcearchbox">
+                    <table class="table table-hover tablesorter  tablesorter-blue" role="grid">
+                        <thead>
+                        <tr class="">
+                            <th width="3%" class="tablesorter-header tablesorter-headerAsc"></th>
+                            <th width="20%" class="tablesorter-header tablesorter-headerAsc">商品详情</th>
+                            <th width="6.5%" class="tablesorter-header tablesorter-headerAsc">sku_id</th>
+                            <th width="6.5%">商品价格</th>
+                            <th width="6.5%" class="tablesorter-header tablesorter-headerAsc">商品佣金</th>
+                            <th width="6.5%">库存</th>
+                            <th width="6.5%">总销量</th>
+                            <th width="6.5%">点击量</th>
+                            <th width="6.5%" class="tablesorter-header tablesorter-headerAsc">排序</th>
+                            <th width="6.5%" class="tablesorter-header tablesorter-headerAsc">分类</th>
+                            <th width="6.5%" class="tablesorter-header tablesorter-headerAsc">标签</th>
+                            <th width="6.5%" class="tablesorter-header tablesorter-headerAsc">创建日期</th>
+                            <th width="6.5%" class="tablesorter-header tablesorter-headerAsc">操作</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <volist name="list" id="l" key="k">
+                            <tr>
+                                <td align="center"  scope="row">{$k}</td>
+                                <td>
+                                    <div class="media">
+                                        <div class="media-left">
+                                            <a href="{:U('Goods/updateGoods',array('id'=>$l['id']))}">
+                                                <img class="media-object"
+                                                     src="/uploads/{$l.image}" alt="{$l.name}"/>
+                                            </a>
+                                        </div>
+                                        <div class="media-body">
+                                            <h4 class="media-heading">{$l.name}</h4>
+                                            {$l.description}
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>{$l.sku_id}</td>
+                                <td>{$l.price|convert_money}</td>
+                                <td>{$l.commission|convert_money}</td>
+                                <td>
+                                    <if condition="$l.is_ecp eq 1">
+                                    <a data-toggle="modal" data-target="#exampleModal" data-skuid="{$l.sku_id}" class="fencang" >查看分仓库存</a>
+                                    <else />
+                                        {$l.stock}
+                                    </if>
+                                </td>
+                                <td>{$l.sales_volume}</td>
+                                <td>{$l.click}</td>
+                                <td>{$l.sort}</td>
+                                <td>{$l.menu_id|getclassname}</td>
+                                <td>{$l.tags}</td>
+                                <td>{$l.create_time|date="Y-m-d H:i:s",###}</td>
+                                <td>
+                                    <eq name="l.top" value="1">
+                                        <a href="{:U('Goods/toTop',array('id'=>$l['id']))}">取消置顶</a>
+                                        <else/>
+                                        <a href="{:U('Goods/toTop',array('id'=>$l['id'],'top'=>1))}">置顶</a>
+                                    </eq>
+                                    <eq name="l.status" value="1">
+                                        <a href="{:U('Goods/offTheShelf',array('id'=>$l['id']))}">下架</a><br>
+                                        <else/>
+                                        <a href="{:U('Goods/offTheShelf',array('id'=>$l['id'],'status'=>1))}">上架</a><br>
+                                    </eq>
+
+                                    <a href="{:U('Goods/updateGoods',array('id'=>$l['id']))}">修改</a>
+                                    <a href="{:U('Admin/Goods/copyGoods', array('id'=>$l['id']))}" onclick="return confirm('确定要复制商品吗?')">复制商品</a>
+                                    <a href="{:U('Goods/delGood',array('id'=>$l['id']))}"
+                                       onclick="return confirm('确定要删除吗?')">删除</a><br>
+                                    <a href="javascript:;" onclick="preview('{:U('Admin/Goods/preview', array('id'=>$l['id']), true, true)}')">预览</a>
+                                    <a class="goods_url"
+                                       data-href="{$Think.const.HOME_URL}{:U('Mall/Index/detail',array('id'=>$l['id']))}"
+                                       href="javascript:void(0)">复制链接</a>
+                                </td>
+                            </tr>
+                        </volist>
+                        </tbody>
+                    </table>
+                    <div id="page">
+                        {$page}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<!--查看ecp库存-->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-body">
+                <table class="table table-hover" role="grid">
+                    <thead>
+                        <tr>
+                            <th width="20">sku编号</th>
+                            <th width="20%">仓库代码</th>
+                            <th width="20%">仓库名称</th>
+                            <th width="20%">库存</th>
+                            <th width="20%">更新时间</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary btn-lg" data-dismiss="modal">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/new_theme/common/sui/sui.min.js"></script>
+<script type="text/javascript" src="/new_theme/common/tablesorter/js/jquery.tablesorter.js"></script>
+<script type="text/javascript" src="/new_theme/common/tablesorter/js/jquery.tablesorter.widgets.min.js"></script>
+<script type="text/javascript" src="/new_theme/common/zclip/jquery.zclip.min.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $("a.goods_url").each(function () {
+            var t = $(this);
+            t.zclip({
+                path: "/new_theme/common/zclip/ZeroClipboard.swf",
+                copy: function () {
+                    return t.attr("data-href").toString();
+                }
+            });
+        });
+
+        // call the tablesorter plugin
+        $("table").tablesorter({
+            theme : 'blue',
+            headers:{
+                0:{sorter:false},
+                1:{sorter:false},
+                2:{sorter:false},
+                4:{sorter:false},
+                8:{sorter:false},
+                9:{sorter:false},
+                10:{sorter:false},
+                11:{sorter:false},
+                12:{sorter:false},
+            }
+        });
+
+        // ajax查看分仓库存
+        $('a.fencang').click(function(){
+            var sku_id = $(this).data('skuid');
+            $.post("{:U('Admin/Goods/warehouse')}",{sku_id: sku_id},
+                function(data){
+                    console.log(data);
+                    if(data.code == 0){
+                        var html = '';
+                        $.each(data.data, function(k,v){
+                            html += '<tr>';
+                            html += '<td>' + v.sku_id + '</td>' +
+                                    '<td>' + v.warehouse_code + '</td>' +
+                                    '<td>' + v.warehouse_name + '</td>' +
+                                    '<td>' + v.product_count + '</td>' +
+                                    '<td>' + v.update_time + '</td>';
+                            html += '</tr>';
+                        });
+                        $('#exampleModal').find('tbody').html('').append(html);
+                    } else {
+                        $('#exampleModal').find('tbody').html('<td colspan="5">' + data.msg + '</td>');
+                    }
+                }
+            );
+        });
+    });
+
+    /**
+     * 预览商品
+     */
+    function preview(openUrl) {
+        var iWidth=440; //弹出窗口的宽度;
+        var iHeight=778; //弹出窗口的高度;
+        var iTop = (window.screen.availHeight-30-iHeight)/2; //获得窗口的垂直位置;
+        var iLeft = (window.screen.availWidth-10-iWidth)/2; //获得窗口的水平位置;
+        window.open(openUrl, '', 'height='+iHeight+', width='+iWidth+', top='+iTop+', left='+iLeft+', toolbar=no, menubar=no, scrollbars=no, resizable=no, location=no, status=no');
+    }
+</script>
+</body>
+</html>

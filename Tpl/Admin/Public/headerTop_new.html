@@ -1,0 +1,47 @@
+<header>
+    <div class="header-clearfix">
+        <div class="h-info clearfix">
+            <div class="logo-wrap">
+                <div class="logo">
+                    <a href="{:U('Admin/Index/index')}">
+                        管理
+                        <br/>
+                        平台
+                    </a>
+                </div>
+                <!--<div class="platform-sel _bubble">
+                    <div class="platform-sel-cur switchbutton">
+                        <span class="platform-control"></span>
+                        <i class="platform-sel-tri switchicon" style="display: none;"></i>
+                    </div>
+                </div>-->
+            </div>
+            <div class="user">
+                <div class="user-pic"></div>
+                <div class="user-id">
+                    <p title="" class="company ellipsis">{:session('rolename')}</p>
+                    <p class="id">
+                        <span>用户名:{:session('username')}</span>
+                        <span>帐户ID:{:session('user_id')}</span>
+                    </p>
+                </div>
+            </div>
+            <div class="extra" id="gUserBar">
+                <a class="logout" title="修改密码" href="{:U('Admin/Rbac/changePassword')}">修改密码</a>
+                <a class="logout" id="_logout" title="退出" href="{:U('Admin/login/logout')}">退出</a>
+                <!--<a class="btn-create s-button-right" href="javascript:;" id="createorder" title="新建广告">装修页面</a>-->
+            </div>
+        </div>
+    </div>
+    <div class="top" style="height:56px;;width:100%;"><!--顶部占位--></div>
+</header>
+<!--[if lt IE 11]>
+<div  class="alert alert-warning alert-small" role="alert" style="position: relative;z-index:100;margin-bottom: 0">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <strong>系统检测到您使用的浏览器版本过低，为达到更好的体验效果请升级您的浏览器，我们为您推荐:</strong>
+    <a href="http://www.firefox.com.cn/download/" target="_blank">Firefox浏览器</a>
+    <a href="http://www.maxthon.cn/" target="_blank">遨游浏览器</a>
+    <a href="http://se.360.cn/" target="_blank">360浏览器</a>
+    <a href="http://www.liebao.cn/" target="_blank">猎豹浏览器</a>
+</div>
+<![endif]-->

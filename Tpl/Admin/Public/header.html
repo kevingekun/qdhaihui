@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <title>[title]</title>
+    <meta name="keywords" content="[keywords]">
+    <meta name="description" content="">
+    <!--公用样式文件，不加版本号，通过url参数控制cache -->
+<!--     <link rel="stylesheet" rev="stylesheet" href="__ASSETS__/css/bootstrap3.min.css" type="text/css" media="screen">
+ -->    <link rel="stylesheet" rev="stylesheet" href="__ASSETS__/css/gdt-css-api.css" type="text/css" media="screen">
+    <link rel="stylesheet" rev="stylesheet" href="__ASSETS__/css/gdt-toufang-layout-20150325.css" type="text/css" media="screen">
+    <link rev="stylesheet" rel="stylesheet" href="__ASSETS__/css/gdt-toufang-global-20150323.css" media="screen" type="text/css">
+    <link rev="stylesheet" rel="stylesheet" href="__ASSETS__/css/gdt-toufang-tool-20150610.css" media="screen" type="text/css">
+    <link rel="stylesheet" href="__ASSETS__/css/myjd-2015.css">
+    <link rel="stylesheet" href="__ASSETS__/css/component-min.css">
+    <link rel="stylesheet" href="__ASSETS__/css/app.css">
+    <script src="__ASSETS__/js/jquery.js" type="text/javascript" charset="utf-8"></script>
+    <script src="__ASSETS__/js/scrollheight.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+<div class="wrapper clearfix" id="root">
+    <div class="header clearfix">
+        <div class="h-info clearfix">
+            <div class="logo-wrap">
+                <div class="logo"><a href="{:U('Admin/Index/index')}" ></a></div>
+                <!--<div class="platform-sel _bubble" rel="bubbleIndex.switchsite" id="_switch_site">
+                    <div style="cursor: default;" class="platform-sel-cur switchbutton">
+                        <span class="platform-control"></span>
+                        <i class="platform-sel-tri switchicon" style="display: none;"></i>
+                    </div>
+                </div>-->
+            </div>
+            <div class="user" id="headerAccountInfo" data-hottag="atlas.topbar.blockaccount">
+                <div class="user-pic"></div>
+                <div class="user-id">
+                    <p title="" class="company ellipsis _accountname">{:session('rolename')}</p>
+
+                    <p class="id _accountid"><span>{:session('username')}/帐户ID:{:session('user_id')}</span></p>
+                </div>
+            </div>
+            <div class="operate">
+                <div class="message" id="gMessageWrap">
+                    <div class="inner _js_inner">
+                    </div>
+                </div>
+            </div>
+            <div class="extra" id="gUserBar">
+                <!--<a class="logout" title="反馈建议" href="{:U('Home/Index/modifypassword')}" >修改密码</a>-->
+                <a class="logout" id="_logout" href="{:U('Admin/login/logout')}" title="退出">退出</a>
+                <!--<a class="btn-create s-button-right" href="{:U('Home/Index/shop')}" id="createorder" title="申请设备">装修店铺</a>-->
+            </div>
+        </div>
+    </div>
+    <div class="top" style="height:56px;;width:100%;"><!--顶部占位--></div>
+    <div class="top" style="height: 31px; width: 100%;display:none;" id="ErrorStatusTipsHolder"><!--顶部小黄条占位--></div>

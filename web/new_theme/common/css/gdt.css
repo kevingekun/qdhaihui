@@ -1,0 +1,123 @@
+a:hover{
+    text-decoration: none;
+}
+/*html,body{height:100%}*/
+/*.invisible{position:absolute;clip:rect(1px 1px 1px 1px);clip:rect(1px,1px,1px,1px);padding:0;border:0;height:1px;width:1px}*/
+/*html{font-size:62.5%}*/
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,button,textarea,p,blockquote,th,td,hr{margin:0;padding:0}
+/*body{font:12px/1.5 tahoma,arial,\5b8b\4f53;color:#333}*/
+/*h1,h2,h3,h4,h5,h6{font-size:100%}*/
+/*table{border-collapse:collapse;border-spacing:0}*/
+li{list-style:none}
+/*img,iframe{border:0}*/
+/*a{text-decoration:none;background:transparent}*/
+/*label{cursor:pointer}*/
+/*hr{-moz-box-sizing:content-box;box-sizing:content-box;height:0}*/
+/*sup{vertical-align:text-top}*/
+/*sub{vertical-align:text-bottom}*/
+/*input,textarea,select,button{font-family:inherit;font-size:100%}*/
+/*input[type="button"],input[type="submit"],select,button{cursor:pointer}*/
+/*button[disabled],html input[disabled]{cursor:default}*/
+/*input[type="text"]::-ms-clear,input[type="password"]::-ms-clear{display:none}*/
+/*textarea{overflow-y:auto;vertical-align:top}*/
+/*article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,summary{display:block}*/
+/*audio,canvas,video{display:inline-block}*/
+/*audio:not([controls]){display:none;height:0}*/
+[hidden],template{display:none}
+.clearfix:before,.clearfix:after{content:".";display:block;height:0;font-size:0;visibility:hidden}
+.clearfix:after{clear:both}
+.clearfix{zoom:1}
+.header-clearfix{position:fixed;top:0;left:0;z-index:99;background:#2F3440;width:100%}
+.header-clearfix .logo-wrap{float:left;width:232px;height:56px}
+.header-clearfix  .logo{width:56px;padding: 10px 0 0 15px;float:left}
+.header-clearfix .logo a{display:block;width:46px;height:46px;line-height: 18px;font-size:16px;color:#8F9093;font-family: Microsoft YaHei;}
+.header-clearfix .h-info{height:56px}
+.header-clearfix .platform-sel{float:left;margin-top:18px;position:relative}
+.header-clearfix .platform-sel .platform-sel-cur{position:relative;margin-left: 20px;width:100px;height:22px;line-height:18px;padding:0 3px;cursor:pointer;
+    background-image: url(sprite/hisense.png);}
+.header-clearfix .platform-sel .platform-sel-cur span,.header .platform-sel-list a span{display:inline-block;font-size:18px;color:#8F9093;font-family:Microsoft YaHei}
+.header-clearfix .platform-sel .platform-sel-cur .platform-sel-tri{width:0;height:0;font-size:0;display:inline-block;position:absolute;border-color:#818387 transparent transparent transparent;border-style:solid dashed dashed dashed;right:8px;top:8px;border-width:6px}
+.header-clearfix .platform-sel-hov .platform-sel-cur{border:1px solid #212732;background-color:#2F3440;border-bottom:none}
+.header-clearfix .platform-sel-list{border:1px solid #212732;border-top:none;background-color:#2F3440;position:absolute;top:38px;left:0;width:106px}
+.header-clearfix .platform-sel-list a{display:block;padding:7px 3px}
+.header-clearfix .platform-sel-list a:hover{background-color:#3B404A}
+.header-clearfix .platform-sel-hov .platform-sel-list{display:block}
+.header-clearfix .user{float:left;width:270px;height:56px;padding-left:16px;cursor:pointer;border:1px solid #3d414c;border-width:0 1px;position:relative}
+.header-clearfix .user:hover{background-color:#383D47}
+.header-clearfix .user .user-pic{float:left;width:23px;height:25px;overflow:hidden;background-image:url(sprite/gdt-toufang-global-20151014.32.png);background-position:-92px 0;margin:15px 7px 0 0}
+.header-clearfix .user .user-id{overflow:hidden;zoom:1;margin-top:9px}
+.header-clearfix .user .company{width:230px;height:20px;white-space:nowrap;text-overflow:ellipsis;font-size:12px;font-weight:bold}
+.header-clearfix .user p{color:#CFCFD0;line-height:20px;width:270px;overflow:hidden}
+.header-clearfix .user p.id{color:#828284}
+.header-clearfix .user p.id span{margin-right:15px}
+.header-clearfix .user-logon{background-color:#3C96C3;position:relative;border-color:#3C96C3}
+.header-clearfix .user-logon:hover{background-color:#3C96C3}
+.header-clearfix .user .user-logon-list{display:none}
+.header-clearfix .user-logon .user-logon-list{display:block}
+.header-clearfix .user-logon p{color:#F0F6FA}
+.header-clearfix .user-logon p.id{color:#DBE9F2}
+.header-clearfix .extra{float:right;text-align: center;line-height: 54px;}
+.header-clearfix .extra *{vertical-align:middle}
+.header-clearfix .extra .logout{color:#828284;margin-right:10px;cursor:pointer}
+.header-clearfix .extra a:hover.logout{text-decoration:underline}
+.header-clearfix .extra .btn-create{display:inline-block;width:125px;height:56px;line-height:56px;margin-left:16px;color:#fff;font-weight:900;font-size:14px;text-align:center}
+.wrapper{height:100%}
+.wrapper .aside{height:100%;position:fixed;overflow-y:auto;z-index:98;top:0;left:0;width:56px;background:#383d49}
+.wrapper .aside a{color:#797577}
+.wrapper .aside .menu-tree{margin-top:82px}
+.wrapper .aside .menu-tree .menu{display:block;text-align:center;padding:5px 0;position:relative;height:75px;margin-bottom:5px}
+.wrapper .aside .menu-tree .menu .currentline{height:75px;width:4px;background:#de3232;position:absolute;top:0;left:0;display:none}
+.wrapper .aside .menu-tree .current .currentline{display:block}
+.wrapper .aside .menu-tree a:hover.menu{background:#383D47;border-left-color:#383D47}
+.wrapper .aside .menu-tree a:hover.current{}
+.wrapper .aside .menu-tree .ico{width:30px;height:30px;margin:6px 0 4px;display:inline-block}
+.wrapper .aside .menu-tree .ico-home{background-image:url(sprite/sidebar.png);background-position:0 0}
+.wrapper .aside .menu-tree .current .ico-home{background-image:url(sprite/sidebar.png);background-position:30px 0}
+.wrapper .aside .menu-tree .ico-partner{background-image:url(sprite/sidebar.png);background-position:0 -30px}
+.wrapper .aside .menu-tree .current .ico-partner{background-image:url(sprite/sidebar.png);background-position:-30px -30px}
+.wrapper .aside .menu-tree .ico-sheet{background-image:url(sprite/sidebar.png);background-position:0 -60px}
+.wrapper .aside .menu-tree .current .ico-sheet{background-image:url(sprite/sidebar.png);background-position:-30px -60px}
+.wrapper .aside .menu-tree .ico-generalize{background-image:url(sprite/sidebar.png);background-position:0 -90px}
+.wrapper .aside .menu-tree .current .ico-generalize{background-image:url(sprite/sidebar.png);background-position:-30px -90px}
+.wrapper .aside .menu-tree .ico-finance{background-image:url(sprite/sidebar.png);background-position:0 -120px}
+.wrapper .aside .menu-tree .current .ico-finance{background-image:url(sprite/sidebar.png);background-position:-30px -120px}
+.wrapper .aside .menu-tree .ico-activity{background-image:url(sprite/sidebar.png);background-position:0 -150px}
+.wrapper .aside .menu-tree .current .ico-activity{background-image:url(sprite/sidebar.png);background-position:-30px -150px}
+.wrapper .aside .menu-tree .ico-tool{background-image:url(sprite/sidebar.png);background-position:0 -180px}
+.wrapper .aside .menu-tree .current .ico-tool{background-image:url(sprite/sidebar.png);background-position:-30px -180px}
+.wrapper .home{background:#e1e5e9}
+.gdt-toufang{height:100%;overflow:auto;}
+.gdt-toufang .page{margin:40px 0}
+.gdt-ti{padding:20px 0 0 20px;font-size:12px}
+.gdt-ti .hd{padding-bottom:10px}
+.gdt-ti .ti-title{font-size:16px;color:#363636}
+.gdt-ti .ti-item{float:left;border:1px solid #DDDFE1;padding:20px;margin-right:15px;margin-bottom:10px;cursor:pointer;background-color:#fff;box-shadow:0 1px 0 #E6E7E8}
+.gdt-ti .ti-item:hover{background-color:#f2f3f4}
+.gdt-ti .ti-item .item-icon{height:60px;width:60px;float:left}
+.gdt-ti .ti-item .item-icon-qx{background-image:url(sprite/gdt-toufang-tool-20150820.png);background-position:0 0}
+.gdt-ti .ti-item .item-icon-tz{background-image:url(sprite/gdt-toufang-tool-20150820.png);background-position:0 -62px}
+.gdt-ti .ti-item .item-icon-account{background-image:url(sprite/gdt-toufang-tool-20150820.png);background-position:0 -124px}
+.gdt-ti .ti-item .item-icon-proof{background-image:url(sprite/gdt-toufang-tool-20150820.png);background-position:0 -186px}
+.gdt-ti .ti-item .item-icon-log{background-image:url(sprite/gdt-toufang-tool-20150820.png);background-position:0 -248px}
+.gdt-ti .ti-item .item-icon-bound{background-image:url(sprite/gdt-toufang-tool-20150820.png);background-position:-62px 0}
+.gdt-ti .ti-item .item-icon-fk{background-image:url(sprite/gdt-toufang-tool-20150820.png);background-position:-62px -62px}
+.gdt-ti .ti-item .item-icon-dx{background-image:url(sprite/gdt-toufang-tool-20150820.png);background-position:-62px -124px}
+.gdt-ti .ti-item .item-icon-mt{background-image:url(sprite/gdt-toufang-tool-20150820.png);background-position:-62px -186px}
+.gdt-ti .ti-item .item-icon-fl{background-image:url(sprite/gdt-toufang-tool-20150820.png);background-position:-62px -248px}
+.gdt-ti .ti-item strong .make{font-weight:normal}
+.gdt-ti .ti-item strong .make .fl-logo{display:inline-block;height:10px;width:10px;line-height:10px;position:relative}
+.gdt-ti .ti-item strong .make .fl-logo i{display:inline-block;height:37px;width:37px;position:absolute;top:-4px;left:0;background-image:url(sprite/gdt-toufang-tool-20150820.png);background-position:0 -310px}
+.gdt-ti .ti-item-pic{float:left;width:60px;height:60px;display:block;margin-right:12px}
+.gdt-ti .ti-item-con{overflow:hidden;zoom:1;line-height:22px;color:#666;width:210px;margin-left: 10px;float:right}
+.gdt-ti .ti-item-con strong{color:#666;display:block;margin-top:-3px}
+.gdt-ti .ti-item-con p{height:40px;line-height:20px;overflow:hidden}
+.gdt-ti .ti-item-con a{color:#666}
+.tuiguang-tab{width:100%;height:auto;border-bottom:1px solid #d0d0d0;position:fixed;z-index:97;margin-left:-56px;background:#fff}
+.tuiguang-tab ul{height:45px;overflow:hidden;width:auto;float:left}
+.tuiguang-tab li{float:left;height:44px;text-align:center;font-size:16px;font-weight:900;position:relative}
+.tuiguang-tab li.place{width:56px}
+.tuiguang-tab li a{display:block;height:44px;line-height:44px;padding:0 60px;color:#555;border-bottom:2px solid #fff}
+.tuiguang-tab li a:hover{text-decoration:none}
+.tuiguang-tab li.on a{color:#2b7ed1;border-bottom-color:#2b7ed1}
+.tuiguang-tab .goback,.tuiguang-tab .goback a{width:70px;height:45px;position:relative}
+.tuiguang-tab .goback i{display:inline-block;width:23px;height:22px;background-image:url(sprite/gdt-toufang-global-20151014.png);background-position:-109px -116px;position:absolute;top:12px;left:20px}

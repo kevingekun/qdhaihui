@@ -1,0 +1,24 @@
+<include file="Public:header" title="活动专区"  />
+<body>
+<!-- page 容器 -->
+<div class="page page-current">
+    <div class="content con-nav native-scroll" style="background-color:#fd3c4d">
+        <div class="group-head">
+            <img src="__ASSETS__/img/yushou_header.png" alt=""/>
+        </div>
+        <br>
+        <div class="group-list">
+        <volist name="list" id="l">
+            <div class="group-item">
+                <div class="img">
+                    <img src="/uploads/{$l.act_image}">
+                    <a class="group-buy" href="{:U('bookingBespoke', array('id'=>$l['goods_id'],'aid'=>$l['act_id']))}">马上预订</a>
+                </div>
+                <div class="group-goods">{$l.goods_info.name}</div>
+            </div>
+        </volist>
+        </div>
+    </div>
+</div>
+</body>
+</html>

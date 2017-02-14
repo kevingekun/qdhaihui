@@ -1,0 +1,110 @@
+<include file="Public/header" />
+<div class="container" style="margin-top: 50px;">
+    <div class="row">
+        <div class="newcearchbox">
+            <form class="form-inline" action="" method="post">
+                <div class="input-group input-group-lg pull-left new-right">
+                    <input type="text" class="form-control" placeholder="产品名称" aria-describedby="sizing-addon1">
+                </div>
+                <div class="input-group input-group-lg pull-left new-right">
+                    <input type="text" class="form-control" placeholder="商品货号" aria-describedby="sizing-addon1">
+                </div>
+                <div class="form-group input-daterange pull-left new-right" data-toggle="datepicker">
+                    <input type="text" class="form-control input-date" placeholder="开始日期"> -
+                    <input type="text" class="form-control input-date" placeholder="结束日期">
+                </div>
+                <div class="form-group">
+                    <label class="select">
+                        <select class="form-control input-lg ">
+                            <option>网银支付</option>
+                            <option>支付宝</option>
+                            <option>微信支付</option>
+                            <option>货到付款</option>
+                        </select>
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label class="select">
+                        <select class="form-control input-lg ">
+                            <option>配送方式</option>
+                            <option>自提</option>
+                            <option>快递</option>
+                        </select>
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label class="select">
+                        <select class="form-control input-lg ">
+                            <option>合伙人</option>
+                            <option>粉丝</option>
+                        </select>
+                    </label>
+                </div>
+
+                <button type="button" class="btn btn-success new-left">查询</button>
+                <button type="button" class="btn btn-info new-left">导出商品</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="row">
+        <ul class="nav nav-tabs nav-primary newcearchbox">
+            <li role="presentation" class="active"><a href="#">所有订单</a></li>
+            <li role="presentation"><a href="#">待发货 <span class="badge">3</span></a></li>
+            <li role="presentation"><a href="#">待收货 <span class="badge">3</span></a></li>
+            <li role="presentation"><a href="#">交易完成</a></li>
+            <li role="presentation"><a href="#">已关闭</a></li>
+        </ul>
+    </div>
+    <div class="row newcearchbox">
+        <table class="table table-hover table-bordered">
+            <thead>
+            <tr class="">
+                <th width="2%"></th>
+                <th width="10%">昵称</th>
+                <th width="10%">手机</th>
+                <th width="10%">姓名</th>
+                <th width="10%">标签</th>
+                <th width="10%">分组</th>
+                <th width="10%">等级</th>
+                <th width="10%">推荐人</th>
+                <th width="10%">总消费金额</th>
+                <th width="10%">成交订单数</th>
+                <th width="10%">发展下级数量</th>
+                <th width="10%">下级成交金额</th>
+                <th width="10%">注册时间</th>
+                <th width="10%">操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            <volist name="list" id="vo">
+            <tr>
+                <th class="center" scope="row">{$vo.uid}</th>
+                <td>{$vo.nickname}</td>
+                <td>{$vo.phone}</td>
+                <td>{$vo.realname}</td>
+                <td>标签</td>
+                <td>分组</td>
+                <td>等级</td>
+                <td>{$vo.invite_nickname}</td>
+                <td>{$vo.sum_total_price|intval}</td>
+                <td>{$vo.count_order_id|intval}</td>
+                <td>发展下级数量</td>
+                <td>下级成交金额</td>
+                <td>{$vo.create_time|date="Y-m-d",###}</td>
+                <td>到期时间</td>
+                <td>
+                    <a href="">删除</a>
+                    <br>
+                    <a href="">编辑</a>
+                    <br>
+                    <a href="">查看详情</a>
+                </td>
+            </tr>
+            </volist>
+            </tbody>
+        </table>
+        {$page}
+    </div>
+</div>
+<include file="Public/footer" />

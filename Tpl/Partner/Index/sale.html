@@ -1,0 +1,38 @@
+<include file="Index/header" title="销售金额"/>
+<div class="content con-nav">
+    <div class="par-center">
+        <div class="par-center-bg">
+            <img src="__ASSETS__/index/img/bg1.jpg" alt="" width="100%"/>
+        </div>
+        <div class="">
+
+        </div>
+    </div>
+    <div class="content-block-title">销售金额</div>
+    <div class="content-padded push-main">
+        <div class="list-block">
+            <ul>
+                <volist name="list" key="key" id="vo">
+                <li class="item-content">
+                    <div class="item-media start">
+                        <!--<div style="width:100%"></div>-->
+                        <!--<img src="__ASSETS__/partner/img/start.png" alt="" width="1
+                        5" height="15"/>-->
+                    </div>
+                    <div class="num">{$key}</div>
+                    <div class="item-media push-image">
+                        <img src="{$vo.headimgurl}" alt="" width="100%"/>
+                    </div>
+                    <div class="item-inner">
+                        <div class="item-title">{$vo.nickname}</div>
+                        <div class="item-after">
+                            ￥{$vo.total_price|convert_money}
+                        </div>
+                    </div>
+                </li>
+                </volist>
+            </ul>
+        </div>
+    </div>
+</div>
+<include file="Index/footer"/>

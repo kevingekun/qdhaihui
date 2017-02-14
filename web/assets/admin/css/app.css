@@ -1,0 +1,650 @@
+.combopanels-container:after,.data-indices:after,.dichromatic-pies:after,.flow-index .content:after,.flow-index .sub-header:after,.flow-index-trend .content .selected-indices:after,.ui-combopanel.inline-combopanel .ui-combopanel-groups:after,.ui-dialog.trend-dialog .ui-dialog-content .charts-wrapper:after{
+	clear:both
+}
+
+.oui-animated{
+	-webkit-animation-duration:.5s;
+	animation-duration:.5s;
+	-webkit-animation-fill-mode:both;
+	animation-fill-mode:both
+}
+
+.oui-animated--infinite{
+	-webkit-animation-iteration-count:infinite;
+	animation-iteration-count:infinite
+}
+
+.flow-index .table.table-diff{
+	margin:0;
+	padding:0
+}
+
+.flow-index .table.table-diff .table-caption-bar{
+	text-align:center;
+	margin:15px 0
+}
+
+.flow-index .table.table-diff .table-caption-bar .self-bar{
+	background-color:#5ea9f8;
+	width:20px;
+	height:9px;
+	display:inline-block;
+	border-radius:5px;
+	margin-right:8px
+}
+
+.flow-index .table.table-diff .table-caption-bar .self-text{
+	margin-right:30px
+}
+
+.flow-index .table.table-diff .table-caption-bar .diff-bar{
+	background-color:#b5d26b;
+	width:20px;
+	height:9px;
+	display:inline-block;
+	border-radius:5px;
+	margin-right:8px
+}
+
+.flow-index .table.table-diff .table-header{
+	height:20px;
+	margin-bottom:8px;
+	line-height:20px;
+	font-weight:700
+}
+
+.flow-index .table.table-diff .table-header>li{
+	display:inline-block;
+	font-weight:700
+}
+
+.flow-index .table.table-diff .table-body>li{
+	height:53px;
+	list-style:none;
+	border-bottom:1px dotted #e0e0e0
+}
+
+.flow-index .table.table-diff .table-body>li .cell{
+	display:inline-block;
+	vertical-align:middle;
+	line-height:52px
+}
+
+.flow-index .table.table-diff .table-body>li .cell>.diff,.flow-index .table.table-diff .table-body>li .cell>.self{
+	line-height:26px
+}
+
+.flow-index .table.table-diff .table-body>li:first-child{
+	border-top:1px solid #e0e0e0
+}
+
+.flow-index .table.table-diff .name{
+	width:20%;
+	text-align:left
+}
+
+.flow-index .table.table-diff .value{
+	width:15%;
+	text-align:right;
+	padding-right:10px
+}
+
+.flow-index .table.table-diff .bar{
+	width:23%;
+	text-align:left
+}
+
+.flow-index .table.table-diff .bar>.bar-line{
+	display:block;
+	min-width:2%;
+	height:9px!important;
+	border-radius:5px
+}
+
+.flow-index .table.table-diff .bar>.bar-line.self{
+	margin-top:9px;
+	margin-bottom:16px;
+	background-color:#5ea9f8
+}
+
+.flow-index .table.table-diff .bar>.bar-line.diff{
+	margin-bottom:9px;
+	background-color:#b5d26b
+}
+
+.flow-index .table.table-diff .rate{
+	width:18%;
+	text-align:right
+}
+
+.flow-index .table.table-diff .rate-change{
+	width:24%;
+	text-align:right
+}
+
+.flow-index .table.table-diff .rate-change .diff,.flow-index .table.table-diff .rate-change .self{
+	position:relative
+}
+
+.flow-index .table.table-diff .rate-change .diff>i,.flow-index .table.table-diff .rate-change .self>i{
+	top:7px;
+	right:-18px;
+	position:absolute
+}
+
+.flow-index .table.table-simple-line{
+	margin:0;
+	padding:0
+}
+
+.flow-index .table.table-simple-line .name{
+	width:30%;
+	text-align:left
+}
+
+.flow-index .table.table-simple-line .value{
+	width:20%;
+	text-align:right;
+	padding-right:10px
+}
+
+.flow-index .table.table-simple-line .bar{
+	width:30%;
+	text-align:left
+}
+
+.flow-index .table.table-simple-line .bar .part-rate{
+	min-width:2%
+}
+
+.flow-index .table.table-simple-line .rate{
+	width:20%;
+	text-align:right
+}
+
+.flow-index .table.table-simple-line .table-header{
+	border-bottom:1px solid #e1e1e1;
+	padding-top:15px;
+	padding-bottom:4px
+}
+
+.flow-index .table.table-simple-line .table-header>li{
+	display:inline-block;
+	font-weight:700
+}
+
+.flow-index .table.table-simple-line .table-body>li{
+	padding:7px 0
+}
+
+.flow-index .table.table-simple-line .table-body>li .cell{
+	display:inline-block;
+	vertical-align:middle
+}
+
+.flow-index .table.table-simple-line .table-body>li .part-rate{
+	display:inline-block;
+	border-radius:5px;
+	height:10px;
+	background-color:#5ea9f8
+}
+
+.flow-index .table.table-simple-pic{
+	margin:0;
+	padding:0
+}
+
+.flow-index .table.table-simple-pic .name{
+	width:40%;
+	text-align:left
+}
+
+.flow-index .table.table-simple-pic .value{
+	width:20%;
+	text-align:right
+}
+
+.flow-index .table.table-simple-pic .rate{
+	width:26%;
+	text-align:right
+}
+
+.flow-index .table.table-simple-pic .action{
+	width:14%;
+	text-align:right
+}
+
+.flow-index .table.table-simple-pic .table-header{
+	border-bottom:1px solid #e1e1e1;
+	padding-top:15px;
+	padding-bottom:4px
+}
+
+.flow-index .table.table-simple-pic .table-header>li{
+	display:inline-block;
+	font-weight:700
+}
+
+.flow-index .table.table-simple-pic .table-body>li{
+	border-top:1px dotted #e1e1e1;
+	padding:10px 0
+}
+
+.flow-index .table.table-simple-pic .table-body>li:first-child{
+	border-top:none
+}
+
+.flow-index .table.table-simple-pic .table-body>li .cell{
+	display:inline-block;
+	vertical-align:middle
+}
+
+.flow-index .table.table-simple-pic .table-body>li .cell.rate,.flow-index .table.table-simple-pic .table-body>li .cell.value{
+	line-height:17px
+}
+
+.flow-index .table.table-simple-pic .table-body>li .box-img{
+	float:left;
+	display:inline-block;
+	width:32px;
+	height:32px;
+	margin-right:12px;
+	overflow:hidden
+}
+
+.flow-index .table.table-simple-pic .table-body>li .item-title{
+	color:#555;
+	height:32px;
+	line-height:16px;
+	overflow:hidden
+}
+
+.ui-dialog.trend-dialog.single-column .ui-dialog-locator{
+	width:481px;
+	min-width:481px;
+	overflow:hidden
+}
+
+.ui-dialog.trend-dialog.two-columns .ui-dialog-locator{
+	width:962px;
+	overflow:hidden
+}
+
+.ui-dialog.trend-dialog .ui-dialog-content{
+	padding:0;
+	min-height:285px
+}
+
+.ui-dialog.trend-dialog .ui-dialog-content .actions-bar{
+	height:60px;
+	box-shadow:0 2px 5px 0 rgba(204,204,204,.6);
+	border-bottom:1px solid #d9d9d9
+}
+
+.ui-dialog.trend-dialog .ui-dialog-content .actions-bar .inner-wrapper{
+	padding-right:30px;
+	padding-top:16px;
+	float:right
+}
+
+.ui-dialog.trend-dialog .ui-dialog-content .actions-bar .inner-wrapper>div{
+	margin-left:8px
+}
+
+.ui-dialog.trend-dialog .ui-dialog-content .actions-bar .inner-wrapper .ui-selector{
+	width:200px
+}
+
+.ui-dialog.trend-dialog .ui-dialog-content .charts-wrapper{
+	position:relative;
+	min-height:225px
+}
+
+.flow-index-behavior .table-body,.flow-index-feature .flow-index-feature-area .table-body{
+	position:relative;
+	min-height:155px
+}
+
+.ui-dialog.trend-dialog .ui-dialog-content .charts-wrapper:after,.ui-dialog.trend-dialog .ui-dialog-content .charts-wrapper:before{
+	content:" ";
+	display:table
+}
+
+.ui-dialog.trend-dialog .ui-dialog-content .charts-wrapper .diff-chart{
+	height:225px;
+	width:480px;
+	float:left;
+	padding:15px 20px 0
+}
+
+.ui-dialog.trend-dialog .ui-dialog-content .charts-wrapper .diff-chart.border-right{
+	border-right:1px solid #e6e6e6
+}
+
+.ui-dialog.trend-dialog .ui-dialog-content .charts-wrapper .diff-chart.border-bottom{
+	border-bottom:1px solid #e6e6e6
+}
+
+.ui-dialog.trend-dialog .ui-dialog-content .charts-wrapper .diff-chart .title{
+	font-weight:700;
+	color:#666;
+	margin-bottom:20px
+}
+
+.ui-dialog.trend-dialog .ui-dialog-content .charts-wrapper .diff-chart .legends{
+	color:#999
+}
+
+.ui-dialog.trend-dialog .ui-dialog-content .charts-wrapper .diff-chart .legends .legend-self{
+	width:24px;
+	display:inline-block;
+	vertical-align:3px;
+	margin-left:4px;
+	margin-right:14px;
+	border-bottom:2px solid #3782c8
+}
+
+.ui-dialog.trend-dialog .ui-dialog-content .charts-wrapper .diff-chart .legends .legend-diff{
+	width:24px;
+	display:inline-block;
+	vertical-align:3px;
+	margin-left:4px;
+	border-bottom:2px dotted #3782c8
+}
+
+.ui-dialog.trend-dialog .ui-dialog-content .charts-wrapper .diff-chart .compare-chart{
+	height:150px;
+	width:439px
+}
+
+.flow-index-feature .flow-index-feature-area,.flow-index-feature .flow-index-feature-period{
+	height:290px;
+	border-bottom:1px solid #e0e0e0
+}
+
+.flow-index-feature .flow-index-feature-gender,.flow-index-feature .flow-index-feature-structure{
+	height:230px;
+	border-bottom:1px solid #e0e0e0
+}
+
+.flow-index-feature .flow-index-feature-structure .sub-content{
+	position:relative;
+	min-height:100px
+}
+
+.flow-index-feature .flow-index-feature-gender .table-body{
+	min-height:93px;
+	position:relative
+}
+
+.flow-index-feature-period .sub-content{
+	position:relative;
+	min-height:210px;
+	padding-top:14px
+}
+
+.flow-index-feature-period .sub-content .data-explanation{
+	background:#f5f5f5;
+	line-height:18px;
+	height:66px;
+	padding:16px
+}
+
+.flow-index-feature-period .sub-content .data-explanation strong{
+	color:#f93;
+	font-weight:400
+}
+
+.flow-index-feature-period .sub-content .period-chart{
+	height:130px
+}
+
+.flow-index-data-explanation{
+	padding:0 30px
+}
+
+.flow-index-general .content{
+	padding:30px 0;
+	position:relative;
+	height:141px
+}
+
+.flow-index-source .table-body{
+	min-height:530px;
+	position:relative
+}
+
+.flow-index-source .table-body .cell .icon-money{
+	margin-left:4px
+}
+
+.flow-index-source .table-body .cell .trend{
+	width:58px;
+	color:#777;
+	display:inline-block;
+	margin-left:6px;
+	text-align:left;
+	white-space:nowrap
+}
+
+.flow-index-source .table-body .cell .trend .icon-trend{
+	margin-right:3px
+}
+
+.flow-index-source-tips{
+	width:100px
+}
+
+.flow-index-source-tips .content-cnt{
+	margin-right:-4px
+}
+
+.flow-index-trend .content{
+	padding:30px
+}
+
+.flow-index-trend .content .chart-wrapper{
+	position:relative;
+	min-height:180px
+}
+
+.flow-index-trend .content .chart-wrapper .ui-commonchart{
+	height:180px
+}
+
+.flow-index-trend .content .operations{
+	margin-top:15px
+}
+
+.flow-index-trend .content .operations .btn>[class^=icon-]{
+	margin-right:5px
+}
+
+.flow-index-trend .content .selected-indices{
+	height:46px;
+	line-height:26px;
+	color:#999;
+	padding:10px 0;
+	border-top:1px dotted #e5e5e5
+}
+
+.flow-index-trend .content .selected-indices:after,.flow-index-trend .content .selected-indices:before{
+	content:" ";
+	display:table
+}
+
+.flow-index-trend .content .indices-comments{
+	color:#999;
+	line-height:26px;
+	margin-top:4px
+}
+
+.flow-index-trend .content .indices-comments strong{
+	color:#f93;
+	font-weight:400;
+	padding:0 4px
+}
+
+.flow-index-trend .content .bordered-tag{
+	display:inline-block;
+	height:26px;
+	line-height:24px;
+	padding:0 7px;
+	border:1px solid #b2d8ee;
+	margin-right:7px
+}
+
+.flow-index .operation-btns{
+	margin-top:14px
+}
+
+.flow-index .operation-btns>div{
+	float:left;
+	margin-left:10px
+}
+
+.flow-index .content:after,.flow-index .content:before{
+	content:" ";
+	display:table
+}
+
+.flow-index .sub-header:after,.flow-index .sub-header:before{
+	content:" ";
+	display:table
+}
+
+.flow-index .sub-header>h5{
+	float:left;
+	color:#333;
+	font:400 16px "微软雅黑","黑体","Hiragino Sans GB","WenQuanYi Micro Hei",sans-serif
+}
+
+.flow-index .sub-header>h5 .icon-title{
+	margin-right:10px
+}
+
+.flow-index .sub-header>a{
+	float:right;
+	font:12px/26px "宋体",STHeiti,"Hiragino Mincho ProN","WenQuanYi Bitmap Song",serif
+}
+
+.flow-index .sub-header>a:after{
+	content:'>';
+	margin-left:4px
+}
+
+.flow-index .two-columns{
+	width:524px;
+	float:left;
+	padding:30px
+}
+
+.flow-index .left-column{
+	border-right:1px dotted #e0e0e0
+}
+
+.dichromatic-pies{
+	padding:20px 0
+}
+
+.dichromatic-pies:after,.dichromatic-pies:before{
+	content:" ";
+	display:table
+}
+
+.dichromatic-pie{
+	float:left;
+	width:33%
+}
+
+.dichromatic-pie .pie-container{
+	width:72px;
+	height:72px;
+	margin:auto auto 6px
+}
+
+.dichromatic-pie .info-card{
+	line-height:1.4;
+	position:relative;
+	padding-left:48px
+}
+
+.dichromatic-pie .info-card .dot{
+	content:' ';
+	background-color:inherit;
+	width:8px;
+	height:8px;
+	display:inline-block;
+	position:absolute;
+	border-radius:4px;
+	left:34px;
+	top:4px
+}
+
+.combopanels-container:after,.combopanels-container:before,.data-indices:after,.data-indices:before,.ui-combopanel.inline-combopanel .ui-combopanel-groups:after,.ui-combopanel.inline-combopanel .ui-combopanel-groups:before{
+	content:" ";
+	display:table
+}
+
+.dichromatic-pie .info-card .name{
+	margin-right:10px
+}
+
+.data-indices .data-index{
+	float:left;
+	width:200px;
+	text-align:center
+}
+
+.data-indices .data-index .name{
+	font-size:16px;
+	line-height:18px;
+	color:grey
+}
+
+.data-indices .data-index .value{
+	font-size:24px;
+	line-height:46px;
+	color:#333
+}
+
+.data-indices .data-index .rate .trend{
+	margin-left:24px
+}
+
+.data-indices .data-index .rate .trend>.icon-trend{
+	margin-right:3px
+}
+
+.ui-combopanel.inline-combopanel{
+	float:left
+}
+
+.ui-combopanel.inline-combopanel .ui-combopanel-groups{
+	border-bottom:none
+}
+
+.ui-combopanel.inline-combopanel .ui-combopanel-groups .group-wrapper{
+	float:left;
+	margin-right:40px
+}
+
+.ui-combopanel.inline-combopanel .ui-combopanel-groups .group-wrapper .group,.ui-combopanel.inline-combopanel .ui-combopanel-groups .group-wrapper .group-title{
+	float:left
+}
+
+.ui-combopanel.inline-combopanel .ui-combopanel-groups .group-wrapper .group .checkbox,.ui-combopanel.inline-combopanel .ui-combopanel-groups .group-wrapper .group .radio{
+	min-width:80px
+}
+
+.ui-combopanel.inline-combopanel .ui-combopanel-groups .group-wrapper .group .checkbox>.name,.ui-combopanel.inline-combopanel .ui-combopanel-groups .group-wrapper .group .radio>.name{
+	margin-right:20px
+}
+
+.flow-index-payflag-tips{
+	width:160px
+}
+
+.flow-index-payflag-tips .content-cnt{
+	margin-right:-4px
+}

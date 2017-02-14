@@ -1,0 +1,54 @@
+<include file="Public/header_new" title="工具箱"/>
+<define name="DEFINE_SIDE_MENU_CURRENT" value="Tools"/>
+<include file="Public/sideMenu_new"/>
+
+    <div class="main home" id="main" style="overflow: auto;">
+        <div class="side clearfix" style="width:56px;height:100px;float:left;">
+        </div>
+        <div class="main-container" style="height:auto;">
+            <div class="gdt-toufang gdt-toufang-account">
+                <div class="tuiguang-tab" id="_hSubNav">
+                    <ul>
+                        <li style="width:56px"></li>
+                        <li class="goback"><a href="javascript:history.back(-1)"><i></i></a></li>
+                        <li class="on"><a href="reply.html" onclick="">模板消息管理</a></li>
+                    </ul>
+                </div>
+                <div class="container-box">
+                  <form action="__SELF__" method="post">
+                    <div class="row newcearchbox ">
+                       <div class="checkbox">
+                         模板消息名称：{$info.temp_name} <input type="hidden" name="id" value="{$info.id}" />
+                       </div>
+                       <div class="checkbox" style="margin-top:20px;">
+                         模板消息类型：<if condition="$info.temp_style eq '1'">短信模板<else/>微信模版</if>
+                       </div>
+                       <if condition="$info.temp_style eq '1'">
+                       <div class="col-xs-6 row" style="margin-top:20px;">
+                         短信模版内容：
+                          <textarea name="temp_content" style="margin-top:10px;" class="form-control" rows="3" placeholder="您的验证码是：【@verify_code@】。请不要把验证码泄露给其他人。">{$info.temp_content}</textarea>
+                       <else/>
+                         模板消息内容：<div style="line-height: 20px;color:blue;">{$info.temp_content}</div> <br>
+                         微信模板头：<textarea name="temp_first" class="form-control">{$info.temp_first}</textarea>
+                         微信模版尾：<textarea name="temp_remark" class="form-control">{$info.temp_remark}</textarea>
+                       </if>
+                          <p style="margin-top:20px;">模版填写说明：</p>
+                          <p style="margin-top:20px; color:#C00;">{$info.temp_desc}</p>
+                          <div class="checkbox" style="margin-top:30px;">
+                            <button type="submit" class="btn btn-primary">确认修改</button>
+                          </div>
+                       </div>
+                    </div>
+                  </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/new_theme/common/sui/jquery.min.js"></script>
+<script src="/new_theme/common/sui/sui.min.js"></script>
+<script>
+
+</script>
+</body>
+</html>

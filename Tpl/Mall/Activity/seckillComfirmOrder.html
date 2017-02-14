@@ -1,0 +1,268 @@
+<include file="Public:header" title="确认订单"/>
+<body>
+<!-- page 容器 -->
+<div class="page">
+    <!-- 标题栏 -->
+    <header class="bar bar-nav">
+        <h1 class="title his-color">确认订单</h1>
+    </header>
+    <div class="content">
+        <div class="list-block com-list">
+            <ul>
+                <li>
+                    <a href="{:U('Mall/Ucenter/address', array('referrer'=>base_encode(get_self_url())))}"
+                       class="item-link item-content external">
+                        <div class="item-media">送至：</div>
+                        <div class="item-inner">
+                            <div class="item-text" id="address" data-id="{$address.id|intval}">
+                                {$address.region.province_name}{$address.region.city_name}{$address.region.district_name}
+                                {$address.full_address} {$address.name} {$address.mobile}
+                            </div>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="ju_list ju_list_v2" id="buyList">
+            <ul class="ju_pro_list"></ul>
+        </div>
+        <form action="" method="post" name="infoForm" id="infoForm">
+            <div class="list-block com-list">
+                <ul>
+                    <li>
+                        <a href="#" class="item-content">
+                            <div class="item-media">配送方式：</div>
+                            <div class="item-inner">
+                                <div class="item-title">由厂家指定第三方物流进行配送（免运费）</div>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="list-block com-list">
+                <ul>
+                    <if condition="$with_invoice eq 0">
+                        <li>
+                            <a href="{:U('setinvoice')}" class="item-link item-content external">
+                                <div class="item-media">发票信息：</div>
+                                <div class="item-inner">
+                                    <div class="item-ele blue">
+                                        <if condition="$invoice_style eq 1">电子发票
+                                            <else/>
+                                            单位发票
+                                        </if>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                    </if>
+                </ul>
+            </div>
+            <div class="list-block com-list">
+                <ul>
+                    <li>
+                        <a href="#" class="item-content">
+                            <div class="item-media">备注信息：</div>
+                            <div class="item-inner">
+                                <div class="item-input">
+                                    <input type="text" name="note" placeholder="请输入备注信息"/>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="item-content com-check">
+                <div class="item-inner">
+                    <div class="item-input">
+                        优惠券:
+                        <div class="media">
+                            可用 <span id="allow_nums">0</span> 张优惠券，抵扣￥<span id="cheapNum">0</span>
+                            <label class="label-switch" id="buychecked">
+                                <input type="checkbox" name="is_coupon" value="1">
+
+                                <div class="checkbox"></div>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="com-btn">
+                <input value="" id="price1" type="hidden">
+                <input value="" name="coupon_id" id="coupon_id" type="hidden">
+
+                <p>总计：￥<span id="buyMay">0</span></p>
+                <span id="totalPrice" style="display: none;">0</span>
+
+
+                <a id="addorders" class="com-btn-a blue-bg">微信支付</a>
+                <!--<a class="com-btn-a gray">扫码支付</a>
+                <a class="com-btn-a gray">找人代付</a>
+                <a class="com-btn-a gray">其它方式支付</a>-->
+            </div>
+        </form>
+    </div>
+</div>
+<script src="__ASSETS__/dist/js/sm.js"></script>
+<script src="__ASSETS__/dist/js/sm-extend.js"></script>
+<script src="__ASSETS__/js/jquery.min.js"></script>
+<script src="__ASSETS__/js/jquery.cookie.js"></script>
+<script type="text/javascript">
+    $(function () {
+        // 读取cookie
+        var html = '';
+        var classids = new Array();
+        //console.log($.cookie('goods'));
+        $.get("{:U('checkCoupon')}", {data: $.cookie('goods')}, function (data) {
+            value = eval(data);
+
+            $('#allow_nums').html(value.allow_nums);
+            $('#cheapNum').html(value.allow_max_money);
+            $('#coupon_id').val(value.allow_max_id);
+        });
+        $.get("{:U('seckillGetOrderInfo')}", {data: $.cookie('goods')}, function (data) {
+            $.each(data, function (i, e) {
+                html += '<li class="hproduct" attr-pageno="1"><div class="url"><a class="photo" href="javascript:;">' +
+                        '<img src="' + e.image + '"></a><a class="info good_id" href="javascript:;" data-id="' + e.id + '">' +
+                        '<h3 class="tit name">' + e.name + '</h3><div class="item-subtitle">产品规格：' + e.spec + '</div>' +
+                        '<div class="desc"></div><p class="price">价格：<i class="redtext">￥</i>' +
+                        '<span class="price-1 price">' + e.price + '</span><span class="price-2">￥' + e.old_price + '</span>' +
+                        '</p></a><div class="ju_shoplink"><p>数量：</p><span class="reduce"></span>' +
+                        '<input class="count-input" type="text" readOnly="true" value="' + e.num + '"><span class="add">+</span></div></div></li>';
+
+            });
+            $('ul.ju_pro_list').html(html);
+
+
+            //订单确认
+            var $buyList = $("#buyList");
+            var buyList = $("#buyList ul li");
+            //console.log(buyList);
+            buyTotal();
+            function buyTotal() {
+                var selected = 0;
+                var price = 0;
+                for (var i = 0; i < buyList.length; i++) {
+                    var newMoney = buyList[i].getElementsByClassName('price-1');
+                    var numInput = buyList[i].getElementsByClassName('count-input');
+                    price += parseFloat(newMoney[0].innerHTML) * numInput[0].value; //计算总计价格
+                    $('#totalPrice').html(price.toFixed(2));
+                    $('#buyMay').html(price.toFixed(2));
+                    $('#price1').val(price.toFixed(2));
+                    gocheck();
+                }
+            }
+
+            for (var i = 0; i < buyList.length; i++) {
+                buyList[i].onclick = function (e) {
+                    e = e || window.event;
+                    var el = e.srcElement;
+                    var cls = el.className;
+                    var numInput = this.getElementsByClassName('count-input');
+                    var val = parseInt(numInput[0].value);
+                    var reduce = this.getElementsByClassName('reduce')[0];
+                    switch (cls) {
+                        case 'reduce':
+                            if (val > 1) {
+                                numInput[0].value = val - 1;
+                            }
+                            ;
+                            if (val <= 1) {
+                                reduce.innerHTML = '';
+                            }
+                            ;
+                            break;
+                        case 'add':
+                            numInput[0].value = val + 1;
+                            reduce.innerHTML = '-';
+                            break;
+                            defaule:
+                                    break;
+                    }
+                    buyTotal();
+                }
+                buyList[i].getElementsByClassName('count-input')[0].onkeyup = function () {
+                    var val = parseInt(this.value);
+                    var lis = this.parentNode.parentNode.parentNode;
+                    var reduce = lis.getElementsByClassName('reduce')[0];
+                    if (isNaN(val) || val < 1) {
+                        val = 1;
+                    }
+                    ;
+                    this.value = val;
+                    if (val <= 1) {
+                        reduce.innerHTML = '';
+                    } else {
+                        reduce.innerHTML = '-';
+                    }
+                    ;
+                    buyTotal();
+                }
+            }
+            function gocheck() {
+
+                if ($('#buychecked input')[0].checked) {
+                    var buycheapNum = parseFloat($('#price1').val()) - parseFloat($('#cheapNum').html());
+                    if(buycheapNum < 0) buycheapNum = 0;
+                    $('#buyMay').html(buycheapNum.toFixed(2));
+                } else {
+                    var buycheapNum2 = parseFloat($('#price1').val());
+                    $('#buyMay').html(buycheapNum2.toFixed(2));
+                }
+            }
+
+            $('#buychecked input').on('click', function () {
+                allow_nums = $('#allow_nums').html();
+                if (allow_nums == 0) {
+                    $('#buychecked input')[0].checked = false;
+                    alert('无可用优惠券');
+                } else {
+                    gocheck()
+                }
+
+            });
+
+        });
+
+        // 创建订单
+        $('#addorders').click(function () {
+            var address_id = $('#address').attr('data-id');
+            var data = $('form').serializeArray();
+            var totalPrice = parseFloat($('#totalPrice').html());
+            var real_price = parseFloat($('#buyMay').html());
+            var url = "{:U('seckillAddOrder')}";
+            var coupon_id = $('#coupon_id').val();
+
+            //获取订单信息
+            var json = '';
+            $('.ju_pro_list li').each(function () {
+                var id = $(this).find('a.good_id').attr('data-id');
+                var name = $(this).find('h3.name').html();
+                var num = $(this).find('input.count-input').val();
+                var aid = "{$aid}";
+                json += '{"id":"' + id + '","name":"' + name + '","num":"' + num + '","aid":"' + aid + '"},';
+            });
+            json = json.substring(0, json.length - 1);
+            json = '[' + json + ']';
+//                alert(json);
+            $.post(url, {
+                address_id: address_id,
+                data: data,
+                totalPrice: totalPrice,
+                real_price: real_price,
+                coupon_id: coupon_id,
+                cartData: json
+            }, function (data) {
+                if (data.code == 0) {
+                    url = "/Mall/Index/paynow/order_num/" + data.msg;
+                    window.location.href = url;
+                } else {
+                    alert(data.msg);
+                }
+            }, 'json');
+        });
+    });
+</script>
+
+</body>
+</html>

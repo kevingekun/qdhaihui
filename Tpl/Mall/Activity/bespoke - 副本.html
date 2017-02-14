@@ -1,0 +1,28 @@
+<include file="Public:header" title="活动专区"  />
+<body>
+<!-- page 容器 -->
+<div class="page page-current">
+    <div class="content con-nav native-scroll" style="background-color: #ffcf00;">
+        <div class="group-head">
+            <img src="img/n/group-head.png" alt=""/>
+            {$info.act_name}
+            {$info.act_desc|htmlspecialchars_decode}
+        </div>
+        <div class="group-list">
+        <eq name="info.is_finished" value="0">
+            <form action="__SELF__" method="post">
+                <input type="hidden" name="act_id" value="{$info.act_id}" />
+                <input type="hidden" name="goods_id" value="{$info.goods_id}" />
+                <input type="text" name="mobile" class="form-control" placeholder="手机号" />
+                <input type="submit" value="立即预约" />
+            </form>
+        </eq>
+
+            <eq name="info.is_finished" value="1">
+                <a href="{:U('groupDetails', array('id'=>$info['goods_id'],'aid'=>$info['act_id']))}">马上购买</a>
+            </eq>
+        </div>
+    </div>
+</div>
+</body>
+</html>

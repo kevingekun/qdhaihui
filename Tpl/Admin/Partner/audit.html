@@ -1,0 +1,270 @@
+<include file="Public/header_new" title="合伙人管理"/>
+<define name="DEFINE_SIDE_MENU_CURRENT" value="Partner"/>
+<include file="Public/sideMenu_new"/>
+
+    <div class="main home" id="main" style="overflow: auto;">
+        <div class="side clearfix" style="width:56px;height:100px;float:left;">
+        </div>
+        <div class="main-container" style="height:auto;">
+            <div class="gdt-toufang gdt-toufang-account">
+                <div class="tuiguang-tab" id="_hSubNav">
+                    <ul>
+                        <li style="width:56px"></li>
+                        <li class="goback"><a href="javascript:history.back(-1)"><i></i></a></li>
+                        <li><a href="{:U('Admin/Partner/index')}">合伙人列表</a></li>
+                        <li><a href="{:U('Admin/Partner/fans')}">合伙人粉丝统计</a></li>
+                        <li><a href="{:U('Admin/Partner/rule')}">合伙人规则设置</a></li>
+                        <li class="on"><a>合伙人审核</a></li>
+                        <li><a href="{:U('Admin/Partner/tag')}">标签管理</a></li>
+                        <li><a href="{:U('Admin/Partner/group')}">分组管理</a></li>
+                    </ul>
+                </div>
+                <div class="container-box">
+                    <!-- <div class="row">
+                        <button type="button" class="btn btn-primary" onclick="window.location='audit_log.html'">合伙人审核日志</button>
+                    </div> -->
+                    <div class="row">
+                        <div class="newcearchbox">
+                            <form class="form-inline" action="" method="get">
+                                <div class="input-group">
+                                    <input type="text" name="realname" value="{$map.realname}" placeholder="姓名" class="form-control">
+                                </div>
+                                <div class="input-group">
+                                    <input type="text" name="phone" value="{$map.phone}" placeholder="手机号码" class="form-control">
+                                </div>
+                                <div class="input-group">
+                                    <input type="text" name="nickname" value="{$map.nickname}" placeholder="微信昵称" class="form-control">
+                                </div>
+                                <div class="form-group input-daterange" data-toggle="datepicker" >
+                                    <input type="text" name="start_time" class="form-control input-date" value="{$map.start_time}" placeholder="开始日期"/> -
+                                    <input type="text" name="end_time" class="form-control input-date" value="{$map.end_time}" placeholder="结束日期"/>
+                                </div>
+                                <div class="form-group">
+                                    <select name="partner_status" class="form-control">
+                                        <option value="" >合伙人状态</option>
+                                        <volist name="partnerStatus" id="val">
+                                            <option value="{$key}" <?php echo $map['partner_status'] != '' && $key == $map['partner_status'] ? 'selected' : '' ?>>{$val}</option>
+                                        </volist>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <select name="check_status" class="form-control">
+                                        <option value="" >修改信息状态</option>
+                                        <volist name="checkStatus" id="val">
+                                            <option value="{$key}" <?php echo $map['check_status'] != '' && $key == $map['check_status'] ? 'selected' : '' ?>>{$val}</option>
+                                        </volist>
+                                    </select>
+                                </div>
+                                <button type="submit" class="btn btn-success">查询</button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="row newcearchbox">
+                        <table class="table table-bordered table-primary">
+                            <thead>
+                                <tr>
+                                    <th><i class="icon_check"></i>
+                                        <input id="checkedAll" type="checkbox" name="" value="" /></th>
+                                    <th>ID</th>
+                                    <th>头像</th>
+                                    <th>姓名</th>
+                                    <th>昵称|手机</th>
+                                    <th>消费金额</th>
+                                    <th>合伙人状态</th>
+                                    <th>修改信息状态</th>
+                                    <th>申请信息</th>
+                                    <th>申请时间</th>
+                                    <th>关注时间</th>
+                                    <th>审核时间</th>
+                                    <th align="center">合伙人审核操作</th>
+                                    <th align="center">修改信息操作</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tbody">
+                              <volist name="list" id="vo">
+                              <tr>
+                                  <th class="center" scope="row"><input class="checkSingle" type="checkbox" data-id="{$vo.uid}" value="" /></th>
+                                  <td>{$vo.uid}</td>
+                                  <td><img src="{$vo.headimgurl|avatar}" height="70" alt=""/></td>
+                                  <td>{$vo.realname}</td>
+                                  <td>{$vo.nickname}<br>{$vo.phone}</td>
+                                  <td>{$vo.uid|total_consum}</td>
+                                  <td>{$vo.partner_status|partner_status=###,true}</td>
+                                  <td>{$vo.check_status|check_status=###,true}</td>
+                                  <td>
+                                      <?php
+                                        $tempInfo = unserialize($vo['user_info_temp']);
+                                        if(is_array($tempInfo) && $tempInfo){
+                                            echo sprintf('真实姓名: %s <br>', $tempInfo['realname']);
+                                            echo sprintf('手机: %s <br>', $tempInfo['phone']);
+                                            echo sprintf('QQ: %s <br>', $tempInfo['qq']);
+                                            echo sprintf('支付方式: %s <br>', $tempInfo['pay_way']);
+                                            echo sprintf('支付宝账号: %s <br>', $tempInfo['account']);
+                                            echo sprintf('支付宝姓名: %s <br>', $tempInfo['authen_name']);
+                                        }
+                                      ?>
+                                  </td>
+                                  <td>{$vo.apply_time|format_date=###,"Y-m-d H:i:s"}</td>
+                                  <td>{$vo.subscribe_time|format_date=###,"Y-m-d H:i:s"}</td>
+                                  <td>{$vo.audit_time|format_date=###,"Y-m-d H:i:s"}</td>
+                                  <td>
+                                      <a class="btn btn-primary btn-info auditing" data-toggle="modal" data-target="#toExamine" data-id="{$vo.uid}">审核</a>
+                                  </td>
+                                  <td>
+                                    <if condition="$vo.partner_status eq \Common\Model\UserModel::PARTNER_STATUS_PASS">
+                                        <a class="btn btn-primary btn-info auditing_1" data-toggle="modal" data-target="#toExamine_1" data-id="{$vo.uid}">审核</a>
+                                    </if>
+                                  </td>
+                              </tr>
+                              </volist>
+                            </tbody>
+                        </table>
+                        <a id="batchAudit" data-toggle="modal" data-target="#toExamine" class="btn-primary btn">批量审核合伙人</a>
+                        <a id="batchAudit2" data-toggle="modal" data-target="#toExamine_1" class="btn-primary btn">批量审核修改信息</a>
+                        <div id="page">
+                          {$page}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="toExamine" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                <h5 class="modal-title">合伙人审核</h5>
+            </div>
+            <form  class="form-horizontal" data-toggle="validate" action="" method="post">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">审核操作:</label>
+                        <div class="col-sm-8">
+                          <input id="auditing_id" type="hidden" name="uid" value="">
+                            <select name="partner_status" class="form-control input-lg">
+                                <option value="<php>echo \Common\Model\UserModel::PARTNER_STATUS_PASS </php>">通过</option>
+                                <option value="<php>echo \Common\Model\UserModel::PARTNER_STATUS_REFUSE </php>">拒绝</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group" style="margin-top:15px;">
+                        <label class="col-sm-3 control-label">操作理由:</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" name="reason" value="{$vo.reason}" data-rule-required="true">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary btn-lg">确定</button>
+                    <button type="button" class="btn btn-default btn-lg" data-dismiss="modal">取消</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="toExamine_1" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                <h5 class="modal-title">修改信息</h5>
+            </div>
+            <form  class="form-horizontal" data-toggle="validate" action="{:U('Admin/Partner/check')}" method="post">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label  class="col-sm-3 control-label">审核操作:</label>
+                        <div class="col-sm-8">
+                          <input id="auditing_id_1" type="hidden" name="uid" value="">
+                            <select name="check_status" class="form-control input-lg">
+                                <option value="0">请选择</option>
+                                <option value="<php>echo \Common\Model\UserModel::CHECK_STATUS_PASS </php>">通过</option>
+                                <option value="<php>echo \Common\Model\UserModel::CHECK_STATUS_REFUSE </php>">拒绝</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group" style="margin-top:15px;">
+                        <label class="col-sm-3 control-label">操作理由:</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" name="check_reason" value="{$vo.check_reason}" data-rule-required="true">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary btn-lg">确定</button>
+                    <button type="button" class="btn btn-default btn-lg" data-dismiss="modal">取消</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script src="/new_theme/common/sui/jquery.min.js"></script>
+<script src="/new_theme/common/sui/sui.min.js"></script>
+<script>
+$(function(){
+    $('a.auditing').click(function(){
+        var id = $(this).attr('data-id');
+        $("#auditing_id").val(id);
+    });
+
+    $('a.auditing_1').click(function(){
+        var id = $(this).attr('data-id');
+        $("#auditing_id_1").val(id);
+    });
+
+    // 批量审核合伙人
+    $('#batchAudit').click(function(){
+        var id = "";
+        $(".checkSingle").each(function(k,v){
+            if(this.checked){
+                id += $(this).attr('data-id') + ',';
+            }
+        })
+        $("#auditing_id").val(id);
+    });
+
+    // 批量审核修改信息
+    $('#batchAudit2').click(function(){
+        var id = "";
+        $(".checkSingle").each(function(k,v){
+            if(this.checked){
+                id += $(this).attr('data-id') + ',';
+            }
+        })
+        $("#auditing_id_1").val(id);
+    });
+
+
+
+    // 全选
+    $("#checkedAll").change(function(){
+        if(this.checked){
+            $(".checkSingle").each(function(){
+                this.checked=true;
+            })
+        }else{
+            $(".checkSingle").each(function(){
+                this.checked=false;
+            })
+        }
+    });
+
+    // 单选
+    $(".checkSingle").click(function () {
+        if ($(this).is(":checked")){
+            var isAllChecked = 0;
+            $(".checkSingle").each(function(){
+                if(!this.checked)
+                    isAllChecked = 1;
+            })
+            if(isAllChecked == 0){ $("#select_all").prop("checked", true); }
+        }
+        else {
+            $("#checkedAll").prop("checked", false);
+        }
+    });
+})
+</script>
+</body>
+</html>

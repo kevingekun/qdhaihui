@@ -1,0 +1,102 @@
+body{font:12px/1.5 tahoma,arial,\5b8b\4f53;color:#333}
+a{color:#2b7ed1}
+.c-blue{color:#2b7ed1}
+.c-tx2{color:#555}
+.c-tx3{color:#999}
+.c-red{color:#e33244}
+.c-gray{color:#8C8C8C}
+.c-gre{color:#11b195}
+.c-yellow{color:#d7ae2f}
+.c-palered{color:#ed556f}
+.g-blue{background:#5191d1}
+.tips-normal{background:#fcf8e3;border:1px solid #e3e1ce;color:#9b8265}
+.tips-normal .c-red{color:#e6575f}
+.newtip{display:inline-block;width:31px;height:15px;line-height:13px;line-height:14px\9;overflow:hidden;color:#fff;background-color:#e33244;font-size:11px;cursor:pointer;font-weight:normal;text-align:center;-webkit-transform:scale(0.85) translate(-1px,1px);border-radius:8px}
+.input_file{border:none}
+input.text{height:28px;line-height:28px\9;border:1px solid #C3C6C9;padding-left:8px;outline:none}
+input:focus{color:#000;border-color:#12bb9d}
+input.checkbox,input.radio{vertical-align:-2px;margin-right:5px}
+textarea{padding:3px;border:1px solid #CDD0D2;color:#747474;outline:none}
+textarea:focus{color:#000;border-color:#12bb9d}
+.none{display:none!important}
+.ui-button{display:inline-block;height:28px;line-height:28px;color:#666;overflow:hidden;vertical-align:middle;padding:0 12px;font-size:12px;border:1px solid #C3C6C9;background-color:#fff}
+.ui-button:hover{border-color:#bdbfc2;background-color:#fafafa;text-decoration:none}
+.ui-button:active{border-color:#bdbfc2;background-color:#f0f0f0}
+.ui-button-green{display:inline-block;height:40px;line-height:39px;overflow:hidden;vertical-align:middle;padding:0 20px;font-size:14px;font-weight:bold}
+.s-btnline{background:#f9f9f9;border-top:1px solid #d1d4d7}
+.s-button-right{color:#fff;background:#12bb9d}
+.s-button-right:hover{background:#14CBAA;color:#fff}
+.s-button-right:active{background:#10AB90;color:#fff}
+.s-button-back{color:#666;background:#fafafa;border-color:#c3c6c9}
+.s-button-back:hover{background:#fff;border-color:#bdbfc2}
+.s-button-back:active{background:#f0f0f0;border-color:#bdbfc2}
+.button-line{height:49px;overflow:hidden;width:100%;position:fixed;z-index:99;bottom:0;right:0}
+.button-line a{text-align:center;height:49px;line-height:49px;font-size:14px;font-weight:900}
+.button-line .close{float:left;border-right:1px solid #d1d4d7;width:90px}
+.button-line .previous{float:right;width:125px;border-left:1px solid #d1d4d7}
+.button-line .next{float:right;width:125px}
+#CssGaga{content:"150325144330,hai,333"}/*  |xGv00|d9396db8f1fa9b1e249ab40c5dc4707c */
+
+    #picsethere{
+        width: 510px;
+        display: block;
+    }
+    #picsethere img{
+        max-width: 500px;
+        display: block;
+    }
+.coupons_conbox_ri{padding-top: 5px;}
+    #lr-img-btn{
+        position: relative;
+        display: inline-block;
+        padding: 0 12px;
+        height: 30px;
+        line-height: 28px;
+        font-size: 12px;
+        text-align: center;
+        vertical-align: top;
+        cursor: pointer;
+        color: #FFF;
+        background-color: #fff;
+        border-radius: 2px;
+        border:1px solid #ccc;
+        background-color: #428bca;
+        border-color: #357ebd;
+    }
+    .red{
+        color: #ee0505;
+        margin: 0 5px;
+    }
+    .prompt{
+        height: 32px;
+        line-height: 32px;
+        display: inline-block;
+        float: left;
+        color: #666;
+        font-size: 14px;
+    }
+
+.control-group {
+    margin-bottom: 20px;
+}
+
+.control-label {
+    float: left;
+    width: 160px;
+    padding-top: 5px;
+    text-align: right;
+}
+
+.form-horizontal .controls {
+    margin-left: 180px;
+}
+
+input.span4, textarea.span4, .uneditable-input.span4 {
+    width: 356px;
+}
+
+.maroon {
+    color: #D20000;
+    padding-left: 2px;
+    font-family: "SimSun";
+}

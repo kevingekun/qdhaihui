@@ -1,0 +1,66 @@
+<include file="Public/header_new" title="工具箱"/>
+<define name="DEFINE_SIDE_MENU_CURRENT" value="Tools"/>
+<include file="Public/sideMenu_new"/>
+
+    <div class="main home" id="main" style="overflow: auto;">
+        <div class="side clearfix" style="width:56px;height:100px;float:left;">
+        </div>
+        <div class="main-container" style="height:auto;">
+            <div class="gdt-toufang gdt-toufang-account">
+                <div class="tuiguang-tab" id="_hSubNav">
+                    <ul>
+                      <li style="width:56px"></li>
+                      <li class="goback"><a href="javascript:history.back(-1)"><i></i></a></li>
+                      <li class="on"><a href="{:U('Tools/reply')}">模板消息管理</a></li>
+                    </ul>
+                </div>
+                <div class="container-box">
+                    <div class="row newcearchbox ">
+                        <table class="table table-primary table-bordered">
+                            <thead>
+                                <tr class="">
+                                    <th width="10%">模版名称</th>
+                                    <th width="6%">模版代码</th>
+                                    <th width="6%">模版类型</th>
+                                    <th width="19%">模板内容</th>
+                                    <th width="10%">微信模板头</th>
+                                    <th width="10%">微信模板尾</th>
+                                    <th width="19%">模版说明</th>
+                                    <th width="15%">必填字段</th>
+                                    <th width="5%">操作</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                  <volist name="list" id="l">
+                                      <tr>
+                                          <td class="center" scope="row">{$l.temp_name}</td>
+                                          <td class="center" scope="row">{$l.temp_code}</td>
+                                          <td height="50"><if condition="$l.temp_style eq '1'">短信模板<else/>微信模版</if></td>
+                                          <td>{$l.temp_content}</td>
+                                          <td>{$l.temp_first}</td>
+                                          <td>{$l.temp_remark}</td>
+                                          <td>{$l.temp_desc}</td>
+                                          <td>{$l.temp_variable}</td>
+                                          <td>
+                                              <a class="btn btn-primary btn-info" href="{:U('upreply',array('id'=>$l['id']))}">修改</a>
+                                          </td>
+                                      </tr>
+                                  </volist>
+                            </tbody>
+                        </table>
+                        <div id="page">
+                          {$page}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/new_theme/common/sui/jquery.min.js"></script>
+<script src="/new_theme/common/sui/sui.min.js"></script>
+<script>
+
+</script>
+</body>
+</html>

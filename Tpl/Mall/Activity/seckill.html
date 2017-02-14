@@ -1,0 +1,77 @@
+<include file="Public:header" title="活动专区"  />
+<body>
+    <!-- page 容器 -->
+    <div class="page">
+        <!-- 内容 -->
+        <div class="content con-nav">
+            <div class="buttons-tab">
+            <if condition="$nowtime gt $info['action_sdate'] && $nowtime lt $info['action_edate']">
+                <a href="#tab1" class="tab-link time-btn blue-bg" data-time="{$info.action_edate|date='Y/m/d,H:i:s', ###}">{$info.action_sdate|date='H:i', ###}<br><span>秒杀进行中</span></a>
+            </if>
+            <if condition="$nowtime lt $info['action_sdate']">
+                <a href="#tab1" class="tab-link time-btn">{$info.action_sdate|date='H:i', ###}<br><span>即将开始</span></a>
+            </if>
+            <if condition="$nowtime gt $info['action_edate']">
+                <a href="#tab1" class="tab-link time-btn">{$info.action_sdate|date='H:i', ###}<br><span>已结束</span></a>
+            </if>
+            <if condition="$nowtime gt $info['second_sdate'] && $nowtime lt $info['second_edate']">
+                <a href="#tab2" class="tab-link time-btn blue-bg" data-time="{$info.second_edate|date='Y/m/d,H:i:s', ###}">{$info.second_sdate|date='H:i', ###}<br><span>秒杀进行中</span></a>
+            </if>
+            <if condition="$nowtime lt $info['second_sdate']">
+                <a href="#tab2" class="tab-link time-btn">{$info.second_sdate|date='H:i', ###}<br><span>即将开始</span></a>
+            </if>
+            <if condition="$nowtime gt $info['second_edate']">
+                <a href="#tab2" class="tab-link time-btn">{$info.second_sdate|date='H:i', ###}<br><span>已结束</span></a>
+            </if>
+            <if condition="$nowtime gt $info['third_sdate'] && $nowtime lt $info['third_edate']">
+                <a href="#tab3" class="tab-link time-btn blue-bg" data-time="{$info.third_edate|date='Y/m/d,H:i:s', ###}">{$info.third_sdate|date='H:i', ###}<br><span>秒杀进行中</span></a>
+            </if>
+            <if condition="$nowtime lt $info['third_sdate']">
+                <a href="#tab3" class="tab-link time-btn">{$info.third_sdate|date='H:i', ###}<br><span>即将开始</span></a>
+            </if>
+            <if condition="$nowtime gt $info['third_edate']">
+                <a href="#tab3" class="tab-link time-btn">{$info.third_sdate|date='H:i', ###}<br><span>已结束</span></a>
+            </if>
+            </div>
+            <div class="content-block-title" id="seckillTime">活动已结束</div>
+            <div class="card facebook-card">
+                <div class="card-content"><img src="/uploads/{$info.action_header_img}" width="100%"></div>
+            </div>
+            <div class="content-block" style="display: none">
+                <p><a href="{:U('seckillGoodsDetails', array('id'=>$info['goods_id'],'aid'=>$info['action_id']))}" class="button button-fill button-success external">立即秒杀 </a></p>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script src="__ASSETS__/dist/js/sm.js"></script>
+<script type="text/javascript">
+       //倒计时
+        function FreshTime()
+        {
+            var time = $('a.blue-bg').attr('data-time');
+            var endtime=new Date(time);//结束时间
+            var nowtime = new Date();//当前时间
+            var lefttime=parseInt((endtime.getTime()-nowtime.getTime())/1000);
+            d=parseInt(lefttime/3600/24);
+            h=parseInt((lefttime/3600)%24);
+            m=parseInt((lefttime/60)%60);
+            s=parseInt(lefttime%60);
+            document.getElementById("seckillTime").innerHTML="距离本场结束"+"<i>"+h+"</i>"+":"+"<i>"+m+"</i>"+":"+"<i>"+s+"</i>"+"";
+            if(lefttime<=0){
+                document.getElementById("seckillTime").innerHTML="活动已结束";
+                clearInterval(sh);
+                $('.content-block').hide();
+            }
+        };
+        console.log($('a').hasClass('blue-bg'));
+        if ($('a').hasClass('blue-bg')) {
+            FreshTime();
+            $('.content-block').show();
+            var sh;
+            sh=setInterval(FreshTime,1000);
+        };
+        //倒计时end
+</script>
+<include file="Public:share" />
+</html>

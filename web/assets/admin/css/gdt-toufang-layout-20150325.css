@@ -1,0 +1,77 @@
+.main-container{background:#f2f3f4;min-width:620px;overflow:hidden;padding:0 15px;height:100%}
+.main-container .showchart{margin:0 0 15px;border:1px solid #dee0e2;background:#fff}
+.main-container .shownav{height:52px;border-bottom:1px solid #dee0e2}
+.main-container .shownav .tit{line-height:52px;font-size:14px;font-weight:900;padding-left:10px}
+.main-container .shownav .tit a{color:#333}
+.main-container .shownav .tit a:hover{text-decoration:underline}
+.main-container .shownav .mod-select,.main-container .shownav .ui-button{margin:11px 10px 0 0}
+.main-container .shownav .sep{padding:0 7px}
+.main-container .shownav .mod-select .select-tit{width:200px}
+.main-container .shownav .mod-select .select-pop{width:200px}
+.main-container .showdata{margin-top:10px;height:113px;overflow:auto;width:100%}
+.main-container .showdata ul{height:90px;padding-right:10px}
+.main-container .showdata ul li{height:88px;width:158px;border:1px solid #e3e8ed;background:#f7f8f9;float:left;margin-left:10px}
+.main-container .showdata ul li .tit{font-size:14px;margin:8px 0 4px 10px}
+.main-container .showdata ul li .num{font-size:22px;margin:0 0 3px 9px}
+.main-container .showdata ul li .flu{margin-left:10px}
+.main-container .showdata ul li .flu .ico{height:12px;width:10px;display:inline-block;margin-right:5px}
+.main-container .showdata ul li .flu .ico-up{background-image:url(sprite/gdt-toufang-layout-20150325.png);background-position:0 0}
+.main-container .showdata ul li .flu .ico-down{background-image:url(sprite/gdt-toufang-layout-20150325.png);background-position:-17px 0}
+.main-container .showdata ul li.last{width:58px;height:30px;margin-right:10px;margin-top:58px}
+.main-container .showdata ul li.last a{display:block;height:30px;width:58px;line-height:30px;text-align:center;color:#657483}
+.main-container .showdata ul li.last a:hover{background:#f2f3f4}
+.main-container .formchoose{height:40px;margin:0 10px}
+.main-container .formchoose{position:relative}
+.main-container .formchoose .mod-select{margin-top:5px}
+.main-container .formchoose .dateshow{position:absolute;left:50%;margin-left:-70px;width:148px;margin-top:6px}
+.main-container .formchoose .dateshow .color-a{height:0;line-height:0;font-size:0;border:0 solid #f4c414;border-width:2px 10px 1px;vertical-align:middle}
+.main-container .formchoose .dateshow .color-b{height:0;line-height:0;font-size:0;border:0 solid #5191d1;border-width:2px 10px 1px;vertical-align:middle}
+.main-container .showchart .chart{margin:30px 10px}
+.main-container .resolve{width:auto}
+.main-container .resolve h3{font-size:14px;margin-left:10px}
+.main-container .resolve h3 span{font-size:22px;padding-left:5px;font-weight:normal}
+.main-container .resolve-chart{float:left;width:25%}
+.main-container .resolve-chart .inner{background:#fff;border:1px solid #dee0e2;margin-right:15px}
+.main-container .resolve-chart .fls{height:100px;margin:10px}
+.main-container .resolve-chart .last{margin-right:0}
+.main-container .alldata{width:auto;margin-top:15px;overflow:hidden;zoom:1}
+.main-container .alldata .data-part{width:33.33%;float:left;position:relative;margin-bottom:15px;min-width:200px}
+.main-container .alldata .data-part .inner{min-width:355px;height:88px;margin-right:15px;background:#fff;border:1px solid #dee0e2}
+.main-container .alldata .data-part .statistics,.main-container .alldata .data-part .swop{margin-right:0}
+.main-container .alldata .data-logo{height:48px;width:48px;position:absolute;top:19px;left:15px}
+.main-container .alldata .detail{margin-left:79px;float:left}
+.main-container .alldata .detail .numline{margin-top:5px}
+.main-container .alldata .detail .num{font-size:24px}
+.main-container .alldata .recharge{font-weight:normal;padding:8px 10px;border:1px solid #c3c6c9;color:#666;float:right;margin:37px 10px 0 0}
+.main-container .alldata .dateline{color:#666;float:right;margin:51px 10px 0 0}
+.main-container .alldata .recharge:hover{background:#f2f3f4}
+.main-container .alldata h3{font-size:14px;margin-top:15px;position:relative}
+.main-container .alldata .cash-logo{background-image:url(sprite/gdt-toufang-layout-20150325.32.png);background-position:0 0}
+.main-container .alldata .virtual-logo{background-image:url(sprite/gdt-toufang-layout-20150325.32.png);background-position:-49px 0}
+.main-container .alldata .statistics-logo{background-image:url(sprite/gdt-toufang-layout-20150325.32.png);background-position:-98px 0}
+.main-container .alldata .redsea-logo{background-image:url(sprite/gdt-toufang-layout-20150325.32.png);background-position:-147px 0}
+.main-container .alldata .bluesea-logo{background-image:url(sprite/gdt-toufang-layout-20150325.32.png);background-position:-196px 0}
+.main-container .alldata .swop-logo{background-image:url(sprite/gdt-toufang-layout-20150325.32.png);background-position:-245px 0}
+.main-container .alldata .overdraft-logo{background-image:url(sprite/gdt-toufang-layout-20150325.32.png);background-position:-294px 0}
+.main-container .alldata .class-logo{background-image:url(sprite/gdt-toufang-layout-20150325.32.png);background-position:-343px 0}
+.main-container .alldata .ico-zhuan{height:18px;width:18px;position:absolute;top:0;left:0;z-index:9}
+.main-container .alldata .ico-zhuan i{height:18px;width:18px;top:3px;left:3px;background-image:url(sprite/gdt-toufang-layout-20150325.32.png);background-position:-392px 0;cursor:pointer}
+.main-container .statistics ul{height:auto;overflow:hidden}
+.main-container .statistics li{width:50%;float:left;color:#80838b}
+.main-container .statistics li .tit{padding-right:10px}
+.main-container .statistics li .nums{font-size:16px;color:#333;font-weight:900}
+.main-container .statistics li .c-blue{color:#5191d1}
+.main-container .alldata .zhanghu-zhuan{position:relative;left:92px;top:-12px}
+.main-container .alldata .zhuan-explain{position:absolute;left:34px;top:-11px;background-color:#fff;z-index:99;border:1px solid #c3c6c9;-webkit-box-shadow:0 1px 3px #C3C6C9}
+.main-container .alldata .zhuan-explain .explain-con{width:150px;word-break:break-all;word-wrap:break-word;font-size:12px;font-weight:normal;color:#666;padding:7px 12px}
+.main-container .alldata .zhuan-explain .bor-c{left:-23px;top:11px;border-color:transparent #ACADAD transparent transparent;border-style:dashed solid dashed dashed;width:0;height:0;font-size:0;display:inline-block;position:absolute;border-width:11px}
+.main-container .alldata .zhuan-explain .bor-i{left:-10px;top:-11px;overflow:hidden;line-height:0;border-color:transparent #fff transparent transparent;border-style:dashed solid dashed dashed;width:0;height:0;font-size:0;display:inline-block;position:absolute;border-width:11px}
+.cft-attention{font-size:12px;font-weight:normal}
+.main-container .alldata .detail .cft-attention{padding-left:10px}
+@media(max-width:1365px) and (min-width:1280px){.main-container .alldata .data-part .inner{min-width:333px}
+.main-container .alldata .detail .num{font-size:22px}}
+@media(max-width:1279px){.main-container .alldata .data-part .inner{min-width:200px}
+.main-container .alldata .data-logo{display:none}
+.main-container .alldata .detail{margin-left:20px}
+.main-container .alldata .dateline{margin:17px 10px 0 -20px}}
+#CssGaga{content:"150511155922,hai,333"}

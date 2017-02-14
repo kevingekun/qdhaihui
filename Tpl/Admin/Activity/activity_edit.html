@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <title>产品订单</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <!--公用样式文件，不加版本号，通过url参数控制cache -->
+    <link rel="stylesheet" rev="stylesheet" href="__CDN_STATIC_URL__css/gdt-css-api.css" type="text/css" media="screen">
+    <link rel="stylesheet" rev="stylesheet" href="__CDN_STATIC_URL__css/gdt-toufang-layout-20150325.css" type="text/css"
+          media="screen">
+    <link rev="stylesheet" rel="stylesheet" href="__CDN_STATIC_URL__css/gdt-toufang-global-20150323.css" media="screen"
+          type="text/css">
+    <link rel="stylesheet" href="__CDN_STATIC_URL__css/myjd-2015.css">
+    <link rel="stylesheet" href="__CDN_STATIC_URL__css/component-min.css">
+    <link rel="stylesheet" href="__CDN_STATIC_URL__css/jbox-min.css">
+    <link rel="stylesheet" href="__CDN_STATIC_URL__css/style.css">
+    <link rel="stylesheet" href="__CDN_STATIC_URL__css/diy.css">
+
+    <script src="__CDN_STATIC_URL__js/jquery.js" type="text/javascript" charset="utf-8"></script>
+    <script src="__CDN_STATIC_URL__js/scrollheight.js" type="text/javascript" charset="utf-8"></script>
+    <style>
+        .coupons_conbox_ri {
+            padding-top: 5px;
+        }
+
+        #lr-img-btn {
+            position: relative;
+            display: inline-block;
+            padding: 0 12px;
+            height: 30px;
+            line-height: 28px;
+            font-size: 12px;
+            text-align: center;
+            vertical-align: top;
+            cursor: pointer;
+            color: #FFF;
+            background-color: #fff;
+            border-radius: 2px;
+            border: 1px solid #ccc;
+            background-color: #428bca;
+            border-color: #357ebd;
+        }
+
+        .red {
+            color: #ee0505;
+            margin: 0 5px;
+        }
+
+        .prompt {
+            height: 32px;
+            line-height: 32px;
+            display: inline-block;
+            float: left;
+            color: #666;
+            font-size: 14px;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="wrapper clearfix" id="root">
+    <include file="Public/header"/>
+    <div class="top" style="height:56px;;width:100%;"><!--顶部占位--></div>
+    <div class="top" style="height: 31px; width: 100%;display:none;" id="ErrorStatusTipsHolder"><!--顶部小黄条占位--></div>
+    <define name="DEFINE_SIDE_MENU_CURRENT" value="activity"/>
+    <include file="Public/sideMenu"/>
+    <div class="main home" id="main" style="/*height: 400px;*/ overflow: auto;">
+        <div class="side clearfix" style="width:56px;height:100px;float:left;"></div>
+
+        <div class="main-container" style="height:auto;">
+            <div class="gdt-toufang gdt-toufang-account">
+                <div class="tuiguang-tab" id="_hSubNav">
+                    <ul>
+                        <li style="width:56px"></li>
+
+                        <li class="on"><a href="{:U('Home/Index/activity')}" onclick="">优惠券</a>
+                        </li>
+                        <li><a href="{:U('Home/Index/activity_seckill')}" onclick="">秒杀</a>
+                        </li>
+                        <li><a href="{:U('Home/Index/activity_presale')}" onclick="">预售</a>
+                        </li>
+                        <li><a href="{:U('Home/Index/activity_group')}" onclick="">阶梯团购</a>
+                        </li>
+                        <li><a href="{:U('Home/Index/activity_now')}" onclick="">返现</a></li>
+                        <li><a href="#" onclick="">直降</a></li>
+                        <li><a href="#" onclick="">新品拍卖</a></li>
+                        <li><a
+                                href="{:U('Home/Index/activity_wof')}"
+                                onclick="">大转盘</a></li>
+                        <li><a
+                                href="{:U('Home/Index/activity_redpacket')}"
+                                onclick="">发红包</a></li>
+                        <li><a
+                                href="{:U('Home/Index/activity_inquiry')}"
+                                onclick="">调研</a></li>
+
+                    </ul>
+
+                </div>
+
+
+                <div class="content-right fl">
+
+
+                    <h1 class="content-right-title">编辑优惠券</h1>
+
+
+                    <form action="" method="GET" id="form1">
+                        <input name="couponid" value="2001004" type="hidden">
+
+                        <div class="diy clearfix">
+                            <div id="diy-phone">
+                                <div class="diy-phone-header">
+                                    <i class="diy-phone-receiver"></i>
+
+                                    <div class="diy-phone-title">优惠券</div>
+                                </div>
+                                <div class="diy-phone-contain">
+                                    <section class="coupons_con">
+                                        <ul>
+                                            <li style="display: list-item;">
+                                                <section class="coupons_conbox g-box">
+                                                    <section class="coupons_conbox_le"></section>
+                                                    <section class="coupons_conbox_ri g-flex">
+
+                                                        <h1>¥10.00</h1>
+
+
+                                                        <b>测试</b>
+
+
+                                                        <p>生效时间：2015-07-27 13:59:53</p>
+
+
+                                                        <p>到期时间：2015-10-09 13:59:57</p>
+
+                                                    </section>
+                                                </section>
+                                            </li>
+                                        </ul>
+                                    </section>
+                                </div>
+                                <i class="diy-phone-footer"></i>
+                            </div>
+                            <!-- end diy-phone -->
+                            <div id="diy-ctrl">
+                                <div class="diy-ctrl-item" style="margin-top:128px;">
+                                    <div class="formitems">
+                                        <label class="fi-name"><span class="colorRed">*</span>优惠券名称：</label>
+
+                                        <div class="form-controls">
+                                            <input name="title" value="测试" class="input j-render" type="text">
+                                            <span class="fi-help-text"></span>
+                                        </div>
+                                    </div>
+                                    <div class="formitems">
+                                        <label class="fi-name"><span class="colorRed">*</span>面值：</label>
+
+                                        <div class="form-controls">
+                                            <input name="vaule" class="input mini j-render" value="10.00" type="text">
+                                            <span class="fi-help-text"></span>
+                                        </div>
+                                    </div>
+                                    <div class="formitems">
+                                        <label class="fi-name"><span class="colorRed">*</span>会员等级：</label>
+
+                                        <div class="form-controls">
+                                            <select name="rankid" class="select">
+                                                <option value="2045379" selected="">店铺客户</option>
+                                                <option value="2045380">普通会员</option>
+                                                <option value="2045381">高级会员</option>
+                                                <option value="2045382">VIP会员</option>
+                                                <option value="2045383">至尊VIP会员</option>
+                                            </select>
+                                            <span>可领取</span>
+                                            <span class="fi-help-text"></span>
+                                        </div>
+                                    </div>
+                                    <div class="formitems inline">
+                                        <label class="fi-name"><span class="colorRed">*</span>订单金额：</label>
+
+                                        <div class="form-controls">
+                                            <div class="radio-group">
+                                                <label><input name="isatleast" value="0" type="radio">不限制</label>
+                                            </div>
+                                        </div>
+                                        <div class="form-controls mgt10">
+                                            <div class="radio-group">
+                                                <label><input name="isatleast" value="1" checked=""
+                                                              type="radio">满</label>
+                                            </div>
+                                            <input class="input mini" name="atleast" value="10000.00" type="text">
+                                            <span>可使用</span>
+                                            <span class="fi-help-text"></span></div>
+                                        <div class="formitems">
+                                            <label class="fi-name"><span class="colorRed">*</span>发放总量：</label>
+
+                                            <div class="form-controls">
+                                                <input name="total" value="1" class="input mini" type="text">
+                                                <span>张</span>
+                                                <span class="fi-help-text"></span>
+                                            </div>
+                                        </div>
+                                        <div class="formitems">
+                                            <label class="fi-name"><span class="colorRed"></span>选择商品：</label>
+
+                                            <div class="form-controls">
+                                                <ul class="img-list clearfix">
+                                                    <li class="img-list-add j-addgoods" id="lr-img-btn">选择宝贝</li>
+                                                    <span class="prompt"></span>
+                                                </ul>
+                                                <input class="j-verify" name="item_id" value="" type="hidden">
+                                                <span class="fi-help-text">不选择商品默认是所有商品都可以使用此优惠券</span>
+                                            </div>
+                                        </div>
+                                        <div class="formitems">
+                                            <label class="fi-name"><span class="colorRed">*</span>生效时间：</label>
+
+                                            <div class="form-controls">
+                                                <input name="starttime" value="2015-07-27 13:59:53" autocomplete="off"
+                                                       class="input Wdate j-render"
+                                                       onclick="WdatePicker({onpicked:HYD.coupon.reRenderCoupon,dateFmt:'yyyy-MM-dd H:mm:ss'})"
+                                                       type="text">
+                                                <span class="fi-help-text"></span>
+                                            </div>
+                                        </div>
+                                        <div class="formitems">
+                                            <label class="fi-name"><span class="colorRed">*</span>过期时间：</label>
+
+                                            <div class="form-controls">
+                                                <input name="endtime" value="2015-10-09 13:59:57" autocomplete="off"
+                                                       class="input Wdate j-render"
+                                                       onclick="WdatePicker({onpicked:HYD.coupon.reRenderCoupon,dateFmt:'yyyy-MM-dd H:mm:ss'})"
+                                                       type="text">
+                                                <span class="fi-help-text"></span>
+                                            </div>
+                                        </div>
+                                        <div class="formitems">
+                                            <label class="fi-name"><span class="colorRed">*</span>购物分享：</label>
+
+                                            <div class="form-controls">
+                                                <div class="radio-group">
+                                                    <label><input name="is_share_coupon" value="0" checked=""
+                                                                  type="radio">否</label>
+                                                    <label><input name="is_share_coupon" value="1"
+                                                                  type="radio">是</label>
+                                                    <span class="fi-help-text J_share_help" style="display: none;">购物分享类优惠券仅能用于营销活动中的“购物分享得优惠券”活动，一旦被使用，将会发出双份优惠券，分享者和被分享者各得一份，请核算好成本！</span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="formitems J_points">
+                                            <label class="fi-name"><span class="colorRed">*</span>领取方式：</label>
+
+                                            <div class="form-controls">
+                                                <input class="input mini" name="points" value="1000" type="text">
+                                                <span>分可兑换</span>
+                                            </div>
+                                            <div class="form-controls">
+                                                <div class="radio-group">
+                                                    <label>
+                                                        <input name="quota" value="1" type="checkbox">每人只能领取一张
+                                                        <input name="is_hand" value="1" type="checkbox">手工发放
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="formitems mgt10">
+                                            <label class="fi-name">补充说明：</label>
+
+                                            <div class="form-controls">
+                                                <textarea id="" class="textarea" name="description"></textarea>
+                                                <span class="fi-help-text"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- end diy-ctrl-item -->
+                                </div>
+                                <!-- end diy-ctrl -->
+                            </div>
+                            <!-- end diy -->
+
+                            <div class="diy-actions txtCenter">
+                                <input class="btn btn-primary" name="st" value="保存" type="submit">
+                                <a href="#" class="btn">返回</a>
+                            </div>
+
+
+                        </div>
+                    </form>
+                    <!-- end content-right -->
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+</body>
+</html>

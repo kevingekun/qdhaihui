@@ -1,0 +1,274 @@
+<include file="Public/header_new" title="订单管理"/>
+<define name="DEFINE_SIDE_MENU_CURRENT" value="Orders"/>
+<include file="Public/sideMenu_new"/>
+
+    <div class="main home" id="main" style="overflow: auto;">
+        <div class="side clearfix" style="width:56px;height:100px;float:left;">
+        </div>
+        <div class="main-container" style="height:auto;">
+            <div class="gdt-toufang gdt-toufang-account">
+                <div class="tuiguang-tab" id="_hSubNav">
+                    <ul>
+                        <li style="width:56px"></li>
+                        <li class="goback"><a href="javascript:history.back(-1)"><i></i></a></li>
+                        <li class="on"><a href="{:U('Admin/Orders/index')}">产品订单</a></li>
+                        <li><a href="{:U('Admin/Workcard/index')}">售后服务</a></li>
+                        <li><a href="{:U('Admin/Refund/index')}">退款申请</a></li>
+                        <li><a href="{:U('Admin/Logistics/index')}">物流信息</a></li>
+                    </ul>
+                </div>
+                <div class="container-box">
+                    <div class="row">
+                        <div class="newcearchbox">
+                            <form class="form-inline" action="__SELF__" method="post">
+                                <input type="hidden" name="search" value="1" />
+                                <div class="input-group">
+                                    <input type="text" class="form-control" name="mobile_orderno" placeholder="收货人/手机号/订单号/微信昵称">
+                                </div>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" name="goods_name" placeholder="商品名称">
+                                </div>
+                                <div class="form-group input-daterange" data-toggle="datepicker" >
+                                    <input type="text" name="start_create_time" class="form-control input-date" placeholder="开始日期"/> -
+                                    <input type="text" name="end_create_time" class="form-control input-date" placeholder="结束日期"/>
+                                </div>
+                                <!--<div class="form-group">-->
+                                    <!--<label class="select">-->
+                                        <!--<select name="shipping_type" class="form-control input-lg ">-->
+                                            <!--<option value="0">配送方式</option>-->
+                                            <!--<option value="1">快递</option>-->
+                                            <!--<option value="2">自提</option>-->
+                                        <!--</select>-->
+                                    <!--</label>-->
+                                <!--</div>-->
+                                <!--<div class="form-group">-->
+                                    <!--<label class="select">-->
+                                        <!--<select name="pay_type" class="form-control input-lg ">-->
+                                            <!--<option value="">支付方式</option>-->
+                                            <!--<option value="0">货到付款</option>-->
+                                            <!--<option value="1">微信支付</option>-->
+                                            <!--<option value="2">支付宝</option>-->
+                                            <!--<option value="3">网银支付</option>-->
+                                        <!--</select>-->
+                                    <!--</label>-->
+                                <!--</div>-->
+                                <!--<div class="form-group">-->
+                                    <!--<label class="select">-->
+                                        <!--<select name="agent_rank_id2" class="form-control input-lg ">-->
+                                            <!--<option value="-1">合伙人</option>-->
+                                            <!--<option>粉丝</option>-->
+
+                                        <!--</select>-->
+                                    <!--</label>-->
+                                <!--</div>-->
+                                <button type="submit" class="btn btn-success">查询</button>
+                                <a class="btn btn-info" href="{:U('Admin/Orders/index?action=export', $map)}">订单导出</a>
+                                <!--<button type="button" class="btn btn-info">订单导出</button>-->
+                            </form>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <ul class="nav nav-tabs nav-primary newcearchbox">
+                            <li role="presentation" <if condition='empty($_GET[s])'>class="active"</if>><a href="{:U('Orders/index')}">所有订单 ({$StatusNum[all]?$StatusNum[all]:0})</a></li>
+                            <li role="presentation" <eq name='_GET[s]' value='1'>class="active"</eq>><a href="{:U('Orders/index',array('s'=>1))}">待付款 ({$StatusNum[1]?$StatusNum[1]:0})</a></li>
+                            <li role="presentation" <eq name='_GET[s]' value='2'>class="active"</eq>><a href="{:U('Orders/index',array('s'=>2))}">待发货 ({$StatusNum[2]?$StatusNum[2]:0})</a></li>
+                            <li role="presentation" <eq name='_GET[s]' value='3'>class="active"</eq>><a href="{:U('Orders/index',array('s'=>3))}">待收货 ({$StatusNum[3]?$StatusNum[3]:0})</a></li>
+                            <li role="presentation" <eq name='_GET[s]' value='9'>class="active"</eq>><a href="{:U('Orders/index',array('s'=>9))}">已收货 ({$StatusNum[9]?$StatusNum[9]:0})</a></li>
+                            <li role="presentation" <eq name='_GET[s]' value='4'>class="active"</eq>><a href="{:U('Orders/index',array('s'=>4))}">已关闭 ({$StatusNum[4]?$StatusNum[4]:0})</a></li>
+                            <li role="presentation" <eq name='_GET[s]' value='5'>class="active"</eq>><a href="{:U('Orders/index',array('s'=>5))}">未付款删除 ({$StatusNum[5]?$StatusNum[5]:0})</a></li>
+                            <li role="presentation" <eq name='_GET[s]' value='6'>class="active"</eq>><a href="{:U('Orders/index',array('s'=>6))}">已付款删除 ({$StatusNum[6]?$StatusNum[6]:0})</a></li>
+                        </ul>
+                    </div>
+                    <div class="row newcearchbox">
+                        <table class="table table-hover">
+                            <thead>
+                            <tr class="active">
+                                <th width="20%">商品详情</th>
+                                <th width="5%">微信昵称</th>
+                                <th width="5%">电话</th>
+                                <th width="5%">实际支付</th>
+                                <th width="5%">支付状态</th>
+                                <th width="5%">支付方式</th>
+                                <th width="5%">订单状态</th>
+                                <th width="5%">操作</th>
+                            </tr>
+                            </thead>
+                        </table>
+                        <volist name="result" id="r">
+                        <table class="table table-bordered">
+                            <thead>
+                            <tr class="active">
+                                <th colspan="15">
+                                    <div class="order-checkbox">
+                                        <label class="pull-left">
+                                            <input type="checkbox" name="">
+                                            <span class="tag tag-success">ID: {$r.order_id}</span>
+                                            <!-- <span class="text-muted">{$r.nickname}</span>&nbsp;&nbsp;&nbsp;&nbsp; -->
+                                            订单编号：{$r.order_number}&nbsp;&nbsp;
+                                            <switch name="r.order_type" >
+                                                <case value="1"><span class="badge">秒杀订单</span></case>
+                                                <case value="2"><span class="badge">团购订单</span></case>
+                                                <case value="3"><span class="badge">抢购订单</span></case>
+                                                <case value="4"><span class="badge">预售订单</span></case>
+                                            </switch>
+                                            &nbsp;&nbsp;
+                                            <notempty name="r.urge_time">
+                                                <span class="badge">买家催发货</span>
+                                                <span>{$r.urge_time|date='y-m-d H:i:s',###}</span>&nbsp;&nbsp;
+                                            </notempty>
+                                            <span class="badge">{:is_refund($r['order_number']) ? '已申请维权' : ''}</span>
+                                        </label>
+                                        <span class="pull-right">
+                                            成交时间：{$r.create_time|date='Y-m-d H:i:s',###}
+                                        </span>
+                                        <if condition="$r.invoice eq 1">
+                                        <span class="tag tag-success pull-right" style="border-radius: 10px;">已开发票</span>
+                                        </if>
+                                    </div>
+                                </th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td width="20%">
+                                <volist name="r['cart_data_list']" id="g">
+                                    <div class="media">
+                                        <div class="media-left">
+                                            <a href="#"><img class="media-object" src="{$g.image}" alt="{$g.name}"></a>
+                                        </div>
+                                        <div class="media-body">
+                                            <h4 class="media-heading">{$g.name}</h4>
+                                            {$g.description}
+                                        </div>
+                                        <div class="media-right">
+                                           {$g.num} x {$g.price}
+                                        </div>
+                                    </div>
+                                </volist>
+                                </td>
+                                <td width="5%">{$r.nickname}</td>
+                                <td width="5%">{$r.mobile|default='--'}</td>
+                                <td width="5%">
+                                    {$r.real_price|convert_money}<br>
+                                    <?php if($r['order_status'] == \Common\Model\MallModel::ORDER_STATUS_WAIT_PAY && $r['order_type'] == \Common\Model\MallModel::ACTIVITY_NOT): ?>
+                                    <a class="update_price" data-toggle="modal" data-target="#toUpdatePrice" data-id="{$r.order_id}" data-realprice="{$r.real_price|convert_money}">改价</a>
+                                    <?php endif; ?>
+                                </td>
+                                <td width="5%">{$r[pay_status] ? 已支付 : 未支付}</td>
+                                <td width="5%">{$r.pay_style}</td>
+                                <td width="5%" class="text-danger">{$r.order_status_text}</td>
+                                <td width="5%">
+                                    <a href="{:U('orderDetails',array('id'=>$r['order_id']))}">查看详情</a>
+                                    <br/>
+                                    <eq name="r.order_status_id" value="1">
+                                        <a href="{:U('setPayComplete',array('id'=>$r['order_id']))}" onclick="return confirm('确定要设为已支付吗?')">设为已支付</a> <br>
+                                    </eq>
+                                    <neq name="r.order_status_id" value="9">
+                                        <a href="{:U('Admin/Orders/del',array('id'=>$r['order_id']))}" onclick="return confirm('确定要删除该订单吗?')">删除</a>
+                                    </neq>
+                                    <br>
+                                    <eq name="r.order_status_id" value="2">
+                                        <a href="" id="deliver" data-toggle="modal" data-target="#toEms" data-id="{$r.order_id}">标记发货</a>
+                                    </eq>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        </volist>
+                        <div id="page">
+                            {$page}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 标记发货 begin-->
+<div class="modal fade" id="toEms" tabindex="-1" role="dialog" aria-labelledby="toEms" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h5 class="modal-title">标记发货</h5>
+            </div>
+            <form  class="form-horizontal" action="{:U('Admin/Logistics/manual')}" method="post" data-toggle="validate">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label  class="col-sm-3 control-label">物流公司:</label>
+                        <div class="col-sm-8">
+                            <select name="logistics" class="form-control" data-rule-required="true">
+                                <option value="sf" selected>顺丰快递</option>
+                                <option value="csn">菜鸟物流</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label  class="col-sm-3 control-label">快递单号:</label>
+                        <div class="col-sm-8">
+                            <input id="order_id" type="hidden" name="order_id" value="">
+                            <input type="text" class="form-control" name="way_bill_no" data-rule-required="true">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary btn-lg">确定</button>
+                    <button type="button" class="btn btn-default btn-lg" data-dismiss="modal">取消</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- 标记发货 end -->
+
+<!-- 修改商品价格 begin-->
+<div class="modal fade" id="toUpdatePrice" tabindex="-1" role="dialog" aria-labelledby="toEms" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h5 class="modal-title">修改商品价格</h5>
+            </div>
+            <form  class="form-horizontal" action="{:U('Admin/Orders/changeRealPrice')}" method="post" data-toggle="validate">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label  class="col-sm-3 control-label">商品价格:</label>
+                        <div class="col-sm-8">
+                            <input id="new_order_id" type="hidden" name="order_id" value="">
+                            <input id="new_real_price" type="text" class="form-control" name="real_price" data-rule-required="true">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary btn-lg">确定</button>
+                    <button type="button" class="btn btn-default btn-lg" data-dismiss="modal">取消</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- 修改商品价格 end -->
+
+
+<script src="/new_theme/common/sui/jquery.min.js"></script>
+<script src="/new_theme/common/sui/sui.min.js"></script>
+<script type="text/javascript">
+$(function(){
+    $('a#deliver').click(function(){
+        var order_id = $(this).attr('data-id');
+        $("#order_id").val(order_id);
+    });
+
+    // 修改价格
+    $("a.update_price").click(function(){
+        var order_id = $(this).data("id");
+        var old_real_price = $(this).data("realprice");
+        console.log(old_real_price);
+        $("#new_real_price").val(old_real_price);
+        $("#new_order_id").val(order_id);
+    })
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,137 @@
+<include file="Public/header_new" title="合伙人销售佣金统计"/>
+<define name="DEFINE_SIDE_MENU_CURRENT" value="Commission"/>
+<include file="Public/sideMenu_new"/>
+
+    <div class="main home" id="main" style="overflow: auto;">
+        <div class="side clearfix" style="width:56px;height:100px;float:left;">
+        </div>
+        <div class="main-container" style="height:auto;">
+            <div class="gdt-toufang gdt-toufang-account">
+                <div class="tuiguang-tab" id="_hSubNav">
+                    <ul>
+                      <li style="width:56px"></li>
+                      <li class="goback"><a href="javascript:history.back(-1)"><i></i></a></li>
+                      <li class="on"><a href="#" onclick="">合伙人佣金统计明细</a></li>
+                      <li><a href="{:U('Admin/Commission/fileList')}" onclick="">佣金发放审核</a></li>
+                    </ul>
+                </div>
+                <div class="container-box">
+                    <div class="row">
+                        <div class="alert alert-success" role="alert">
+                            总计佣金金额<strong style="font-size: 18px;">{$commission.commission}</strong>元，
+                            销售佣金<strong style="font-size: 18px;">{$commission.commission_product}</strong>元，
+                            销售提成<strong style="font-size: 18px;">{$commission.commission_product_reward}</strong>元，
+                            推广佣金<strong style="font-size: 18px;">{$commission.commission_spread}</strong>元。
+                        </div>
+                        <!-- <button type="button" class="btn btn-primary">添加佣金</button> -->
+                        <div class="newcearchbox">
+                            <form class="form-inline" action="" name="form1" method="get">
+                                <div class="input-group small">
+                                    <input type="text" class="form-control" name="realname" value="{$map.realname}" placeholder="姓名">
+                                </div>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" name="phone" value="{$map.phone}" placeholder="手机号码/微信昵称">
+                                </div>
+                                <div class="form-group">
+                                  <select name="commission_type" class="form-control">
+                                      <option value="">佣金种类</option>
+                                      <volist name="commission_type" id="v" >
+                                          <option value="{$key}" <eq name="key" value="$map['commission_type']">selected</eq>>{$v}</option>
+                                      </volist>
+                                  </select>
+                                </div>
+                                <div class="form-group input-daterange" data-toggle="datepicker" >
+                                    <input type="text" class="form-control input-date" name="start_time" value="{$map.start_time}" placeholder="创建时间" /> -
+                                    <input type="text" class="form-control input-date" name="end_time" value="{$map.end_time}" placeholder="创建时间" />
+                                </div>
+                                <div class="input-group small">
+                                    <input type="text" class="form-control" name="start_money" value="{$map.start_money}" placeholder="佣金金额" />
+                                </div>
+                                 -
+                                <div class="input-group small">
+                                    <input type="text" class="form-control" name="end_money" value="{$map.end_money}" placeholder="佣金金额">
+                                </div>
+
+                                <div class="form-group">
+                                  <select name="order" class="form-control">
+                                      <option value="">排序</option>
+                                      <option value="1" <eq name="map['order']" value="1">selected</eq>>金额正序</option>
+                                      <option value="2" <eq name="map['order']" value="2">selected</eq>>金额倒序</option>
+                                  </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <select name="commission_status" class="form-control">
+                                        <option value="-1">处理状态</option>
+                                        <volist name="commission_status" id="v">
+                                            <option value="{$key}" <eq name="key" value="$map['commission_status']">selected</eq>>{$v}</option>
+                                        </volist>
+                                    </select>
+                                </div>
+                                <button type="submit" class="btn btn-success">查询</button>
+                                <a href="{:U('Admin/Commission/partner?action=export', $map)}" onclick="return confirm('确定要导出吗?')" class="btn btn-info">导出</a>
+                                <a href="{:U('Admin/Commission/partner?action=exportTaskData', $map)}" onclick="return confirm('确定要导出吗?')" class="btn btn-info">按时间导出佣金(不含推广佣金)</a>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="row newcearchbox">
+                        <table class="table table-primary">
+                            <thead>
+                            <tr class="">
+                                <th width="10%">ID	</th>
+                                <th width="10%">用户ID</th>
+                                <th width="10%">姓名</th>
+                                <th width="10%">微信昵称</th>
+                                <th width="10%">手机号</th>
+                                <th width="5%">支付宝账号</th>
+                                <th width="5%">粉丝数</th>
+                                <th width="5%">金额</th>
+                                <th width="5%">佣金种类	</th>
+                                <th width="15%">佣金来源	</th>
+                                <th width="5%">状态</th>
+                                <th width="15%">创建时间</th>
+                                <th width="15%">操作</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                              <volist name="list" id="vo">
+                                  <tr>
+                                      <td class="center" scope="row">{$vo.id}</td>
+                                      <td>{$vo.uid}</td>
+                                      <td>{$vo.realname}</td>
+                                      <td>{$vo.nickname}</td>
+                                      <td>{$vo.phone}</td>
+                                      <td>{$vo.uid|get_pay_account}</td>
+                                      <td>{$vo.uid|get_fans_num}</td>
+                                      <td>{$vo.money|convert_money}</td>
+                                      <td>{$commission_type[$vo[type]]}</td>
+                                      <td>{$vo.id|commission_origin}</td>
+                                      <td><?php $cms = commission_status(true); echo $vo[type] == \Common\Model\CommissionModel::TYPE_SPREAD ? '' : $cms[$vo[status]]; ?></td>
+                                      <td>{$vo.create_time|format_date=###,"Y-m-d H:i:s"}</td>
+                                      <td>
+                                          <a href="{:U('Admin/Commission/change', array('id'=>$vo['id']))}">调整</a>
+                                          <if condition="$vo.status eq 9">
+                                              <if condition="$vo.invoice eq 0">
+                                                  <a href="{:U('Admin/Commission/markInvoice', array('id'=>$vo['id'], 'invoice'=>1))}" onclick="return confirm('确认要标记为已开发票吗?')">标记已开发票</a>
+                                              <else />
+                                                  <a href="{:U('Admin/Commission/markInvoice', array('id'=>$vo['id'], 'invoice'=>0))}" onclick="return confirm('确认要取消发票标记吗?')">取消发票标记</a>
+                                              </if>
+                                          </if>
+                                      </td>
+                                  </tr>
+                              </volist>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div id="page">
+                      {$page}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/new_theme/common/sui/jquery.min.js"></script>
+<script src="/new_theme/common/sui/sui.min.js"></script>
+</body>
+</html>

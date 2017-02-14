@@ -1,0 +1,15 @@
+
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<input id="send" value="发送" type="button"/>
+<script>
+$("#send").click(function(){
+
+	 $.post("{:U('/Crontab/MsgQueue/getRegCode')}",{tel:'18660236954',style:'reg'},
+		  function(data){
+		    alert(data);
+	});
+
+
+});
+
+</script>

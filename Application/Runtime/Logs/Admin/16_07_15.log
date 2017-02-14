@@ -1,0 +1,216 @@
+[ 2016-07-15T15:46:52+08:00 ] 10.0.2.2 /Admin
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000029s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001073s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000750s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000813s ]
+NOTIC: [8] Undefined index: admin_uid /media/sf_www/jvyoujia_trunk/ThinkPHP/Library/Org/Util/Rbac.class.php 第 169 行.
+ERR: SQLSTATE[28000] [1045] Access denied for user 'root'@'yanhuaiangdembp.lan' (using password: YES)
+
+[ 2016-07-15T15:47:18+08:00 ] 10.0.2.2 /Admin
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000016s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000727s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000853s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000920s ]
+NOTIC: [8] Undefined index: admin_uid /media/sf_www/jvyoujia_trunk/ThinkPHP/Library/Org/Util/Rbac.class.php 第 169 行.
+SQL: select node.id,node.name from hx_auth_role as role,hx_auth_user as user,hx_auth_access as access ,hx_auth_node as node where user.user_id='' and user.role_id=role.id and ( access.role_id=role.id  or (access.role_id=role.pid and role.pid!=0 ) ) and role.status=1 and access.node_id=node.id and node.level=1 and node.status=1 [ RunTime:0.0019s ]
+
+[ 2016-07-15T15:47:20+08:00 ] 10.0.2.2 /Admin/Login/login
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000012s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000081s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000295s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000348s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000056s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000123s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.014457s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.014524s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000820s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000864s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000754s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000794s ]
+
+[ 2016-07-15T15:48:18+08:00 ] 10.0.2.2 /Admin/Login/login
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000018s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000822s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001025s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001087s ]
+SQL: SHOW COLUMNS FROM `hx_auth_user` [ RunTime:0.0108s ]
+NOTIC: [8] Undefined index: validate /media/sf_www/jvyoujia_trunk/ThinkPHP/Library/Think/Model.class.php 第 1184 行.
+NOTIC: [8] Undefined index: auto /media/sf_www/jvyoujia_trunk/ThinkPHP/Library/Think/Model.class.php 第 1127 行.
+SQL: SHOW COLUMNS FROM `hx_auth_user` [ RunTime:0.0121s ]
+SQL: SELECT * FROM `hx_auth_user` WHERE `username` = 'admin' LIMIT 1   [ RunTime:0.0028s ]
+SQL: SHOW COLUMNS FROM `hx_auth_role` [ RunTime:0.0048s ]
+SQL: SELECT `name` FROM `hx_auth_role` LIMIT 1   [ RunTime:0.0040s ]
+SQL: SHOW COLUMNS FROM `hx_user` [ RunTime:0.0060s ]
+SQL: SELECT * FROM `hx_auth_user` WHERE `user_id` = 7 LIMIT 1   [ RunTime:0.0042s ]
+SQL: SHOW COLUMNS FROM `hx_operate_log` [ RunTime:0.0042s ]
+SQL: INSERT INTO `hx_operate_log` (`table_id`,`table_name`,`admin_uid`,`type`,`content`,`create_time`) VALUES ('7','auth_user','7','2','{\"user_id\":\"7\",\"fid\":\"0\",\"username\":\"admin\",\"password\":\"e10adc3949ba59abbe56e057f20f883e\",\"nickname\":\"gaorenhua\",\"regdate\":\"1444826229\",\"lastdate\":\"1449546031\",\"regip\":\"127.0.0.1\",\"lastip\":\"172.16.13.184\",\"loginnum\":\"245\",\"email\":\"597170962@qq.com\",\"message\":\"0\",\"islock\":\"0\",\"vip\":\"0\",\"overduedate\":\"0\",\"mobile\":\"15318776618\",\"role_id\":\"0\"}','2016-07-15 15:48:18') [ RunTime:0.1577s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000049s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000110s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.015108s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015173s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000961s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000998s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000757s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000794s ]
+
+[ 2016-07-15T15:48:19+08:00 ] 10.0.2.2 /Admin/Index/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000013s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000080s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000429s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000494s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000068s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000125s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.020893s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.020949s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000282s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000320s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000308s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000349s ]
+
+[ 2016-07-15T15:48:20+08:00 ] 10.0.2.2 /Admin/Statistics/Ajax4Home.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000016s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000234s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000470s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000537s ]
+
+[ 2016-07-15T15:49:09+08:00 ] 10.0.2.2 /Admin/Commission/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000016s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000567s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000751s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000812s ]
+NOTIC: [8] Undefined index: admin_uid /media/sf_www/jvyoujia_trunk/ThinkPHP/Library/Org/Util/Rbac.class.php 第 169 行.
+SQL: select node.id,node.name from hx_auth_role as role,hx_auth_user as user,hx_auth_access as access ,hx_auth_node as node where user.user_id='' and user.role_id=role.id and ( access.role_id=role.id  or (access.role_id=role.pid and role.pid!=0 ) ) and role.status=1 and access.node_id=node.id and node.level=1 and node.status=1 [ RunTime:0.0022s ]
+
+[ 2016-07-15T15:49:11+08:00 ] 10.0.2.2 /Admin/Login/login
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000013s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000083s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000512s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000564s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000047s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000097s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.011460s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.011529s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000811s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000849s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000726s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000764s ]
+
+[ 2016-07-15T15:49:13+08:00 ] 10.0.2.2 /Admin/Login/login
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000015s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000329s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000638s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000690s ]
+SQL: SHOW COLUMNS FROM `hx_auth_user` [ RunTime:0.0023s ]
+NOTIC: [8] Undefined index: validate /media/sf_www/jvyoujia_trunk/ThinkPHP/Library/Think/Model.class.php 第 1184 行.
+NOTIC: [8] Undefined index: auto /media/sf_www/jvyoujia_trunk/ThinkPHP/Library/Think/Model.class.php 第 1127 行.
+SQL: SHOW COLUMNS FROM `hx_auth_user` [ RunTime:0.0019s ]
+SQL: SELECT * FROM `hx_auth_user` WHERE `username` = 'admin' LIMIT 1   [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `hx_auth_role` [ RunTime:0.0016s ]
+SQL: SELECT `name` FROM `hx_auth_role` LIMIT 1   [ RunTime:0.0017s ]
+SQL: SHOW COLUMNS FROM `hx_user` [ RunTime:0.0026s ]
+SQL: SELECT * FROM `hx_auth_user` WHERE `user_id` = 7 LIMIT 1   [ RunTime:0.0021s ]
+SQL: SHOW COLUMNS FROM `hx_operate_log` [ RunTime:0.0017s ]
+SQL: INSERT INTO `hx_operate_log` (`table_id`,`table_name`,`admin_uid`,`type`,`content`,`create_time`) VALUES ('7','auth_user','7','2','{\"user_id\":\"7\",\"fid\":\"0\",\"username\":\"admin\",\"password\":\"e10adc3949ba59abbe56e057f20f883e\",\"nickname\":\"gaorenhua\",\"regdate\":\"1444826229\",\"lastdate\":\"1449546031\",\"regip\":\"127.0.0.1\",\"lastip\":\"172.16.13.184\",\"loginnum\":\"245\",\"email\":\"597170962@qq.com\",\"message\":\"0\",\"islock\":\"0\",\"vip\":\"0\",\"overduedate\":\"0\",\"mobile\":\"15318776618\",\"role_id\":\"0\"}','2016-07-15 15:49:13') [ RunTime:0.0020s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000041s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000092s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.008602s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.008677s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000319s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000358s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000290s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000334s ]
+
+[ 2016-07-15T15:49:14+08:00 ] 10.0.2.2 /Admin/Index/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000013s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000087s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000329s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000388s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000069s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000123s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.019158s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.019213s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000728s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000765s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000730s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000772s ]
+
+[ 2016-07-15T15:49:14+08:00 ] 10.0.2.2 /Admin/Statistics/Ajax4Home.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000015s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000113s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000444s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000496s ]
+
+[ 2016-07-15T15:49:15+08:00 ] 10.0.2.2 /Admin/Partner/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000013s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000083s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000278s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000344s ]
+SQL: SHOW COLUMNS FROM `hx_user` [ RunTime:0.0034s ]
+SQL: SELECT COUNT(*) AS tp_count FROM ( SELECT u.*,count(su.uid) as count_fans FROM hx_user u LEFT JOIN hx_view_all_fans su ON u.uid=su.invite_id  WHERE u.partner_status = 9 AND u.subscribe_time > 0 GROUP BY u.uid ORDER BY u.uid DESC  ) a LIMIT 1   [ RunTime:0.0022s ]
+SQL: SELECT * FROM ( SELECT u.*,count(su.uid) as count_fans FROM hx_user u LEFT JOIN hx_view_all_fans su ON u.uid=su.invite_id  WHERE u.partner_status = 9 AND u.subscribe_time > 0 GROUP BY u.uid ORDER BY u.uid DESC  ) a LIMIT 0,25   [ RunTime:0.0028s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hx_user` WHERE `partner_status` = 9 AND `create_time` >= 1468512000 AND `subscribe_time` > 0 LIMIT 1   [ RunTime:0.0016s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hx_user` WHERE `partner_status` = 9 AND `subscribe_time` > 0 LIMIT 1   [ RunTime:0.0016s ]
+SQL: SHOW COLUMNS FROM `hx_attribute` [ RunTime:0.0040s ]
+SQL: SELECT * FROM `hx_attribute` WHERE `type` = 'partner_group' AND `status` = 0 ORDER BY id ASC  [ RunTime:0.0019s ]
+SQL: SELECT * FROM `hx_attribute` WHERE `type` = 'partner_tag' AND `status` = 0 ORDER BY id ASC  [ RunTime:0.0020s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000078s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000145s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.026319s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.026390s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000291s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000328s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000294s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000335s ]
+

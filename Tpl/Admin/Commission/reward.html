@@ -1,0 +1,103 @@
+<include file="Public/header_new" title="激励佣金"/>
+<define name="DEFINE_SIDE_MENU_CURRENT" value="Commission"/>
+<include file="Public/sideMenu_new"/>
+
+    <div class="main home" id="main" style="overflow: auto;">
+        <div class="side clearfix" style="width:56px;height:100px;float:left;">
+        </div>
+        <div class="main-container" style="height:auto;">
+            <div class="gdt-toufang gdt-toufang-account">
+                <div class="tuiguang-tab" id="_hSubNav">
+                    <ul>
+                        <li style="width:56px"></li>
+                        <li class="goback"><a href="javascript:history.back(-1)"><i></i></a></li>
+                        <li class="on"><a href="{:U('Admin/Commission/reward')}" onclick="">激励佣金任务</a></li>
+                        <li><a onclick="">任务详情</a></li>
+                    </ul>
+                </div>
+                <div class="container-box">
+                    <div class="alert alert-warning" role="alert">
+                        说明: 通过填入条件可筛选出对应合伙人数据(没建一个就是一个任务), 然后进任务详情去筛选去设置激励佣金
+                    </div>
+                    <div class="newcearchbox">
+                        <form class="form-inline" action="" name="form1" method="post">
+                            <div class="form-group input-daterange" >
+                                <input type="text" class="form-control Wdate" name="start_time" data-rule-required="true" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',readOnly:true})" aria-required="true" readonly="" placeholder="开始时间" /> -
+                                <input type="text" class="form-control Wdate" name="end_time" data-rule-required="true" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',readOnly:true})" aria-required="true" readonly="" placeholder="结束时间" />
+                            </div>
+                            <div class="form-group">
+                                <select name="type" class="form-control">
+                                    <option value="">类型</option>
+                                    <option value="1">销售佣金</option>
+                                    <option value="2">推广佣金</option>
+                                    <option value="3">粉丝数量</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                >= <input type="text" class="form-control" name="condition" placeholder="" />
+                            </div>
+
+                           <!-- <div class="form-group">
+                                　　粉丝增加数量 <input type="text" class="form-control" name="fans" placeholder="" /> 个
+                            </div>-->
+                            <button type="submit" class="btn btn-success">新建任务</button>
+                        </form>
+                    </div>
+                    <div class="row newcearchbox ">
+                        <table class="table table-bordered  table-primary">
+                            <thead>
+                                <tr class="">
+                                   <!-- <th scope=""></th> -->
+                                    <th width="10%">ID</th>
+                                    <th width="15%">开始时间</th>
+                                    <th width="10%">结束时间</th>
+                                    <th width="20%">创建时间</th>
+                                    <th width="30%">操作</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                  <volist name="list" id="vo">
+                                      <tr>
+                                          <td>{$vo.id}</td>
+                                          <td>{$vo.start_time|format_date}</td>
+                                          <td>{$vo.end_time|format_date}</td>
+                                          <td>{$vo.create_time|format_date=###,"Y-m-d H:i:s"}</td>
+                                          <td>
+                                              <a href="{:U('Admin/Commission/rewardData', array('task_id'=>$vo['id']))}" class="btn btn-primary">查看详情</a>
+                                              <a href="{:U('Admin/Commission/rewardDel', array('id'=>$vo['id']))}"  class="btn btn-danger btn-info" onclick="return confirm('确定要删除吗?');">删除</a>
+                                          </td>
+                                      </tr>
+                                  </volist>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div id="page">
+                          {$page}
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/new_theme/common/sui/jquery.min.js"></script>
+<script src="/new_theme/common/sui/sui.min.js"></script>
+<script src="/new_theme/common/datepicker/WdatePicker.js"></script>
+<style>
+    .form-control {
+        display: block;
+        width: 100%;
+        height: 28px;
+        padding: 2px 4px;
+        font-size: 12px;
+        line-height: 1.5;
+        color: #555;
+        background-color: #fff;
+        border: 1px solid #ccc;
+        border-radius: 2px;
+        -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+        -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+        transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    }
+</style>
+</body>
+</html>

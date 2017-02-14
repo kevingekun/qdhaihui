@@ -1,0 +1,44 @@
+<include file="Public/header_new" title="佣金"/>
+<define name="DEFINE_SIDE_MENU_CURRENT" value="Commission"/>
+<include file="Public/sideMenu_new"/>
+
+<div class="main home" id="main" style="/*height: 400px;*/ overflow: auto;">
+    <div class="side clearfix" style="width:56px;height:100px;float:left;"></div>
+    <div class="main-container" style="height:auto;">
+        <div class="gdt-toufang gdt-toufang-account">
+            <div class="gdt-toufang gdt-tf-toolindex">
+                <div class="gdt-ti">
+                    <div class="hd">
+                        <h3 class="ti-title">佣金管理</h3>
+                    </div>
+                    <div class="bd clearfix">
+                        <div class="ti-item">
+                            <a href="{:U('Admin/Commission/partner')}" class="item-icon item-icon-account"></a>
+                            <div class="ti-item-con">
+                                <a href="{:U('Admin/Commission/partner')}">
+                                    <strong>合伙人佣金统计</strong>
+                                </a>
+                                <p><a href="{:U('Admin/Commission/partner')}">合伙人粉丝统计。推广销售佣金统计，以及规则设置</a></p>
+                            </div>
+                        </div>
+                        <div class="ti-item">
+                            <a href="{:U('Admin/Commission/reward')}" class="item-icon item-icon-bound"></a>
+                            <div class="ti-item-con">
+                                <a href="{:U('Admin/Commission/reward')}"><strong>激励佣金</strong></a>
+                                <p><a href="{:U('Admin/Commission/reward')}">激励佣金的操作</a></p>
+                            </div>
+                        </div>
+                        <div class="ti-item">
+                            <a href="{:U('Admin/Commission/setting_spread')}" class="item-icon item-icon-fk"></a>
+                            <div class="ti-item-con">
+                                <a href="{:U('Admin/Commission/setting_spread')}"><strong>后台佣金设置</strong></a>
+                                <p><a href="{:U('Admin/Commission/setting_spread')}">推广、销售、提成的设置</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<include file="Public/footer"/>

@@ -1,0 +1,158 @@
+<include file="Public:header" title="发票管理"  />
+<body>
+    <div class="page">
+        <header class="bar bar-nav">
+            <h1 class="title his-color">发票管理</h1>
+        </header>
+
+        <div class="content" id="ticketItem">
+            <form name="form1" action="" method="post">
+            <div class="content-high">
+                <div class="content-block-title">发票类型</div>
+                <div class="list-block media-list">
+                    <ul>
+                        <li>
+                            <label class="label-checkbox item-content">
+                                <input type="radio" name="ticket-radio" id="tickeRadio_personal" value="1" checked>
+                                <div class="item-media"><i class="icon icon-form-checkbox"></i></div>
+                                <div class="item-inner">
+                                    <div class="item-title-row">
+                                        <div class="item-title">电子发票</div>
+                                    </div>
+                                </div>
+                            </label>
+                        </li>
+                        <li>
+                            <label class="label-checkbox item-content">
+                                <input type="radio" name="ticket-radio" value="0" id="tickeRadio_company" >
+                                <div class="item-media"><i class="icon icon-form-checkbox"></i></div>
+                                <div class="item-inner">
+                                    <div class="item-title-row">
+                                        <div class="item-title">单位发票</div>
+                                    </div>
+                                </div>
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+                <div class="ticket-list" id="ticketList_personal">
+                    <ul>
+                        <li>
+                            <label>发票抬头</label>
+                            <p>
+                                <input type="text" name="plain_title" placeholder="" value="{$invoice.plain_title}">
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="ticket-list" id="ticketList_company">
+                    <ul>
+                        <li>
+                            <label>公司名称</label>
+                            <p>
+                                <input type="text" name="company" placeholder="" value="{$invoice.company}">
+                            </p>
+                        </li>
+                        <li>
+                            <label>开户行</label>
+                            <p>
+                                <input type="text" name="bank" placeholder="" value="{$invoice.bank}">
+                            </p>
+                        </li>
+                        <li>
+                            <label id="longSide">纳税人识别号</label>
+                            <p>
+                                <input type="text" name="num" placeholder="" value="{$invoice.num}">
+                            </p>
+                        </li>
+                        <li>
+                            <label>银行卡号</label>
+                            <p>
+                                <input type="text" name="account" placeholder="" value="{$invoice.account}">
+                            </p>
+                        </li>
+                        <li>
+                            <label>地址</label>
+                            <p>
+                                <input type="text" name="address" placeholder="" value="{$invoice.address}">
+                            </p>
+                        </li>
+                        <li>
+                            <label>电话</label>
+                            <p>
+                                <input type="text" name="telephone" placeholder="" value="{$invoice.telephone}">
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+
+            <div class="row row-button row-bottom">
+                <div class=""><a href="#" onclick="check()" class="button button-del">提交</a></div>
+            </div>
+            </form>
+        </div>
+    </div>
+    <script src="__ASSETS__/dist/js/sm.js"></script>
+    <script src="__ASSETS__/js/demos.js"></script>
+    <script>
+        function check(){
+            var pass=true;
+            var ticket=document.getElementById('tickeRadio_company');
+            if (ticket.checked==true){
+                if (form1.company.value==''){
+                    $.toast('请填写公司名称');
+                    pass= false;
+                }else if (form1.bank.value==''){
+                    $.toast('请填写开户行');
+                    pass= false;
+                }else if(form1.num.value==''){
+                    $.toast('请填写纳税人识别号');
+                    pass= false;
+                }else if(form1.account.value==''){
+                    $.toast('请填写银行卡号');
+                    pass= false;
+                }else if(form1.address.value==''){
+                    $.toast('请填写地址');
+                    pass= false;
+                }else if(form1.telephone.value==''){
+                    $.toast('请填写电话');
+                    pass= false;
+                }
+
+            }
+            if (pass==true){
+                form1.submit();
+            }
+        }
+    </script>
+    <script>
+
+        $(document).ready(function(){
+
+            <if condition='$invoice_style eq 1'>
+            $('#ticketList_personal').show();
+            $('#ticketList_company').hide();
+            <else/>
+            $('#ticketList_personal').hide();
+            $('#ticketList_company').show();
+            </if>
+
+
+        });
+
+        $('#tickeRadio_company').click(function(){
+                    $('#ticketList_personal').hide();
+                    $('#ticketList_company').show();
+            }
+        );
+        $('#tickeRadio_personal').click(function(){
+                    $('#ticketList_personal').show();
+                    $('#ticketList_company').hide();
+                }
+        );
+    </script>
+</body>
+<include file="Public:share" />
+</html>

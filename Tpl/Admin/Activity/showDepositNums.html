@@ -1,0 +1,60 @@
+<include file="Public/header_new" title="活动"/>
+<define name="DEFINE_SIDE_MENU_CURRENT" value="activity"/>
+<include file="Public/sideMenu_new"/>
+
+    <div class="main home" id="main" style="overflow: auto;">
+        <div class="side clearfix" style="width:56px;height:100px;float:left;">
+        </div>
+        <div class="main-container" style="height:auto;">
+            <div class="gdt-toufang gdt-toufang-account">
+                <div class="tuiguang-tab" id="_hSubNav">
+                    <ul>
+                        <li style="width:56px"></li>
+                        <li class="goback"><a href="javascript:history.back(-1)"><i></i></a></li>
+                        <li><a href="{:U('Admin/Activity/menu')}">菜单设置</a></li>
+                        <li><a href="{:U('Admin/Activity/couponlist')}">优惠券</a></li>
+                        <li><a href="{:U('Admin/Activity/seckill')}">秒杀</a></li>
+                        <li><a href="{:U('Admin/Activity/bookingList')}">预售</a></li>
+                        <li class="on"><a href="{:U('Admin/Activity/groupList')}">团购</a></li>
+                    </ul>
+                </div>
+
+                <div class="container-box" style="width: 600px;">
+                    <div class="row">
+                        <ul class="nav nav-tabs nav-primary newcearchbox">
+                            <li role="presentation" class="active"><a href="">预约记录</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="row newcearchbox">
+                        <table class="table table-primary  table-bordered table-middle">
+                            <thead>
+                            <tr class="">
+                                <th width="30%">预约人</th>
+                                <th width="30%">手机号</th>
+                                <th width="40%">预约时间</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <volist name="list" id="vo">
+                            <tr>
+                                <td>{$vo.username}({$vo.name})</td>
+                                <td>{$vo.mobile}</td>
+                                <td>{$vo.create_time|format_date=###,"Y-m-d H:i:s"}</td>
+                            </tr>
+                            </volist>
+                            </tbody>
+                        </table>
+                        <div id="page">
+                            {$page}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/new_theme/common/sui/jquery.min.js"></script>
+<script src="/new_theme/common/sui/sui.min.js"></script>
+</body>
+</html>

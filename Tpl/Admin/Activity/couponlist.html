@@ -1,0 +1,107 @@
+<include file="Public/header_new" title="活动"/>
+<define name="DEFINE_SIDE_MENU_CURRENT" value="activity"/>
+<include file="Public/sideMenu_new"/>
+
+    <div class="main home" id="main" style="overflow: auto;">
+        <div class="side clearfix" style="width:56px;height:100px;float:left;">
+        </div>
+        <div class="main-container" style="height:auto;">
+            <div class="gdt-toufang gdt-toufang-account">
+                <div class="tuiguang-tab" id="_hSubNav">
+                    <ul>
+                        <li style="width:56px"></li>
+                        <li class="goback"><a href="javascript:history.back(-1)"><i></i></a></li>
+                        <li><a href="{:U('Admin/Activity/menu')}">菜单设置</a></li>
+                        <li class="on"><a href="{:U('Admin/Activity/couponlist')}">优惠券</a></li>
+                        <li><a href="{:U('Admin/Activity/seckill')}">秒杀</a></li>
+                        <li><a href="{:U('Admin/Activity/bookingList')}">预售</a></li>
+                        <li><a href="{:U('Admin/Activity/groupList')}">团购</a></li>
+                    </ul>
+                </div>
+
+                <div class="container-box">
+                       <div class="row">
+                           <a href="{:U('Activity/couponadd')}" class="btn btn-success">新建优惠券</a>
+                       </div>
+                       <div class="row">
+                           <ul class="nav nav-tabs nav-primary newcearchbox">
+                              <li role="presentation" <if condition='$status eq 1'>class="active"</if>><a href="{:U('Activity/couponlist')}">优惠券</a></li>
+                              <li role="presentation" <if condition='$status eq 0'>class="active"</if>><a href="{:U('Activity/couponlist',array('status'=>0))}">作废优惠劵</a></li>
+                           </ul>
+                       </div>
+                       <div class="row">
+                        <div class="newcearchbox">
+                            <form class="form-inline" action="" method="get">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" name="cname" placeholder="优惠券名称">
+                                </div>
+                                <div class="input-group small" style="margin-right:3px;">
+                                    <input type="text" name="csvalue" class="form-control" placeholder="面值">
+                                </div>
+                                 至
+                                <div class="input-group small" style="margin-left:3px;">
+                                    <input type="text" name="cevalue" class="form-control" placeholder="面值">
+                                </div>
+                                <div class="form-group input-daterange" data-toggle="datepicker" >
+                                    <input type="text" name="cstime" class="form-control input-date" placeholder="入账日期"/> 至
+                                    <input type="text" name="cetime" class="form-control input-date" placeholder="入账时间"/>
+                                    <input type="hidden" name="status" value="{$status}"/>
+                                </div>
+                                <button type="submit" class="btn btn-primary" name="st" value="3">查询</button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="row newcearchbox ">
+                        <table class="table table-primary">
+                            <thead>
+                                <tr class="">
+                                    <!-- <th></th> -->
+                                    <th width="10%">优惠券名称</th>
+                                    <th width="10%">面值</th>
+                                    <th width="10%">总数量</th>
+                                    <th width="20%">有效期</th>
+                                    <th width="12%">已领取</th>
+                                    <th width="12%">已使用</th>
+                                    <th width="26%">操作</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                  <volist name="list" id="v">
+                          		        <tr>
+                    		                <!-- <td>
+                    		                	<input class="checkbox table-ckbs" type="checkbox">
+                    		                </td> -->
+                    		                <td>{$v.coupon_name}</td>
+                    		                <td>¥{$v.money_cut|convert_money=###}</td>
+                    						        <td>{$v.total_num} 张</td>
+                    		                <td>
+                    		                	<p>{$v.start_time|date='Y-m-d H:i:s',###}</p>
+                    		                	<p>至</p>
+                    		                	<p>{$v.end_time|date='Y-m-d H:i:s',###}</p>
+                    		                </td>
+                    		                <td>{:get_coupon_record_num(array('coupon_id'=>$v['id'], 'deleted'=>0))} 张</td>
+                    		                <td>{:get_coupon_record_num(array('coupon_id'=>$v['id'], 'used'=>1, 'deleted'=>0))} 张</td>
+                    		                <td>
+                                                <a href="{:U('Admin/Activity/couponEdit', array('id'=>$v['id']))}" class="btn btn-info j-copy" title="编辑" data-copy="">编辑</a>
+                                                <a href="" class="btn btn-info j-copy" title="复制地址" data-copy="">复制地址</a>
+                                                <a href="{:U('couponDetails', array('id'=>$v['id']))}" class="btn btn-info j-copy" title="查看详情" data-copy="">查看详情</a>
+                    	                        <a href="{:U('Admin/Activity/couponRecord',array('id'=>$v['id']))}" class="btn btn-info J_qrcode" title="二维码">发放记录</a>
+                                                <a href="{:U('Activity/couponstop',array('id'=>$v['id']))}" data-id="2001004" data-dz="0" class="btn btn-danger j-disabled" onclick="return confirm('确定要删除吗?');">删除</a>
+                    		                </td>
+                    		            </tr>
+                      					</volist>
+                            </tbody>
+                        </table>
+                        <div id="page">
+                          {$page}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/new_theme/common/sui/jquery.min.js"></script>
+<script src="/new_theme/common/sui/sui.min.js"></script>
+</body>
+</html>

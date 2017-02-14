@@ -1,0 +1,138 @@
+<include file="Public/header" title="审核明细"/>
+<define name="DEFINE_SIDE_MENU_CURRENT" value="commission"/>
+<include file="Public/sideMenu"/>
+<div class="main home" id="main" style="/*height: 400px;*/ overflow: auto;">
+    <div class="side clearfix" style="width:56px;height:100px;float:left;"></div>
+    <div class="main-container" style="height:auto;">
+        <div class="gdt-toufang gdt-toufang-account">
+            <div class="tuiguang-tab" id="_hSubNav">
+                <ul>
+                    <li style="width:56px"></li>
+                    <li class="goback"><a href="javascript:history.back(-1)"><i></i></a></li>
+                    <li><a href="{:U('Admin/Commission/partner')}" onclick="">合伙人佣金统计明细</a></li>
+                    <li class="on"><a href="#" onclick="">佣金发放审核</a></li>
+                </ul>
+            </div>
+            <div class="content-right fl" style="width: 100%;">
+                <div class="tablesWrap">
+                    <form action="" method="get" name="form1" class="form-inline">
+                        <div class="tables-searchbox">
+                            <input type="text" class="form-control input mini" name="realname" value="{$map.realname}" placeholder="姓名">
+                            <input type="text" class="form-control input mini" name="phone" value="{$map.phone}" placeholder="手机号码/微信昵称">
+                            <select name="commission_type" class="select mini">
+                                <option value="">佣金种类</option>
+                                <volist name="commission_type" id="v" key="k">
+                                    <option value="{$k}" <eq name="k" value="$map['commission_type']">selected</eq>>{$v}</option>
+                                </volist>
+                            </select>
+                            <input type="text" autocomplete="off" name="start_time" value="{$map.start_time}" placeholder="入账时间"
+                                   class="Wdate input mini form-control" onclick="WdatePicker({ dateFmt:'yyyy-MM-dd'})"> -
+                            <input type="text" autocomplete="off" name="end_time" value="{$map.end_time}" placeholder="入账时间"
+                                   class="Wdate input mini form-control" onclick="WdatePicker({ dateFmt:'yyyy-MM-dd'})">
+
+                            <input type="text" autocomplete="off" name="start_money" value="{$map.start_money}" placeholder="佣金金额"
+                                   class="form-control input mini" > -
+                            <input type="text" autocomplete="off" name="end_money" value="{$map.end_money}" placeholder="佣金金额"
+                                   class="form-control input mini" >
+                            <!--<select name="group_id" class="select mini">-->
+                            <!--<option value="0">所有分组</option>-->
+                            <!--<volist name="groups" id="group">-->
+                            <!--<option value="{$group.id}" <eq name="group['id']" value="$map['group_id']">selected</eq>>{$group.title}</option>-->
+                            <!--</volist>-->
+                            <!--</select>-->
+
+                            <!--<select name="label_id" class="select mini">-->
+                            <!--<option value="0" selected>标签</option>-->
+                            <!--<volist name="labels" id="label">-->
+                            <!--<option value="{$label.id}" <eq name="label['id']" value="$map['label_id']">selected</eq>>{$label.title}</option>-->
+                            <!--</volist>-->
+                            <!--</select>-->
+
+                            <select name="order" class="select mini">
+                                <option value="">排序</option>
+                                <option value="1" <eq name="map['order']" value="1">selected</eq>>金额正序</option>
+                                <option value="2" <eq name="map['order']" value="2">selected</eq>>金额倒序</option>
+                            </select>
+                            <button class="btn btn-primary" style="color: #ffffff"><i
+                                    class="glyphicon glyphicon-search"></i> 查询
+                            </button>
+                            <a href="{:U('Admin/Commission/partner?action=export', $map)}" onclick="return confirm('确定要导出吗?')" class="btn btn-warning">导出</a>
+                        </div>
+                    </form>
+                    <!-- end tables-searchbox -->
+                    <table class="wxtables mt20">
+                        <thead>
+                        <tr>
+                            <td class="center">
+                                <label> <input id="checkedAll" type="checkbox" class="ace"> <span class="lbl"></span></label>
+                            </td>
+                            <td>姓名</td>
+                            <td>微信昵称</td>
+                            <td>手机号</td>
+                            <td>支付宝账号</td>
+                            <td>粉丝数</td>
+                            <td>金额</td>
+                            <td>佣金种类</td>
+                            <td>状态</td>
+                            <td>创建时间</td>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <volist name="list" id="vo">
+                            <tr>
+                                <td class="center">
+                                    <label> <input type="checkbox" class="ace checkSingle"> <span class="lbl"></span></label>
+                                </td>
+                                <td>{$vo.realname}</td>
+                                <td>{$vo.nickname}</td>
+                                <td>{$vo.phone}</td>
+                                <td>{$vo.uid|get_pay_account}</td>
+                                <td>{$vo.uid|get_fans_num}</td>
+                                <td>{$vo.money|convert_money}</td>
+                                <td>{$commission_type[$vo[type]]}</td>
+                                <td>{$commission_status[$vo[status]]}</td>
+                                <td>{$vo.create_time|format_date=###,"Y-m-d H:i:s"}</td>
+                            </tr>
+                        </volist>
+                        </tbody>
+                    </table>
+                    <!-- end wxtables -->
+                    <!-- end tables-btmctrl -->
+                    {$page}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(function(){
+        $("#checkedAll").change(function(){
+            if(this.checked){
+                $(".checkSingle").each(function(){
+                    this.checked=true;
+                })
+            }else{
+                $(".checkSingle").each(function(){
+                    this.checked=false;
+                })
+            }
+        });
+
+        $(".checkSingle").click(function () {
+            if ($(this).is(":checked")){
+                var isAllChecked = 0;
+                $(".checkSingle").each(function(){
+                    if(!this.checked)
+                        isAllChecked = 1;
+                })
+                if(isAllChecked == 0){ $("#select_all").prop("checked", true); }
+            }
+            else {
+                $("#checkedAll").prop("checked", false);
+            }
+        });
+    })
+
+
+</script>
+<include file="Public/footer"/>

@@ -1,0 +1,64 @@
+<include file="Public/header_new" title="标签添加/修改"/>
+<define name="DEFINE_SIDE_MENU_CURRENT" value="Partner"/>
+<include file="Public/sideMenu_new"/>
+    <div class="main home" id="main" style="overflow: auto;">
+        <div class="side clearfix" style="width:56px;height:100px;float:left;">
+        </div>
+        <div class="main-container" style="height:auto;">
+            <div class="gdt-toufang gdt-toufang-account">
+                <div class="tuiguang-tab" id="_hSubNav">
+                    <ul>
+                        <li style="width:56px"></li>
+                        <li class="goback"><a href="javascript:history.back(-1)"><i></i></a></li>
+                        <li><a href="{:U('Admin/Partner/index')}">合伙人列表</a></li>
+                        <li><a href="{:U('Admin/Partner/fans')}">合伙人粉丝统计</a></li>
+                        <li><a href="{:U('Admin/Partner/rule')}">合伙人规则设置</a></li>
+                        <li><a href="{:U('Admin/Partner/audit')}">合伙人审核</a></li>
+                        <li><a href="{:U('Admin/Partner/tag')}">标签管理</a></li>
+                        <li class="on"><a href="{:U('Admin/Partner/group')}">分组管理</a></li>
+                    </ul>
+                </div>
+                <div class="container-box clearfix">
+                    <div class="row">
+                        <div class="newcearchbox">
+                            <form class="form-inline" action="" method="post">
+                                <input type="hidden" name="id" value="{group.id}"/>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" name="groupname" value="{$group.value}" placeholder="分组名称">
+                                </div>
+                                <button type="submit" class="btn btn-success">提交</button>
+                                <a href="{:U('Admin/Partner/group')}" class="btn btn-primary">刷新</a>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="row newcearchbox">
+                        <table class="table table-primary table-hover">
+                            <thead>
+                                <tr class="">
+                                    <th width="10%">ID	</th>
+                                    <th width="20%">分组名称	</th>
+                                    <th width="15%">操作</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            <volist name="list" id="vo">
+                                <tr>
+                                    <th scope="row">{$vo.id}</th>
+                                    <td>{$vo.value}</td>
+                                    <td>
+                                        <a href="{:U('Admin/Partner/group', array('id'=>$vo['id']))}">编辑</a>
+                                        <br>
+                                        <a href="{:U('Admin/Partner/delGroup', array('id'=>$vo['id']))}" onclick="return confirm('确定要删除吗?')">删除</a>
+                                    </td>
+                                </tr>
+                            </volist>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,168 @@
+<include file="Public/header_new" title="活动"/>
+<define name="DEFINE_SIDE_MENU_CURRENT" value="activity"/>
+<include file="Public/sideMenu_new"/>
+
+    <div class="main home" id="main" style="overflow: auto;">
+        <div class="side clearfix" style="width:56px;height:100px;float:left;">
+        </div>
+        <div class="main-container" style="height:auto;">
+            <div class="gdt-toufang gdt-toufang-account">
+                <div class="tuiguang-tab" id="_hSubNav">
+                    <ul>
+                        <li style="width:56px"></li>
+                        <li class="goback"><a href="javascript:history.back(-1)"><i></i></a></li>
+                        <li><a href="{:U('Admin/Activity/menu')}">菜单设置</a></li>
+                        <li><a href="{:U('Admin/Activity/couponlist')}">优惠券</a></li>
+                        <li><a href="{:U('Admin/Activity/seckill')}">秒杀</a></li>
+                        <li class="on"><a href="{:U('Admin/Activity/bookingList')}">预售</a></li>
+                        <li><a href="{:U('Admin/Activity/groupList')}">团购</a></li>
+                    </ul>
+                </div>
+                <div class="container-box clearfix">
+                    <div class="col-md-9">
+                        <div class="row">
+                            <div class="bs-callout bs-callout-info">
+                                <button type="button" class="btn btn-success">新建预售活动</button>
+                            </div>
+                            <div class="panel">
+                                <form action="__SELF__" enctype="multipart/form-data" method="post" novalidate="novalidate" id="seckillForm" class="form-horizontal" data-toggle="validate">
+                                    <div class="panel-body">
+                                        <div class="form-group" id="warning" style="display: none">
+                                            <label class="col-sm-2 control-label"></label>
+                                            <div class="col-sm-4">
+                                                <span class="text-danger">*</span>为必填内容
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label"><span class="text-danger">*</span>活动名称：</label>
+                                            <div class="col-sm-4">
+                                                <input type="hidden" value="{$info.act_id}" name="act_id" />
+                                                <input type="text" name="act_name" class="form-control" placeholder="活动名称" data-rule-required="true" value="{$info.act_name}">
+                                            </div>
+                                            <div class="col-sm-4 error-container">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label"><span class="text-danger">*</span>活动图片：</label>
+                                            <div class="col-sm-4">
+                                                <if condition="$info.act_image neq ''">
+                                                    <img class="thumb_img" id="picurl_src" src="/uploads/{$info.act_image}" style="max-height:100px;max-width: 120px;">
+                                                </if>
+                                                <input id="newImage" name="act_image" type="file" aria-required="true" {$info['act_id']?'':'data-rule-required="true"'}>
+                                                <div class="help-block color-danger">允许的附件文件类型: jpg,png并且图片大小小于200k.</div>
+                                            </div>
+                                            <div class="col-sm-4 error-container">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label"><span class="text-danger">*</span>开始时间：</label>
+                                            <div class="col-sm-4 input-daterange" data-toggle="datepicker">
+                                                <input type="text" name="start_time" class="form-control input-date" placeholder="开始时间" data-rule-required="true" aria-required="true" value="{$info.start_time|format_date=###,'Y-m-d'}">
+                                            </div>
+                                            <div class="col-sm-4 error-container">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label"><span class="text-danger">*</span>选择商品：</label>
+                                            <div class="col-sm-4">
+                                                <select name="goods_id" class="form-control" data-rule-required="true">
+                                                    <option value="">请选择参加团购的商品</option>
+                                                    <volist name="goods_list" id="gl">
+                                                        <option value="{$gl.id}" {$gl['id']==$info['goods_id']?'selected':''}>{$gl.name}</option>
+                                                    </volist>
+                                                </select>
+                                            </div>
+                                            <div class="col-sm-4 error-container">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label"><span class="text-danger">*</span>预售价格：</label>
+                                            <div class="col-sm-4">
+                                                <input type="text" name="price" class="form-control" placeholder="预售价格" data-rule-required="true" value="{$info.price|convert_money}">
+                                            </div>
+                                            <div class="col-sm-4 error-container">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">活动描述：</label>
+
+                                            <div class="col-sm-4">
+                                                <div class="input-daterange">
+                                                    <textarea id="myEditor" name="act_desc">{$info.act_desc|htmlspecialchars_decode}</textarea>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-4 error-container"></div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label"><span class="text-danger">*</span>活动状态：</label>
+                                            <div class="col-sm-4">
+                                                <select name="is_finished" class="form-control" data-rule-required="true">
+                                                    <option value="0" <eq name="info.is_finished" value="0">selected</eq>>正在预约</option>
+                                                    <option value="1" <eq name="info.is_finished" value="1">selected</eq>>可以购买</option>
+                                                    <option value="2" <eq name="info.is_finished" value="2">selected</eq>>活动结束</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-sm-4 error-container">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label"></label>
+                                            <div class="col-sm-4">
+                                                <input value="完成" class="btn btn-primary" type="submit">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/new_theme/common/sui/jquery.min.js"></script>
+<script src="/new_theme/common/sui/sui.min.js"></script>
+<script src="/new_theme/common/ueditor/ueditor.config.js"></script>
+<script src="/new_theme/common/ueditor/ueditor.all.min.js"></script>
+<script type="text/javascript">
+    $(function () {
+        var ue = UE.getEditor('myEditor', {
+            serverUrl: "{:U('Admin/Goods/editor')}",
+            autoHeightEnabled: false,
+            autoFloatEnabled: false,
+            initialFrameWidth: 900,
+            initialFrameHeight: 400
+        });
+    });
+
+    function addTime($this){
+        var newTime = $this.parents('.form-group');
+        var html = '';
+        html += '<div class="form-group alert">' +
+                '<button type="button" class="close" data-dismiss="alert" aria-label="Close">'+
+                '<span aria-hidden="true">'+'&times;'+'</span></button>'+
+                '<label class="col-sm-2 control-label"></label>' +
+                '<div class="col-sm-4">'+
+                '<div class="input-group tablemiddle">'+
+                '<div class="input-group-addon">人数到达</div>'+
+                '<input type="text" name="nums[]" class="form-control" placeholder="" data-rule-required="true">'+
+                '</div>'+
+                '<div class="input-group tablemiddle">'+
+                '<div class="input-group-addon">时, 价格为</div>'+
+                '<input type="text" name="price[]" class="form-control" placeholder="" data-rule-required="true">'+
+                '</div>'+
+                '</div>'+
+                '<div class="col-sm-4 error-container"></div>' +
+                '</div>';
+        newTime.before(html);
+    }
+    $('#secondsTime').click(function () {
+        addTime($('#secondsTime'));
+    });
+    $("#seckillForm").validate({
+        errorContainer: $("#warning")
+    });
+</script>
+</body>
+</html>

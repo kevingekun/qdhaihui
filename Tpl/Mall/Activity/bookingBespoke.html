@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="format-detection" content="email=no">
+	<meta name="screen-orientation" content="portrait">
+
+	<title>预售</title>
+	<script src="__ASSETS__/activity/js/flexible.debug.js"></script>
+    <link href="__ASSETS__/activity/css/style.css" rel="stylesheet">
+
+</head>
+<body>
+	<div class="container">
+		<div class="content">
+	    	<div class="header"><img src="__ASSETS__/img/yushou.png"></div>
+	        <div class="tv">
+	        	<img src="{$info.goods_info.image}">
+	        </div>
+	    </div>
+	    <div class="rule">
+	    	<h2>活动规则</h2>
+	    	<div class="rule-icon">
+	    		<span></span>
+	    		<span></span>
+	    		<span></span>
+	    		<span></span>
+	    	</div>
+	    	<p class="rule-text">
+				预售商品：{$info.goods_info.name}</br>
+				购买时间：{$info.start_time|format_date=###,'Y年m月d日'}</br>
+	    		活动说明：点击“我要预约”，留下您的相关信息，我们将视为您已预约成功，等待商品正式售卖后，您将有权享受本次预售提供的最终优惠价格。
+	    	</p>
+	    </div>
+
+	    <div class="images">
+	    	{$info.act_desc|htmlspecialchars_decode}
+	    </div>
+		<eq name="info.is_finished" value="0">
+			<form action="__SELF__" method="post">
+				<a class="join">
+					<img src="__ASSETS__/activity/img/shares.png" />
+					我要预约
+				</a>
+			</form>
+		</eq>
+
+		<eq name="info.is_finished" value="1">
+			<a class="join" href="{:U('bookingDetails', array('id'=>$info['goods_id'],'aid'=>$info['act_id']))}">
+				<img src="__ASSETS__/activity/img/shares.png" />
+				马上购买
+			</a>
+		</eq>
+	</div>
+
+<script type="text/javascript" src="__ASSETS__/activity/js/zepto.js"></script>
+<script type="text/javascript">
+$(function(){
+	$('a.join').click(function(){
+		$.post("__SELF__", function(data){
+			if (data.code ==1) {
+				alert(data.msg);
+			} else {
+				alert(data.msg);
+				location.href = '' + data.url + '';
+			}
+		});
+	});
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<include file="Index/header" title="已结算佣金"/>
+<div class="content closenav">
+    <div class="info">
+        <img src="__ASSETS__/index/img/yongjin1.jpg" alt="" width="100%"/>
+    </div>
+    <div class="comm-btn">
+        <a href="javascript:;" external>已结算佣金</a>
+    </div>
+
+    <div class="content-padded comm-item">
+        <div class="row no-gutter item-header">
+            <div class="col-25">发生时间</div>
+            <div class="col-25">佣金类型</div>
+            <div class="col-25">佣金金额</div>
+            <div class="col-25">贡献者</div>
+        </div>
+    </div>
+
+    <section class="share_box">
+        <div id="loading_box" class="clear" style="display: none;">
+            <img src="__ASSETS__/index/img/loading_tip.gif" class="loading_tip">
+            <span id="loading_span">加载中……</span>
+        </div>
+        <div class="waterfall_tip hidden"></div>
+        <div id="click_for_more_sec" class="click_for_more_sec" style="display: block;">
+            <span href="javascript:;" class="click_for_more_btn">点击加载更多</span>
+        </div>
+    </section>
+
+</div>
+<div class="list-block comm-foot">
+    <ul>
+        <li>
+            <a href="{:U('Partner/Index/question')}" class="item-link item-content external">
+                <div class="item-inner">
+                    <div class="item-title"></div>
+                    <div class="item-after">如何结算佣金？</div>
+                </div>
+            </a>
+        </li>
+    </ul>
+</div>
+<script>
+    var count = {$count};
+    var pageSize = {$pageSize};
+    var URL = "{:U('Partner/Index/settled', '', true, true)}";
+</script>
+<script src="__ASSETS__/index/js/settled.js"></script>
+<include file="Index/footer"/>

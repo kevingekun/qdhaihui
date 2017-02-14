@@ -1,0 +1,71 @@
+<include file="Public/header_new" title="审核明细"/>
+<define name="DEFINE_SIDE_MENU_CURRENT" value="Commission"/>
+<include file="Public/sideMenu_new"/>
+
+    <div class="main home" id="main" style="overflow: auto;">
+        <div class="side clearfix" style="width:56px;height:100px;float:left;">
+        </div>
+        <div class="main-container" style="height:auto;">
+            <div class="gdt-toufang gdt-toufang-account">
+                <div class="tuiguang-tab" id="_hSubNav">
+                    <ul>
+                      <li style="width:56px"></li>
+                      <li class="goback"><a href="javascript:history.back(-1)"><i></i></a></li>
+                      <li><a href="{:U('Admin/Commission/partner')}" onclick="">合伙人佣金统计明细</a></li>
+                      <li><a href="{:U('Admin/Commission/fileList')}" onclick="">佣金发放审核</a></li>
+                    </ul>
+                </div>
+                <div class="container-box">
+                    <div class="row newcearchbox ">
+                        <button onclick="history.go(-1)" class="btn btn-success">返回</button>
+                        <table class="table table-bordered  table-primary">
+                            <thead>
+                                <tr class="">
+                                   <!-- <th scope=""><label> <input id="checkedAll" type="checkbox" class="ace"> <span class="lbl"></span></label></th> -->
+                                    <th width="5%">佣金ID</th>
+                                    <th width="5%">用户ID</th>
+                                    <th width="10%">姓名</th>
+                                    <th width="10%">微信昵称</th>
+                                    <th width="10%">手机号</th>
+                                    <th width="10%">支付宝账号</th>
+                                    <th width="10%">粉丝数</th>
+                                    <th width="10%">金额</th>
+                                    <th width="10%">佣金种类</th>
+                                    <th width="10%">状态</th>
+                                    <th width="10%">创建时间</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                  <volist name="list" id="vo">
+                                      <tr>
+                                          <!-- <td class="center">
+                                              <label> <input type="checkbox" class="ace checkSingle"> <span class="lbl"></span></label>
+                                          </td> -->
+                                          <td>{$vo.commission_id}</td>
+                                          <td>{$vo.uid}</td>
+                                          <td>{$vo.uid|get_user_field=###,"realname"}</td>
+                                          <td>{$vo.uid|get_user_field}</td>
+                                          <td>{$vo.uid|get_user_field=###,"phone"}</td>
+                                          <td>{$vo.uid|get_pay_account}</td>
+                                          <td>{$vo.uid|get_fans_num}</td>
+                                          <td>{$vo.money|convert_money}</td>
+                                          <td>{$commission_type[$vo[type]]}</td>
+                                          <td>{$commission_status[$vo[status]]}</td>
+                                          <td>{$vo.create_time|format_date=###,"Y-m-d H:i:s"}</td>
+                                      </tr>
+                                  </volist>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div id="page">
+                          {$page}
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/new_theme/common/sui/jquery.min.js"></script>
+<script src="/new_theme/common/sui/sui.min.js"></script>
+</body>
+</html>

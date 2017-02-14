@@ -1,0 +1,179 @@
+<include file="Public/header_new" title="工具箱"/>
+<define name="DEFINE_SIDE_MENU_CURRENT" value="Tools"/>
+<include file="Public/sideMenu_new"/>
+
+    <div class="main home" id="main" style="overflow: auto;">
+        <div class="side clearfix" style="width:56px;height:100px;float:left;">
+        </div>
+        <div class="main-container">
+            <div class="gdt-ti">
+                <div class="hd">
+                    <h3 class="ti-title">通用模板</h3>
+                </div>
+                <div class="bd clearfix">
+
+                    <div class="ti-item">
+                        <a href="{:U('Notice/index')}" class="item-icon item-icon-qx" data-hottag="toolbox.oplog"></a>
+
+                        <div class="ti-item-con">
+                            <a href="{:U('Notice/index')}"
+                               data-hottag="toolbox.oplog"><strong>公告设置</strong>
+                            </a>
+
+                            <p><a href="{:U('Notice/index')}"
+                                  data-hottag="toolbox.oplog">商城首页公告设置</a></p>
+                        </div>
+                    </div>
+
+                    <div class="ti-item">
+                        <a href="reply" class="item-icon item-icon-tz"></a>
+                        <div class="ti-item-con">
+                            <a href="reply"><strong>信息推送设置</strong>
+                            </a>
+                            <p><a href="reply">多种消息通道设置，及时掌握账户动态</a></p>
+                        </div>
+                    </div>
+
+                    <div class="ti-item">
+                        <a href="{:U('WxMenu/index')}" class="item-icon item-icon-account"></a>
+                        <div class="ti-item-con">
+                            <a href="{:U('WxMenu/index')}"><strong>自定义菜单</strong>
+                            </a>
+                            <p><a href="{:U('WxMenu/index')}">微信公众号自定义菜单维护</a></p>
+                        </div>
+                    </div>
+
+                    <div class="ti-item">
+                        <a href="{:U('Advert/adList')}" class="item-icon item-icon-mt"></a>
+                        <div class="ti-item-con">
+                            <a href="{:U('Advert/adList')}"><strong>广告管理</strong></a>
+                            <p><a href="{:U('Advert/adList')}">商品详情页广告</a></p>
+                        </div>
+                    </div>
+
+                    <div class="ti-item">
+                        <a href="{:U('MallSetting/bannerList')}" class="item-icon item-icon-log" data-hottag="toolbox.oplog"></a>
+                        <div class="ti-item-con">
+                            <a href="{:U('MallSetting/bannerList')}" data-hottag="toolbox.oplog"><strong>商城设置</strong></a>
+                            <p><a href="{:U('MallSetting/bannerList')}" data-hottag="toolbox.oplog">首页轮播Banner设置</a></p>
+                        </div>
+                    </div>
+                    <div class="ti-item">
+                        <a href="{:U('Admin/Help/index')}" class="item-icon item-icon-proof" data-hottag="toolbox.oplog"></a>
+                        <div class="ti-item-con">
+                            <a href="{:U('Admin/Help/index')}" data-hottag="toolbox.oplog"><strong>常见问题</strong></a>
+                            <p><a href="{:U('Admin/Help/index')}" data-hottag="toolbox.oplog">常见问题设置、维护</a></p>
+                        </div>
+                    </div>
+                    <div class="ti-item">
+                        <a href="journal" class="item-icon item-icon-log" data-hottag="toolbox.oplog"></a>
+                        <div class="ti-item-con">
+                            <a href="{:U('Admin/Partner/article', array('id' => 1))}" data-hottag="toolbox.oplog"><strong>单页管理</strong>
+                            </a>
+                            <p><a href="{:U('Admin/Partner/article', array('id' => 1))}" data-hottag="toolbox.oplog">单页管理</a></p>
+                        </div>
+                    </div>
+
+                    <div class="ti-item">
+                        <a href="{:U('Config/index')}" class="item-icon item-icon-account"></a>
+                        <div class="ti-item-con">
+                            <a href="{:U('Config/base')}"><strong>系统配置</strong>
+                            </a>
+                            <p><a href="{:U('Config/base')}">数据库，缓存，微信授权等设置</a></p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="gdt-ti">
+                <div class="hd">
+                    <h3 class="ti-title">账户辅助</h3>
+                </div>
+                <div class="bd clearfix">
+                    <div class="ti-item _privilege" data-privilege="collaborator" style="">
+                        <a href="{:U('Rbac/userList')}" class="item-icon item-icon-qx"></a>
+                        <div class="ti-item-con">
+                            <a href="{:U('Rbac/userList')}"><strong>权限管理</strong></a>
+                            <p><a href="{:U('Rbac/userList')}">多人多角色精细化协作管理账户</a></p>
+                        </div>
+                    </div>
+
+                    <div class="ti-item">
+                        <a href="{:U('Admin/Tools/close')}" class="item-icon item-icon-fk"></a>
+                        <div class="ti-item-con">
+                            <a href="{:U('Admin/Tools/close')}"><strong>关闭操作</strong></a>
+                            <p><a href="{:U('Admin/Tools/close')}">紧急事故可操作</a></p>
+                        </div>
+                    </div>
+
+                    <div class="ti-item">
+                        <a href="{:U('Admin/User/index')}" class="item-icon item-icon-bound"></a>
+                        <div class="ti-item-con">
+                            <a href="{:U('Admin/User/index')}"><strong>用户信息列表</strong></a>
+                            <p><a href="{:U('Admin/User/index')}">查看个人信息，优惠券，订单等信息</a></p>
+                        </div>
+                    </div>
+
+                    <div class="ti-item">
+                        <a href="{:U('Admin/Reply/subscribe')}" class="item-icon item-icon-tz"></a>
+                        <div class="ti-item-con">
+                            <a href="{:U('Admin/Reply/subscribe')}"><strong>自动回复设置</strong>
+                            </a>
+                            <p><a href="{:U('Admin/Reply/subscribe')}">可设置公众号自动回复的内容</a></p>
+                        </div>
+                    </div>
+
+                    <div class="ti-item" >
+                        <a href="{:U('Admin/Statistics/index')}" class="item-icon item-icon-account" data-hottag="toolbox.bound"></a>
+                        <div class="ti-item-con">
+                            <a href="{:U('Admin/Statistics/index')}" data-hottag="toolbox.bound"><strong>数据统计</strong></a>
+                            <p><a href="{:U('Admin/Statistics/index')}" data-hottag="toolbox.bound">可查看系统数据统计情况</a></p>
+                        </div>
+                    </div>
+
+                    <div class="ti-item" style="display:none" id="wxbound">
+                        <a href="#" class="item-icon item-icon-bound" data-hottag="toolbox.bound"></a>
+                        <div class="ti-item-con">
+                            <a href="#" data-hottag="toolbox.bound"><strong>账户绑定</strong></a>
+                            <p><a href="#" data-hottag="toolbox.bound">绑定微信公众平台账户，实现跨平台账户管理</a></p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="gdt-ti">
+                <div class="hd">
+                    <h3 class="ti-title">信息日志</h3>
+                </div>
+                <div class="bd clearfix">
+
+                    <!-- <div class="ti-item">
+                       <a href="journal" class="item-icon item-icon-log" data-hottag="toolbox.oplog"></a>
+
+                       <div class="ti-item-con">
+                           <a href="journal" data-hottag="toolbox.oplog"><strong>操作日志</strong>
+                           </a>
+                           <p><a href="journal" data-hottag="toolbox.oplog">多维度查看，搜索操作记录</a></p>
+                       </div>
+                   </div> -->
+
+                    <div class="ti-item">
+                        <a href="journal" class="item-icon item-icon-log" data-hottag="toolbox.oplog"></a>
+
+                        <div class="ti-item-con">
+                            <a href="msglog" data-hottag="toolbox.oplog"><strong>短信发送日志</strong>
+                            </a>
+
+                            <p><a href="msglog" data-hottag="toolbox.oplog">查看短信发送日志</a></p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/new_theme/common/sui/jquery.min.js"></script>
+<script src="/new_theme/common/sui/sui.min.js"></script>
+</body>
+</html>

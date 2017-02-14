@@ -1,0 +1,174 @@
+<include file="Public/header_new" title="合伙人管理"/>
+<define name="DEFINE_SIDE_MENU_CURRENT" value="Tools"/>
+<include file="Public/sideMenu_new"/>
+
+    <div class="main home" id="main" style="overflow: auto;">
+        <div class="side clearfix" style="width:56px;height:100px;float:left;">
+        </div>
+        <div class="main-container" style="height:auto;">
+            <div class="gdt-toufang gdt-toufang-account">
+                <div class="tuiguang-tab" id="_hSubNav">
+                    <ul>
+                        <li style="width:56px"></li>
+                        <li class="goback"><a href="javascript:history.back(-1)"><i></i></a></li>
+                        <li><a href="{:U('Admin/Help/index')}">常见问题列表</a></li>
+                        <li class="on"><a>添加/修改</a></li>
+                    </ul>
+                </div>
+                <div class="container-box clearfix">
+                    <div class="col-md-7">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <h2 class="panel-title">新增修改</h2>
+                            </div>
+                            <div class="panel-body">
+                                <form action="" method="post" class="form-horizontal">
+                                    <input type="hidden" name="uid" value="{$user.uid|intval}"/>
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label">昵称：</label>
+                                        <div class="col-sm-6">
+                                            <input class="form-control" name="nickname" value="{$user.nickname}" placeholder="" data-rule-required="true" type="text">
+                                        </div>
+                                        <div class="col-sm-4 error-container"></div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label">头像：</label>
+                                        <div class="col-sm-6">
+                                            <img src="{$user.headimgurl}" height="70" alt=""/>
+                                        </div>
+                                        <div class="col-sm-4 error-container"></div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label  class="col-sm-2 control-label">性别：</label>
+                                        <div class="col-sm-6">
+                                            <label class="select">
+                                                <select class="form-control input-lg " name="sex">
+                                                    <option value="0" <if condition="$user.sex eq 0">selected</if>> 未知</option>
+                                                    <option value="1" <if condition="$user.sex eq 1">selected</if>> 男</option>
+                                                    <option value="2" <if condition="$user.sex eq 2">selected</if>> 女</option>
+                                                </select>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label">国家：</label>
+                                        <div class="col-sm-6">
+                                            <input class="form-control" name="country" value="{$user.country}" placeholder="" data-rule-required="true" type="text">
+                                        </div>
+                                        <div class="col-sm-4 error-container"></div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label">所在省：</label>
+                                        <div class="col-sm-6">
+                                            <input class="form-control" name="province" value="{$user.province}" placeholder="" data-rule-required="true" type="text">
+                                        </div>
+                                        <div class="col-sm-4 error-container"></div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label">所在城市：</label>
+                                        <div class="col-sm-6">
+                                            <input class="form-control" name="city" value="{$user.city}" placeholder="" data-rule-required="true" type="text">
+                                        </div>
+                                        <div class="col-sm-4 error-container"></div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label">关注时间：</label>
+                                        <div class="col-sm-6">
+                                            {$user.subscribe_time|format_date=###,"Y-m-d H:i:s"}
+                                        </div>
+                                        <div class="col-sm-4 error-container"></div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label">真实姓名：</label>
+                                        <div class="col-sm-6">
+                                            <input class="form-control" name="realname" value="{$user.realname}" placeholder="" data-rule-required="true" type="text">
+                                        </div>
+                                        <div class="col-sm-4 error-container"></div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label">电话：</label>
+                                        <div class="col-sm-6">
+                                            <input class="form-control" name="phone" value="{$user.phone}" placeholder="" data-rule-required="true" type="text">
+                                        </div>
+                                        <div class="col-sm-4 error-container"></div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label">标签：</label>
+                                        <div class="col-sm-6">
+                                            <select name="label_id" class="form-control">
+                                                <option value="0">请选择</option>
+                                                <volist name="labels" id="label">
+                                                    <option value="{$label.id}" <eq name="label['id']" value="$user.label_id">selected</eq>>{$label.title}</option>
+                                                </volist>
+                                            </select>
+                                        </div>
+                                        <div class="col-sm-4 error-container"></div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label">分组：</label>
+                                        <div class="col-sm-6">
+                                            <select name="group_id" class="form-control">
+                                                <option value="0">所有分组</option>
+                                                <volist name="groups" id="group">
+                                                    <option value="{$group.id}" <eq name="group['id']" value="$user['group_id']">selected</eq>>{$group.title}</option>
+                                                </volist>
+                                            </select>
+                                        </div>
+                                        <div class="col-sm-4 error-container"></div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label">邀请人：</label>
+                                        <div class="col-sm-6">
+                                            {$vo.invite_id|get_invite_user}
+                                        </div>
+                                        <div class="col-sm-4 error-container"></div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label">电话：</label>
+                                        <div class="col-sm-6">
+                                            <input class="form-control" name="qq" value="{$user.qq}" placeholder="" data-rule-required="true" type="text">
+                                        </div>
+                                        <div class="col-sm-4 error-container"></div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label">是否合伙人：</label>
+                                        <div class="col-sm-6">
+                                            {$user.partner_status|partner_status=###,true}
+                                        </div>
+                                        <div class="col-sm-4 error-container"></div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label">推广佣金处理状态：</label>
+                                        <div class="col-sm-6">
+                                            <?php echo $user['commission_status'] == 1 ? '已处理' : '未处理'; ?>
+                                        </div>
+                                        <div class="col-sm-4 error-container"></div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label">注册时间：</label>
+                                        <div class="col-sm-6">
+                                            {$user.create_time|format_date=###,"Y-m-d H:i:s"}
+                                        </div>
+                                        <div class="col-sm-4 error-container"></div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-sm-6 col-sm-offset-2">
+                                            <input value="提交" class="btn btn-primary" type="submit">
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/new_theme/common/sui/jquery.min.js"></script>
+<script src="/new_theme/common/sui/sui.min.js"></script>
+</body>
+</html>

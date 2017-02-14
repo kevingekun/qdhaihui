@@ -1,0 +1,126 @@
+<include file="Public/header_new" title="系统配置"/>
+<define name="DEFINE_SIDE_MENU_CURRENT" value="Config"/>
+<include file="Public/sideMenu_new"/>
+<style type="text/css">
+.tuiguang-tab li {width: 140px;}
+.tuiguang-tab li a{padding: 0px;}
+</style>
+
+<div class="main home" id="main" style="overflow: auto;">
+    <div class="side clearfix" style="width:56px;height:100px;float:left;">
+    </div>
+    <div class="main-container" style="height:auto;">
+        <div class="gdt-toufang gdt-toufang-account">
+            <div class="tuiguang-tab" id="_hSubNav">
+                <ul>
+                  <li style="width:56px"></li>
+                  <li class="goback"><a href="javascript:history.back(-1)"><i></i></a></li>
+                  <li><a href="{:U('Config/base')}">基本设置</a></li>
+                  <!--<li><a href="{:U('Config/wechat')}">微信设置</a></li>-->
+                  <li class="on"><a href="{:U('Config/session')}">Session/缓存</a></li>
+                  <li><a href="{:U('Config/cookie')}">Cookie</a></li>
+                  <!--<li><a href="{:U('Config/database')}">数据库</a></li>-->
+                  <li><a href="{:U('Config/rbac')}">RBAC控制</a></li>
+                  <li><a href="{:U('Config/operation')}">操作日志</a></li>
+                  <!--<li><a href="{:U('Config/redis')}">redis</a></li>-->
+                  <!--<li><a href="{:U('Config/msg')}">短信设置</a></li>-->
+                </ul>
+            </div>
+            <div class="container-box clearfix">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h2 class="panel-title">更新配置</h2>
+                    </div>
+                    <div class="panel-body">
+                        <form class="form-horizontal" data-toggle="validate" action="{:U('Config/updateConfig')}" method="post">
+                            <div class="form-group">
+                                <label for="SESSION_PREFIX" class="col-sm-2 control-label">session前缀：</label>
+                                <div class="col-sm-4">
+                                    <input type="hidden" name="file" value="session" />
+                                    <input class="form-control" id="SESSION_PREFIX" name="SESSION_PREFIX" placeholder="" type="text" value="{$Think.config.SESSION_PREFIX}">
+                                </div>
+                                <div class="col-sm-4 error-container"></div>
+                            </div>
+                            <div class="form-group">
+                                <label for="SESSION_TYPE" class="col-sm-2 control-label">session类型：</label>
+                                <div class="col-sm-4">
+                                    <input class="form-control" id="SESSION_TYPE" name="SESSION_TYPE" placeholder="" type="text" value="{$Think.config.SESSION_TYPE}">
+                                </div>
+                                <div class="col-sm-4 error-container"></div>
+                            </div>
+                            <div class="form-group">
+                                <label for="SESSION_EXPIRE" class="col-sm-2 control-label">过期时间：</label>
+                                <div class="col-sm-4">
+                                    <input class="form-control" id="SESSION_EXPIRE" name="SESSION_EXPIRE" placeholder="" type="text" value="{$Think.config.SESSION_EXPIRE}">
+                                </div>
+                                <div class="col-sm-4 error-container"></div>
+                            </div>
+                            <div class="form-group">
+                                <label for="MEMCACHE_HOST" class="col-sm-2 control-label">缓存主机：</label>
+                                <div class="col-sm-4">
+                                    <input class="form-control" id="MEMCACHE_HOST" name="MEMCACHE_HOST" placeholder="" type="text" value="{$Think.config.MEMCACHE_HOST}">
+                                </div>
+                                <div class="col-sm-4 error-container"></div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">缓存端口：</label>
+                                <div class="col-sm-4">
+                                    <input class="form-control" id="MEMCACHE_PORT" name="MEMCACHE_PORT" placeholder="" type="text" value="{$Think.config.MEMCACHE_PORT}">
+                                </div>
+                                <div class="col-sm-4 error-container"></div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">缓存前缀：</label>
+                                <div class="col-sm-4">
+                                    <input class="form-control" id="DATA_CACHE_PREFIX" name="DATA_CACHE_PREFIX" placeholder="" type="text" value="{$Think.config.DATA_CACHE_PREFIX}">
+                                </div>
+                                <div class="col-sm-4 error-container"></div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">缓存类型：</label>
+                                <div class="col-sm-4">
+                                    <input class="form-control" id="DATA_CACHE_TYPE" name="DATA_CACHE_TYPE" placeholder="" type="text" value="{$Think.config.DATA_CACHE_TYPE}">
+                                </div>
+                                <div class="col-sm-4 error-container"></div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-6 col-sm-offset-2">
+                                    <input value="提交" class="btn btn-primary" type="submit"/>
+                                    <input value="重置" class="btn btn-primary" type="reset"/>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<script>
+    window.onload = function () {
+        var _IE = (function () {
+            var v = 3, div = document.createElement('div'), all = div.getElementsByTagName('i');
+            while (
+                    div.innerHTML = '<!--[if gt IE ' + (++v) + ']><i></i><![endif]-->',
+                            all[0]
+                    );
+            return v > 4 ? v : false;
+        }());
+        if (_IE == 9 || _IE == 8 || _IE == 7) {
+            $('#certification').css({'display': 'block'});
+        }
+        ;
+        new uploadPreview({UpBtn: "certification", DivShow: "imgdiv", ImgShow: "imgShow"});
+    }
+</script>
+<script src="/new_theme/common/sui/jquery.min.js"></script>
+<script src="/new_theme/common/sui/sui.min.js"></script>
+<script src="/new_theme/common/js/uploadPreview.js"></script>
+<script src="/new_theme/common/ueditor/ueditor.config.js"></script>
+<script src="/new_theme/common/ueditor/ueditor.all.min.js"></script>
+<script src="/new_theme/common/uploadify/jquery.uploadify.min.js"></script>
+<script src="/new_theme/common/datepicker/WdatePicker.js"></script>
+<script src="/new_theme/common/sisyphus/sisyphus.min.js"></script>
+</body>
+</html>

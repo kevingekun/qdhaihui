@@ -1,0 +1,76 @@
+<include file="Public:header" title="收货地址管理"  />
+<body>
+    <!-- page 容器 -->
+    <div class="page">
+        <!-- 标题栏 -->
+        <header class="bar bar-nav">
+            <if condition="$referrer neq ''">
+            <a class="button button-link button-nav pull-left back external"
+              href="{:base_decode($referrer)}">
+                <span class="icon icon-left"></span>返回
+            </a>
+            </if>
+            <h1 class="title his-color">收货地址管理</h1>
+        </header>
+        <!-- 底部 -->
+        <include file="Public:nav" />
+        <!-- 内容 -->
+        <div class="content address-main">
+            <div class="list-block media-list content-high">
+                <volist name="list" id="vo">
+                <ul id="delBorder">
+
+                    <li>
+                        <label class="label-checkbox item-content">
+                            <div class="item-inner">
+                                <div class="item-title-row">
+                                    <div class="item-title">{$vo.name}</div>
+                                    <div class="item-after">{$vo.mobile}</div>
+                                </div>
+                                <div class="item-add">
+                                    {$vo.region.province_name}{$vo.region.city_name}{$vo.region.district_name}{$vo.full_address}
+                                </div>
+                            </div>
+                            <input type="radio" data-id="{$vo.id}" <if condition="$vo.default eq \Common\Model\MallModel::ADDRESS_DEFAULT_YES">checked</if> name="my-radio">
+                            <div class="item-media item-add-icon">
+                                <i class="icon icon-form-checkbox"></i>
+                            </div>
+                        </label>
+                    </li>
+
+                </ul>
+                    <p class="tbl-del" style="text-align: right">
+                    <a class="external"
+                       href="{:U('Mall/Ucenter/deleteAddress', array('id'=>$vo['id'], 'referrer'=>$referrer))}"><i></i><span>删除</span></a>
+                    </p>
+                </volist>
+
+            </div>
+            <div class="content-block">
+              <p><a href="{:U('Mall/Ucenter/addAddress', array('referrer'=>$referrer))}" class="button button-add" external>添加新地址 </a></p>
+            </div>
+        </div>
+    </div>
+    <script src="__ASSETS__/dist/js/sm.js"></script>
+    <script>
+        $(function(){
+            $(document).on("click", ".label-checkbox input[type=radio]", function(){
+                var id = $(this).data('id');
+                $.post("{:U('Mall/Ucenter/address', array('referrer'=>$referrer), true, true)}", {id: id},
+                        function (data) {
+                            $.toast(data.msg);
+//                            if(data.url != ''){
+//                                location.href = data.url;
+//                            }
+                        }
+                );
+            });
+            if($('#delBorder ul li').length > 0){
+            }else{
+                $('#delBorder ul').remove();
+            }
+        })
+    </script>
+</body>
+<include file="Public:share" />
+</html>

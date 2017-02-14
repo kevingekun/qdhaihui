@@ -1,0 +1,536 @@
+<include file="Public/header_new" title="添加商品"/>
+<define name="DEFINE_SIDE_MENU_CURRENT" value="Goods"/>
+<include file="Public/sideMenu_new"/>
+
+<div class="main home" id="main" style="overflow: auto;">
+    <div class="side clearfix" style="width:56px;height:100px;float:left;">
+    </div>
+    <div class="main-container" style="height:auto;">
+        <div class="gdt-toufang gdt-toufang-account">
+            <div class="tuiguang-tab" id="_hSubNav">
+                <ul>
+                    <li style="width:56px"></li>
+                    <li class="goback"><a href="javascript:history.back(-1)"><i></i></a></li>
+                    <li><a href="{:U('MallMenu/index')}" onclick="">商品分类</a></li>
+                    <li><a href="{:U('Tag/index')}" onclick="">商品标签库</a></li>
+                    <li><a href="{:U('Goods/index')}" onclick="">商品列表</a></li>
+                    <li><a href="{:U('Goods/category')}" onclick="">产品大类</a></li>
+                    <li class="on"><a href="{:U('Goods/addGoods')}" onclick="">新增修改</a></li>
+                </ul>
+            </div>
+            <div class="container-box clearfix">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h2 class="panel-title">新增修改</h2>
+                    </div>
+                    <div class="panel-body">
+                        <form novalidate="novalidate" class="form-horizontal" data-toggle="validate"
+                              enctype="multipart/form-data" id="myform" action="__SELF__" method="post">
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">是否延保产品：</label>
+                                <div class="col-sm-4">
+                                    <label class="select">
+                                        <select id="warranyiss" class="form-control input-lg " name="iswrrany">
+                                            <option value="0" <eq name="info.iswrrany" value="0">selected</eq> >否</option>
+                                            <option value="1" <eq name="info.iswrrany" value="1">selected</eq>>是</option>
+                                        </select>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">商品分类：</label>
+
+                                <div class="col-sm-4">
+                                    <label class="select">
+                                        <select class="form-control input-lg " name="menu_id">
+                                            <volist name="menu" id="m">
+                                                <option value="{$m.id}">
+                                                <!--<eq name="info.menu_id" value="$m[id]">selected</eq>-->
+                                                {$m.name}</option>
+                                                <volist name="m.child" id="c">
+                                                    <option value="{$c.id}">　|-- {$c.name}</option>
+                                                    <volist name="c.child" id ="d">
+                                                        <option value="{$d.id}"
+                                                            <eq name="info.menu_id" value="$d[id]">selected</eq>>
+                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|-- {$d.name}
+                                                        </option>
+                                                    </volist>
+                                                </volist>
+                                            </volist>
+                                        </select>
+                                    </label>
+                                </div>
+                            </div>
+                            <!--<div class="form-group">
+                                <label class="col-sm-2 control-label">商品分组：</label>
+
+                                <div class="col-sm-4">
+                                    <label class="select">
+                                        <select class="form-control input-lg " name="group_id">
+                                            <option value="0">请选择分组</option>
+                                            <volist name="group" id="g">
+                                                <option value="{$g.value}"
+                                                <eq name="info.group_id" value="$g[value]">selected</eq>
+                                                >{$g.title}</option>
+                                            </volist>
+                                        </select>
+                                    </label>
+                                </div>
+                            </div>-->
+                            <div class="form-group">
+                                <label for="id-name" class="col-sm-2 control-label">商品名称：</label>
+
+                                <div class="col-sm-4">
+                                    <input class="form-control" id="id-name" name="name" placeholder=""
+                                           data-rule-required="true" type="text" value="{$info.name}">
+                                    <input type="hidden" name="id" value="{$info.id}"></td>
+                                </div>
+                                <div class="col-sm-4 error-container"></div>
+                            </div>
+                            <div class="form-group">
+                                <label for="id-name" class="col-sm-2 control-label">商品规格：</label>
+
+                                <div class="col-sm-4">
+                                    <input class="form-control"  name="spec" placeholder=""
+                                           data-rule-required="true" type="text" value="{$info.spec}">
+                                </div>
+                                <div class="col-sm-4 error-container"></div>
+                            </div>
+                            <div class="form-group">
+                                <label for="id-name" class="col-sm-2 control-label">促销信息：</label>
+
+                                <div class="col-sm-4">
+                                    <input class="form-control"  name="promotion" placeholder=""
+                                           data-rule-required="true" type="text" value="{$info.promotion}">
+                                </div>
+                                <div class="col-sm-4 error-container"></div>
+                            </div>
+                            <div class="form-group">
+                                <label for="input-description" class="col-sm-2 control-label">商品描述：</label>
+
+                                <div class="col-sm-4">
+                                    <input class="form-control" id="input-description" name="description" placeholder=""
+                                           data-rule-required="true" type="text" value="{$info.description}">
+                                </div>
+                                <div class="col-sm-4 error-container"></div>
+                            </div>
+                            <div class="form-group">
+                                <label for="input-tags" class="col-sm-2 control-label">自由标签：</label>
+
+                                <div class="col-sm-4">
+                                  <volist name="tags" id="t">
+                                    <input name="tags[]" data-rule-required="true" type="checkbox" value="{$t.id}" <in name="t.id" value="$info[tags]">checked</in> /> {$t.tag}　
+                                  </volist>
+                                </div>
+                                <div class="col-sm-4 error-container"></div>
+                            </div>
+                            <div class="form-group" id="good_price">
+                                <label for="input-price" class="col-sm-2 control-label" >商品价格：</label>
+
+                                <div class="col-sm-4">
+                                    <input class="form-control" id="input-price" name="price" placeholder=""
+                                           data-rule-required="true" type="text" value="{$info.price|convert_money}">
+                                </div>
+                                <div class="col-sm-4 error-container"></div>
+                            </div>
+                            <div class="form-group" id="good_oldprice">
+                                <label for="oldPrice" class="col-sm-2 control-label">商品原价：</label>
+
+                                <div class="col-sm-4">
+                                    <input class="form-control" id="oldPrice" name="old_price" placeholder=""
+                                           data-rule-required="true" type="text"
+                                           value="{$info.old_price|convert_money}">
+                                </div>
+                                <div class="col-sm-4 error-container"></div>
+                            </div>
+                            <div class="form-group">
+                                <label for="newSort" class="col-sm-2 control-label">商品排序：</label>
+
+                                <div class="col-sm-4">
+                                    <input class="form-control" id="newSort" name="sort" placeholder=""
+                                           data-rule-required="true" type="text" value="{$info.sort}">
+                                </div>
+                                <div class="col-sm-4 error-container"></div>
+                            </div>
+                            <div class="form-group" id="warranty_price">
+                                <label for="oldPrice" class="col-sm-2 control-label">延保价格：</label>
+
+                                <div class="col-sm-1">
+                                    <label class="select">
+                                        <select id="warranty_type" class="form-control input-lg " name="with_invoice">
+                                            <option value="0">整机延长保修</option>
+                                            <option value="1">整机置换</option>
+                                            <option value="2">关键零部件延长保修</option>
+                                        </select>
+                                    </label>
+                                </div>
+                                <div class="col-sm-1">
+                                    <label class="select">
+                                        <select id="warranty_year" class="form-control input-lg " name="with_invoice">
+                                            <option selected value="1">1年</option>
+                                            <option value="2">2年</option>
+                                            <option value="3">3年</option>
+                                            <option value="4">4年</option>
+                                            <option value="5">5年</option>
+                                        </select>
+                                    </label>
+                                </div>
+                                <div class="col-sm-1">
+                                    <input class="form-control" name="warranty_price" id="warranty_pricetext" placeholder="" data-rule-required="true" type="text">
+                                </div>
+                                <div class="col-sm-1">
+                                    <a class="btn btn-primary" id="warranty_bt">添加</a>
+                                </div>
+                                <div class="col-sm-4 error-container"></div>
+                            </div>
+                            <div class="form-group">
+
+                                <div class="col-sm-5 col-sm-push-2" id="warranty_descri">
+                                    <volist name="warranyinfo" id="vo">
+                                        <div>
+                                            <p>类型：{$vo.Type}年限：{$vo.Year}价格：{$vo.Price}<a class='btn btn-danger warrany_del'>删除</a></p><input type='hidden' name='warrany[]' value='{$vo.Type},{$vo.Year},{$vo.Price}' />
+                                        </div>
+                                    </volist>
+                                </div>
+
+                            </div>
+                            <div class="form-group">
+                                <label for="certification" class="col-sm-2 control-label">商品缩略图：</label>
+                                <div class="col-sm-4">
+                                    <div id="imgdiv">
+                                      <empty name="info.image">
+                                        <img id="imgShow" class="img-rounded" width="140px" src="/new_theme/common/img/su.png">
+                                      <else/>
+                                        <img id="imgShow" class="img-rounded" width="140px" src="/uploads/{$info.image}">
+                                      </empty>
+
+                                    </div>
+                                </div>
+                                <div class="col-sm-4 error-container"></div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label"></label>
+
+                                <div class="col-sm-4">
+                                    <label class="btn">
+                                        选择文件
+                                        <input id="certification" name="image" placeholder="" data-rule-required="true"
+                                               type="file" style="display: none">
+                                    </label>
+
+                                    <div class="help-block color-danger">允许的附件文件类型: jpg,gif,png,jpeg并且图片大小小于1MB,
+                                        图片尺寸1000px * 1000px
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">商品图片：</label>
+
+                                <div class="col-sm-8">
+                                    <div class="img_box" id="img_box">
+                                        <foreach name="banners" item="b">
+                                            <div class="img_main"><img src="{$b}" class="img">
+
+                                                <div class="img_ctrl">';
+                                                <span class="glyphicon glyphicon-trash" data-toggle="tooltip"
+                                                      data-placement="bottom" aria-hidden="true"></span>
+                                                </div>
+                                            </div>
+                                        </foreach>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label"></label>
+
+                                <div class="col-sm-4" id="show_images">
+                                    <input id="fileupload" placeholder="" data-rule-required="true" type="file"
+                                           multiple>
+
+                                    <div class="help-block color-danger">允许的附件文件类型: jpg,gif,png,jpeg并且图片大小小于1MB,
+                                        图片尺寸1000px * 1000px
+                                    </div>
+                                    <foreach name="banners" item="v">
+                                        <input type='hidden' name='show_images[]' value='{$v}'>
+                                    </foreach>
+                                </div>
+                            </div>
+                            <div class="form-group" id="goods_stock">
+                                <label for="newStock" class="col-sm-2 control-label">商品库存：</label>
+
+                                <div class="col-sm-4">
+                                    <input class="form-control" id="newStock" name="stock" placeholder=""
+                                           data-rule-required="true" type="text" value="{$info.stock}">
+                                </div>
+                                <div class="col-sm-4 error-container"></div>
+                            </div>
+                            <!--<div class="form-group">
+                                <label for="newStock" class="col-sm-2 control-label">商品佣金：</label>
+
+                                <div class="col-sm-4">
+                                    <input class="form-control" name="commission" placeholder=""
+                                           data-rule-required="true" type="text"
+                                           value="{$info.commission|convert_money}">
+                                </div>
+                                <div class="col-sm-4 error-container"></div>
+                            </div>-->
+                            <div class="form-group">
+                                <label for="newStock" class="col-sm-2 control-label">点击量：</label>
+
+                                <div class="col-sm-4">
+                                    <input class="form-control" name="click" placeholder="" data-rule-required="true"
+                                           type="text" value="{$info.click}">
+                                </div>
+                                <div class="col-sm-4 error-container"></div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">商品状态：</label>
+
+                                <div class="col-sm-4">
+                                    <label class="select">
+                                        <select class="form-control input-lg " name="status">
+                                            <option value="1"
+                                            <eq name="info.status" value="1">selected</eq>
+                                            > 上架</option>
+                                            <option value="0"
+                                            <eq name="info.status" value="0">selected</eq>
+                                            > 下架</option>
+                                        </select>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">有无发票：</label>
+
+                                <div class="col-sm-4">
+                                    <label class="select">
+                                        <select class="form-control input-lg " name="with_invoice">
+                                            <option value="0"
+                                            <eq name="info.with_invoice" value="0">selected</eq>
+                                            >有发票</option>
+                                            <option value="1"
+                                            <eq name="info.with_invoice" value="1">selected</eq>
+                                            >无发票</option>
+                                        </select>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">商品置顶：</label>
+
+                                <div class="col-sm-4">
+                                    <label class="select">
+                                        <select class="form-control input-lg " name="top">
+                                            <option value="0"
+                                            <eq name="info.top" value="0">selected</eq>
+                                            >不置顶</option>
+                                            <option value="1"
+                                            <eq name="info.top" value="1">selected</eq>
+                                            >置顶</option>
+                                        </select>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">添加广告：</label>
+                                <div class="col-sm-4">
+                                    <volist name="ad" id="ad">
+                                        <input name="ad_ids[]" type="checkbox" value="{$ad.id}" <in name="ad.id" value="$info['ad_ids']">checked</in> /> {$ad.title}　<br>
+                                    </volist>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">商品详情：</label>
+
+                                <div class="col-sm-10">
+                                    <textarea name="detail" id="myEditor" style="width:660px;height:240px;">{$info.detail}</textarea>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-sm-4 col-sm-offset-2">
+                                    <input value="提交" class="btn btn-primary" type="submit"/>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<script>
+    window.onload = function () {
+        var _IE = (function () {
+            var v = 3, div = document.createElement('div'), all = div.getElementsByTagName('i');
+            while (
+                    div.innerHTML = '<!--[if gt IE ' + (++v) + ']><i></i><![endif]-->',
+                            all[0]
+                    );
+            return v > 4 ? v : false;
+        }());
+        if (_IE == 9 || _IE == 8 || _IE == 7) {
+            $('#certification').css({'display': 'block'});
+        }
+        ;
+        new uploadPreview({UpBtn: "certification", DivShow: "imgdiv", ImgShow: "imgShow"});
+    }
+</script>
+<script src="/new_theme/common/sui/jquery.min.js"></script>
+<script src="/new_theme/common/sui/sui.min.js"></script>
+<script src="/new_theme/common/js/uploadPreview.js"></script>
+<script src="/new_theme/common/ueditor/ueditor.config.js"></script>
+<script src="/new_theme/common/ueditor/ueditor.all.min.js"></script>
+<script src="/new_theme/common/uploadify/jquery.uploadify.min.js"></script>
+<script src="/new_theme/common/datepicker/WdatePicker.js"></script>
+<script>
+    $(function () {
+        var ue = UE.getEditor('myEditor', {
+            serverUrl: "{:U('Admin/Goods/editor')}",
+            autoHeightEnabled: false,
+            autoFloatEnabled: false,
+            initialFrameWidth: 900,
+            initialFrameHeight: 400
+        });
+
+        // 上传文件
+        $("#fileupload").uploadify({
+            'formData': {
+                '{:session_name()}': '{:session_id()}',
+                'timestamp': "{$time}",//当前时间戳由后台传过来的
+                'token': '{:md5("unique_salt".$time)}'//用md5生成token
+            },
+            'swf': '/assets/common/uploadify/uploadify.swf',//引用uploadify.swf
+            'uploader': "{:U('Admin/Background/fileUpload')}",//后台上传文件处理方法
+            'buttonText': '选择文件',
+            'multi': true,//允许多文件上传
+            'fileTypeExts': '*.gif; *.jpg; *.png;',//限制文件格式
+            'fileSizeLimit': '1MB',//限制文件大小
+            'onUploadSuccess': function (file, data, response) {
+                var data = $.parseJSON(data);
+                if (!data['status']) {
+                    alert(data['info']);
+                    return false;
+                }
+                ;
+                put_img(data['savepath'], data['savename']);//添加图片到img_box
+                var img_url = '/uploads/' + data['savepath'] + data['savename'];
+
+                $('#show_images').append("<input type='hidden' name='show_images[]' value='" + img_url + "'>");
+            }
+        });
+
+        //添加图片到img_box
+        function put_img(savepath, savename) {
+            var img_url = "/uploads/" + savepath + savename;
+            // alert(img_url);
+            var new_img = '<div class="img_main">';
+            new_img += '<img src="' + img_url + '" class="img">';
+            new_img += '<div class="img_ctrl">';
+            new_img += '<span class="glyphicon glyphicon-trash" data-toggle="tooltip" data-placement="bottom" aria-hidden="true"></span>';
+            new_img += '</div>';
+            new_img += '</div>';
+
+            $('.img_box').append(new_img);
+        }
+
+        //图片删除
+        $(document).on('click', '.glyphicon-trash', function (event) {
+            event.preventDefault();
+            /* Act on the event */
+            var div = $(this).parents('div.img_main');
+            var img_url = div.find('.img').attr('src');
+
+            $.ajax({
+                url: '{:U("delFile",null,false)}',
+                type: 'POST',
+                // dataType: 'default: Intelligent Guess (Other values: xml, json, script, or html)',
+                data: {url: img_url, id: "{$info.id}"},
+                success: function (data) {
+                    if (!data['status']) {
+                        alert(data['info']);
+                        return false;
+                    } else {
+                        div.fadeOut(2000);
+                        div.remove();
+                        $('input[value="' + img_url + '"]').remove();
+
+                    }
+                    ;
+                }
+            });
+
+        });
+
+        // ECP同步 库存切换
+        $("input[name='is_ecp']").change(function () {
+            var id = $(this).val();
+            if (id == 1) {
+                $("#goods_stock").hide();
+            } else {
+                $("#goods_stock").show();
+            }
+        });
+        //判断是否延保产品，并且增加和删除input
+        $('#warranty_price').hide();
+        var warrantyText = $('#warranyiss option:selected').val();
+        if(warrantyText == 1) {
+            $('#good_price').slideUp(500);
+            $('#good_oldprice').slideUp(1000);
+            $('#warranty_price').slideDown(1500);
+            $('#warranty_descri').slideDown(1500);
+        } else {
+            $('#warranty_price').slideUp(1000);
+            $('#warranty_descri').slideUp(1000);
+            $('#good_price').slideDown(500);
+            $('#good_oldprice').slideDown(1000);
+
+        }
+
+        $('#warranyiss').on('change', function () {
+            var t = $('#warranyiss option:selected').val();
+            if(t == 1) {
+                $('#good_price').slideUp(500);
+                $('#good_oldprice').slideUp(1000);
+                $('#warranty_price').slideDown(1500);
+                $('#warranty_descri').slideDown(1500);
+            } else {
+                $('#warranty_price').slideUp(1000);
+                $('#warranty_descri').slideUp(1000);
+                $('#good_price').slideDown(500);
+                $('#good_oldprice').slideDown(1000);
+            }
+        });
+//        $('#warranyiss').on({
+//            change:function () {
+//                if(warrantyText == 1) {
+//                    $('#good_price').slideUp(500);
+//                    $('#good_oldprice').slideUp(1000);
+//                    $('#warranty_price').slideDown(1500);
+//                } else {
+//                    $('#warranty_price').slideUp(1000);
+//                    $('#good_price').slideDown(500);
+//                    $('#good_oldprice').slideDown(1000);
+//                }
+//            }
+//        })
+        $('#warranty_bt').on('click', function () {
+            var warranyType = $('#warranty_type option:selected').text();
+            var warranyYear = $('#warranty_year option:selected').val();
+            var warranyPrice = $("#warranty_pricetext").val();
+            $("#warranty_descri").append("" +
+                    "<div>" +
+                    "<p>类型"+warranyType+"，"+warranyYear+"年，价格："+warranyPrice + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class='btn btn-danger warrany_del'>删除</a>" + "</p>" +
+                    "<input type='hidden' name='warrany[]' value='"+warranyType+","+warranyYear+","+warranyPrice+"' />" +
+                    "" +
+                    "</div>");
+        });
+        $(document).on("click", ".warrany_del", function () {
+            console.log($(this));
+            $(this).parent().parent().remove();
+        })
+    })
+</script>
+</body>
+</html>

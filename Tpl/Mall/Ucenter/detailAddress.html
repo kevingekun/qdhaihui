@@ -1,0 +1,54 @@
+<include file="Public:header" title="添加收货地址"  />
+<body>
+    <!-- page 容器 -->
+    <div class="page">
+        <!-- 标题栏 -->
+        <header class="bar bar-nav">
+            <h1 class="title his-color">填写地址</h1>
+        </header>
+        <!-- 底部 -->
+        <include file="Public:nav" />
+        <!-- 内容 -->
+        <div class="content con-nav">
+            <div class="list-block list-block-pa content-high">
+                <form id="form1" method= "post" action="{:U('Mall/Ucenter/detailAddress', array('id'=>$id, 'referrer'=>$referrer))}" onsubmit="return false">
+                  <input type="hidden" name="id" value="{$id}">
+                <ul>
+                    <li>
+                        <div class="item-content">
+                            <div class="item-inner">
+                              <div class="item-title label">省市区</div>
+                              <div class="item-input">
+                                <input type="text" name="pcc" placeholder="" id="city-picker" readonly="" value="山东省 青岛市 市南区" >
+                              </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                </form>
+            </div>
+            <div class="row row-button row-bottom">
+                <div><a href="#" class="button button-del external" id="submit">确定</a></div>
+            </div>
+        </div>
+    </div>
+    <script src="__ASSETS__/dist/js/sm.js"></script>
+    <script src="__ASSETS__/dist/js/sm-extend.js"></script>
+    <script src="__ASSETS__/dist/js/sm-city-picker.js"></script>
+    <script src="__ASSETS__/js/demos.js"></script>
+    <script>
+        $(function(){
+            $("#city-picker").cityPicker({
+                toolbarTemplate: '<header class="bar bar-nav">\
+                <button class="button button-link pull-right close-picker">确定</button>\
+                <h1 class="title">选择收货地址</h1>\
+                </header>'
+            });
+            $("#submit").click(function(){
+               $("#form1").submit();
+            });
+        })
+    </script>
+</body>
+<include file="Public:share" />
+</html>

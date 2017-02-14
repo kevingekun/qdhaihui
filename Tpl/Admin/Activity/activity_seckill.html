@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <title>产品订单</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <!--公用样式文件，不加版本号，通过url参数控制cache -->
+    <link rel="stylesheet" rev="stylesheet" href="__CDN_STATIC_URL__css/gdt-css-api.css" type="text/css" media="screen">
+    <link rel="stylesheet" rev="stylesheet" href="__CDN_STATIC_URL__css/gdt-toufang-layout-20150325.css" type="text/css"
+          media="screen">
+    <link rev="stylesheet" rel="stylesheet" href="__CDN_STATIC_URL__css/gdt-toufang-global-20150323.css" media="screen"
+          type="text/css">
+    <link rel="stylesheet" href="__CDN_STATIC_URL__css/myjd-2015.css">
+    <link rel="stylesheet" href="__CDN_STATIC_URL__css/component-min.css">
+    <script src="__CDN_STATIC_URL__js/jquery.js" type="text/javascript" charset="utf-8"></script>
+    <script src="__CDN_STATIC_URL__js/scrollheight.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+
+<div class="wrapper clearfix" id="root">
+    <include file="Public/header"/>
+    <div class="top" style="height:56px;;width:100%;"><!--顶部占位--></div>
+    <div class="top" style="height: 31px; width: 100%;display:none;" id="ErrorStatusTipsHolder"><!--顶部小黄条占位--></div>
+    <define name="DEFINE_SIDE_MENU_CURRENT" value="activity"/>
+    <include file="Public/sideMenu"/>
+    <div class="main home" id="main" style="/*height: 400px;*/ overflow: auto;">
+        <div class="side clearfix" style="width:56px;height:100px;float:left;"></div>
+
+        <div class="main-container" style="height:auto;">
+            <div class="gdt-toufang gdt-toufang-account">
+                <div class="tuiguang-tab small-tab" id="_hSubNav">
+                    <ul>
+                        <li style="width:56px"></li>
+
+                        <li><a href="{:U('Home/Index/activity')}" onclick="">优惠券</a></li>
+                        <li class="on"><a href="{:U('Home/Index/activity_seckill')}" onclick="">秒杀</a></li>
+                        <li><a href="{:U('Home/Index/activity_presale')}" onclick="">预售</a></li>
+                        <li><a href="{:U('Home/Index/activity_group')}" onclick="">阶梯团购</a></li>
+                        <li><a href="{:U('Home/Index/activity_now')}" onclick="">返现</a></li>
+                        <li><a href="#" onclick="">直降</a></li>
+                        <li><a href="#" onclick="">新品拍卖</a></li>
+                        <li><a href="{:U('Home/Index/activity_wof')}" onclick="">大转盘</a></li>
+                        <li><a href="{:U('Home/Index/activity_redpacket')}" onclick="">发红包</a></li>
+                        <li><a href="{:U('Home/Index/activity_inquiry')}" onclick="">调研</a></li>
+
+                    </ul>
+
+                </div>
+                <div style="min-height: 835px;" class="content-right fl">
+
+                    <a href="#" class="btn btn-success">添加商品</a>
+
+                    <div class="tablesWrap mgt15">
+                        <div class="tabs clearfix mgt15">
+                            <div id="notice-tit">
+                                <a href="javascript:;" class="active tabs_a fl">秒杀中</a>
+                                <a href="javascript:;" class=" tabs_a fl">仓库中</a>
+                            </div>
+                            <form action="" method="GET">
+                                <div class="tables-searchbox pd0 fr">
+                                    <input class="input small" name="title" value="" placeholder="商品名称"
+                                           style="margin-bottom:3px;" type="text">
+                <span style="margin-right:5px;"><button class="btn btn-primary"><i class="gicon-search white"></i>查询
+                </button>
+                <a href="#" class="btn btn-warning fr">订单列表</a></span>
+                                </div>
+                            </form>
+                        </div>
+                        <!-- end tables-searchbox -->
+                        <div id="notice-con">
+                            <table class="wxtables mgt15">
+                                <colgroup>
+                                    <col width="5%">
+                                    <col width="35%">
+                                    <col width="10%">
+                                    <col width="10%">
+                                    <col width="10%">
+                                    <col width="30%">
+                                </colgroup>
+                                <thead>
+                                <tr>
+                                    <td></td>
+                                    <td>商品</td>
+                                    <td>秒杀价</td>
+                                    <td>日期</td>
+                                    <td>数量</td>
+                                    <td>操作</td>
+                                </tr>
+                                </thead>
+                                <tbody>
+
+                                <tr>
+                                    <td>
+                                        <input class="checkbox table-ckbs" type="checkbox">
+                                    </td>
+                                    <td><a href="" target="_blank" title="">
+                                        <img src="" alt="图片描述信息" class="item-pic">
+                                    </a></td>
+                                    <td>¥2300.00</br>原价：3000.00</td>
+                                    <td><p>2015-07-30 16:13:44</p>
+
+                                        <p>至</p>
+
+                                        <p>2015-08-08 16:13:46</p></td>
+                                    <td class="txtCenter">
+                                        10台
+                                    </td>
+
+                                    <td>
+                                        <a href="#" class="btn btn-primary">编辑</a>
+                                        <a href="javascript:;" data-id="2000985" data-dz="0"
+                                           class="btn btn-danger j-disabled">作废</a>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <table class="wxtables mgt15" style="display:none;">
+                                <colgroup>
+                                    <col width="5%">
+                                    <col width="35%">
+                                    <col width="10%">
+                                    <col width="10%">
+                                    <col width="10%">
+                                    <col width="30%">
+                                </colgroup>
+                                <thead>
+                                <tr>
+                                    <td></td>
+                                    <td>商品</td>
+                                    <td>秒杀价</td>
+                                    <td>日期</td>
+                                    <td>数量</td>
+                                    <td>操作</td>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>无数据</td>
+                                </tr>
+                                </tbody>
+
+                            </table>
+                        </div>
+                        <!-- end wxtables -->
+                        <div class="tables-btmctrl clearfix">
+
+                            <div class="fl">
+                                <a href="javascript:;" class="btn btn-primary btn_table_selectAll">全选</a>
+                                <a href="javascript:;" class="btn btn-primary btn_table_Cancle">取消</a>
+                                <a href="javascript:;" class="btn btn-primary j-disabledAll" data-dz="1">批量上架</a>
+                            </div>
+
+                            <div class="fr">
+                                <div class="paginate">
+                                </div>
+                                <!-- end paginate -->
+                            </div>
+                        </div>
+                        <!-- end tables-btmctrl -->
+                    </div>
+                    <!-- end tablesWrap -->
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <script src="__CDN_STATIC_URL__js/sj.js"></script>
+</body>
+</html>

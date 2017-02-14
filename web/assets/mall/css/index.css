@@ -1,0 +1,88 @@
+body,h1,h2,h3,h4,h5,h6,hr,p,blockquote,dl,dt,dd,ul,ol,li,pre,form,fieldset,legend,button,input,textarea,th,td {
+    margin: 0;
+    padding: 0;
+    vertical-align: baseline
+}
+ol, ul {
+    list-style: none;
+}
+
+.his-color{
+	background-color: #de3232;
+}
+/*首頁*/
+.icon-cate{
+	overflow: hidden;
+	position: relative;
+    display: block;
+    height: 2.2rem;
+    width: 1.79rem;
+    left: -2rem;
+    background: url(../img/bar-icon.png);
+    -webkit-background-size: 100% 100%;
+    background-size: 100% 100%;
+}
+.wx-seach-from{
+	position: absolute;
+    right: 0;
+    left: 0;
+    z-index: 10;
+    margin: .3rem 0;
+    height: 2.2rem;
+    margin-left: 2.6rem;
+}
+.wx-seach-from:before{
+	content: '';
+    width: 2.2rem;
+    height: 2.2rem;
+    display: block;
+    position: absolute;
+    left: 0px;
+    border-radius: 3px;
+    background-color: #de3232;
+    z-index: 9
+}
+.wx-seach-from .bar{
+	padding-left:  2.2rem;
+	top:0;
+	z-index: 1
+}
+.wx-seach-from .bar .searchbar{
+	margin-left: 0;
+}
+.wx-seach-from .bar .searchbar {
+	position: relative;
+	padding:  0;
+	padding-top:  0.1rem;
+	overflow: hidden;
+}
+.wx-seach-from .bar .searchbar input{
+	height: 2rem;
+}
+.wx-seach-from .bar .searchbar .searchbar-cancel{
+	height: 2.2rem;
+	line-height: 2.2rem;
+}
+.con-nav{
+	top:2.8rem;
+}
+.tab-pad{
+	padding: 6px 10px;
+}
+.tab-pad:after{
+	background: none
+}
+.tab-pad .button{
+    line-height: normal;
+    height: auto;
+}
+.tab-pad .button{
+	color: #de3232
+}
+.shortcut-icon{
+	display: block;
+	margin: 0 auto 5px;
+}
+
+
+/*京東商品列表end*/

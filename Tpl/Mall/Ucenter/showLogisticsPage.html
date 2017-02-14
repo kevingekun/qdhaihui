@@ -1,0 +1,39 @@
+<include file="Public:header" title="物流路由信息"  />
+<body>
+    <!-- page 容器 -->
+    <div class="page">
+        <!-- 标题栏 -->
+        <header class="bar bar-nav">
+            <h1 class="title his-color">物流路由信息</h1>
+        </header>
+        <!-- 底部 -->
+        <include file="Public:nav" />
+        <!-- 内容 -->
+        <div class="content con-nav">
+            <div class="list-block media-list">
+                <ul>
+                    <volist name="LogisticsData['routes']" id="vo">
+                    <li>
+                        <label class="label-checkbox item-content">
+                            <div class="item-inner">
+                                <div class="item-title-row">
+                                    <div class="item-title">{$vo.accept_time}</div>
+                                </div>
+                            </div>
+                        </label>
+                        <label>
+                            <div class="item-inner" style="width:100%">
+                                <div style="padding: 0.35rem">{$vo.remark}</div>
+                            </div>
+                        </label>
+                    </li>
+                    </volist>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script src="__ASSETS__/dist/js/sm.js"></script>
+
+</body>
+<include file="Public:share" />
+</html>

@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>{$info.name}</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="__ASSETS__/dist/css/sm-extend.css">
+    <link rel="stylesheet" href="__ASSETS__/css/datail.css">
+</head>
+
+<body>
+    <div class="page">
+        <div id="content">
+            <div class="swiper-container" data-space-between='10'>
+                <div class="swiper-wrapper">
+                    <volist name="info['show_images']" id="top_banner">
+                        <div class="swiper-slide"><img src="{$top_banner}" alt="" width="100%"></div>
+                    </volist>
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+            <section id="s-title" class="section">
+                <div class="main">
+                    <h1>{$info.name}</h1>
+                    <p>{$info.description}</p>
+                </div>
+                <div class="sub">
+                    <div class="slogon"></div>
+                </div>
+            </section>
+            <section id="s-price" class="section">
+                <div class="item">
+                        价格：
+                        <eq name="iswrrany" value="0">
+                            <i class="mui-price-rmb">¥</i>
+                            <span class="mui-price-integer">{$info.price|convert_money}</span>
+                        </eq>
+                        <eq name="iswrrany" value="1">
+                            <select name="warrany" id="warrany_set" style="border:none; font-size: 0.8em; font-family: 'Microsoft YaHei';">
+                                <option>请选择延保种类：</option>
+                            <volist name="warrany" id="vo" key="k">
+                                <option value="{$k}">类型{$vo.Type}年限{$vo.Year}年{$vo.Price}</option>
+                            </volist>
+                            </select>
+                            <div id="divselect" style="display: none">
+                                <ul>
+                                <volist name="warrany" id="vo">
+                                    <li>
+                                        类型<span class="warr_type">{$vo.Type}</span>
+                                        年限<span class="warr_year">{$vo.Year}</span>年
+                                        <span class="warr_price">{$vo.Price}</span>
+                                    </li>
+                                </volist>
+                                </ul>
+                            </div>
+                            <!--divselect 用于获取类型年限价格的详细信息-->
+                        </eq>
+                        <span class="mui-price-decimal"></span>
+                        <eq name="iswrrany" value="0"><em class="tag">抢购</em></eq>
+                    </span>
+                </div>
+                <!--div class="item">
+                     <p class="mui-price everyminute">
+                        距离活动结束<span id="LeftTime"><i>00</i>天<i>00</i>时<i>00</i>分<i>00</i>秒</span>
+                     </p>
+                </div-->
+            </section>
+            <section id="send" class="section">
+                <a class="sendinfo external"
+                  href="{:U('Mall/Ucenter/detailAddress', array('id'=>$info['id'], 'referrer'=>base_encode(get_self_url())))}">
+                    送至:
+                    <span><empty name="StockControlData.province_name">山东</empty>{$StockControlData.province_name}</span>
+                    <if condition="$StockControlData['flag'] eq 'success' ">
+                    <span class="stocknum">　有货</span>
+                    <else />
+                    <span class="stocknum">　无货</span>
+                    </if>
+                    <em class="icon-arrow icon-arrow-right"></em>
+                </a>
+                <div class="sendnum">
+                    <span class="ui-label">数量：</span>
+                    <div class="quantity-wrapper">
+                        <a class="quantity-decrease" id="minusClick" <eq name="iswrrany" value="1">style="display:none"</eq>>
+                            <em class="minus">-</em>
+                        </a>
+                        <input type="text" class="quantity" size="4" value="1" id="number">
+                        <a class="quantity-increase" id="quantityPlus" <eq name="iswrrany" value="1">style="display:none"</eq>>
+                            <em class="plus">+</em>
+                        </a>
+                    </div>
+                </div>
+                <p id="stock">剩余：{$StockControlData.stock|intval}</p>
+                <p>运费：免运费</p>
+                <p>全网销量：{$info.sales_volume}</p>
+                <p>提示：{$info.prompt}</p>
+            </section>
+            <section id="recommend" class="section">
+                <h3>商品详情（建议在WIFI下查看）</h3>
+                <volist name="adlist" id="ad">
+                    <a href="{$ad.url}"><img src="/uploads/{$ad.image}" alt="{$ad.title}" width="100%" /></a>
+                </volist>
+                <div class="scale-box">
+                    {$info.detail|htmlspecialchars_decode}
+                </div>
+            </section>
+        </div>
+        <footer class="footer">
+            <a class="cart-icn" onclick="$('#share').toggle();"><i class="btm-icn btm-lov"></i></a>
+            <div class="action-list">
+                <if condition="$StockControlData['flag'] eq 'success' ">
+                    <a class="grey-color" id="addtocart" <eq name="iswrrany" value="1">style="display:none"</eq>>加入购物车</a>
+                    <a class="blue-color" id="buy">立即购买</a>
+                    <else />
+                    <script>
+                        alert("此区域无货.");
+                    </script>
+                    <a class="grey-color grey" id="">加入购物车</a>
+                    <a class=" grey" id="">立即购买</a>
+                </if>
+            </div>
+            <a class="cart-icn external" href="{:U('shoppingcart')}"><i class="btm-icn btm-car"></i><span class="badge" id="num">{$count_in_cart}</span></a>
+        </footer>
+    </div>
+    <div id="share" style="display: none">
+        <img width=100% src="/assets/mall/img/share.png?2"
+             style="position: fixed; z-index: 9999; top: 0; left: 0;height:100%"
+             onclick="document.getElementById('share').style.display='none';" />
+    </div>
+
+    <script src="__ASSETS__/js/jquery.min.js"></script>
+    <script src="__ASSETS__/dist/js/swiper.3.1.7.min.js"></script>
+    <script src="__ASSETS__/js/jquery.cookie.js"></script>
+
+    <script type="text/javascript">
+        $(function() {
+            $(".swiper-container").swiper({
+                loop : true,
+                autoplay: 5000,
+                pagination: '.swiper-pagination',
+            });
+            function plus(){
+                var a = parseInt($("#number").val(), 10);
+                if (a >= 999) {
+                    $("#number").val(1);
+                } else {
+                    a++;
+                    $("#number").val(a);
+                }
+            };
+
+            function minus(){
+                var a = parseInt($("#number").val(), 10);
+                if (a <= 1) {
+                    $("#number").val(1);
+                } else {
+                    a--;
+                    $("#number").val(a);
+                }
+            };
+            $('#quantityPlus').click(function(){
+                plus();
+            });
+            $('#minusClick').click(function(){
+                minus();
+            });
+            //延保改变div内容方便获取
+            var warrany = $('#warrany_set');
+            var divse = $('#divselect ul li');
+            warrany.change(function () {
+                var warr_val = warrany.find('option:selected').val() - 1;
+                divse.eq(warr_val).addClass('choosed').siblings().removeClass('choosed');
+            });
+            // 立即购买
+            $('a#buy').click(function(){
+                var goods_id = "{$info.id}";
+                var goods_num = $('#number').val();
+                //获取延保描述
+                var warrany_info = warrany.find('option:selected').text();
+                //获取延保详细信息
+                var warr_sel = $('.choosed');
+                var warr_price = warr_sel.find('span.warr_price').text();
+
+                /* if(warr_price == ''){
+                    alert("请选择一项延保产品");
+                    return false;
+                } */
+
+                //组合Json数据
+                var json = '{"id":"'+goods_id+'","num":"'+goods_num+'","warrany":"'+warrany_info+'","warr_price":"'+warr_price+'"}}';
+                json = json.substring(0 , json.length-1);
+                json = '['+json+']';
+
+                // 新建cookie
+                $.cookie('goods', json, {path: '/' });
+
+                location.href="{:U('comfirmOrder')}";
+            });
+
+            // 加入购物车
+            $('a#addtocart').click(function(){
+                var goods_id = "{$info.id}";
+                var goods_num = $('#number').val();
+                var url = "{:U('addToCart')}";
+
+                var num=$('#num').html();
+
+                $.post(url, {goods_id:goods_id,goods_num:goods_num}, function(msg){
+
+                    data=eval(msg);
+                    if (data.code==0){
+                        alert(data.msg);
+                        $('#num').html(data.num);
+                    }else{
+                        alert(data.msg);
+                    }
+
+                });
+            });
+
+
+            //倒计时
+            function FreshTime()
+            {
+                var endtime=new Date("2015/12/15,12:20:12");//结束时间
+                var nowtime = new Date();//当前时间
+                var lefttime=parseInt((endtime.getTime()-nowtime.getTime())/1000);
+                d=parseInt(lefttime/3600/24);
+                h=parseInt((lefttime/3600)%24);
+                m=parseInt((lefttime/60)%60);
+                s=parseInt(lefttime%60);
+                document.getElementById("LeftTime").innerHTML="<i>"+d+"</i>"+"天"+"<i>"+h+"</i>"+"小时"+"<i>"+m+"</i>"+"分"+"<i>"+s+"</i>"+"秒";
+                if(lefttime<=0){
+                    document.getElementById("LeftTime").innerHTML="团购已结束";
+                    clearInterval(sh);
+                }
+            }
+            FreshTime()
+            var sh;
+            sh=setInterval(FreshTime,1000);
+            //倒计时end
+
+        });
+    </script>
+</body>
+<script type="text/javascript">
+    window.shareData = {
+        "moduleName":"",
+        "moduleID":"",
+        "imgUrl": "{$info.image|create_goods_thumb_url}",
+        "timeLineLink": "{:U('Mall/Index/detail', array('id'=>$info['id'], 'uid'=>session('uid')), true, true)}",
+        "sendFriendLink": "{:U('Mall/Index/detail', array('id'=>$info['id'], 'uid'=>session('uid')), true, true)}",
+        "weiboLink": "{:U('Mall/Index/detail', array('id'=>$info['id'], 'uid'=>session('uid')), true, true)}",
+        "tTitle": "{$info.name}",
+        "tContent": "{$info.description}"
+    };
+</script>
+{$shareScript}
+</html>

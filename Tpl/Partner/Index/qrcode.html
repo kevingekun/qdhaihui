@@ -1,0 +1,34 @@
+<include file="Index/header" title="我的二维码"/>
+<div class="content con-nav code-color">
+    <div class="info">
+        <img src="__ASSETS__/index/img/code.jpg" alt="" width="100%"/>
+    </div>
+    <div class="code-main">
+        <div class="code-content">
+            <div class="name">
+                <div class="image">
+                    <img src="{$user.headimgurl|avatar}" alt="" width="100%"/>
+                </div>
+                <div class="nick">
+                    <h3>{$user.nickname}</h3>
+                    <if condition="$user.sex eq 1 ">
+                        <img src="__ASSETS__/index/img/man.jpg" alt="" width="20"/>
+                    <elseif condition="$user.sex eq 2" />
+                        <img src="__ASSETS__/index/img/wom.jpg" alt="" width="20"/>
+                    </if>
+                    <p>{$user.province}　{$user.city}</p>
+                </div>
+            </div>
+
+            <div class="weixin">
+                <p>快去邀请好友与你一起分享"合伙人"特权</p>
+                <img src="{$qrcode}" alt="" width="100%"/>
+            </div>
+            <div class="prep">
+                <p><img src="{$user.headimgurl|avatar}" alt=""/>{$user.nickname}邀请您加入合伙人</p>
+                <span>已有{$fansNum}个朋友接受了邀请，你也赶快加入吧</span>
+            </div>
+        </div>
+    </div>
+</div>
+<include file="Index/footer"/>

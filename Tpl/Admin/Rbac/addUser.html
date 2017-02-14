@@ -1,0 +1,88 @@
+<include file="Public/header_new" title="添加用户"/>
+<define name="DEFINE_SIDE_MENU_CURRENT" value="Tools"/>
+<include file="Public/sideMenu_new"/>
+
+    <div class="main home" id="main" style="overflow: auto;">
+        <div class="side clearfix" style="width:56px;height:100px;float:left;">
+        </div>
+        <div class="main-container" style="height:auto;">
+            <div class="gdt-toufang gdt-toufang-account">
+                <div class="tuiguang-tab" id="_hSubNav">
+                    <ul>
+                        <li style="width:56px"></li>
+                        <li class="goback"><a href="javascript:history.back(-1)"><i></i></a></li>
+                        <li class="on"><a href="userList.html" onclick="">用户管理</a></li>
+                        <li><a href="roleList.html" onclick="">角色管理</a></li>
+                        <li><a href="nodeList.html" onclick="">节点管理</a></li>
+                    </ul>
+                </div>
+                <div class="container-box" >
+                  <form class="form-horizontal" style=" margin-top:20px;" action="__SELF__" method="post"  data-toggle="validate">
+                     <div class="form-group ">
+                        <label for="inputEmail3" class="col-sm-2 control-label">用户昵称：</label>
+                         <div class="col-sm-4">
+                            <input type="text" name="nickname" class="form-control" id="inputEmail3" placeholder="请输入昵称" data-rule-required="true">
+                         </div>
+                     </div>
+                     <div class="form-group ">
+                        <label for="inputEmail3" class="col-sm-2 control-label">用 户 名：</label>
+                         <div class="col-sm-4">
+                            <input type="text" name="username" class="form-control" id="inputEmail3" placeholder="请输入用户名" data-rule-required="true">
+                         </div>
+                     </div>
+                     <div class="form-group">
+                         <label for="inputPassword3" name="repassword" class="col-sm-2 control-label">用户密码：</label>
+                         <div class="col-sm-4">
+                            <input type="password" name="password" class="form-control" id="inputPassword3" placeholder="请输入密码" data-rule-required="true">
+                         </div>
+                     </div>
+                     <div class="form-group ">
+                        <label for="inputEmail3 " class="col-sm-2 control-label">确认密码：</label>
+                         <div class="col-sm-4">
+                            <input type="password" name="repassword" class="form-control" id="inputEmail3" placeholder="确认密码" data-rule-required="true">
+                         </div>
+                     </div>
+                     <div class="form-group">
+                         <label for="inputPassword3" class="col-sm-2 control-label">用户邮箱：</label>
+                         <div class="col-sm-4">
+                            <input type="email" name="email" class="form-control" id="inputPassword3" placeholder="邮箱" data-rule-required="true">
+                         </div>
+                     </div>
+
+                     <div class="form-group ">
+                        <label for="inputEmail3 " class="col-sm-2 control-label">手机号码：</label>
+                        <div class="col-sm-4">
+                            <input type="text" name="mobile" class="form-control" id="inputEmail3" placeholder="手机号码" data-rule-required="true">
+                        </div>
+                     </div>
+                     <div class="form-group">
+                         <label  class="col-sm-2 control-label">用户角色：</label>
+                         <div class="col-sm-4">
+                            <label class="select">
+                                <select name="role_id" class="form-control input-lg" data-rule-required="true">
+                                     <option value=""> 请选择角色</option>
+                                     <volist name="list" id="l">
+                                         <option value='{$l.id}'>{$l.name}</option>
+                                     </volist>
+                                 </select>
+                             </label>
+                          </div>
+                     </div>
+                     <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                           <button type="submit" class="btn btn-primary">确认添加</button>
+                        </div>
+                     </div>
+                  </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/new_theme/common/sui/jquery.min.js"></script>
+<script src="/new_theme/common/sui/sui.min.js"></script>
+<script>
+
+</script>
+</body>
+</html>

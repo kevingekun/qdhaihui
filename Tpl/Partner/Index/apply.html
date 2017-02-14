@@ -1,0 +1,108 @@
+<include file="Index/header" title="申请成为合伙人" />
+<div class="content con-nav">
+    <div class="info">
+        <img src="__ASSETS__/index/img/summary.jpg" alt="" width="100%"/>
+    </div>
+    <div class="list-block infor-content">
+        <form action="" id="form" onsubmit="return false">
+            <ul>
+                <li>
+                    <div class="item-content">
+                        <div class="item-inner">
+                            <div class="item-title label">真实姓名</div>
+                            <div class="item-input">
+                                <input name="realname" type="text" placeholder="" value="{$user.realname}">
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="item-content">
+                        <div class="item-inner">
+                            <div class="item-title label">手机号</div>
+                            <div class="item-input iphone">
+                                <input id="phone" name="phone" type="tel" maxlength="11" placeholder="" value="{$user.phone}" <if condition="$user['phone'] neq ''">readonly</if> >
+                            </div>
+                            <input class="check" type="button"  onClick="getMobileCode();" id="sendcode" value="验证"/>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="item-content">
+                        <div class="item-inner">
+                            <div class="item-title label">验证码</div>
+                            <div class="item-input">
+                                <input name="code" maxlength="6" type="tel" placeholder="" value="">
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="item-content">
+                        <div class="item-inner">
+                            <div class="item-title label">支付宝账号</div>
+                            <div class="item-input">
+                                <input type="hidden" name="pay_way" value="alipay"/>
+                                <input name="account" type="text" value="{$payInfo.account}" placeholder="佣金提现唯一账号，请准确填写">
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="item-content">
+                        <div class="item-inner">
+                            <div class="item-title label small-tx">支付宝认证姓名</div>
+                            <div class="item-input">
+                                <input name="authen_name" type="text" value="{$payInfo.authen_name}" placeholder="">
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="item-content">
+                        <div class="item-inner">
+                            <div class="item-title label small-tx">QQ号</div>
+                            <div class="item-input">
+                                <input name="qq" type="tel" maxlength="15" placeholder="" value="{$user.qq}">
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <div class="ment">
+                <div class="ment-main">
+                    <label for="mentRead" id="readLabel">
+                        <input id="mentRead" name="agree" type="checkbox" style="display: none;">
+                        <i class="ment-icon"></i>
+                        <div class="ment-text">
+                            我已阅读并同意
+                        </div>
+                    </label>
+                    <a class="ment-a external" href="{:U('Partner/Index/agreement')}">《合伙人协议》</a>
+                </div>
+            </div>
+            <div class="ment-btn">
+                <button id="submit" type="submit"><if condition="$user.partner_status eq \Common\Model\UserModel::PARTNER_STATUS_PASS">更新<else />提交</if></button>
+            </div>
+        </form>
+    </div>
+</div>
+<script>
+    var submitUrl = "{:U('Partner/Index/apply', '', true, true)}";
+    var smsUrl = "{:U('Api/Message/getRegCode', '', true, true)}";// {:U('Crontab/MsgQueue/getRegCode')}
+</script>
+<script type="text/javascript">
+	 $(function(){
+	 	$(document).on('click','#mentRead',function(){
+	 		if (this.checked) {
+	 			$('#readLabel .ment-icon').addClass('true');
+	 		}else{
+	 			$('#readLabel .ment-icon').removeClass('true');
+	 		};
+	 	});
+    });
+</script>
+<script src="__ASSETS__/index/js/apply.js"></script>
+<include file="Index/footer" />
+
+

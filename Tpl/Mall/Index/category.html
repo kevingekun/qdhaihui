@@ -1,0 +1,63 @@
+<include file="Public:header" title="商品分类" />
+<body>
+    <!-- page 容器 -->
+    <div class="page">
+        <include file="Public:nav" />
+        <div class="content con-nav">
+            <div class="tab-pad">
+                <form action="{:U('search')}" method="post">
+                    <div class="searchbar row">
+                        <div class="search-input col-80">
+                            <label class="icon icon-search" for="search">
+                                <span></span>
+                            </label>
+                            <input type="search" name="keywords" id="search" placeholder="输入关键字...">
+                        </div>
+                        <button type="submit" class="button button-fill button-primary col-20">搜索</button>
+                    </div>
+                </form>
+            </div>
+            <div class="list-block category-list">
+                <ul>
+                    <li class="item-content item-link">
+                        <a class="item-inner external" href="{:U('item')}">
+                            <div class="item-title" >全部</div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <volist name="menu" id="m">
+            <div class="list-block">
+                <ul>
+                    <li class="item-content item-link">
+                        <a class="item-inner external" href="{:U('item',array('menu_id'=>$m['id']))}">
+                            <div class="item-title" >{$m.name}</div>
+                        </a>
+                    </li>
+                    <volist name="m.child" id="c">
+                        <li class="item-content item-link">
+                            <div class="item-media"><span class="icon icon-star"></span></div>
+                            <a class="item-inner external" href="{:U('item',array('menu_id'=>$c['id']))}">
+                                <div class="item-title item-title-sa">{$c.name}</div>
+                            </a>
+                        </li>
+                        <volist name="c.child" id="d">
+                            <li class="item-content item-link">
+                                <div class="item-media"><span class="icon icon-star"></span><span class="icon icon-star"></span></div>
+                                <a class="item-inner external" href="{:U('item',array('menu_id'=>$d['id']))}">
+                                    <div class="item-title item-title-sa">{$d.name}</div>
+                                </a>
+                            </li>
+                        </volist>
+                    </volist>
+
+                </ul>
+            </div>
+            </volist>
+        </div>
+
+    </div>
+    <script src="__ASSETS__/dist/js/sm.js"></script>
+</body>
+<include file="Public:share" />
+</html>

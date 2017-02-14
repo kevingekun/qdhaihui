@@ -1,0 +1,109 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<include file="Public:header"  title="{:C('WEB_NAME')}" />
+<body>
+    <!-- page 容器 -->
+    <div class="page">
+        <include file="Public:nav" />
+        <div class="content con-nav">
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                <volist name="banner" id="b">
+                    <div class="swiper-slide">
+                        <a href="{$b.url}" title="{$b.title}" class="external"><img src="/uploads/{$b.banner}" alt="" width="100%"></a>
+                    </div>
+                </volist>
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+            <div class="tab-notice">
+                <div class="swiper-wrapper">
+                  <volist name="notice" id="vo">
+                  <div class="swiper-slide">{$vo.content}</div>
+                  </volist>
+                </div>
+            </div>
+            <div class=" tab-pad">
+            <form action="{:U('search')}" method="post">
+                <div class="searchbar row">
+                    <div class="search-input col-80">
+                        <label class="icon icon-search" for="search">
+                            <span></span>
+                        </label>
+                        <input type="search" name="keywords" id="search" placeholder="输入关键字...">
+                    </div>
+                    <button type="submit" class="button button-fill button-primary col-20">搜索</button>
+                </div>
+            </form>
+            </div>
+            <volist name="list" id="menu">
+                <div class="row-list-hd">
+                    {$menu.name} <a href="{:U('item',array('menu_id' => $menu['id']))}"><i class="rect"></i>查看更多</a>
+                </div>
+                <div class="row-list">
+                    <volist name="menu.child" id="l">
+                        <div class="item">
+                            <a href="{:U('detail', array('id' => $l['id']))}" class="url external" title="{$l.name}">
+                                <!--<div class="head">
+                                    <img src="__ASSETS__/img/logo.png">
+                                </div>-->
+                                <div class="img">
+                                    <img src="/uploads/{$l.image}" alt="{$l.name}" height="100">
+                                </div>
+                                <div class="info">
+                                    <div class="name">{$l.name}</div>
+                                    <div class="cost">
+                                        <if condition="$l['iswrrany'] eq '1'">
+                                            <?php
+                                            $warrany = json_decode($l['warrany'], true);
+                                            if($warrany){
+                                                $price = $warrany[0]['Price'];
+                                            }
+                                            ?>
+                                            <span class="price">¥{$price}</span>
+
+                                        <else />
+                                            <span class="price">¥{$l.price|convert_money}</span>
+                                            <span class="price-lf">¥{$l.old_price|convert_money}</span>
+                                        </if>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </volist>
+                </div>
+            </volist>
+        </div>
+        <!--<article>-->
+            <!--<img class="userbg" src="__ASSETS__/img/user.png" alt=""/>-->
+            <!--<p>客服</p>-->
+            <!--<img style="display: none;" src="__ASSETS__/img/wxma.jpg" alt=""/>-->
+        <!--</article>-->
+    </div>
+    <script src="__ASSETS__/dist/js/sm.js"></script>
+    <script src="__ASSETS__/dist/js/swiper.3.1.7.min.js"></script>
+    <script src="__ASSETS__/dist/js/sm-city-picker.js"></script>
+    <script src="__ASSETS__/js/demos.js"></script>
+    <script type="text/javascript">
+        $(function() {
+            var banner = new Swiper('.swiper-container', {
+                loop: true,
+                autoplay: 5000
+            });
+            var notice = new Swiper('.tab-notice', {
+                direction: 'vertical',
+                loop: true,
+                autoplay: 4000
+            });
+        })
+    </script>
+    <script>
+        $(function(){
+//            $(document).on('click','article', function () {
+//                $.alert('<img width="100%" src="__ASSETS__/img/wxma.jpg" alt=""/>', '请在合伙人微信公众号内直接咨询客服');
+//            });
+
+        })
+    </script>
+</body>
+<include file="Public:share" />
+</html>

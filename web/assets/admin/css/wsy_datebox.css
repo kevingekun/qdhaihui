@@ -1,0 +1,40 @@
+@charset "utf-8";
+
+.WSY_datebox {
+  width: 100%;
+  overflow: hidden;
+ 
+}
+.WSY_date {
+  width: 160px;
+  height: 70px;
+  display: block;
+  float: left;
+  background-color: #f2f3f2;
+  margin: 20px 0px 20px 20px;
+  border-radius: 5px 5px 5px 5px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: rgb( 213, 213, 213 );
+  background-image: -moz-linear-gradient( 90deg, rgb(233,233,232) 0%, rgb(244,246,244) 100%);
+  background-image: -webkit-linear-gradient( 90deg, rgb(233,233,232) 0%, rgb(244,246,244) 100%);
+  background-image: -ms-linear-gradient( 90deg, rgb(233,233,232) 0%, rgb(244,246,244) 100%);
+  box-shadow: 1px 1.732px 9px 0px rgb( 193, 193, 193 );
+}
+.WSY_date dt {
+  padding-top: 8px;
+  line-height: 30px;
+  color: #939393;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.WSY_date dd a {
+  font-size: 18px;
+  font-family: 'Arial';
+  color: #646464;
+}
+.WSY_date img {
+  float: left;
+  margin: 15px 10px 0px 15px;
+}

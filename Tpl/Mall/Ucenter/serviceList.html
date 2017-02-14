@@ -1,0 +1,97 @@
+<include file="Public:header" title="申请售后" />
+<body>
+    <div class="page">
+        <header class="bar bar-nav">
+            <h1 class="title his-color">申请售后</h1>
+        </header>
+        <!-- 底部 -->
+        <include file="Public:nav" />
+        <!-- 内容 -->
+        <div class="content con-nav">
+            <div class="list-block">
+                <ul>
+                    <if
+                    condition="$data.installation_status eq 9">
+                    <li class="item-content item-link">
+                        <a href="#"  class="item-inner external under-processing" external>
+                            <div class="item-title">已安装</div>
+                        </a>
+                    </li>
+                    <elseif 
+                    condition="$data.installation_status eq 0" />
+                    <li class="item-content item-link">
+                        <a href="#"  class="item-inner external under-processing" external>
+                            <div class="item-title">已申请安装</div>
+                        </a>
+                    </li>
+                    <else />
+                    <li class="item-content item-link">
+                        <a href="{:U('Mall/Ucenter/serviceInstall',
+                          array('order_id'=>$data['order_id'],
+                          'good_id'=>$data['good_id']))}" class="item-inner external " external>
+                            <div class="item-title">申请上门安装</div>
+                        </a>
+                    </li>
+                    </if>
+                    <if
+                    condition="$data.applicationUnderProcessing eq true">
+                    <li class="item-content item-link">
+                        <a href="#"  class="item-inner external under-processing" external>
+                            <div class="item-title">已申请维修</div>
+                        </a>
+                    </li>
+                    <else />
+                    <li class="item-content item-link">
+                        <a href="{:U('Mall/Ucenter/serviceRepair',
+                          array('order_id'=>$data['order_id'],
+                          'good_id'=>$data['good_id']))}" class="item-inner external" external>
+                            <div class="item-title">申请维修</div>
+                        </a>
+                    </li>
+                    </if>
+                    <if condition="$data.refund_status eq false">
+                    <li  class="item-content item-link">
+                        <a href="{:U('Mall/Ucenter/serviceReturn',
+                          array('order_id'=>$data['order_id'],
+                          'good_id'=>$data['good_id'], 'total'=>$data['total']))}" class="item-inner external" external>
+                            <div class="item-title">申请退货</div>
+                        </a>
+                    </li>
+                    <elseif condition="$data.refund_status eq 9" />
+                    <li  class="item-content item-link">
+                        <a href="#" class="item-inner external
+                          " external>
+                            <div class="item-title">退货已完成</div>
+                        </a>
+                    </li>
+                    <else />
+                    <li  class="item-content item-link">
+                        <a href="#" class="item-inner external
+                          under-processing" external>
+                            <div class="item-title">已申请退货</div>
+                        </a>
+                    </li>
+                    </if>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script src="__ASSETS__/dist/js/sm.js"></script>
+    <script src="__ASSETS__/dist/js/sm-extend.js"></script>
+    <script src="__ASSETS__/dist/js/sm-city-picker.js"></script>
+    <script src="__ASSETS__/js/demos.js"></script>
+    <script>
+        $("#city-picker").cityPicker({
+            toolbarTemplate: '<header class="bar bar-nav">\
+            <button class="button button-link pull-right close-picker">确定</button>\
+            <h1 class="title">选择收货地址</h1>\
+            </header>'
+          });
+
+        $(".under-processing").click(function(){
+            $.toast('申请处理中，请耐心等候');
+        });
+    </script>
+</body>
+<include file="Public:share" />
+</html>

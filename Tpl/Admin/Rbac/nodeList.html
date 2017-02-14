@@ -1,0 +1,92 @@
+<include file="Public/header_new" title="节点管理"/>
+<define name="DEFINE_SIDE_MENU_CURRENT" value="Tools"/>
+<include file="Public/sideMenu_new"/>
+
+    <div class="main home" id="main" style="overflow: auto;">
+        <div class="side clearfix" style="width:56px;height:100px;float:left;">
+        </div>
+        <div class="main-container" style="height:auto;">
+            <div class="gdt-toufang gdt-toufang-account">
+                <div class="tuiguang-tab" id="_hSubNav">
+                    <ul>
+                      <li style="width:56px"></li>
+                      <li class="goback"><a href="javascript:history.back(-1)"><i></i></a></li>
+                      <li><a href="{:U('Rbac/userList')}">用户管理</a></li>
+                      <li><a href="{:U('Rbac/roleList')}">角色管理</a></li>
+                      <li class="on"><a href="{:U('Rbac/nodeList')}">节点管理</a></li>
+                    </ul>
+                </div>
+                <div class="container-box">
+                    <div class="row">
+                        <a class="btn btn-success" href="{:U('Rbac/addNode')}">增加节点</a>
+                    </div>
+                    <div class="row newcearchbox ">
+                        <table class="table table-primary table-bordered">
+                            <thead>
+                                <tr class="">
+                                    <th scope="10%">#</th>
+                                    <th width="20%">标识</th>
+                                    <th width="20%">名称</th>
+                                    <th width="20%">状态</th>
+                                    <th width="30%">描述</th>
+                                    <th width="30%">操作</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                              <volist name="list" id="l">
+                                  <tr>
+                                      <td>{$l.id}</td>
+                                      <td>{$l.name}</td>
+                                      <td>{$l.title}</td>
+                                      <td>{$l['status'] ? '启用' : '禁用'}</td>
+                                      <td>{$l.remark}</td>
+                                      <td>
+                                          <a href="{:U('upNode',array('id'=>$l['id']))}">修改</a>
+                                          <a href="{:U('delNode',array('id'=>$l['id']))}">删除</a>
+                                      </td>
+                                  </tr>
+                                  <volist name="l.child" id="c">
+                                      <tr>
+                                          <td>{$c.id}</td>
+                                          <td>　|--{$c.name}</td>
+                                          <td>　|--{$c.title}</td>
+                                          <td>{$c['status'] ? '启用' : '禁用'}</td>
+                                          <td>{$c.remark}</td>
+                                          <td>
+                                              <a href="{:U('upNode',array('id'=>$c['id']))}">修改</a>
+                                              <a href="{:U('delNode',array('id'=>$c['id']))}">删除</a>
+                                          </td>
+                                      </tr>
+                                      <volist name="c.child" id="d">
+                                          <tr>
+                                              <td>{$d.id}</td>
+                                              <td>　　|--{$d.name}</td>
+                                              <td>　　|--{$d.title}</td>
+                                              <td>{$d['status'] ? '启用' : '禁用'}</td>
+                                              <td>{$d.remark}</td>
+                                              <td>
+                                                  <a href="{:U('upNode',array('id'=>$d['id']))}">修改</a>
+                                                  <a href="{:U('delNode',array('id'=>$d['id']))}">删除</a>
+                                              </td>
+                                          </tr>
+                                      </volist>
+                                  </volist>
+                              </volist>
+                            </tbody>
+                        </table>
+                        <div id="page">
+                          {$page}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../sui/jquery.min.js"></script>
+<script src="../sui/sui.min.js"></script>
+<script>
+
+</script>
+</body>
+</html>

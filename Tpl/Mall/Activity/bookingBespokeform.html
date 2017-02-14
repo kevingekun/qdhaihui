@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="format-detection" content="email=no">
+	<meta name="screen-orientation" content="portrait">
+
+	<title>预售</title>
+	<script src="__ASSETS__/activity/js/flexible.debug.js"></script>
+
+    <link href="__ASSETS__/activity/css/style.css" rel="stylesheet">
+
+</head>
+<body>
+	<div class="container">
+		<div class="content form-main">
+	    	<div class="header"><img src="__ASSETS__/img/yushou.png"></div>
+	    	<ul class="tags">
+				<foreach name="info.goods_tags" item="vo">
+					<li>{$vo}</li>
+				</foreach>
+	    	</ul>
+	        <div class="good">
+	        	<!--<img src="__ASSETS__/activity/img/g.png">-->
+	        </div>
+	        <p class="form-text">请填写正确的联系方式，<br>我们工作人员会尽快与您联系！</p>
+	        <form class="form" name="form" action="__SELF__" method="post">
+	        	<p>
+					<input type="hidden" name="id" value="{:I('get.id')}">
+					<input type="hidden" name="act_id" value="{$info.act_id}">
+	        		<label>姓名：</label>
+	        		<input type="text" name="name">
+	        	</p>
+	        	<p>
+	        		<label>手机：</label>
+	        		<input type="text" name="mobile">
+	        	</p>
+	        	<button type="submit">提交</button>
+	        </form>
+			<div class="tv">
+				<img src="{$info.goods_info.image}">
+			</div>
+	    </div>
+	</div>
+
+
+    <script type="text/javascript" src="__ASSETS__/activity/js/zepto.js"></script>
+
+
+  <script type="text/javascript">
+		$('button').on("click", function(e) {
+       		if (form.name.value==""){
+                alert('请输入姓名');
+                form.name.focus();
+                return false;
+            };
+            if (form.phone.value==""){
+                alert('请输入手机号');
+                form.name.focus();
+                return false;
+            };
+       	})
+    </script>
+</body>
+</html>

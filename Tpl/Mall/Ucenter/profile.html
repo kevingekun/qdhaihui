@@ -1,0 +1,55 @@
+<include file="Public:header" title="完善资料" />
+<body>
+    <div class="datainfo">
+        <form id="form1" action="" onsubmit="return false;">
+            <img class="data-head" src="{$user.headimgurl|avatar}" alt=""/>
+            <div class="list-block data-main">
+
+                <ul>
+                    <li>
+                        <div class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title label">姓名：</div>
+                                <div class="item-input">
+                                    <input type="text" name="realname" value="<?php echo $user['realname'] == '' ? $user['nickname'] : $user['realname']; ?>" placeholder="">
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title label">手机：</div>
+                                <div class="item-input">
+                                    <input id="phone" type="tel" name="phone" value="{$user.phone}" placeholder="" maxlength="11">
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item-content  test">
+                            <div class="item-input empty-input" style="margin: 0">
+                                <input type="tel" name="code" maxlength="6" placeholder="请输入验证码">
+                            </div>
+                            <input class="item-down" type="button" onClick="getMobileCode();" id="sendcode" value="获取验证码" style="background-color: #de3232;"/>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <p class="button-data">
+                <button id="submit">确认</button>
+            </p>
+
+        </form>
+    </div>
+
+<script>
+    var submitUrl = "{:U('Mall/Ucenter/profile', '', true, true)}";
+    var smsUrl = "{:U('Api/Message/getRegCode', '', true, true)}";// {:U('Crontab/MsgQueue/getRegCode')}
+
+</script>
+<script src="__ASSETS__/js/profile.js"></script>
+<script src="__ASSETS__/dist/js/sm.js"></script>
+</body>
+<include file="Public:share" />
+</html>

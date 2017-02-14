@@ -1,0 +1,130 @@
+<include file="Public:header"  title="购物车" />
+<body>
+<!-- page 容器 -->
+<div class="page">
+    <nav class="bar bar-tab bar-tab-t">
+        <div class="cart-foot">
+            <div class="chack pull-left">
+                <label class="label-checkbox cat-item chack-btn" id="checkAll">
+                    <input type="checkbox" name="checkbox">
+                    <div class="item-media"><i class="icon cat-icon-checkbox"></i></div>
+                </label>
+                <!--<i class="icon foot-checkbox" id="checkAll">-->
+                <!--<input class="checkbox check-all" type="checkbox" name="sex">-->
+                <!--</i>-->
+            </div>
+            <div class="chack-tx pull-left">全选</div>
+            <div class="closing pull-right">
+                <input type="button" id="chackClosing" value="删除" onclick="del()">
+                <input type="button" id="settlement" value="结算" disabled="disabled">
+            </div>
+            <div class="total pull-right">
+                <ul>
+                    <li class="total-num">总计：<span class="redtext">￥<span id="priceTotal">00.00</span></span></li>
+                    <li class="total-text">（共<span id="selectedTotal">0</span>计,不含运费）</li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="content">
+        <div class="ju_list ju_list_v2" id="carlist">
+            <ul class="ju_pro_list">
+            <volist name="list" id="l">
+                <li class="hproduct" attr-pageno="1">
+                    <div class="url">
+                        <label class="label-checkbox item-content cat-item">
+                            <input type="checkbox" name="goods_id" value="{$l.goods_id}">
+                            <div class="item-media"><i class="icon cat-icon-checkbox"></i></div>
+                        </label>
+                        <a class="photo external" href="{:U('detail',array('id'=>$l['id']))}">
+                            <img src="{$l.image|create_goods_thumb_url}">
+                        </a>
+                        <a class="info external" href="{:U('detail',array('id'=>$l['id']))}">
+                            <h3 class="tit">{$l.name}</h3>
+                            <div class="item-subtitle">产品规格：{$l.spec}</div>
+                            <div class="desc"></div>
+                            <p class="price">
+                                价格：<i class="redtext">￥</i>
+                                <span class="price-1 redtext">{$l.price|convert_money=###}</span>
+                                <span class="price-2">￥{$l.old_price|convert_money=###}</span>
+                            </p>
+                        </a>
+                        <div class="ju_shoplink">
+                            <p>数量：</p>
+                            <span class="reduce">-</span>
+                            <input class="count-input" type="text" id="{$l.goods_id}" value="{$l.goods_num}">
+                            <span class="add">+</span>
+                        </div>
+                    </div>
+                </li>
+            </volist>
+            </ul>
+        </div>
+
+    </div>
+
+</div>
+
+<script src="__ASSETS__/dist/js/sm.js"></script>
+<script src="__ASSETS__/js/demos.js"></script>
+<script src="__ASSETS__/js/jquery.min.js"></script>
+<script src="__ASSETS__/js/jquery.cookie.js"></script>
+<script type="text/javascript">
+    // 删除购物车商品
+    function del(){
+//        alert('aa');
+        var json = '';
+        $("input[name=goods_id]:checked").each(function(){
+            var id = $(this).val();
+            json += '{"id":"'+id+'"},';
+        });
+
+        json = json.substring(0 , json.length-1);
+        json = '['+json+']';
+
+        $.post("{:U('delCart')}", {data:json}, function(msg){
+//            $.toast(msg);
+            history.go(0);
+        });
+    }
+$(function(){
+    $('#settlement').click(function(){
+        var json = '';
+        $("input[name=goods_id]:checked").each(function(){
+            var id = $(this).val();
+            var num = $('#'+id).val();
+            json += '{"id":"'+id+'","num":"'+num+'"},';
+        });
+
+        json = json.substring(0 , json.length-1);
+        json = '['+json+']';
+        // 新建cookie
+        $.cookie('goods', json, {path: '/' });
+
+        location.href="{:U('comfirmOrder')}";
+
+    });
+
+
+    // 删除购物车商品
+//    $('#chackClosing').click(function(){
+//        alert('aa');
+////        var json = '';
+////        $("input[name=goods_id]:checked").each(function(){
+////            var id = $(this).val();
+////            json += '{"id":"'+id+'"},';
+////        });
+////
+////        json = json.substring(0 , json.length-1);
+////        json = '['+json+']';
+////
+////        $.post("{:U('delCart')}", {data:json}, function(msg){
+//////            $.toast(msg);
+////            history.go(0);
+////        });
+//    });
+});
+</script>
+</body>
+<include file="Public:share" />
+</html>

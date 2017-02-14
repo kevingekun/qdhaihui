@@ -1,0 +1,229 @@
+.gdt-tf-tool .mod-table td.remark{width:40%}
+.gdt-tf-tool .mod-table td.time{width:100px}
+.gdt-tf-tool li .tablink{padding:0 5px}
+.gdt-tf-tool .mod-table tr{cursor:default}
+.gdt-tf-tool .mod-table td.remark{max-width:450px;word-wrap:break-word;word-break:break-all}
+.gdt-tf-tool .explain{margin:20px;background:#fff;padding:15px;position:relative;*zoom:1;border:1px solid #DDDFE1;color:#666}
+.gdt-tf-tool .explain p{line-height:28px;font-size:12px}
+.gdt-tf-tool .explain .ico-help i{top:-1px;left:8px}
+.gdt-tf-tool .explain .ico-spread-up,.gdt-tf-tool .explain .ico-spread{position:absolute;right:20px;top:18px;cursor:pointer}
+.gdt-tf-tool .explain-packup{height:20px;overflow:hidden;padding-top:6px}
+.gdt-tf-tool .choose .from-link{float:left;line-height:33px;padding-right:15px}
+.gdt-tf-tool .choose .from-link .ico-help i{left:-3px}
+.gdt-tf-toolindex{height:100%;background-color:#F2F3F4}
+.gdt-tf-toolindex .gdt-ti{padding:20px 0 0 20px;font-size:12px}
+.gdt-tf-toolindex .gdt-ti .hd{padding-bottom:10px}
+.gdt-tf-toolindex .gdt-ti .ti-title{font-size:14px;color:#363636}
+.gdt-tf-toolindex .gdt-ti .ti-item{float:left;width:280px;height:60px;border:1px solid #DDDFE1;padding:20px;margin-right:15px;margin-bottom:10px;cursor:pointer;background-color:#fff;box-shadow:0 1px 0 #E6E7E8}
+.gdt-tf-toolindex .gdt-ti .ti-item:hover{background-color:#f2f3f4}
+.gdt-tf-toolindex .gdt-ti .ti-item .item-icon{height:60px;width:60px;float:left}
+.gdt-tf-toolindex .gdt-ti .ti-item .item-icon-qx{background-image:url(sprite/gdt-toufang-tool-20150205.png);background-position:0 0}
+.gdt-tf-toolindex .gdt-ti .ti-item .item-icon-tz{background-image:url(sprite/gdt-toufang-tool-20150205.png);background-position:0 -61px}
+.gdt-tf-toolindex .gdt-ti .ti-item .item-icon-account{background-image:url(sprite/gdt-toufang-tool-20150205.png);background-position:0 -122px}
+.gdt-tf-toolindex .gdt-ti .ti-item .item-icon-proof{background-image:url(sprite/gdt-toufang-tool-20150205.png);background-position:-61px 0}
+.gdt-tf-toolindex .gdt-ti .ti-item .item-icon-log{background-image:url(sprite/gdt-toufang-tool-20150205.png);background-position:-61px -61px}
+.gdt-tf-toolindex .gdt-ti .ti-item .item-icon-fk{background-image:url(sprite/gdt-toufang-tool-20150205.png);background-position:-61px -122px}
+.gdt-tf-toolindex .gdt-ti .ti-item .item-icon-dx{background-image:url(sprite/gdt-toufang-tool-20150205.png);background-position:-122px 0}
+.gdt-tf-toolindex .gdt-ti .ti-item .item-icon-mt{background-image:url(sprite/gdt-toufang-tool-20150205.png);background-position:-122px -61px}
+.gdt-tf-toolindex .gdt-ti .ti-item .item-icon-fl{background-image:url(sprite/gdt-toufang-tool-20150205.png);background-position:-122px -122px}
+.gdt-tf-toolindex .gdt-ti .ti-item strong .make{font-weight:normal}
+.gdt-tf-toolindex .gdt-ti .ti-item strong .make .fl-logo{display:inline-block;height:10px;width:10px;line-height:10px;position:relative}
+.gdt-tf-toolindex .gdt-ti .ti-item strong .make .fl-logo i{display:inline-block;height:37px;width:37px;position:absolute;top:-4px;left:0;background-image:url(sprite/gdt-toufang-tool-20150205.png);background-position:0 -183px}
+.gdt-tf-toolindex .gdt-ti .ti-item-pic{float:left;width:60px;height:60px;display:block;margin-right:12px}
+.gdt-tf-toolindex .gdt-ti .ti-item-con{overflow:hidden;zoom:1;line-height:22px;color:#666;width:210px;float:right}
+.gdt-tf-toolindex .gdt-ti .ti-item-con strong{color:#666;display:block;margin-top:-3px}
+.gdt-tf-toolindex .gdt-ti .ti-item-con p{height:40px;line-height:20px;overflow:hidden}
+.gdt-tf-toolindex .gdt-ti .ti-item-con a{color:#666}
+.gdt-tf-toolindex .gdt-ti .ti-item-gray{-webkit-filter:grayscale(100%);-ms-filter:grayscale(100%);-o-filter:grayscale(100%);filter:url(data:image/svg + xml;utf8,<svgversion=1.1xmlns=//www.w3.org/2000/svg><filterid=grayscale><feColorMatrixtype=matrixvalues=0.33330.33330.3333000.33330.33330.3333000.33330.33330.33330000010/></filter></svg>#grayscale);filter:gray;opacity:.7;cursor:default}
+.gdt-tf-toolindex .gdt-ti .ti-item-gray:hover{background-color:#fff}
+.gdt-tf-toolindex .gdt-ti .ti-item-gray a{cursor:default}
+.gdt-tf-tool .mod-table td.remark{max-width:450px;word-wrap:break-word;word-break:break-all}
+.gdt-tf-finace-invoice{background-color:#f2f3f4;overflow:auto}
+.gdt-tf-finace-invoice .lump{padding:10px 0}
+.gdt-tf-finace-invoice .lump-tit{border-bottom:1px solid #DBDEE1}
+.gdt-tf-finace-invoice .mod-table{border:none;margin-top:0}
+.gdt-tf-finace-invoice .lump-ft-page{margin-right:15px}
+.gdt-tf-finace-invoice .page-tri-prev i,.gdt-tf-finace-invoice .page-tri-next i{width:0;height:0;font-size:0;display:inline-block;cursor:pointer;vertical-align:middle}
+.gdt-tf-finace-invoice .page-tri-prev i{border-color:transparent #3595CB transparent transparent;border-style:dashed solid dashed dashed;border-width:11px 11px 11px 0}
+.gdt-tf-finace-invoice .page-tri-next i{border-color:transparent transparent transparent #3595CB;border-style:dashed dashed dashed solid;border-width:11px 0 11px 11px}
+.gdt-tf-finace-invoice .page-tri-next .page-tri-disable{border-color:transparent transparent transparent #d5d5d5;cursor:default}
+.gdt-tf-finace-invoice .page-tri-prev .page-tri-disable{border-color:transparent #d5d5d5 transparent transparent;cursor:default}
+.gdt-tf-finace-invoice .page-num{font-weight:bold;color:#676767;margin:0 10px}
+.gdt-tf-finace-invoice .invoice{padding:20px 0;margin:0 15px;border-bottom:1px solid #EBEBEB;clear:both}
+.gdt-tf-finace-invoice .invoice .invoice-tit{color:#333}
+.gdt-tf-finace-invoice .invoice .invoice-tit a{margin-left:5px}
+.gdt-tf-finace-invoice .invoice .invoice-warn{color:#EA992F;margin-left:15px}
+.gdt-tf-finace-invoice .invoice-info{padding-top:10px}
+.gdt-tf-finace-invoice .invoice li{width:800px;zoom:1;padding:12px 0 12px 12px}
+.gdt-tf-finace-invoice .invoice .invoice-item{float:left;width:400px;line-height:28px}
+.gdt-tf-finace-invoice .invoice .invoice-upload,.gdt-tf-finace-invoice .invoice .invoice-upload .invoice-con{width:auto}
+.gdt-tf-finace-invoice .invoice .invoice-name{float:left;width:82px}
+.gdt-tf-finace-invoice .invoice .invoice-con{float:left;width:291px;color:#909090}
+.gdt-tf-finace-invoice .invoice .invoice-text{width:200px;border:1px solid #C3C6C9;padding-left:5px}
+.gdt-tf-finace-invoice .invoice .invoice-upload-file{width:0;height:0;font-size:0;line-height:0;outline:none}
+.gdt-tf-finace-invoice .invoice .ui-button{margin-left:94px;margin-top:10px}
+.gdt-tf-finace-invoice .invoice .invoice-info .ui-button{margin:0}
+.gdt-tf-finace-invoice .invoice .invoice-upload a{margin-left:5px}
+.gdt-tf-finace-invoice .invoice .text-date{background:#fff url(../img/DateBg.png) 90px 6px no-repeat;width:80px;padding-right:28px}
+.gdt-tf-finace-invoice .invoice-special .invoice-name{width:145px}
+.gdt-tf-finace-invoice .invoice-special .invoice-con{width:auto}
+.gdt-tf-finace-invoice .invoice-edit li{padding:0 0 0 12px}
+.gdt-tf-finace-invoice .invoice .ui-radio{margin-right:20px}
+.gdt-tf-finace-invoice .invoice-bottom{padding:20px 0}
+.gdt-tf-finace-invoice .invoice-bottom .ui-button-green{margin-left:173px}
+.gdt-tf-finace-invoice .invoice-success{text-align:center;vertical-align:middle;padding:280px 0}
+.gdt-tf-finace-invoice .invoice-success .invoice-success-con{display:inline-block;text-align:left}
+.gdt-tf-finace-invoice .invoice-success .invoice-success-tit{color:#333;font-size:16px;margin-bottom:5px;display:block}
+.gdt-tf-finace-invoice .invoice-success p{line-height:24px;padding-left:18px}
+.gdt-tf-finace-maneage .area,.gdt-tf-finace-record .area,.gdt-tf-finace-invoice .area{background:#fff;border:1px solid #DCDCDC;height:auto;overflow:hidden;margin:5px 20px 15px 20px;}
+.gdt-tf-finace-maneage .title{padding:10px 20px;background:#F7F7F7;font-size:14px;position:relative;color:#505050;border:1px solid #；}
+.gdt-tf-finace-maneage .num-show{padding:10px 0 10px 20px}
+.gdt-tf-finace-maneage .lump{line-height:55px;padding-left:140px;;position:relative;*zoom:1}
+.gdt-tf-finace-maneage .lump .item{font-size:14px;position:absolute;left:0;top:0}
+.gdt-tf-finace-maneage .lump .detail{width:100%}
+.gdt-tf-finace-maneage .focal-num{font-size:30px}
+.gdt-tf-finace-maneage .puny-num{padding-left:25px}
+.gdt-tf-finace-maneage .recharge{padding-left:20px}
+.gdt-tf-finace-maneage .recharge .lump{padding-left:80px;line-height:normal;margin:20px 0}
+.gdt-tf-finace-maneage .recharge .tips-normal{padding:10px 15px;width:560px;margin-top:20px;line-height:21px}
+.gdt-tf-finace-maneage .recharge .company{font-size:14px}
+.gdt-tf-finace-maneage .recharge .charge-num{margin-bottom:20px}
+.gdt-tf-finace-maneage .recharge .charge-num a{display:inline-block;border:1px solid #d1d1d1;height:32px;width:90px;line-height:32px;text-align:center;margin-right:10px;cursor:pointer;color:#4f4f4f}
+.gdt-tf-finace-maneage .recharge .charge-num a:hover{border-color:#d92626}
+.gdt-tf-finace-maneage .recharge .charge-num a.on{height:34px;width:92px;border:none;line-height:34px;background-image:url(sprite/gdt-toufang-tool-20150205.png);background-position:-38px -183px;color:#d92626}
+.gdt-tf-finace-maneage .recharge .other-num-pop{width:438px;padding:20px 30px;border:1px solid #e1e1e1;background:#f2f2f2;margin:20px 0;position:relative;*zoom:1}
+.gdt-tf-finace-maneage .recharge .other-num-pop .arrow{width:0;height:0;overflow:hidden;font-size:0;display:inline-block;border-width:7px;border-color:transparent transparent #f2f2f2 transparent;border-style:dashed dashed solid dashed;position:absolute;top:-14px;right:36px}
+.gdt-tf-finace-maneage .recharge .other-num-pop input{height:28px;width:75px;margin:0 5px 0 10px}
+.gdt-tf-finace-maneage .recharge .s-tips{padding-left:35px}
+.gdt-tf-finace-maneage .recharge .tips{padding-bottom:6px;margin:10px 0}
+.gdt-tf-finace-record .mod-table{width:100%}
+.gdt-tf-finace-record .tuiguang-toolbar{margin:20px}
+.gdt-tf-finace-record .records{margin:20px}
+.gdt-tf-finace-record .tuiguang-toolbar .tips{line-height:28px;color:#676767}
+.gdt-tf-finace-record .tuiguang-toolbar .tips input{margin-left:20px}
+.gdt-tf-finace-record .col-date{width:200px}
+.gdt-tf-finace-record .tuiguang-toolbar{line-height:33px}
+.gdt-tf-finace-maneage .num-show .lump .tf-status{position:absolute;left:280px;top:8px}
+.gdt-toufang-noti{background-color:#f2f3f4}
+.gdt-toufang-noti .tuiguang-main{padding-top:45px}
+.gdt-toufang-noti .mod_box_tool{padding:20px 18px}
+.gdt-toufang-noti .contact_way{border:1px solid #DDDFE1;margin-bottom:20px;background-color:#fff}
+.gdt-toufang-noti h3{background-color:#fff;line-height:42px;padding-left:20px;border-bottom:1px solid #DDDFE1;color:#363636}
+.gdt-toufang-noti .mod_title{color:#494949}
+.gdt-toufang-noti .form_item{padding:18px 0 20px 20px}
+.gdt-toufang-noti .form_item .item_tit{float:left;color:#666;font-size:12px;padding-top:7px;font-weight:bold;margin-right:10px}
+.gdt-toufang-noti .form_item .item_cont{float:left}
+.gdt-toufang-noti .form_item .item_cont p{margin-bottom:10px}
+.gdt-toufang-noti .form_item .ui_mr10{display:inline-block;padding:4px 35px 4px 13px;border:1px solid #D1D1D1;cursor:pointer;margin-right:10px;font-size:14px;color:#555;position:relative;font-family:Arial;border-radius:16px;background-color:#F7F8F9}
+.gdt-toufang-noti .form_item .ui_mr10:hover{border-color:#7DAF14;background-color:#F2F7E5}
+.gdt-toufang-noti .form_item .contact_warn,.gdt-toufang-noti .form_item .contact_warn:hover{border-color:#ECCCCA;background-color:#FEF8F5}
+.gdt-toufang-noti .form_item .ui_x{font-size:18px;color:#555;margin-left:10px;cursor:pointer;font-family:'simsun';font-weight:bold;position:absolute;right:10px;top:3px}
+.gdt-toufang-noti .form_item .ui_mr10:hover .ui_x{color:#7DAF83}
+.gdt-toufang-noti .form_item .contact_warn:hover .ui_x{color:#555}
+.gdt-toufang-noti .form_item .ui_mr10 .em{color:#CA4D41;font-size:12px}
+.gdt-toufang-noti .add-btn{height:28px;border:1px solid #C3C6C9;float:left;line-height:28px;position:relative;zoom:1}
+.gdt-toufang-noti .tablink{display:block;padding:0 10px;height:28px;color:#676767}
+.gdt-toufang-noti .add-btn:hover{background-color:#fafafa;border-color:#bdbfc2}
+.gdt-toufang-noti .add-btn:active{background-color:#f0f0f0;border-color:#bdbfc2}
+.gdt-toufang-noti .notice_way{border:1px solid #DDDFE1;background-color:#fff}
+.gdt-toufang-noti .notice_way .mod_op{overflow:hidden;zoom:1;padding:0 0 15px 15px}
+.gdt-toufang-noti .mod_box_tool .notice_way_table{width:100%;text-align:center;margin-bottom:15px}
+.gdt-toufang-noti .mod_box_tool .notice_way_table tr{height:36px;border-bottom:1px solid #E6E6E6}
+.gdt-toufang-noti .mod_box_tool .notice_way_table th,.gdt-toufang-noti .mod_box_tool .notice_way_table td{border-bottom:1px solid #E6E6E6;color:#666}
+.gdt-toufang-noti .mod_box_tool .notice_way_table th{font-weight:bold;text-align:center}
+.gdt-toufang-noti .mod_box_tool .notice_way_table .td_w67{width:121px}
+.gdt-toufang-noti .mod_box_tool .notice_way_table .td_w160{width:160px}
+.gdt-toufang-noti .mod_box_tool .notice_way_table .align_left{text-align:left;padding-left:10px}
+.gdt-toufang-noti .mod_box_tool .notice_way_table .link{margin-left:7px}
+.gdt-toufang-noti .mod_box_tool .notice_way_table .icon_tick{display:inline-block;width:15px;height:11px;background-image:url(sprite/gdt-toufang-tool-20150205.png);background-position:-183px 0}
+.gdt-toufang-limits{background-color:#F2F3F4}
+.gdt-toufang-limits a:hover{text-decoration:underline}
+.gdt-toufang-limits .tuiguang-main .datas{overflow:visible}
+.gdt-toufang-limits .limits-add{padding-left:20px;padding-top:20px;margin-bottom:20px}
+.gdt-toufang-limits .limits-add-fix{width:100%;min-width:800px;display:table;table-layout:fixed}
+.gdt-toufang-limits .limits-add .limits-add-box{display:table-cell;vertical-align:top}
+.gdt-toufang-limits .tuiguang-main{padding-top:45px}
+.gdt-toufang-limits .la-l,.gdt-toufang-limits .la-r{height:250px;border:1px solid #DDDFE1;background-color:#fff;box-shadow:0 1px 0 #E3E4E5;margin-right:20px}
+.gdt-toufang-limits .la-title{line-height:42px;background-color:#fff;padding-left:16px;color:#494949;font-size:14px;border-bottom:1px solid #E5E6E7}
+.gdt-toufang-limits .la-l .la-con{padding:20px 0 0 20px;font-size:12px}
+.gdt-toufang-limits .la-l p{margin-bottom:15px}
+.gdt-toufang-limits .la-l .la-item{display:inline-block;color:#666;width:72px;text-align:left;font-weight:bold}
+.gdt-toufang-limits .la-l .text{border:1px solid #CFCFCF;height:28px;line-height:normal;line-height:28px\9;color:#000;padding:0 5px;width:270px}
+.gdt-toufang-limits .la-l label{margin-right:15px;color:#656565}
+.gdt-toufang-limits .la-l .la-ft{padding-left:76px;overflow:hidden;zoom:1}
+.gdt-toufang-limits .la-l .add-btn{float:left;position:relative;zoom:1}
+.gdt-toufang-limits .la-l .add-btn a:hover{text-decoration:none}
+.gdt-toufang-limits .la-r .la-con{background:url(../img/icon-numlist.png) no-repeat left top;margin:20px 0 0 20px}
+.gdt-toufang-limits .la-r .la-con p{height:36px;padding-top:3px;padding-left:35px;font-size:12px;color:#797979}
+.gdt-toufang-limits .tuiguang-toolbar{margin-bottom:5px}
+.gdt-toufang-limits .mod-table .datas-num{width:55px;min-width:55px}
+.gdt-toufang-limits .mod-table td{position:relative}
+.gdt-toufang-limits .mod-table tr{cursor:default}
+.gdt-toufang-limits .mod-table tr.hover{cursor:default}
+.gdt-toufang-limits .mod-table .s-invite{color:#A84B1E}
+.gdt-toufang-limits .mod-table .datas-change-user{position:absolute;top:34px;left:9px;width:120px;height:185px;border:1px solid #D1D4D7;background-color:#fff;z-index:9}
+.gdt-toufang-limits .mod-table .dcu-list li{padding-left:8px;line-height:37px}
+.gdt-toufang-limits .mod-table .dcu-list-hov{background-color:#F8F8F8}
+.gdt-toufang-limits .mod-table .dcu-btn{border-top:1px solid #D1D4D7;background-color:#fff;height:36px}
+.gdt-toufang-limits .mod-table .dcu-btn a{float:right;height:36px;line-height:35px;text-align:center;font-weight:900;width:59px;color:#fff;padding:0;border:0;text-decoration:none}
+.gdt-toufang-limits .mod-table .dcu-btn .ui-button{color:#666}
+.gdt-toufang-account .tuiguang-main{padding:71px 20px 20px 20px}
+.gdt-toufang-account .account-show,.gdt-toufang-account .account-edit{border-bottom:1px solid #E7E7E7}
+.gdt-toufang-account .account-tip{height:50px;padding:15px 15px 15px 20px;border:1px solid #DECCBC;background-color:#FEF7E5;overflow:hidden;zoom:1;margin-bottom:20px}
+.gdt-toufang-account .account-tip .account-tip-info{float:right}
+.gdt-toufang-account .account-tip .account-tip-info p{line-height:24px;color:#666;text-align:right}
+.gdt-toufang-account .account-tip .account-tip-info strong{font-size:14px}
+.gdt-toufang-account .account-tip .account-tip-warn{color:#CC4A3D}
+.gdt-toufang-account .account-tip .account-tip-id{color:#333;font-weight:bold;font-size:18px;line-height:50px}
+.gdt-toufang-account .account-tip-v{padding:5px 15px 5px 20px}
+.gdt-toufang-account .account-tip-v .account-tip-warn{font-size:14px;margin-top:13px;display:block}
+.account-box h3{line-height:42px;background-color:#F3F3F3;color:#464646;padding-left:15px;font-size:14px;position:relative}
+.account-box h3 .account-star{position:absolute;left:6px;top:3px;color:#D35E55}
+.account-box h3 .account-subtitile{font-size:12px;color:#666;font-weight:normal;margin-left:8px}
+.account-list{font-size:14px;padding-top:24px}
+.account-list li{overflow:hidden;zoom:1;padding:0 0 22px 0}
+.account-list .account-list-name{float:left;width:122px;text-align:right;margin-right:10px;color:#666;line-height:30px}
+.account-list .account-list-con{float:left}
+.account-list .account-list-con .account-lc-item{line-height:30px}
+.account-list .account-list-con .account-lc-pic img{vertical-align:top;margin-right:8px;width:220px;height:160px}
+.account-list .account-list-con .account-lc-pic a{font-size:12px}
+.account-list .account-list-con .account-lc-pic a.btn-del{padding-left:12px}
+.account-box .account-pic-add a{padding-left:132px}
+.account-box .account-pic-add span{font-size:14px;font-weight:900;padding-right:3px}
+.account-list .account-star{color:#D35E55}
+.account-list .account-lc-text .alc-text{width:195px;height:30px;border:1px solid #C0C3C5;padding-left:10px;line-height:normal;line-height:30px\9}
+.account-list .account-lct-tip{font-size:12px;color:#909090;margin-left:8px}
+.err-tip{display: none;}
+.account-list .account-lct-wrongtip{color:#F00;font-size:12px;margin-left:8px;display:inline-block}
+.account-list .account-lct-wrongtip .ico-warning-r{display:inline-block;width:16px;height:16px;background-image:url(sprite/gdt-toufang-tool-20150205.32.png);background-position:0 0;vertical-align:middle}
+.account-list .btn-upload{vertical-align:2px;vertical-align:-1px\9;font-size:12px;height:32px;border:1px solid #E2E2E2;border-width:1px 1px 0;display:inline-block;width:60px;text-align:center;line-height:29px;color:#676767;background-image:-webkit-linear-gradient(top,#F8F8F8,#E1E1E1)}
+.account-list .account-lc-text .account-upload{width:205px;height:30px;line-height:24px\9;background-color:#fff;margin-top:3px}
+.account-list .account-lc-sel{width:101px;height:24px}
+.account-list .account-lc-sel-w{width:205px;height:24px;margin-top:5px}
+.account-list .account-lc-textarea{width:273px;height:62px;margin-top:10px}
+.gdt-toufang-account .account-btn{display:block;width:171px;height:43px;margin-left:132px;margin-top:15px;text-align:center;font-weight:900;line-height:41px;font-size:14px;color:#fff}
+.gdt-tf-cz .datas-query{border:1px solid #c8c8c8;background:#fff;margin:10px 0}
+.gdt-tf-cz .datas-query h3{padding-left:10px;font-size:14px;height:45px;line-height:45px;font-weight:normal;border-bottom:1px solid #c8c8c8}
+.gdt-tf-cz .datas-query .conditions{padding:20px 0 20px 20px}
+.gdt-tf-cz .datas-query .conditions ul{height:auto;overflow:hidden}
+.gdt-tf-cz .datas-query .conditions li{display:inline-block;vertical-align:middle;margin:0 40px 40px 0}
+s .gdt-tf-cz .datas-query .conditions h4{font-weight:normal;float:left;line-height:30px;padding-right:5px}
+.gdt-tf-cz .datas-query .conditions .options{display:inline-block}
+.gdt-tf-cz .datas-query .conditions input.text-date{width:90px;padding-right:21px;background:#fff url(../img/DateBg.png) 87px 6px no-repeat}
+.gdt-tf-cz .list-nav{height:45px;line-height:45px;padding:0 10px;background:#fff;border:1px solid #DBDEE1;border-width:1px 1px 0}
+.gdt-tf-cz .list-nav .name{font-size:14px;color:#747474}
+.gdt-tf-cz .mod-table p{line-height:25px}
+.gdt-tf-cz .mod-table{margin-top:0;margin-right:-1px}
+.gdt-tf-cz .mod-table td{border-right:1px solid #DBDEE1}
+.gdt-tf-cz .mod-table .alter-container{padding:0}
+.gdt-tf-cz .mod-table .alter-container img{margin-top:7px}
+.gdt-tf-cz .mod-table .alter-container table{margin-top:-1px;margin-left:1px;margin-right:-1px;border-collapse:separate}
+.gdt-tf-cz .tuiguang-toolbar{padding-top:20px;margin-bottom:15px}
+.gdt-tf-cz .datas .datas-query .tuiguang-toolbar{padding-right:10px}
+.gdt-tf-cz .mod-table tbody tr:nth-child(even),.gdt-tf-cz .mod-table-special tbody tr:nth-child(4n + 3){background:none}
+.gdt-tf-dingxiang .choose{width:auto}
+.gdt-tf-dingxiang .tuiguang-toolbar .tuiguang-navbar .adres-infochoose{margin:0}
+.gdt-tf-dingxiang .datas-tips{color:#ACACAC;line-height:24px;padding-left:15px;margin-bottom:10px}
+.gdt-tf-dingxiang .datas-tips .ico-tips-b i{left:-1px}
+@media(max-width:1279px){.gdt-tf-toolindex .gdt-ti .ti-item{padding:7px}}
+#CssGaga{content:"150205155107,hai,332"}

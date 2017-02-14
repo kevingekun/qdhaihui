@@ -1,0 +1,73 @@
+<include file="Index/header" title="我的佣金"/>
+<div class="content closenav">
+    <div class="info">
+        <img src="__ASSETS__/index/img/comm.jpg" alt="" width="100%"/>
+        <div class="comm-head">
+            <a class="external" href="{:U('Partner/Index/apply')}">
+                <div class="img">
+                    <img src="{$user.headimgurl|avatar}" alt=""/>
+                </div>
+            </a>
+            <p>{$user.nickname}</p>
+        </div>
+    </div>
+    <div class="comm-main">
+        <div class="settle">
+            <div class="settle-round">
+                <div class="settle-may">
+                    <h3>已结算</h3>
+                    <p>￥{$settledAmount}</p>
+                </div>
+                <a href="{:U('Partner/Index/settled')}" class="external"><i></i>详情</a>
+            </div>
+            <div class="settle-round">
+                <div class="settle-may">
+                    <h3>未结算</h3>
+                    <p>￥{$nosettledAmount}</p>
+                </div>
+                <a href="{:U('Partner/Index/nosettled')}" class="external"><i></i>详情</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-padded comm-item">
+        <div class="row no-gutter item-header">
+            <div class="col-20">发生时间</div>
+            <div class="col-20">佣金类型</div>
+            <div class="col-20">佣金金额</div>
+            <div class="col-20">贡献者</div>
+            <div class="col-20">状态</div>
+        </div>
+    </div>
+
+    <section class="share_box">
+        <div id="loading_box" class="clear" style="display: none;">
+            <img src="__ASSETS__/index/img/loading_tip.gif" class="loading_tip">
+            <span id="loading_span">加载中……</span>
+        </div>
+        <div class="waterfall_tip hidden"></div>
+        <div id="click_for_more_sec" class="click_for_more_sec" style="display: block;">
+            <span href="javascript:;" class="click_for_more_btn">点击加载更多</span>
+        </div>
+    </section>
+
+</div>
+<div class="list-block comm-foot">
+    <ul>
+        <li>
+            <a href="{:U('Partner/Index/question')}" class="item-link item-content external">
+                <div class="item-inner">
+                    <div class="item-title"></div>
+                    <div class="item-after">如何结算佣金？</div>
+                </div>
+            </a>
+        </li>
+    </ul>
+</div>
+<script>
+    var count = {$count};
+    var pageSize = {$pageSize};
+    var URL = "{:U('Partner/Index/commission', '', true, true)}";
+</script>
+<script src="__ASSETS__/index/js/commission.js"></script>
+<include file="Index/footer"/>

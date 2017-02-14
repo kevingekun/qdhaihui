@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <title>活动返现</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <!--公用样式文件，不加版本号，通过url参数控制cache -->
+    <link rel="stylesheet" rev="stylesheet" href="__CDN_STATIC_URL__css/gdt-css-api.css" type="text/css" media="screen">
+    <link rel="stylesheet" rev="stylesheet" href="__CDN_STATIC_URL__css/gdt-toufang-layout-20150325.css" type="text/css"
+          media="screen">
+    <link rev="stylesheet" rel="stylesheet" href="__CDN_STATIC_URL__css/gdt-toufang-global-20150323.css" media="screen"
+          type="text/css">
+    <link rel="stylesheet" href="__CDN_STATIC_URL__css/myjd-2015.css">
+    <link rel="stylesheet" href="__CDN_STATIC_URL__css/component-min.css">
+    <script src="__CDN_STATIC_URL__js/jquery.js" type="text/javascript" charset="utf-8"></script>
+    <script src="__CDN_STATIC_URL__js/scrollheight.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+
+<div class="wrapper clearfix" id="root">
+    <include file="Public/header"/>
+    <div class="top" style="height:56px;;width:100%;"><!--顶部占位--></div>
+    <div class="top" style="height: 31px; width: 100%;display:none;" id="ErrorStatusTipsHolder"><!--顶部小黄条占位--></div>
+    <define name="DEFINE_SIDE_MENU_CURRENT" value="activity"/>
+    <include file="Public/sideMenu"/>
+    <div class="main home" id="main" style="/*height: 400px;*/ overflow: auto;">
+        <div class="side clearfix" style="width:56px;height:100px;float:left;"></div>
+
+        <div class="main-container" style="height:auto;">
+            <div class="gdt-toufang gdt-toufang-account">
+                <div class="tuiguang-tab small-tab" id="_hSubNav">
+                    <ul>
+                        <li style="width:56px"></li>
+                        <li><a href="{:U('Home/Index/activity')}" onclick="">优惠券</a></li>
+                        <li><a href="{:U('Home/Index/activity_seckill')}" onclick="">秒杀</a></li>
+                        <li><a href="{:U('Home/Index/activity_presale')}" onclick="">预售</a></li>
+                        <li><a href="{:U('Home/Index/activity_group')}" onclick="">阶梯团购</a></li>
+                        <li class="on"><a href="{:U('Home/Index/activity_now')}" onclick="">返现</a></li>
+                        <li><a href="#" onclick="">直降</a></li>
+                        <li><a href="#" onclick="">新品拍卖</a></li>
+                        <li><a href="{:U('Home/Index/activity_wof')}" onclick="">大转盘</a></li>
+                        <li><a href="{:U('Home/Index/activity_redpacket')}" onclick="">发红包</a></li>
+                        <li><a href="{:U('Home/Index/activity_inquiry')}" onclick="">调研</a></li>
+                    </ul>
+                </div>
+                <div class="content-right fl">
+                    <a href="#" class="btn btn-success">新建返现</a>
+                    <div class="tabs nochange clearfix mgt20">
+                        <a href="#" class="active tabs_a fl">返现券</a>
+                        <a href="#" class="tabs_a fl">发放记录</a>
+                        <a href="#" class="tabs_a fl ">作废优惠劵</a>
+                    </div>
+                    <!-- end tabs -->
+
+                    <div class="tablesWrap mgt15">
+                        <!-- end tables-searchbox -->
+                        <table class="wxtables">
+                            <colgroup>
+                                <col width="3%">
+                                <col width="17%">
+                                <col width="10%">
+                                <col width="10%">
+                                <col width="16%">
+                                <col width="9%">
+                                <col width="10%">
+                                <col width="8%">
+                                <col width="16%">
+                            </colgroup>
+                            <thead>
+                            <tr>
+                                <td></td>
+                                <td>优惠券名称</td>
+                                <td>面值</td>
+                                <td>所需积分</td>
+                                <td>有效期</td>
+                                <td>剩余</td>
+                                <td>已领取</td>
+                                <td>已使用</td>
+                                <td>操作</td>
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                            <tr>
+                                <td>
+                                    <input class="checkbox table-ckbs" type="checkbox">
+                                </td>
+                                <td>促销</td>
+                                <td>¥10.00</td>
+                                <td>0</td>
+                                <td class="txtCenter">
+                                    <p>2015-07-30 16:13:44</p>
+
+                                    <p>至</p>
+
+                                    <p>2015-08-08 16:13:46</p>
+                                </td>
+                                <td>50 张</td>
+                                <td>0 张</td>
+                                <td>0 张</td>
+                                <td>
+                                    <a href="#" class="btn btn-primary">编辑</a>
+                                    <a href="javascript:;" data-id="2000985" data-dz="0"
+                                       class="btn btn-danger j-disabled">作废</a>
+                                    <a href="javascript:;" class="btn btn-warning j-copy" title="复制地址"
+                                       data-copy="http://m.wxfenxiao.com/Activity/coupon/cid/2000985/sid/2008888.html">复制地址</a>
+                                    <a href="javascript:;" class="btn btn-warning J_qrcode" title="二维码"
+                                       data-id="2000985">二维码</a>
+
+                                    <div style="position: absolute; left: 1104px; top: 364px; width: 74px; height: 30px; z-index: 99;"
+                                         id="zclip-ZeroClipboardMovie_1" class="zclip">
+                                        <embed id="ZeroClipboardMovie_1" src="" loop="false" menu="false" quality="best"
+                                               bgcolor="#ffffff" name="ZeroClipboardMovie_1" allowscriptaccess="always"
+                                               allowfullscreen="false" type="application/x-shockwave-flash"
+                                               pluginspage="http://www.macromedia.com/go/getflashplayer"
+                                               flashvars="id=1&amp;width=74&amp;height=30" wmode="transparent"
+                                               align="middle" height="30" width="74">
+                                    </div>
+                                    <div style="position: absolute; left: 1104px; top: 364px; width: 74px; height: 30px; z-index: 99;"
+                                         id="zclip-ZeroClipboardMovie_2" class="zclip">
+                                        <embed id="ZeroClipboardMovie_2" src="" loop="false" menu="false" quality="best"
+                                               bgcolor="#ffffff" name="ZeroClipboardMovie_2" allowscriptaccess="always"
+                                               allowfullscreen="false" type="application/x-shockwave-flash"
+                                               pluginspage="http://www.macromedia.com/go/getflashplayer"
+                                               flashvars="id=2&amp;width=74&amp;height=30" wmode="transparent"
+                                               align="middle" height="30" width="74">
+                                    </div>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <!-- end wxtables -->
+                        <div class="tables-btmctrl clearfix">
+                            <div class="fl">
+                                <!--
+                                    <a href="javascript:;" class="btn btn-primary btn_table_selectAll">全选</a>
+                                    <a href="javascript:;" class="btn btn-primary btn_table_Cancle">取消</a>
+                                    <a href="javascript:;" class="btn btn-primary btn_table_disabled">作废</a>
+                                -->
+                            </div>
+                            <div class="fr">
+                                <div class="paginate">
+                                </div>
+                                <!-- end paginate -->
+                            </div>
+                        </div>
+                        <!-- end tables-btmctrl -->
+                    </div>
+                    <!-- end tablesWrap -->
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+</body>
+</html>

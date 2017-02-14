@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>合伙人登陆</title>
+
+    <link rel="stylesheet" href="__ASSETS__/haixin/css/index.css"/>
+</head>
+<body>
+<div class="login-main">
+    <div class="banner-bg">
+        <img src="__ASSETS__/haixin/img/smart.jpg" alt="" width="100%"/>
+    </div>
+    <div class="login-form">
+        <div class="login-box">
+            <div class="mt">
+                <h1>
+                    登录合伙人系统
+                </h1>
+            </div>
+            <div class="msg-wrap">
+                <div class="msg-warn"><b></b>公共场所不建议自动登录，以防账号丢失</div>
+                <div class="msg-error hide" style="display: none;"><b></b></div>
+            </div>
+            <div class="form">
+                <form name="form1" method="post" acction="">
+                    <div class="item item-fore1">
+                        <label for="loginname" class="login-label name-label">
+                            用户名：
+                        </label>
+                        <input type="text" class="itxt" name="username" tabindex="1" placeholder="请输入用户名">
+                    </div>
+                    <div id="entry" class="item item-fore2">
+                        <label class="login-label pwd-label" for="nloginpwd">
+                            密&nbsp;&nbsp;&nbsp;码：
+                        </label>
+                        <input type="password" name="password" class="itxt itxt-error" tabindex="2" placeholder="请输入密码">
+                    </div>
+                    <div class="item item-fore3">
+                        <div class="safe">
+                            <span>
+                                <input id="autoLogin" name="chkRememberMe" type="checkbox" class="jdcheckbox" tabindex="3">
+                                <label for="">
+                                    自动登录
+                                </label>
+                            </span>
+                            <a href="#" class="forget-pw-safe" target="_blank">
+                                忘记密码?
+                            </a>
+                        </div>
+                    </div>
+                    <div class="item item-fore5">
+                        <div class="login-btn">
+                            <a href="#" class="btn-img btn-entry" tabindex="6" onclick="check();">
+                                立即登录
+                            </a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,51 @@
+.phone {
+    position: relative;
+    margin-top: 50px;
+    margin-left: 200px;
+    background: #111;
+    border-radius: 55px;
+    box-shadow: 0px 0px 0px 2px #aaa;
+    width: 370px;
+    height: 678px;
+    padding: 105px 25px 0px;
+}
+.phone:after {
+    content: '';
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    left: 50%;
+    margin-left: -30px;
+    bottom: 20px;
+    border-radius: 100%;
+    box-sizing: border-box;
+    border: 5px solid #333;
+}
+.phone:before {
+    content: '';
+    width: 60px;
+    height: 10px;
+    border-radius: 10px;
+    position: absolute;
+    left: 50%;
+    margin-left: -30px;
+    background: #333;
+    top: 50px;
+}
+.phone .statusbar {
+    position: absolute;
+    width: 320px;
+    height: 20px;
+    background: url(../img/status-bar.png);
+    left: 50%;
+    margin-left: -160px;
+    top: 100px;
+    -webkit-background-size: 100% auto;
+    background-size: 100% auto;
+}
+.phone iframe {
+    height: 548px;
+    display: block;
+    width: 100%;
+    margin-top: 20px;
+}

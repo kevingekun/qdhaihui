@@ -1,0 +1,77 @@
+<include file="Public/header_new" title="优惠券领取记录"/>
+<define name="DEFINE_SIDE_MENU_CURRENT" value="activity"/>
+<include file="Public/sideMenu_new"/>
+
+    <div class="main home" id="main" style="overflow: auto;">
+        <div class="side clearfix" style="width:56px;height:100px;float:left;">
+        </div>
+        <div class="main-container" style="height:auto;">
+            <div class="gdt-toufang gdt-toufang-account">
+                <div class="tuiguang-tab" id="_hSubNav">
+                    <ul>
+                        <li style="width:56px"></li>
+                        <li class="goback"><a href="javascript:history.back(-1)"><i></i></a></li>
+                        <li><a href="{:U('Admin/Activity/menu')}">菜单设置</a></li>
+                        <li class="on"><a href="{:U('Admin/Activity/couponlist')}">优惠券</a></li>
+                        <li><a href="{:U('Admin/Activity/seckill')}">秒杀</a></li>
+                        <li><a href="{:U('Admin/Activity/bookingList')}">预售</a></li>
+                        <li><a href="{:U('Admin/Activity/groupList')}">团购</a></li>
+                    </ul>
+                </div>
+
+                <div class="container-box">
+                   <div class="row">
+                       <a href="{:U('Activity/couponadd')}" class="btn btn-success">新建优惠券</a>
+                   </div>
+                   <div class="row">
+                       <ul class="nav nav-tabs nav-primary newcearchbox">
+                          <li role="presentation" <if condition='$status eq 1'>class="active"</if>><a href="{:U('Activity/couponlist')}">优惠券</a></li>
+                          <li role="presentation" <if condition='$status eq 0'>class="active"</if>><a href="{:U('Activity/couponlist',array('status'=>0))}">作废优惠劵</a></li>
+                       </ul>
+                   </div>
+                    <div class="row newcearchbox ">
+                        <table class="table table-primary">
+                            <thead>
+                                <tr class="">
+                                    <th>ID</th>
+                                    <th width="10%">优惠券面值</th>
+                                    <th width="10%">领取人</th>
+                                    <th width="10%">使用状态</th>
+                                    <th width="20%">使用信息</th>
+                                    <th width="12%">创建时间</th>
+                                    <th width="26%">操作</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                    <volist name="list" id="vo">
+                                        <?php $coupon = get_coupon_info($vo['coupon_id']);?>
+                          		        <tr>
+                    		                <td>{$vo.id}</td>
+                    		                <td>{$coupon.coupon_name}</td>
+                    		                <td>{:get_user_field($vo['uid'])}</td>
+                    		                <td>{$vo['used'] == 1 ? '已使用':'未使用'}</td>
+                    		                <td>
+                                                使用时间: {$vo.use_time|format_date=###,"Y-m-d H:i:s"}<br>
+                                                订单号: {$vo.order_num}
+                                            </td>
+                    		                <td>{$vo.create_time|format_date=###,"Y-m-d H:i:s"}</td>
+                    		                <td>
+                                                <a href="{:U('Admin/Activity/couponRecordDel', array('id'=>$vo['id']))}" class="btn btn-danger j-disabled" onclick="return confirm('确定要删除吗?');">删除</a>
+                                            </td>
+                    		            </tr>
+                                    </volist>
+                            </tbody>
+                        </table>
+                        <div id="page">
+                          {$page}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/new_theme/common/sui/jquery.min.js"></script>
+<script src="/new_theme/common/sui/sui.min.js"></script>
+</body>
+</html>

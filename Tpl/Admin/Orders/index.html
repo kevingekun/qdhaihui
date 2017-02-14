@@ -1,0 +1,197 @@
+<include file="Public/header" title="订单管理"/>
+<define name="DEFINE_SIDE_MENU_CURRENT" value="Orders"/>
+<include file="Public/sideMenu"/>
+<script language="javascript" type="text/javascript" src="__COMMON__/My97DatePicker/WdatePicker.js"></script>
+<div class="main home" id="main" style="/*height: 400px;*/ overflow: auto;">
+    <div class="side clearfix" style="width:56px;height:100px;float:left;"></div>
+    <div class="main-container" style="height:auto;">
+        <div class="gdt-toufang gdt-toufang-account">
+            <div class="tuiguang-tab" id="_hSubNav">
+                <ul>
+                    <li style="width:56px"></li>
+                    <li class="goback"><a href="javascript:history.back(-1)"><i></i></a></li>
+                    <li class="on"><a href="/index.php/Admin/Orders/index.html"
+                                      onclick="">产品订单</a></li>
+                    <li><a href="/index.php/Admin/Workcard/index.html" onclick="">售后服务</a>
+                    </li>
+                    <li><a href="/index.php/Admin/Refund/index.html"
+                        onclick="">退款申请</a>
+                    </li>
+                    <li><a href="/index.php/Admin/Logistics/index.html" onclick="">物流信息</a></li>
+                </ul>
+
+            </div>
+            <div class="content-right fl" style="width:95%;">
+                <form action="__SELF__" method="post">
+                    <div class="tables-searchbox">
+                        <input placeholder="输入收货人/手机号/订单号" class="input newinput" name="mobile_orderno" value="{$mobile_orderno}"
+                               type="text">
+                        <input placeholder="输入商品货号" class="input newinput" name="goods_no" value="" type="text">
+
+                        <input autocomplete="off" name="start_create_time" placeholder="订单时间"
+                               class="input Wdate mini" onclick="WdatePicker(({dateFmt:'yyyy-MM-dd HH:mm:ss'}))" type="text">
+                        <span class="mgr5">至</span>
+                        <input autocomplete="off" name="end_create_time" placeholder="订单时间"
+                               class="input Wdate mini" onclick="WdatePicker(({dateFmt:'yyyy-MM-dd HH:mm:ss'}))" type="text">
+                        <select name="shipping_type" class="select mini">
+                            <option value="-1" selected="">配送方式</option><!--未设定-->
+                            <option value="1">快递</option>
+                            <option value="2">EMS</option>
+                            <option value="3">平邮</option>
+                            <option value="4">自提</option>
+                        </select>
+
+                        <select name="pay_type" class="select mini">
+                            <option value="-1" selected="">支付方式</option>
+                            <option value="1" <if condition="$pay_type eq 1">selected</if>>微信支付</option>
+                        </select>
+                        <select name="agent_rank_id2" class="select mini"> <!--未设定-->
+                            <option value="-1">合伙人</option>
+                            <option >粉丝</option>
+
+                        </select>
+                        <button type="submit" class="btn btn-primary vtal-2">查询</button>
+                        <button class="btn btn-warning vtal-2">订单导出</button>
+                    </div>
+                </form>
+
+                <div class="tablesWrap">
+                    <div class="tabs clearfix mgt15" id="notice-tit">
+                        <a href="{:U('Orders/index')}" class="<if condition='empty($_GET[s])'>active</if> tabs_a fl">所有订单({$StatusNum.all})</a>
+                        <a href="{:U('Orders/index',array('s'=>1))}" class="<eq name='_GET[s]' value='1'>active</eq> tabs_a fl">待付款({$StatusNum.1})</a>
+                        <a href="{:U('Orders/index',array('s'=>2))}" class="<eq name='_GET[s]' value='2'>active</eq> tabs_a fl">待发货({$StatusNum.2})</a>
+                        <a href="{:U('Orders/index',array('s'=>3))}" class="<eq name='_GET[s]' value='3'>active</eq> tabs_a fl">待收货({$StatusNum.3})</a>
+                        <a href="{:U('Orders/index',array('s'=>9))}" class="<eq name='_GET[s]' value='9'>active</eq> tabs_a fl">交易完成({$StatusNum.9})</a>
+                        <a href="{:U('Orders/index',array('s'=>4))}" class="<eq name='_GET[s]' value='4'>active</eq> tabs_a fl">已关闭({$StatusNum.4})</a>
+                        <a href="{:U('Orders/index',array('s'=>5))}" class="<eq name='_GET[s]' value='5'>active</eq> tabs_a fl">未付款删除({$StatusNum.5})</a>
+                        <a href="{:U('Orders/index',array('s'=>6))}" class="<eq name='_GET[s]' value='6'>active</eq> tabs_a fl">已付款删除({$StatusNum.6})</a>
+                    </div>
+
+                    <!-- end tables-searchbox -->
+                    <div id="notice-con">
+                        <table class="wxtables mgt10">
+                            <thead>
+                            <tr>
+                                <th class="center"><label> <input
+                                        type="checkbox" class="ace"> <span class="lbl"></span>
+                                </label></th>
+                                <th>订单编号</th>
+                                <th>商品</th>
+                                <th>联系人|联系方式|地址</th>
+                                <th>支付方式</th>
+                                <th>支付状态</th>
+                                <th>订单状态</th>
+                                <th>创建时间</th>
+                                <th>送货方式</th>
+                                <th>发票类型</th>
+                                <th>发票状态</th>
+                                <th>发票抬头</th>
+                                <th>活动编号</th>
+                                <th>更新时间</th>
+                                <th>付款时间</th>
+                                <th>是否换货</th>
+                                <!--<th>商品单价</th>-->
+                                <!--<th>购买数量</th>-->
+                                <th>总价</th>
+                                <th>买家留言</th>
+                                <th>操作</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <volist name="result" id="result">
+                                <tr>
+                                    <td class="center"><label> <input
+                                            type="checkbox" class="ace"> <span class="lbl"></span>
+                                    </label></td>
+                                    <td>{$result.order_number}</td>
+                                    <td>
+                                        <volist name="result['cart_data_list']" id="good">
+                                            <img src="{$good.image}" width="100" alt="{$good.name}">
+                                        </volist>
+                                    </td>
+                                    <td>{$result.name}|{$result.telephone}<br/>{$result.tull_address}</td>
+                                    <td>{$result['pay_style']?微信支付:货到付款}</td>
+                                    <td>{$result['pay_status']?已支付:未支付}</td>
+                                    <td>{$result.order_status}</td>
+                                    <td>{$result.create_time|format_date=###,"Y-m-d H:i:s"}</td>
+                                    <td>{$result.delivery_type}</td>
+                                    <td>{$result['is_elec']?电子:纸质}{$result['is_normal']?普通:增值税}</td>
+                                    <td>{$result['invoice']?已开票:未开票}</td>
+                                    <td>{$result.order_number|get_invoice_info=###,'plain_title'}</td>
+                                    <td>{$result.activity_id}</td>
+                                    <td>{$result.update_time|format_date=###,"Y-m-d H:i:s"}</td>
+                                    <td>{$result.pay_time|format_date=###,"Y-m-d H:i:s"}</td>
+                                    <td>{$result[return_order]?是:否}</td>
+                                    <!--<td>{$result.price}</td>-->
+                                    <!--<td>{$result.count}</td>-->
+                                    <td>{$result.total_price}</td>
+                                    <td>{$result.note}</td>
+                                    <td>
+                                        <a href="{:U('Admin/Orders/publish',array('id'=>$result['order_id'],'s'=>$result['order_status']))}">现在发货</a>
+                                        <a>已支付</a>
+                                        <a href="{:U('Admin/Orders/del',array('id'=>$result['order_id'],'s'=>$result['order_status']))}">删除</a>
+                                    </td>
+                                </tr>
+                            </volist>
+                            </tbody>
+                        </table>
+                        <table></table>
+                        <table></table>
+                        <table></table>
+                        <table></table>
+                    </div>
+                    {$page}
+                </div>
+                <!-- end tablesWrap -->
+            </div>
+        </div>
+    </div>
+
+
+<div class="col-sm-12 widget-container-span">
+    <div class="widget-box transparent">
+        <div class="widget-body">
+            <div class="widget-main padding-12 no-padding-left no-padding-right">
+                <div class="tab-content padding-4">
+                    <div id="home2" class="tab-pane in">
+                        <form class="form-horizontal J_ajaxForm" id="myform" action="{:U('Admin/Menu/addmenu')}" method="post">
+                            <div class="tabbable">
+                                <div class="tab-content">
+                                    <div class="tab-pane active">
+                                        <table cellpadding="2" cellspacing="2" width="100%">
+                                            <tbody>
+                                            <tr>
+                                                <td width="140">上级:</td>
+                                                <td>
+                                                    <select name="parent" class="normal_select">
+                                                        <option value="0">作为一级分类</option>
+                                                        <volist name="menulist" id="menulist">
+                                                            <option value="{$menulist.id}">{$menulist.name}</option>
+                                                        </volist>
+                                                    </select>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>名称:</td>
+                                                <td><input type="text" class="input" name="name"
+                                                           value=""><input type="hidden" name="addmenu" value="0"></td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <button class="btn btn-primary btn_submit J_ajax_submit_btn"
+                                        type="submit">提交</button>
+                                <a class="btn" href="">返回</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="/assets/mall/dist/css/sm-extend.css">
+    <link rel="stylesheet" href="/assets/mall/css/datail.css">
+</head>
+<body>
+    <div class="page">
+        <div id="content">
+            <div class="swiper-container" data-space-between='10'>
+                <div class="swiper-wrapper">
+                    <volist name="info['show_images']" id="top_banner">
+                        <div class="swiper-slide"><img src="{:HOME_URL}{$top_banner}" alt="" width="100%"></div>
+                    </volist>
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+            <section id="s-title">
+                <div class="main">
+                    <h1>{$info.name} {$info.description}</h1>
+                </div>
+                <div class="sub">
+                    <div class="slogon"></div>
+                </div>
+            </section>
+            <section id="s-price">
+                <div class="item price-bar pnormal">
+                    <span class="mui-price big">
+                        价格：
+                        <i class="mui-price-rmb">¥</i>
+                        <span class="mui-price-integer">{$info.price|convert_money}</span>
+                        <span class="mui-price-decimal"></span>
+                        <em class="tag">限时98折</em>
+                    </span>
+                </div>
+                <div class="item">
+                    <span class="ui-price-wrap del">
+                        <span class="ui-label">数量：</span>
+                        <div class="quantity-wrapper">
+                            <input type="hidden"  value="200">
+                            <a class="quantity-decrease" onclick="minus()">
+                                <em class="minus">-</em>
+                            </a>
+                            <input type="text" class="quantity" size="4" value="1" id="number">
+                            <a class="quantity-increase" id="quantityPlus" onclick="plus()">
+                                <em class="plus">+</em>
+                            </a>
+                        </div>
+                    </span>
+                </div>
+            </section>
+            <section id="send">
+                <p id="stock">剩余：{$info.stock}</p>
+                <p>运费：免运费</p>
+                <p>全网销量：{$info.sales_volume}</p>
+            </section>
+            <section id="recommend">
+                <h3>商品详情（建议在WIFI下查看）</h3>
+                <div class="scale-box">
+                    {$info.detail|htmlspecialchars_decode}
+                </div>
+            </section>
+        </div>
+    </div>
+    <div id="share" style="display: none">
+        <img width=100% src="/assets/mall/img/share.png?2"
+             style="position: fixed; z-index: 9999; top: 0; left: 0;height:100%"
+             onclick="document.getElementById('share').style.display='none';" />
+    </div>
+    <footer class="footer">
+        <a class="cart-icn" onclick="$('#share').toggle();"><i class="btm-icn btm-lov"></i></a>
+        <div class="action-list">
+            <a class="grey-color" id="addtocart">加入购物车</a>
+            <a class="blue-color" id="buy">立即购买</a>
+        </div>
+        <a class="cart-icn external" href="{:U('shoppingcart')}"><i class="btm-icn btm-car"></i><span class="badge" id="num">{$count_in_cart}</span></a>
+    </footer>
+    <script src="/assets/mall/js/jquery.min.js"></script>
+    <script src="/assets/mall/dist/js/swiper.3.1.7.min.js"></script>
+    <script src="/assets/mall/js/jquery.cookie.js"></script>
+</body>
+</html>

@@ -1,0 +1,650 @@
+html,body{height:100%;}
+.invisible{position:absolute;clip:rect(1px 1px 1px 1px);clip:rect(1px,1px,1px,1px);padding:0;border:0;height:1px;width:1px}
+html{font-size:62.5%}
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,button,textarea,p,blockquote,th,td,hr{margin:0;padding:0}
+body{font:12px/1.5 tahoma,arial,\5b8b\4f53;color:#333}
+h1,h2,h3,h4,h5,h6{font-size:100%}
+table{border-collapse:collapse;border-spacing:0}
+li{list-style:none}
+img,iframe{border:0}
+a{text-decoration:none;background:transparent}
+label{cursor:pointer}
+hr{-moz-box-sizing:content-box;box-sizing:content-box;height:0}
+sup{vertical-align:text-top}
+sub{vertical-align:text-bottom}
+input,textarea,select,button{font-family:inherit;font-size:100%}
+input[type="button"],input[type="submit"],select,button{cursor:pointer}
+button[disabled],html input[disabled]{cursor:default}
+input[type="text"]::-ms-clear,input[type="password"]::-ms-clear{display:none}
+textarea{overflow-y:auto;vertical-align:top}
+article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,summary{display:block}
+audio,canvas,video{display:inline-block}
+audio:not([controls]){display:none;height:0}
+[hidden],template{display:none}
+.clearfix:before,.clearfix:after{content:".";display:block;height:0;font-size:0;visibility:hidden}
+.clearfix:after{clear:both}
+.clearfix{zoom:1}
+.l{float:left}
+.r{float:right}
+.page{color:#747474;font-family:Tahoma;text-align:center}
+.page *{vertical-align:middle}
+.page label{margin-right:14px}
+.page a,.page .current{display:inline-block;height:40px;line-height:40px;padding:0 15px;border:1px solid #DEDEDE;font-weight:bold;font-size:14px;color:#464646;overflow:hidden;background:#FFF;margin-left:-1px}
+.page .btn-go{color:#676767;cursor:pointer;border:1px solid #DEDEDE;width:49px;height:30px;-webkit-box-shadow:0 1px 1px 0 rgba(0,0,0,.11);box-shadow:0 1px 1px 0 rgba(0,0,0,.11)}
+.page .special{font-weight:lighter;font-size:12px;color:#676767;#line-height:46px;_line-height:40px}
+.page .current{background:#5191d1;color:#fff}
+.page .ellipsis{font-weight:lighter}
+.page .txt-input{width:39px;text-align:center;border:1px solid #DEDEDE;height:30px;line-height:30px;margin:0 3px}
+.page .count{margin:0 20px;vertical-align:-4px;#vertical-align:0}
+.page .page-disabled{background-color:#ededed;cursor:default}
+.guide-0{height:385px;width:539px;position:absolute;z-index:1000;background-image:url(sprite/gdt-toufang-guide.png);background-position:0 0;margin-left:-270px;margin-top:-193px;top:50%;left:50%}
+.guide-0 a{display:block;height:50px;width:310px;position:absolute;left:115px;line-height:50px;overflow:hidden;font-family:Microsoft YaHei;font-size:22px;text-align:center}
+.guide-0 a.next{bottom:131px;color:#fff;background:#12bb9d}
+.guide-0 a.next:hover{background:#14CBAA}
+.guide-0 a.next:active{background:#10AB90}
+.guide-0 a.over{bottom:65px;color:#666;background:#fafafa;border:1px solid #c3c6c9}
+.guide-0 a.over:hover{background:#fff;border-color:#bdbfc2}
+.guide-0 a.over:active{background:#f0f0f0;border-color:#bdbfc2}
+.guide{font-family:Microsoft YaHei}
+.guide .step1{position:absolute;z-index:1000;width:299px;height:263px;top:165px;left:0;background-image:url(sprite/gdt-toufang-guide.32.png);background-position:0 0}
+.guide .step2{position:absolute;z-index:1000;width:368px;height:197px;top:0;left:554px;background-image:url(sprite/gdt-toufang-guide.32.png);background-position:-300px 0}
+.guide .step3{position:absolute;z-index:1000;width:396px;height:205px;background-image:url(sprite/gdt-toufang-guide.32.png);background-position:0 -264px;top:0;left:504px}
+.guide .step4-1{position:absolute;z-index:1000;width:278px;height:179px;top:0;right:0;background-image:url(sprite/gdt-toufang-guide.32.png);background-position:-397px -198px}
+.guide a{display:block;height:27px;width:80px;line-height:25px;color:#e6e6e6;position:absolute;text-align:center;font-size:14px}
+.guide a.tuic{width:50px}
+.guide .step1 a{bottom:5px;right:16px}
+.guide .step1 a.tuic{right:96px}
+.guide .step2 a{bottom:2px;right:7px}
+.guide .step2 a.tuic{right:87px}
+.guide .step3 a{bottom:9px;right:11px}
+.guide .step3 a.tuic{right:88px}
+.guide a.step4-2{z-index:1000;width:304px;height:90px;line-height:90px;left:50%;top:50%;margin:-45px 0 0 -152px;background-image:url(sprite/gdt-toufang-guide.32.png);background-position:-397px -378px;font-size:30px;color:#e6e6e6;text-align:center}
+.qz_areaselector_box .qz_areaselector_addop{padding:142px 11px 0;float:left;width:55px}
+.qz_areaselector_addop .qz_as_icon_add{background-image:url(sprite/gdt-toufang-global-20150323.png);background-position:-150px -61px;background-repeat:no-repeat;width:25px;height:24px;display:block;margin:0 15px 5px}
+.qz_areaselector_addop .qz_as_add{background-image:url(sprite/gdt-toufang-global-20150323.png);background-position:-150px -86px;background-repeat:no-repeat;width:55px;height:24px;border:none}
+.search_form .search_form_item{float:left;margin:0 15px 0 0;_display:inline;padding-bottom:10px}
+.search_form .search_form_item input{border-radius:1px}
+.search_form .search_form_item label{cursor:default;vertical-align:middle;color:#323232}
+.search_form .search_form_item select{width:96px;height:20px;border:1px solid #c2c2c2;vertical-align:middle}
+.search_form .search_form_item .input_text{border:1px solid #c2c2c2;padding:1px 5px;vertical-align:middle;height:16px;width:84px}
+.search_form .search_form_item .ui_btn{margin:1px 0 0}
+.search_form .search_form_item_right{float:right;margin-right:0}
+.mod_remarketing .radios{margin-bottom:5px}
+.mod_remarketing .radios label{margin-right:0}
+.mod_remarketing .remarketing_info{border:1px solid #F5E190;background-color:#FFFAE2;padding:5px 6px 2px;color:#646464;margin-bottom:10px;width:591px}
+.remarketing{margin:15px 0;zoom:1}
+.remarketing .search_form{width:588px;line-height:25px;zoom:1}
+.remarketing .remarketing_box{width:264px;float:left;zoom:1;overflow:hidden;position:relative}
+.remarketing .remarketing_box h4{background-color:#ededed;border:1px solid #d9d9d9;text-align:center;height:28px;line-height:28px;font-size:12px}
+.remarketing .remarketing_box{position:relative}
+.remarketing .remarketing_box .refresh-box{position:absolute;top:8px;right:10px}
+.remarketing .notice_txt{margin-top:10px}
+.remarketing .choosebox{width:262px;height:146px;float:none;overflow:hidden}
+.pop_add_rules_to .remarketing .choosebox{height:100%}
+.remarketing .choosebox .list{height:118px}
+.remarketing .choosebox ul{height:118px;position:relative}
+.remarketing .single_choosebox .list,.remarketing .single_choosebox ul{height:150px}
+.remarketing .choosebox h4{border:none;font-weight:normal;margin-bottom:0}
+.remarketing .choosebox .th{float:left}
+.remarketing .choosebox .th_rule{width:134px;display:inline-block;border-right:1px solid #E8E8E8}
+.remarketing .choosebox .th_user_num{width:96px;display:inline-block}
+.remarketing .choosebox .list li{padding-right:0;border:1px solid #fff;border-bottom:1px solid #E8E8E8}
+.remarketing .choosebox .list .fail{line-height:118px;border:none;padding:0;text-align:center}
+.remarketing .choosebox .list .fail a{display:inline;color:#007caf}
+.remarketing .choosebox .list .del{cursor:pointer;font-family:Simsun,Tahoma,Helvetica,Arial;font-weight:bold;height:10px;width:11px;line-height:9px;color:#12637e;zoom:1;display:block;position:absolute;top:10px;right:6px}
+.remarketing .choosebox .list a{overflow:hidden;text-align:center}
+.remarketing .choosebox .list .td{float:left;text-align:center}
+.remarketing .choosebox .list .td_rule{width:112px;border-right:1px solid #E8E8E8;padding-right:10px}
+.remarketing .choosebox .list .td_user_num{width:96px}
+.remarketing .choosebox .list .bg_blue{border:1px solid #025E8B}
+.remarketing .choosebox .list .bg_blue .td_rule{border-right:1px solid #025E8B}
+.remarketing .choosebox .list .bg_blue_h{border:1px solid #025E8B}
+.remarketing .addopbox{padding-top:79px}
+.addopbox{float:left;width:77px;text-align:center;padding-top:58px}
+.addopbox span{display:block;width:25px;height:25px;overflow:hidden;margin:0 auto;background-image:url(sprite/gdt-toufang-global-20150323.png);background-position:-150px -61px}
+.addopbox .bt_add{margin:7px auto 0 auto;_margin-top:4px;padding:3px 10px}
+.twoadd{padding-top:67px}
+.twoadd span{margin-bottom:58px}
+.twoadd .bt_add{margin-bottom:89px}
+.choosebox{float:left;width:155px;height:188px;overflow:hidden;border:1px solid #e7e7e7}
+.choosebox h4 strong{color:#c00}
+.choosebox h4{height:29px;overflow:hidden;line-height:29px;font-size:12px;text-indent:11px;border-bottom:1px solid #e7e7e7;background:url(../img/repx.png) repeat-x 0 bottom;margin-bottom:4px}
+.choosebox .list{overflow:hidden;height:154px;z-index:11;zoom:1}
+.choosebox ul{overflow:auto;width:auto;height:154px}
+.choosebox ul li{line-height:24px;z-index:10;padding:1px 20px 1px 10px}
+.choosebox ul li a{display:block;color:#000;zoom:1;outline:0;padding:1px}
+.choosebox ul .bg_blue{background:#025e8b}
+.choosebox ul .bg_blue a{color:#fff}
+.choosebox ul .bg_ok{background:#FFF8DE}
+.choosebox ul .bg_blue_h{border:1px solid #025e8b}
+.choosebox ul li.byselt{text-decoration:none;background:#069;color:#fff}
+.choosebox ul li .bt_del{position:absolute;right:10px;top:5px;width:30px;height:20px;font-size:12px;line-height:14px;vertical-align:middle;cursor:pointer}
+.delbox ul li{position:relative;zoom:1}
+.clearfix:before,.clearfix:after{content:".";display:block;height:0;visibility:hidden}
+.clearfix:after{clear:both}
+.clearfix{zoom:1}
+.c_tx3{color:#A8A8A8}
+.color_red{color:#F33}
+.textoverflow{display:inline-block;white-space:nowrap;word-wrap:normal;overflow:hidden;text-overflow:ellipsis;max-width:100%;vertical-align:-2px;*vertical-align:1px;_width:100%}
+.pop_add_rules_to .remarketing .remarketing_box{width:150px;float:left}
+.pop_add_rules_to .remarketing .remarketing_box h4{background-color:#ededed;border:1px solid #d9d9d9;text-align:center;height:28px;line-height:28px}
+.pop_add_rules_to .remarketing .notice_txt{margin-top:10px;width:530px}
+.pop_add_rules_to .remarketing .choosebox{width:148px;border:1px solid #E7E7E7;word-break:break-all;word-wrap:break-word}
+.pop_add_rules_to .remarketing .choosebox .list{width:148px;height:150px;overflow:hidden}
+.pop_add_rules_to .remarketing .choosebox ul{overflow:auto;height:150px}
+.pop_add_rules_to .remarketing .choosebox{width:148px;overflow:hidden;border:1px solid #e7e7e7}
+.pop_add_rules_to .remarketing .choosebox .list{overflow:hidden;height:330px;z-index:11;zoom:1;width:148px}
+.pop_add_rules_to .remarketing .choosebox ul{overflow:auto;width:auto;height:330px;position:relative}
+.pop_add_rules_to .remarketing .choosebox ul li{line-height:26px;z-index:10;padding:1px;border:1px solid #fff;border-bottom:1px solid #E8E8E8;color:#5F5F5F;position:relative;min-height:26px;_height:26px}
+.pop_add_rules_to .remarketing .choosebox ul li a{display:block;zoom:1;outline:0;color:#5F5F5F;text-align:center;padding:0}
+.pop_add_rules_to .remarketing .choosebox ul li.bg_gray a{color:#a8a8a8}
+.pop_add_rules_to .remarketing .choosebox ul li a:hover{text-decoration:none}
+.pop_add_rules_to .remarketing .choosebox ul .bg_blue{background:#025e8b}
+.pop_add_rules_to .remarketing .choosebox ul .bg_blue a{color:#fff}
+.pop_add_rules_to .remarketing .choosebox ul .bg_ok{background:#FFF8DE}
+.pop_add_rules_to .remarketing .choosebox ul .bg_ok a{cursor:default}
+.pop_add_rules_to .remarketing .choosebox ul .bg_blue_h{border:1px solid #025e8b}
+.pop_add_rules_to .remarketing .choosebox ul li.byselt{text-decoration:none;background:#069;color:#fff}
+.pop_add_rules_to .remarketing .choosebox ul li .bt_del{position:absolute;right:10px;top:10px}
+.pop_add_rules_to .remarketing .addopbox{float:left;width:77px;text-align:center;padding-top:153px}
+.pop_add_rules_to .remarketing .addopbox span{display:block;width:25px;height:25px;overflow:hidden;margin:0 auto;background-image:url(sprite/gdt-toufang-global-20150323.png);background-position:-150px -61px}
+.remarketing .addopbox .bt_add{margin:7px auto 0 auto;_margin-top:3px;border:none 0;background:none;background-image:url(sprite/gdt-toufang-global-20150323.png);background-position:-150px -86px;width:55px;height:24px;cursor:pointer;vertical-align:middle}
+.pop_add_rules_to .remarketing .bt_del{border:none 0;background:none;background-image:url(sprite/gdt-toufang-global-20150323.png);background-position:-741px 0;width:6px;height:5px;position:absolute;top:10px;right:10px;font-size:0;line-height:100px;overflow:hidden}
+.pop_add_rules_to .remarketing .no_scoll_box{height:330px}
+.pop_add_rules_to .remarketing .no_scoll_box .list{height:300px;overflow:hidden;position:relative}
+.pop_add_rules_to .remarketing .no_scoll_box ul{overflow:visible;height:auto}
+.pop_add_rules_to .remarketing .no_scoll_box .mod_pagenav{height:30px;line-height:30px;text-align:center;margin:0}
+.pop_add_rules_to .remarketing .no_scoll_box .mod_pagenav .mod_pagenav_count{padding:0 8px}
+.pop_add_rules_to .remarketing .no_scoll_box .mod_pagenav .mod_pagenav_disable{color:#a8a8a8}
+.pop_add_rules_to .remarketing .choosed_box ul li{padding-right:20px}
+body{background:#f2f3f4;overflow-x:hidden}
+.c-yel{color:#DA6335}
+.pd-t10{padding-top:10px}
+.mg-t10{margin-top:10px}
+.mg-t15{margin-top:15px}
+.mg-b10{margin-bottom:10px}
+.mg-b15{margin-bottom:15px}
+.mg-l10{margin-left:10px}
+.mg-l15{margin-left:15px}
+.mg-l25{margin-left:25px}
+.mg-l35{margin-left:35px}
+.mg-r10{margin-right:10px}
+.mg-r15{margin-right:15px}
+.mg-r25{margin-right:25px}
+.mg-r35{margin-right:35px}
+.mg-bottom{padding-bottom:40px;border-bottom:0}
+.align-right{text-align:right}
+.align-center{text-align:center}
+.align-left{text-align:left}
+.tips{color:#999}
+.tips-top{padding:15px 20px;font-size:14px}
+.tips-remark{font-size:12px;font-weight:normal;margin-left:7px}
+strong.tips-strong{color:#735643}
+strong.tips-strong span.normal{color:#E18734;font-weight:normal}
+textarea[disabled="disabled"]{background-color:#EBEBE4!important}
+.link-bar{height:30px;line-height:31px;width:100%;border-width:0 0 1px}
+.link-bar span{padding-left:20px}
+.link-bar .close{float:right;height:19px;width:19px;margin:6px 10px 0 0;background-image:url(sprite/gdt-toufang-global-20150323.32.png);background-position:-523px 0;cursor:pointer}
+.backtop{display:block;height:49px;line-height:49px;width:px;position:fixed;z-index:1000;right:10px;bottom:56px;background:rgba(0,0,0,.5);filter:progid:DXImageTransform.Microsoft.gradient(startColorStr=#7F000000,EndColorStr=#7F000000)}
+a:hover.backtop{background:#000;background:rgba(0,0,0,.7);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#B2000000,endColorstr=#B2000000)}
+:root a:hover.backtop{filter:progid:DXImageTransform.Microsoft.Alpha(enabled=false)\9}
+:root .backtop{filter:progid:DXImageTransform.Microsoft.Alpha(enabled=false)\9}
+.backtop span{display:block;height:25px;width:25px;background-image:url(sprite/gdt-toufang-global-20150323.32.png);background-position:-412px -29px;margin:12px}
+.controller{position:absolute;z-index:9999;top:87px;left:-58px;height:66px;width:58px}
+.controller-packup{background-image:url(sprite/gdt-toufang-global-20150323.32.png);background-position:0 0}
+.controller-spread{background-image:url(sprite/gdt-toufang-global-20150323.32.png);background-position:-59px 0;opacity:.7;filter:alpha(opacity=70)}
+.controller-spread-h{opacity:1;filter:alpha(opacity=100)}
+.controller-close{background-image:url(sprite/gdt-toufang-global-20150323.32.png);background-position:-118px 0}
+.icon{display:inline-block;*display:inline;*zoom:1;font-size:0;line-height:0;height:10px;position:relative;width:16px}
+.icon i{display:block;height:16px;width:16px;position:absolute}
+.ico-edit i{background-image:url(sprite/gdt-toufang-global-20150522.png);background-position:-741px -17px;top:-2px;left:2px;cursor:pointer}
+.ico-tips i{background-image:url(sprite/gdt-toufang-global-20150323.32.png);background-position:-559px 0;top:-2px;left:-2px}
+.ico-confirm i{background-image:url(sprite/gdt-toufang-global-20150323.32.png);background-position:-559px -17px}
+.ico-word i{background-image:url(sprite/gdt-toufang-global-20150323.png);background-position:-150px -35px;width:23px;height:25px}
+.ico-add i{background-image:url(sprite/gdt-toufang-global-20150323.png);background-position:-741px -34px;top:-2px;left:-3px}
+.ico-packup i{background-image:url(sprite/gdt-toufang-global-20150323.png);background-position:-741px -51px}
+.ico-spread i{background-image:url(sprite/gdt-toufang-global-20150323.png);background-position:-175px -111px}
+.ico-spread-up i{background-image:url(sprite/gdt-toufang-global-20150323.png);background-position:-176px -55px}
+.ico-sort-up i{background-image:url(sprite/gdt-toufang-global-20150323.png);background-position:-741px -68px;top:-2px}
+.ico-sort-up-g i{background-image:url(sprite/gdt-toufang-global-20150323.png);background-position:-741px -85px;top:-2px}
+.ico-sort-down i{background-image:url(sprite/gdt-toufang-global-20150323.png);background-position:-741px -102px;top:-1px}
+.ico-sort-down-g i{background-image:url(sprite/gdt-toufang-global-20150323.png);background-position:-741px -119px;top:-1px}
+.ico-warning i{background-image:url(sprite/gdt-toufang-global-20150323.32.png);background-position:-559px -34px;top:-1px;left:-3px}
+.ico-wrong i{background-image:url(sprite/gdt-toufang-global-20150323.32.png);background-position:-559px -51px;top:-1px;left:-3px}
+.ico-prepic{display:inline-block;width:20px;height:16px;background-image:url(sprite/gdt-toufang-global-20150323.png);background-position:-185px 0;vertical-align:middle;margin-left:10px}
+.ico-warn i{background-image:url(sprite/gdt-toufang-global-20150323.32.png);background-position:-559px -34px;top:-3px;left:-3px}
+.ico-warn-b i{width:19px;height:19px;background-image:url(sprite/gdt-toufang-global-20150323.32.png);background-position:-538px -46px;top:-4px;left:-10px}
+.ico-success i{width:19px;height:19px;background-image:url(sprite/gdt-toufang-global-20150323.32.png);background-position:-539px -20px;top:-5px;left:-9px}
+.ico-help i{width:13px;height:13px;background-image:url(sprite/gdt-toufang-global-20150323.png);background-position:-741px -136px;top:0;left:2px;cursor:pointer}
+.ico-strongwarn i{width:16px;height:16px;background-image:url(sprite/gdt-toufang-global-20150323.32.png);background-position:-559px -68px;top:-2px;left:3px;cursor:pointer}
+.mod-table .ico-warn i{left:5px}
+strong.tips-strong{color:#735643}
+strong.tips-strong span.normal{color:#E18734;font-weight:normal}
+.gdt-toufang{overflow:auto;background:#f2f3f4}
+.gdt-toufang .page{margin:40px 0}
+.loading32{height:32px;text-align:center;line-height:32px;font-size:14px}
+.loading32 .icon-load{position:relative}
+.loading32 .icon-load i{position:absolute;left:-40px;display:inline-block;height:32px;width:32px;background:url(../img/loading/loading32.gif)}
+.loading-bg{background:url(../img/loading/loading32.gif) center center no-repeat}
+.nodata{height:25px;text-align:center;line-height:25px;font-size:16px;font-weight:900;color:#D0D0D0}
+.loadfail{text-align:center;position:relative;top:50%;margin-top:-7px}
+.area{background:#fff;border:1px solid #E5E6E7;height:auto;margin-top:15px;box-shadow:0 1px 0 #E9EAEB}
+.area:before,.area:after,.lump:before,.lump:after{content:".";display:block;height:0;visibility:hidden}
+.area:after,.lump:after{clear:both}
+.area,.lump{zoom:1}
+.lump-tit{background:#fff;font-size:14px;position:relative;*zoom:1;color:#505050;border-bottom:1px solid #E5E6E7}
+.lump-tit h3{margin-left:15px}
+.lump-tit .open,.lump-tit .hide{position:absolute;right:15px;top:10px}
+.lump-tit .arrow{right:20px}
+.lump-tit .hide .arrow{top:17px}
+.lump-tit .open .arrow{top:9px}
+.container{min-width:960px;min-height:675px}
+.header{position:fixed;top:0;left:0;z-index:99;background:#2F3440;width:100%}
+.header .logo-wrap{float:left;width:226px;height:56px}
+.header .logo{width:70px;float:left}
+.header .logo a{display:block;width:50px;height:50px;margin:6px 0 0 5px;background-image:url(sprite/gdt-toufang-global-20150323.32.png);background-position:-177px 0}
+.header .h-info{height:56px}
+.header .platform-sel{float:left;margin-top:14px;position:relative}
+.header .platform-sel .platform-sel-cur{position:relative;width:100px;height:18px;padding:7px 3px;border:1px solid transparent;cursor:pointer}
+.header .platform-sel .platform-sel-cur span{display:inline-block;width:100px;height:18px}
+.header .platform-sel .platform-sel-cur .platform-control{background-image:url(sprite/gdt-toufang-global-20150323.32.png);background-position:-250px -62px}
+.header .platform-sel .platform-sel-cur .platform-task{background-image:url(sprite/gdt-toufang-global-20150323.32.png);background-position:-334px -62px}
+.header .platform-sel .platform-sel-cur .platform-sel-tri{width:0;height:0;font-size:0;display:inline-block;position:absolute;border-color:#818387 transparent transparent transparent;border-style:solid dashed dashed dashed;right:8px;top:15px;border-width:6px}
+.header .platform-sel-hov .platform-sel-cur{border:1px solid #212732;background-color:#2C313A;border-bottom:none}
+.header .platform-sel-list{border:1px solid #212732;border-top:none;background-color:#2C313A;position:absolute;top:34px;left:0;width:106px;display:none}
+.header .platform-sel-list a{display:block;width:100px;height:18px;padding:7px 3px}
+.header .platform-sel-list a span{display:block;width:76px;height:18px;text-indent:-9999px;overflow:hidden}
+.header .platform-sel-list .platform-task span{background-image:url(sprite/gdt-toufang-global-20150323.32.png);background-position:-334px -62px}
+.header .platform-sel-list a:hover{background-color:#3B404A}
+.header .platform-sel-hov .platform-sel-list{display:block}
+.header .user{float:left;width:270px;height:56px;padding-left:16px;cursor:pointer;border:1px solid #3d414c;border-width:0 1px;position:relative}
+.header .user:hover{background-color:#383D47}
+.header .user .user-pic{float:left;width:23px;height:25px;overflow:hidden;background-image:url(sprite/gdt-toufang-global-20150323.32.png);background-position:-412px -55px;margin:15px 7px 0 0}
+.header .user .user-id{overflow:hidden;zoom:1;margin-top:9px}
+.header .user .company{width:230px;height:20px;white-space:nowrap;text-overflow:ellipsis;font-size:12px;font-weight:bold}
+.header .user p{color:#CFCFD0;line-height:20px;width:270px;overflow:hidden}
+.header .user p.id{color:#828284}
+.header .user p.id span{margin-right:15px}
+.header .user-logon{background-color:#3C96C3;position:relative;border-color:#3C96C3}
+.header .user-logon:hover{background-color:#3C96C3}
+.header .user .user-logon-list{display:none}
+.header .user-logon .user-logon-list{display:block}
+.header .user-logon p{color:#F0F6FA}
+.header .user-logon p.id{color:#DBE9F2}
+.header .user-logon-list{position:absolute;left:-1px;top:56px;border-style:solid;border-color:#A9A9A9;border-width:0 1px 1px;background-color:#FFF;width:286px;z-index:3}
+.header .user-logon-list a{display:block;padding:20px 0 20px 15px;font-size:14px;color:#333;border-bottom:1px solid #E5E5E5}
+.header .user-logon-list a:hover{background-color:#F2F3F4}
+.header .extra{float:right;font-size:0}
+.header .extra *{vertical-align:middle}
+.header .extra .logout{color:#828284;margin-right:15px;cursor:pointer;font-size:12px;}
+.header .extra a:hover.logout{text-decoration:underline}
+.header .extra .btn-create{display:inline-block;width:125px;height:56px;line-height:56px;color:#fff;font-weight:900;font-size:14px;border-left:1px solid #3d414c;text-align:center}
+.header .operate .account .cost,.header .operate .account .virtual{border-left:1px solid #E5E5E5}
+.header .operate .account .pop h3{color:#686868;font-size:14px}
+.header .operate{float:left;height:56px}
+.header .operate .account{float:left;width:64px;height:56px;text-align:center}
+.header .operate .message{float:left;width:64px;height:56px;text-align:center;border-left:1px solid #3d414c}
+.header .operate .ico-wrap{display:block;height:56px}
+.header .operate .ico{width:25px;height:25px;display:inline-block;margin-top:15px}
+.header .operate .ico-account{background-image:url(sprite/gdt-toufang-global-20150323.32.png);background-position:-436px -55px}
+.header .operate .ico-msg{background-image:url(sprite/gdt-toufang-global-20150323.32.png);background-position:-438px -29px}
+.header .operate .ico-wrap:hover{background:#383D47}
+.header .operate .current .ico-wrap:hover{background:#3C96C3}
+.header .operate .current,.header .operate .current:hover{background:#3C96C3}
+.header .operate .current .ico-account{background-image:url(sprite/gdt-toufang-global-20150323.32.png);background-position:-447px 0}
+.header .operate .current .ico-msg{background-image:url(sprite/gdt-toufang-global-20150323.32.png);background-position:-462px -55px;margin-top:16px}
+.header .operate .ico-wrap .new-msg{position:absolute;top:9px;right:13px;display:inline-block;width:14px;height:14px;background-image:url(sprite/gdt-toufang-global-20150323.32.png);background-position:-576px 0;color:#fff;line-height:13px;font-weight:900}
+.header .operate .ico-wrap .mail-num2{background-image:url(sprite/gdt-toufang-global-20150323.32.png);background-position:-538px -66px;height:14px;width:19px;color:#fff;right:9px;font-weight:normal}
+.header .operate .inner{position:relative;z-index:2;height:56px;#zoom:1}
+.header .operate .point .bor-c{width:0;height:0;font-size:0;display:inline-block;position:absolute;left:22px;top:-20px;border-color:transparent transparent #c3c6c9 transparent;border-style:dashed dashed solid dashed;border-width:10px}
+.header .operate .point .bor-i{width:0;height:0;font-size:0;display:inline-block;position:absolute;left:-10px;top:-9px;border-color:transparent transparent #fff transparent;border-style:dashed dashed solid dashed;border-width:10px}
+.header .operate .account .pop h3{color:#686868;font-size:14px}
+.header .operate .account .pop span.c-red{font-size:28px;font-weight:lighter}
+.header .operate .account .pop .op{margin-top:11px}
+.header .operate .account .pop .btn-recharge{padding:7px 10px;border:1px solid #c3c6c9;color:#666}
+.header .operate .account .pop .btn-recharge:hover{background:#f2f3f4}
+.header .operate .poparea{position:absolute;left:0;top:56px;width:600px;z-index:2}
+.header .operate .poparea .pop{color:#949494;text-align:left;border-width:0 1px 1px;border-style:solid;border-color:#c3c6c9;background:#fff}
+.header .operate .pop-zhanghu .pop{float:left;padding-bottom:20px;margin-left:-180px}
+.header .operate .pop-zhanghu p{margin:5px 0 0}
+.header .operate .pop-zhanghu .zhanghu-num div{width:auto;float:left;margin-top:20px;height:96px;padding:10px 20px}
+.header .operate .pop-zhanghu .zhanghu-num .cost-limit{border:2px dashed #d92626;-webkit-border-radius:10px;-moz-border-radius:10px;border-radius:10px;margin-right:10px;margin-top:15px;padding:10px 20px}
+.header .operate .pop-xiaoxi{width:auto}
+.header .operate .pop-xiaoxi .pop{width:650px;float:left;margin-left:-312px}
+.header .operate .pop-xiaoxi .tips-normal,.header .operate .pop-zhanghu .tips-normal{padding:10px 0 10px 20px;font-size:12px;border-width:0 0 1px}
+.header .operate .pop-xiaoxi .tips-normal a,.header .operate .pop-zhanghu .tips-normal p strong{font-size:16px;padding:0 5px}
+.header .operate .pop-xiaoxi .tpline{height:50px;border-bottom:1px solid #ccc;padding:0 15px}
+.header .operate .pop-xiaoxi .tpline .mod-select{margin:10px 5px 0 0;height:28px;width:77px}
+.header .operate .pop-xiaoxi .tpline .mod-select .select-tit{width:75px;height:28px;line-height:28px}
+.header .operate .pop-xiaoxi .tpline .mod-select .select-pop{width:75px;top:30px}
+.header .operate .pop-xiaoxi .del-all{width:199px;float:left;margin-top:10px}
+.header .operate .pop-xiaoxi .btndel{display:inline-block;margin-left:15px;height:28px;line-height:28px;border:1px solid #c3c6c9}
+.header .operate .pop-xiaoxi .btndel a{display:inline-block;height:28px;border-bottom:none;color:#666;padding:0 15px}
+.header .operate .pop-xiaoxi .btndel a:hover{background:#f2f3f4}
+.header .operate .pop-xiaoxi .typebtn{height:auto;overflow:hidden;margin-top:10px;float:left;width:auto;border-left:1px solid #c3c6c9}
+.header .operate .pop-xiaoxi .typebtn li{height:28px;line-height:28px;border:1px solid #c3c6c9;float:left;position:relative;zoom:1;margin-left:-1px}
+.header .operate .pop-xiaoxi .tablink{display:block;height:28px;line-height:28px;padding:0 15px;color:#666}
+.header .operate .pop-xiaoxi .tablink-on,.header .operate .pop-xiaoxi .tablink:hover{background:#f2f3f4}
+.header .operate .pop-xiaoxi .disabled{height:30px;background:#f2f3f4}
+.header .operate .pop-xiaoxi .ico-xiaoxi{height:13px;width:17px}
+.header .operate .pop-xiaoxi .ico-xiaoxi i{height:13px;width:17px;background-image:url(sprite/gdt-toufang-global-20150323.32.png);background-position:-118px -67px;left:4px;top:2px}
+.header .operate .pop-xiaoxi .ico-xiaoxi-ed{height:13px;width:17px}
+.header .operate .pop-xiaoxi .ico-xiaoxi-ed i{height:13px;width:17px;background-image:url(sprite/gdt-toufang-global-20150323.32.png);background-position:-136px -67px;left:4px;top:2px}
+.header .operate .pop-xiaoxi .list{height:400px;overflow:auto;font-size:12px}
+.header .operate .pop-xiaoxi .list li{border-bottom:1px solid #E1E1E1;padding:13px 15px}
+.header .operate .pop-xiaoxi .list li.enread{color:#1b76d1}
+.header .operate .pop-xiaoxi .list li .time{float:right;text-align:right;line-height:19px}
+.header .operate .pop-xiaoxi .list li .stit{padding-left:20px;display:inline-block;width:395px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;word-break:break-all;vertical-align:middle}
+.header .operate .pop-xiaoxi .list li.done .time{color:#949494}
+.header .operate .pop-xiaoxi .list li .info{padding-left:10px}
+.header .operate .pop-xiaoxi .list li.hover{background:#fafafa}
+.header .operate .pop-xiaoxi .btline{height:50px;line-height:50px;padding:0 20px;position:relative;*zoom:1}
+.header .operate .pop-xiaoxi .btline .mod-page-s{position:absolute;right:10px;top:22px}
+.header .operate .pop-xiaoxi .information{margin-top:10px;font-size:12px;color:#949494;background:#fafafa;padding:10px 15px;line-height:22px}
+.header .operate .pop-xiaoxi .information .indent{text-indent:25px}
+.header .operate .pop-xiaoxi .information .xiugai{margin-top:10px;text-align:right}
+.header .operate .pop-xiaoxi .information .xiugai a{padding-left:10px}
+.mod-page-s{height:21px;line-height:21px}
+.mod-page-s .mod-page-inner{padding:0 20px;position:relative;*zoom:1;float:left}
+.mod-page-s .before,.mod-page-s .after{position:absolute;top:0}
+.mod-page-s .before{left:0;width:0;height:0;overflow:hidden;font-size:0;display:inline-block;border-width:10px;border-color:transparent #3595CB transparent transparent;border-style:dashed solid dashed dashed}
+.mod-page-s .after{right:0;width:0;height:0;overflow:hidden;font-size:0;display:inline-block;border-width:10px;border-color:transparent transparent transparent #3595CB;border-style:dashed dashed dashed solid}
+.mod-page-s .btn-before-disabled{border-color:transparent #D9D9D9 transparent transparent;cursor:default}
+.mod-page-s .btn-after-disabled{border-color:transparent transparent transparent #D9D9D9;cursor:default}
+.mod-page-s span.num{line-height:21px;padding:0 10px}
+.mod-page-s span.now{font-weight:900}
+.wrapper{height:100%}
+.wrapper .aside{height:100%;position:fixed;z-index:98;top:0;left:0;width:56px;background:#2F3440}
+.wrapper .aside a{color:#797577}
+.wrapper .aside .menu-tree{margin-top:82px}
+.wrapper .aside .menu-tree .menu{display:block;text-align:center;padding:5px 0;position:relative;margin-bottom:5px}
+.wrapper .aside .menu-tree .menu .currentline{height:75px;width:4px;background:#5191d1;position:absolute;top:0;left:0;display:none}
+.wrapper .aside .menu-tree .current .currentline{display:block}
+.wrapper .aside .menu-tree a:hover.menu{background:#383D47;border-left-color:#383D47}
+.wrapper .aside .menu-tree a:hover.current{}
+.wrapper .aside .menu-tree .ico{width:30px;height:30px;margin:6px 0 4px;display:inline-block}
+.wrapper .aside .menu-tree .ico-home{background-image:url(sprite/gdt-toufang-global-20150323.32.png);background-position:-257px 0}
+.wrapper .aside .menu-tree .current .ico-home{background-image:url(sprite/gdt-toufang-global-20150323.32.png);background-position:-257px -31px}
+.wrapper .aside .menu-tree .ico-generalize{background-image:url(sprite/gdt-toufang-global-20150323.32.png);background-position:-288px 0}
+.wrapper .aside .menu-tree .current .ico-generalize{background-image:url(sprite/gdt-toufang-global-20150323.32.png);background-position:-288px -31px}
+.wrapper .aside .menu-tree .ico-sheet{background-image:url(sprite/gdt-toufang-global-20150323.32.png);background-position:-319px 0}
+.wrapper .aside .menu-tree .current .ico-sheet{background-image:url(sprite/gdt-toufang-global-20150323.32.png);background-position:-319px -31px}
+.wrapper .aside .menu-tree .ico-partner{background-image:url(sprite/gdt-toufang-global-20150323.32.png);background-position:-319px 0}
+.wrapper .aside .menu-tree .current .ico-partner{background-image:url(sprite/gdt-toufang-global-20150323.32.png);background-position:-319px -31px}
+
+.wrapper .aside .menu-tree .ico-finance{background-image:url(sprite/gdt-toufang-global-20150323.32.png);background-position:-350px 0}
+.wrapper .aside .menu-tree .current .ico-finance{background-image:url(sprite/gdt-toufang-global-20150323.32.png);background-position:-350px -31px}
+.wrapper .aside .menu-tree .ico-tool{background-image:url(sprite/gdt-toufang-global-20150323.32.png);background-position:-381px 0}
+.wrapper .aside .menu-tree .current .ico-tool{background-image:url(sprite/gdt-toufang-global-20150323.32.png);background-position:-381px -31px}
+.extra-menu-tree{position:absolute;bottom:0;right:35px;width:56px;z-index: 9999;}
+.extra-menu-tree .inner{height:205px;background:#434751}
+.extra-menu-tree .menu{text-align:center;margin-top:23px;position:relative}
+.extra-menu-tree .menu a{display:block}
+.extra-menu-tree .menu-more{height:45px;width:45px;background-image:url(sprite/icon-click.png);background-repeat: no-repeat;background-position: center;margin-left:5px;margin-bottom:15px;position:relative;cursor:pointer;background-color: #999;border-radius:4px;}
+.extra-menu-tree .menu-more:hover{background-color: #5191d1;}
+.extra-menu-tree .menu-more .newtip{position:absolute;left:26px;top:-7px}
+.extra-menu-tree .weixin .newtip{position:absolute;left:38px;top:-10px}
+.extra-menu-tree .menu .show-detail{display:none;position:absolute;top:-23px;left:-350px;padding:10px;z-index:-1;height:185px;background-color:#e1e5e9; -webkit-box-shadow: 3px 3px 6px #666;  
+    -moz-box-shadow: 3px 3px 6px #666;  
+    box-shadow: 3px 3px 6px #666;  }
+.extra-menu-tree .weixin .show-detail-con{height:150px;width:330px;display:block;}
+.extra-menu-tree .weixin .show-detail-con .word{float:left;width:170px;text-align:left;line-height:24px}
+.extra-menu-tree .weixin .show-detail-con .word strong{font-size:14px;padding:10px 0 5px}
+.extra-menu-tree .weixin .show-detail-con .word span{color:#999}
+.extra-menu-tree .weixin .show-detail-con .erweima{float:left;height:149px;width:150px;background-image:url(sprite/gdt-toufang-global-20150522.png);background-position:0 0;margin-left:10px}
+.extra-menu-tree .weixin .show-detail-con .erweima span{height:0;line-height:450px;overflow:hidden}
+.extra-menu-tree .hover .show-detail{display:block}
+.extra-menu-tree .ico{width:24px;height:22px;display:inline-block}
+.extra-menu-tree .ico-weixin{background-image:url(sprite/gdt-toufang-global-20150323.32.png);background-position:-464px -26px}
+.extra-menu-tree .hover .ico-weixin{background-image:url(sprite/gdt-toufang-global-20150323.32.png);background-position:-473px 0}
+.extra-menu-tree .ico-help{background-image:url(sprite/gdt-toufang-global-20150323.32.png);background-position:-488px -49px}
+.extra-menu-tree .hover .ico-help{background-image:url(sprite/gdt-toufang-global-20150323.32.png);background-position:-489px -23px}
+.extra-menu-tree .ico-fankui{background-image:url(sprite/gdt-toufang-global-20150323.32.png);background-position:-498px 0}
+.extra-menu-tree .hover .ico-fankui{background-image:url(sprite/gdt-toufang-global-20150323.png);background-position:-150px -111px}
+.extra-menu-tree .ico-service{background-image:url(sprite/gdt-toufang-global-20150323.32.png);background-position:-513px -46px}
+.extra-menu-tree .hover .ico-service{background-image:url(sprite/gdt-toufang-global-20150323.32.png);background-position:-514px -23px}
+.wrapper .main{height:100%}
+.wrapper .home{background:#e1e5e9}
+.main-menu{float:left;width:170px;border-right:1px solid #d1d4d7;font-size:12px;background:#2F3440;height:100%}
+.main-menu .main-menu-inner{width:170px;height:100%;background:#e1e5e9}
+.main-menu fieldset{width:150px;border:1px solid #d1d4d7;border-width:1px 0 0;margin-left:10px}
+.main-menu fieldset legend{height:30px;line-height:29px;margin-left:6px;color:#344351}
+.main-menu fieldset ul li{height:30px;line-height:29px}
+.main-menu fieldset ul li a{display:block;height:30px;line-height:30px;padding-left:12px;width:138px;color:#476481;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.main-menu fieldset ul li a:hover,.main-menu fieldset ul li a.current{background:#5191d1;color:#fff}
+.main-menu .menu-tit{height:34px;line-height:34px;width:140px;margin:15px 15px 6px}
+.main-menu .menu-tit a{display:block;height:34px;line-height:34px;width:130px;padding-left:10px;color:#476481}
+.main-menu .menu-tit a.current,.main-menu .menu-tit a:hover{color:#fff;font-weight:900;background:#5191d1}
+.mod-page-s{height:21px;line-height:21px}
+.mod-page-s .mod-page-inner{padding:0 20px;position:relative;*zoom:1;float:left}
+.mod-page-s .before,.mod-page-s .after{position:absolute;top:0}
+.mod-page-s .before{left:0;width:0;height:0;overflow:hidden;font-size:0;display:inline-block;border-width:10px;border-color:transparent #3595CB transparent transparent;border-style:dashed solid dashed dashed}
+.mod-page-s .after{right:0;width:0;height:0;overflow:hidden;font-size:0;display:inline-block;border-width:10px;border-color:transparent transparent transparent #3595CB;border-style:dashed dashed dashed solid}
+.mod-page-s .btn-before-disabled{border-color:transparent #D9D9D9 transparent transparent;cursor:default}
+.mod-page-s .btn-after-disabled{border-color:transparent transparent transparent #D9D9D9;cursor:default}
+.mod-page-s span.num{line-height:21px;padding:0 10px}
+.mod-page-s span.now{font-weight:900}
+.backtop{display:block;height:49px;line-height:49px;width:px;position:fixed;z-index:1000;right:10px;bottom:56px;background:rgba(0,0,0,.5);filter:progid:DXImageTransform.Microsoft.gradient(startColorStr=#7F000000,EndColorStr=#7F000000)}
+a:hover.backtop{background:#000;background:rgba(0,0,0,.7);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#B2000000,endColorstr=#B2000000)}
+:root a:hover.backtop{filter:progid:DXImageTransform.Microsoft.Alpha(enabled=false)\9}
+:root .backtop{filter:progid:DXImageTransform.Microsoft.Alpha(enabled=false)\9}
+.backtop span{display:block;height:25px;width:25px;background-image:url(sprite/gdt-toufang-global-20150323.32.png);background-position:-412px -29px;margin:12px}
+.mod-select{position:relative;background:#fff;z-index:2}
+.mod-select .select-tit{height:28px;line-height:28px;width:107px;border:1px solid #c3c6c9}
+.mod-select .select-tit span{padding-left:5px}
+.mod-select .select-pop{display:none}
+.mod-select .selected .select-pop{display:block}
+.mod-select .select-pop{background:#fff;position:absolute;top:30px;left:0;width:107px;border:1px solid #c3c6c9;border-width:0 1px}
+.mod-select .select-pop li{height:auto;overflow:hidden;line-height:27px;border-bottom:1px solid #c3c6c9}
+.mod-select .select-pop li a{display:block;height:auto;line-height:27px;padding-left:5px;word-wrap:break-word;word-break:break-all}
+.mod-select .select-pop li a:hover{background:#f2f3f4}
+.mod-select .btn-area{height:27px;float:right;width:27px;position:relative}
+.mod-select .bor-i{width:0;height:0;font-size:0;display:inline-block;position:absolute;border-color:#555 transparent transparent transparent;border-style:solid dashed dashed dashed;border-width:5px;right:10px;top:13px}
+select{height:30px;}
+.header .operate .pop-xiaoxi .tpline select{float:right;width:80px;margin-top:10px}
+.showchart .shownav .choose-date select{margin:10px 10px 0 0}
+.edit-price{position:absolute;z-index:96;background:#fff;border:1px solid #dbdee1;border-shadow:3px 0 10px #B9BFC3;text-align:left;width:217px}
+td .edit-price{right:0;top:-41px}
+.edit-price .txt{padding:15px 10px 5px;line-height:19px}
+.edit-price .s-btnline{height:35px;width:100%;border-top:1px solid #dbdee1}
+.edit-price .s-btnline a{float:right;height:35px;line-height:35px;width:66px;text-align:center}
+.edit-price .s-btnline .quxiao{color:#666;border-left:1px solid #dbdee1}
+.edit-price input{height:23px;margin-right:5px;margin-left:5px;width:145px;padding-left:2px;border:1px solid #C3C6C9;outline:none}
+.edit-price .txt p{width:195px;margin-bottom:5px}
+.edit-price .txt .edit-price-tip,.pricepop .txt .edit-price-tip{border:1px solid #E3E0CF;background-color:#FCF7E4;color:#876D51;padding:3px 5px;display:inline-block;width:auto}
+.edit-time{width:auto}
+.edit-time .txt{padding:10px}
+.edit-time .text-date{background:#fff url(../img/DateBg.png) 88px 4px no-repeat;width:80px;padding-right:28px;margin:0}
+.b-hint{padding:10px 15px 15px;background:#2d313d;background:rgba(45,49,61,.9);filter:Alpha(opacity=90);position:absolute;z-index:999;text-align:center;cursor:default}
+.b-hint p{width:155px;line-height:21px;color:#d3d3d3;font-size:12px;font-weight:normal;text-align:left;margin:0 0 15px}
+.b-hint .nod{padding:7px 40px;font-weight:normal}
+.b-hint-arrow{height:34px;width:28px;position:absolute;display:block}
+.b-hint-r .b-hint-arrow{left:-28px;top:10px;background-image:url(sprite/gdt-toufang-global-20150323.32.png);background-position:-228px 0}
+.b-hint-l .b-hint-arrow{right:-28px;top:10px;background-image:url(sprite/gdt-toufang-global-20150323.32.png);background-position:-228px -35px}
+.b-hint-b .b-hint-arrow{height:28px;width:34px;top:-28px;left:10px;background-image:url(sprite/gdt-toufang-global-20150323.32.png);background-position:-177px -51px}
+.b-hint-t .b-hint-arrow{height:28px;width:34px;bottom:-28px;right:10px;background-image:url(sprite/gdt-toufang-global-20150323.32.png);background-position:-412px 0}
+.v2explain{height:480px;width:740px;background:#fff;color:#555;font-size:14px;line-height:28px;position:absolute;z-index:1000;top:50%;left:50%;margin-left:-370px;margin-top:-240px}
+.v2explain .main{padding:25px;height:412px}
+.v2explain .lace{height:9px;width:740px;background-image:url(sprite/gdt-toufang-global-20150323.png);background-position:0 -157px}
+.v2explain h3{font-size:16px;width:102px}
+.v2explain h3,.v2explain .line1,.v2explain .line2,.v2explain .line4,.v2explain .line5{border-bottom:1px solid #EBEBEB}
+.v2explain .line1{margin-left:28px}
+.v2explain .line3{background:#f5f5f5;width:690px;padding:10px 0}
+.v2explain .line3 p{position:relative;padding:0 37px}
+.v2explain .line3 p .num{position:absolute;left:20px;line-height:28px}
+.v2explain .line4{text-align:right}
+.v2explain .line5{width:43px;float:right;border-bottom:1px solid #EBEBEB}
+.v2explain .nod{height:43px;width:110px;background-color:#56BDA3;color:#fff;font-weight:900;line-height:42px;text-align:center;font-size:14px;display:block;margin:35px auto 0;text-decoration:none;cursor:pointer}
+.v2explain a:hover.nod{color:#fff;text-decoration:none}
+.v2explain3{width:764px;height:501px;background:url(../img/v2explain-4.png) no-repeat;position:absolute;z-index:1000;top:50%;left:50%;margin-left:-382px;margin-top:-250px;font-family:Microsoft YaHei}
+.v2explain3 h2{text-indent:-9999px;overflow:hidden}
+.v2explain3 .v2explain3-close{width:30px;height:30px;text-indent:-9999px;overflow:hidden;position:absolute;top:67px;right:40px;cursor:pointer}
+.v2explain3 .v2explain3-main{width:468px;height:200px;position:absolute;left:144px;top:133px;font-size:18px;color:#1B1E26}
+.v2explain3 .v2explain3-main p{text-indent:2em;line-height:30px;margin-bottom:20px}
+.prompt{position:relative;z-index:2;*zoom:1;display:inline-block}
+.prompt .tips-normal{position:absolute;z-index:10;top:24px;left:0;padding:0 10px;line-height:23px;height:24px;white-space:nowrap}
+.qz_calendar .qz_calendar_main{font-size:12px;font-family:Simsun;color:#666;background-color:#FFF;width:168px;border:1px solid #B3E4EB;overflow:hidden;position:absolute;z-index:2}
+.qz_calendar iframe{width:168px;_width:170px;position:absolute;z-index:1;filter:Alpha(opacity=0);-moz-Opacity:0;Opacity:0}
+.qz_calendar .qz_calendar_date{text-align:center;height:29px;_height:23px;_padding-top:7px;overflow:hidden;z-index:99}
+.qz_calendar .qz_calendar_date .qz_calendar_selection{line-height:30px;margin:0 14px}
+.qz_calendar .qz_calendar_date button{color:#226FB7;font-size:12px;background-color:transparent;vertical-align:0;*vertical-align:-2px;border:none;padding:0;cursor:pointer}
+.qz_calendar .cal_prev_month{display:inline-block;border-color:transparent #226FB7 transparent transparent;border-width:5px;border-style:dashed solid dashed dashed;width:0;height:0;overflow:hidden;cursor:pointer}
+.qz_calendar .cal_next_month{display:inline-block;border-color:transparent transparent transparent #226FB7;border-width:5px;border-style:dashed dashed dashed solid;width:0;height:0;overflow:hidden;cursor:pointer}
+.qz_calendar .qz_calendar_select{font-family:Simsun;font-size:12px;line-height:31px;height:31px;_height:24px;_padding-top:7px;text-align:center}
+.qz_calendar .qz_calendar_select select{font-family:Simsun;font-size:12px}
+.qz_calendar table{border-collapse:collapse;border-style:none;width:168px}
+.qz_calendar table caption{display:none}
+.qz_calendar thead{background-color:#ECF6FD}
+.qz_calendar th,.qz_calendar td{font-size:12px;text-align:center;line-height:22px;height:22px;padding:0 2px;border:0;empty-cells:show}
+.qz_calendar td{line-height:20px;height:20px}
+.qz_calendar th.weekend{color:#216EB7}
+.qz_calendar td{cursor:pointer}
+.qz_calendar td:hover,.qz_calendar .qz_calendar_hover{color:#FFF;background-color:#666}
+.qz_slider_range_div{position:absolute;top:0;left:0;width:100%;height:5px;border:0;background:#6ab7ff}
+#age_single .front{position:relative;height:15px}
+#age_single .front .text{position:absolute;top:0;left:0;-webkit-text-size-adjust:none}
+#age_single .text_above{font-size:13px}
+#age_single .text_below{font-size:13px;font-weight:bold}
+#age_single .front .result_age{position:absolute;top:0;left:0;font-size:12px}
+#age_single_slider{padding:0 30px}
+#age_single .result_show{padding:0 0 0 180px}
+.slide-layer iframe{overflow:auto;background:#EBEBEB}
+.nofixed{padding-top: 55px;}
+.tuiguang-main .datas{padding:0 20px 45px;overflow-x:auto;overflow-y:hidden}
+.tuiguang-tab{width:100%;height:auto;border-bottom:1px solid #d0d0d0;position:fixed;z-index:97;margin-left:-56px;background:#fff}
+.tuiguang-tab ul{height:45px;overflow:hidden;width:auto;float:left}
+.tuiguang-tab li{float:left;height:44px;text-align:center;font-size:16px;font-weight:900;position:relative}
+.tuiguang-tab li.place{width:56px}
+.tuiguang-tab li a{display:block;height:42px;line-height:44px;padding:0 60px;color:#555;border-bottom:2px solid #fff}
+.tuiguang-tab li a:hover{text-decoration:none}
+.tuiguang-tab li.on a{color:#2b7ed1;border-bottom-color:#2b7ed1}
+.tuiguang-tab .tab-newtip{}
+.tuiguang-tab .goback,.tuiguang-tab .goback a{width:70px;height:45px;position:relative}
+.tuiguang-tab .goback i{display:inline-block;width:23px;height:22px;background-image:url(sprite/gdt-toufang-global-20150522.png);background-position:-150px -134px;position:absolute;top:12px;left:20px}
+.tuiguang-toolbar{margin:0 20px;width:auto;height:auto}
+.tuiguang-toolbar .selectall{float:left;line-height:33px;margin-right:30px;margin-left:15px}
+.tuiguang-toolbar ul{float:left}
+.tuiguang-toolbar li{height:29px;min-width:77px;text-align:center;border:1px solid #c3c6c9;border-bottom:none;float:left;margin-left:-1px;background:#fff;position:relative;zoom:1}
+.tuiguang-toolbar li .tablink{display:block;height:28px;border-bottom:1px solid #c3c6c9;line-height:27px;color:#676767;position:relative;z-index:2;padding:0 5px}
+.tuiguang-toolbar li .tablink:hover{background:#fbfbfb}
+.tuiguang-toolbar .choose{float:right}
+.tuiguang-toolbar .choose .choose-time{margin-right:40px}
+.tuiguang-toolbar .choose .choose-time .tp-search{margin-right:-40px}
+.tuiguang-toolbar .guolvchoose{line-height:30px;margin:0 10px;float:left}
+.tuiguang-toolbar input.text{padding-left:5px;height:28px;line-height:28px\9;border:1px solid #cdd0d2;float:left;*display:inline}
+.tuiguang-toolbar select{height:30px;float:left}
+.tuiguang-toolbar input.text-date{width:90px;padding-right:21px;background:#fff url(../img/DateBg.png) 87px 6px no-repeat}
+.tuiguang-toolbar .choose .tp-search{display:inline-block;position:relative;*zoom:1;border:1px solid #cdd0d2;height:28px;background:#fff;margin-left:5px}
+.tuiguang-toolbar .choose .tp-search input{border:none;height:28px;width:125px}
+.tuiguang-toolbar .choose .tp-search a{display:block;position:absolute;top:4px;right:2px;height:19px;width:19px;background-image:url(sprite/gdt-toufang-global-20150522.png);background-position:-174px -35px}
+.tuiguang-toolbar .choose .select-search{border:none;height:auto;margin-top:6px;background:none;width:49px}
+.tuiguang-toolbar input.text-search{width:130px;border:none}
+.tuiguang-toolbar input.bor-l-none{border-left:none}
+.tuiguang-toolbar .nav-pop{display:none;position:absolute;z-index:1;top:28px;left:-1px;background:#fff;border:1px solid #dbdee1;border-shadow:3px 0 10px #B9BFC3;min-width:266px}
+.tuiguang-toolbar .popon .nav-pop{display:block}
+.tuiguang-toolbar .nav-pop-main{padding:15px 10px}
+.tuiguang-toolbar li.popon .tablink{border-bottom-color:#fff;color:#000;position:relative;z-index:10}
+.tuiguang-toolbar li.popon .tablink:hover{background:#fff}
+.tuiguang-toolbar .nav-pop .s-btnline{height:35px;width:100%;border-top:1px solid #dbdee1}
+.tuiguang-toolbar .nav-pop .s-btnline a{height:35px;line-height:35px;float:right;width:66px;text-align:center}
+.tuiguang-toolbar .nav-pop .s-btnline .quxiao{border-left:1px solid #dbdee1}
+.tuiguang-toolbar .nav-pop input.text{float:none;margin:0 5px 5px}
+.tuiguang-toolbar .nav-pop .date{margin-bottom:10px}
+.tuiguang-toolbar .nav-pop select{float:none}
+.tuiguang-toolbar .nav-pop .statuspop label{display:inline-block;margin-right:20px}
+.tuiguang-toolbar .nav-pop .delpop{font-size:14px;padding:20px}
+.tuiguang-toolbar .nav-pop .statuspop{padding:20px 10px;text-align:left}
+.tuiguang-toolbar .nav-pop .pricepop{padding:20px 10px;text-align:left}
+.tuiguang-toolbar .nav-pop .datepop{padding:20px 5px 15px 10px;text-align:left}
+.tuiguang-toolbar .nav-pop .datepop label{padding:0 5px 5px 0;display:inline-block;white-space:nowrap}
+.tuiguang-toolbar .tips{float:left}
+.tuiguang-toolbar .tips .ico-tips{margin-right:5px}
+.tip-help{display:inline-block;position:relative;#zoom:1}
+.tip-help-hover .ico-help{z-index:3}
+.tip-help-hover .ico-help i{background-image:url(sprite/gdt-toufang-global-20150323.png);background-position:-741px -153px}
+.tip-help-pop{display:none;position:absolute;top:-4px;left:-1px}
+.tip-help-pop .trig{position:relative;z-index:2;display:block;border-width:1px 1px 0;border-style:solid;border-color:#D8C2BB #D8C2BB #FFF6DA #D8C2BB;width:20px;height:19px;background:#FFF6DA}
+.tip-help-pop-inner{margin-top:-1px;border:1px solid #D8C2BB;background:#FFF6DA;color:#735643;line-height:1.8;font-size:12px;padding:3px 10px}
+.tip-help-pop-inner p{font-weight:normal}
+.tip-help-hover .tip-help-pop{display:block}
+.mod-table{width:100%;font-size:12px;margin-top:15px;min-width:800px;_width:800px;background:#fff;border-collapse:separate;border:1px solid #DBDEE1;border-width:0 1px 1px}
+.mod-table th,.mod-table td{border-top:1px solid #DBDEE1}
+.mod-table .pointer{cursor:pointer}
+.mod-table .align-right{text-align:right}
+.mod-table .align-center{text-align:center}
+.mod-table .align-left{text-align:left}
+.mod-table tr.ob{background:#fafafa}
+.mod-table thead tr{background:#fafafa;height:40px}
+.mod-table thead input{margin-right:5px}
+.mod-table thead td{font-weight:900;color:#666}
+.mod-table thead td.td-checkbox{min-width:15px}
+.mod-table thead td.choose-state{width:115px}
+.mod-table thead td .mod-select{background:none}
+.mod-table thead td .mod-select .select-tit{border-color:#fafafa}
+.mod-table thead td .mod-select .selected .select-tit{border-color:#c3c6c9;background:#fff}
+.mod-table tbody tr{cursor:pointer}
+.mod-table tbody td{height:40px;word-wrap:break-word;word-break:break-all}
+.mod-table tbody td.open,.mod-table tbody tr.open{background:#EEF3F8;padding-bottom:15px}
+.mod-table tbody tr:nth-child(even),.mod-table-special tbody tr:nth-child(4n+3){background:#fafafa}
+.mod-table tbody tr.open .td-checkbox{border-right:none}
+.mod-table tbody tr.open td{border-color:#D0D7DC}
+.mod-table td{padding:0 15px;position:relative}
+.mod-table td.checkbox{width:15px}
+.mod-table td.ggsizeline{width:120px}
+.mod-table tr.tr-total{font-weight:900}
+.mod-table td.td-checkbox{width:15px;min-width:15px;max-width:15px}
+.mod-table td.caozuo{min-width:120px}
+.mod-table td a.td{width:100%;height:100%;display:block}
+.mod-table .more{display:none}
+.mod-table.spread .more{display:table-cell}
+.mod-table.spread .hide{display:none}
+.mod-table .state{width:135px}
+.mod-table .urge:hover{background:#f2f3f4}
+.mod-table .urge{display:inline-block;height:28px;line-height:29px;width:46px;text-align:center;border:1px solid #c3c6c9;color:#666;background:#fff;margin-left:10px}
+.mod-table .urge-done{background:#f2f3f4;color:#909090}
+.mod-table .toufang-now{height:18px;width:15px;line-height:63px;background-image:url(sprite/gdt-toufang-global-20150323.32.png);background-position:-212px -51px;display:inline-block;line-height:60px;overflow:hidden;position:relative;top:4px;left:10px}
+.mod-table .toufang-now-disabled{height:18px;width:15px;line-height:60px;overflow:hidden;background-image:url(sprite/gdt-toufang-global-20150323.32.png);background-position:-543px 0;cursor:default;display:inline-block;position:relative;top:4px;left:10px}
+.mod-table .toufang-stop{height:17px;width:15px;background-image:url(sprite/gdt-toufang-global-20150323.png);background-position:-174px -134px;display:inline-block;line-height:60px;overflow:hidden;position:relative;top:4px;left:10px}
+.mod-table .icoline{background:#94bbe1;padding:0;color:#fff;font-weight:900;padding:0;text-align:center;width:12px;min-width:12px;max-width:12px;cursor:pointer}
+.mod-table tbody .icoline{background:#dce9f6;opacity:.4;filter:alpha(opacity=40)}
+.tf-status{float:left;width:158px;padding-top:12px;margin-left:10px}
+.tf-status .tf-status-item{float:left;width:80px;text-align:left;color:#858585;margin-right:0;line-height:normal}
+.tf-status .status-btn{float:left}
+.status-btn{width:56px;height:18px;line-height:18px;color:#fff;background-color:#C4C4C4;border-radius:10px;position:relative;cursor:pointer}
+.status-btn .status-btn-info{display:block;padding-right:6px;text-align:right}
+.status-btn .status-btn-circle{position:absolute;left:0;top:-3px;width:20px;height:20px;border:2px solid #C4C4C4;background-color:#fff;border-radius:20px;-moz-transition:left .3s ease-in;-webkit-transition:left .3s ease-in;-o-transition:left .3s ease-in;-ms-transition:left .3s ease-in;transition:left .3s ease-out}
+.status-btn-open{background-color:#73C6A3}
+.status-btn-open .status-btn-info{text-align:left;padding-left:6px}
+.status-btn-open .status-btn-circle{left:32px;border-color:#73C6A3}
+.tuiguang-navbar .tf-status .tf-status-item{float:left;width:80px;text-align:left;color:#858585;margin-right:0}
+@media only screen and (-webkit-min-device-pixel-ratio:1.25),only screen and (min-resolution:120dpi),only screen and (min-resolution:1.25dppx){/*.header .logo a{background-image:url(sprite/gdt-toufang-global-20150323.32@2x.png);background-size:56px 369px;background-position:0 0}
+.header .user .user-pic{background-image:url(sprite/gdt-toufang-global-20150323.32@2x.png);background-size:56px 369px;background-position:-31px -51px}
+.header .operate .ico-account{background-image:url(sprite/gdt-toufang-global-20150323.32@2x.png);background-size:56px 369px;background-position:-31px -77px}
+.header .operate .ico-msg{background-image:url(sprite/gdt-toufang-global-20150323.32@2x.png);background-size:56px 369px;background-position:-31px -103px}
+.header .operate .current .ico-account{background-image:url(sprite/gdt-toufang-global-20150323.32@2x.png);background-size:56px 369px;background-position:-31px -129px}
+.header .operate .current .ico-msg{background-image:url(sprite/gdt-toufang-global-20150323.32@2x.png);background-size:56px 369px;background-position:-31px -155px}
+.header .operate .pop-xiaoxi .ico-xiaoxi i{background-image:url(sprite/gdt-toufang-global-20150323.32@2x.png);background-size:56px 369px;background-position:-31px -342px}
+.header .operate .pop-xiaoxi .ico-xiaoxi-ed i{background-image:url(sprite/gdt-toufang-global-20150323.32@2x.png);background-size:56px 369px;background-position:-31px -356px}
+.wrapper .aside .menu-tree .ico-home{background-image:url(sprite/gdt-toufang-global-20150323.32@2x.png);background-size:56px 369px;background-position:0 -51px}
+.wrapper .aside .menu-tree .current .ico-home{background-image:url(sprite/gdt-toufang-global-20150323.32@2x.png);background-size:56px 369px;background-position:0 -82px}
+.wrapper .aside .menu-tree .ico-generalize{background-image:url(sprite/gdt-toufang-global-20150323.32@2x.png);background-size:56px 369px;background-position:0 -113px}
+.wrapper .aside .menu-tree .current .ico-generalize{background-image:url(sprite/gdt-toufang-global-20150323.32@2x.png);background-size:56px 369px;background-position:0 -144px}
+.wrapper .aside .menu-tree .ico-sheet{background-image:url(sprite/gdt-toufang-global-20150323.32@2x.png);background-size:56px 369px;background-position:0 -175px}
+.wrapper .aside .menu-tree .current .ico-sheet{background-image:url(sprite/gdt-toufang-global-20150323.32@2x.png);background-size:56px 369px;background-position:0 -206px}
+.wrapper .aside .menu-tree .ico-finance{background-image:url(sprite/gdt-toufang-global-20150323.32@2x.png);background-size:56px 369px;background-position:0 -237px}
+.wrapper .aside .menu-tree .current .ico-finance{background-image:url(sprite/gdt-toufang-global-20150323.32@2x.png);background-size:56px 369px;background-position:0 -268px}
+.wrapper .aside .menu-tree .ico-tool{background-image:url(sprite/gdt-toufang-global-20150323.32@2x.png);background-size:56px 369px;background-position:0 -299px}
+.wrapper .aside .menu-tree .current .ico-tool{background-image:url(sprite/gdt-toufang-global-20150323.32@2x.png);background-size:56px 369px;background-position:0 -330px}
+.extra-menu-tree .ico-weixin{background-image:url(sprite/gdt-toufang-global-20150323.32@2x.png);background-size:56px 369px;background-position:-31px -181px}
+.extra-menu-tree .hover .ico-weixin{background-image:url(sprite/gdt-toufang-global-20150323.32@2x.png);background-size:56px 369px;background-position:-31px -204px}
+.extra-menu-tree .ico-help{background-image:url(sprite/gdt-toufang-global-20150323.32@2x.png);background-size:56px 369px;background-position:-31px -227px}
+.extra-menu-tree .hover .ico-help{background-image:url(sprite/gdt-toufang-global-20150323.32@2x.png);background-size:56px 369px;background-position:-31px -250px}
+.extra-menu-tree .ico-fankui{background-image:url(sprite/gdt-toufang-global-20150323.32@2x.png);background-size:56px 369px;background-position:-31px -273px}
+.extra-menu-tree .hover .ico-fankui{background-image:url(sprite/gdt-toufang-global-20150323@2x.png);background-size:24px 22px;background-position:0 0}
+.extra-menu-tree .ico-service{background-image:url(sprite/gdt-toufang-global-20150323.32@2x.png);background-size:56px 369px;background-position:-31px -296px}
+.extra-menu-tree .hover .ico-service{background-image:url(sprite/gdt-toufang-global-20150323.32@2x.png);background-size:56px 369px;background-position:-31px -319px}*/}
+#CssGaga{content:"150323094858,hai,333"}
+.unionPay{background-image: url(sprite/535f5a751a0a2e46168b4606.jpg);height: 51px;background-repeat: no-repeat;background-position: center;}
+.alipay{background-image: url(sprite/535f5609983d7984268b45ea.jpg);height: 51px;background-repeat: no-repeat;background-position: center;}
+.haier{background-image: url(sprite/535f5659983d795d268b45ef.jpg);height: 51px;background-repeat: no-repeat;background-position: center;background-size: 100%;}
+.small-tab li a{padding:0 30px;}

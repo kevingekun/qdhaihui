@@ -1,0 +1,94 @@
+<include file="Public:header" title="个人中心" />
+<body>
+    <!-- page 容器 -->
+    <div class="page">
+        <!-- 底部 -->
+        <include file="Public:nav" />
+        <!-- 内容 -->
+        <div class="content con-nav">
+            <div class="center-header">
+                <div class="center-img">
+                    <img src="__ASSETS__/img/n/scenery.jpg" alt=""/>
+                </div>
+                <div class="center-data">
+                    <div class="center-pto">
+                        <p><img src="{$user.headimgurl|avatar}" alt=""/></p>
+                    </div>
+                    <div class="center-name">
+                        <p>
+                            <if condition="$user['realname'] neq ''">
+                                姓名：{$user.realname}
+                            <else />
+                                昵称：{$user.nickname}
+                            </if>
+                            <br>
+                            <if condition="$user['phone'] neq ''">
+                                手机号：{$user.phone}
+                            </if>
+                        </p>
+                    </div>
+                    <a href="{:U('Mall/Ucenter/profile')}" class="center-man external">
+                        <i></i>完善资料
+                    </a>
+                </div>
+            </div>
+            <div class="mui-flex vertical-text">
+                <a href="{:U('Mall/Ucenter/orders')}" class="shortcut-item cell external">
+                    <img class="shortcut-icon" src="__ASSETS__/img/center/notes.png" width="32" height="32">
+                    <span>全部订单</span>
+                </a>
+                <a href="{:U('Mall/Ucenter/waitForPay')}" class="shortcut-item cell external">
+                    <img class="shortcut-icon" src="__ASSETS__/img/center/wallet.png" width="32" height="32">
+                    待付款
+                    <if condition="$waitForPayCount gt 0"><span class="badge">{$waitForPayCount}</span></if>
+                </a>
+                <a href="{:U('Mall/Ucenter/waitForReceive')}" class="shortcut-item cell external">
+                    <img class="shortcut-icon" src="__ASSETS__/img/center/car.png" width="32" height="32">
+                    待收货
+                </a>
+                <a href="{:U('Mall/Ucenter/progress')}" class="shortcut-item cell external">
+                    <img class="shortcut-icon" src="__ASSETS__/img/center/lock.png" width="32" height="32">
+                    售后
+                </a>
+            </div>
+            <div class="list-block vertical-list">
+                <ul>
+                    <li class="item-content item-link">
+                        <div class="item-media"><i class="icon icon-c1"></i></div>
+                        <a class="item-inner external" href="{:U('Mall/Ucenter/coupon')}">
+                            <div class="item-title">我的优惠券</div>
+                        </a>
+                    </li>
+                    <li class="item-content item-link">
+                        <div class="item-media"><i class="icon icon-c2"></i></div>
+                        <a class="item-inner external" href="{:U('Mall/Ucenter/welfare')}">
+                            <div class="item-title">粉丝福利</div>
+                        </a>
+                    </li>
+                    <li class="item-content item-link" external>
+                        <div class="item-media"><i class="icon icon-c3"></i></div>
+                        <a class="item-inner external" href="{:U('Mall/Ucenter/address')}">
+                            <div class="item-title">管理收货地址</div>
+                        </a>
+                    </li>
+                    <li class="item-content item-link">
+                        <div class="item-media"><i class="icon icon-c4"></i></div>
+                        <a class="item-inner external" href="{:U('Mall/Ucenter/help')}">
+                            <div class="item-title">帮助中心</div>
+                        </a>
+                    </li>
+                    <!--<li class="item-content item-link" id="article">
+                        <div class="item-media"><i class="icon icon-c5"></i></div>
+                        <a class="item-inner external" href="serviceCall.html">
+                            <div class="item-title">咨询客服</div>
+                        </a>
+                    </li>-->
+                </ul>
+            </div>
+        </div>
+
+    </div>
+    <script src="__ASSETS__/dist/js/sm.js"></script>
+</body>
+<include file="Public:share" />
+</html>

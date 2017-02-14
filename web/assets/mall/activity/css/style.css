@@ -1,0 +1,269 @@
+*{
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+}
+html{
+    box-sizing: border-box;
+    height: 100%;
+}
+body{
+    font-family: "Microsoft YaHei",Arial,Helvetica,sans-serif;
+    background: rgb(234, 235, 235);
+    height: 100%;
+    overflow: hidden;
+}
+
+input,button,textarea{
+    border: none;
+    font-size: 100%
+}
+
+ol,ul {
+    list-style: none
+}
+
+a:hover {
+    text-decoration: underline
+}
+
+a {
+    text-decoration: none
+}
+
+h1,h2,h3,h4,h5,h6 {
+    font-size: 100%;
+    font-weight: 500
+}
+
+img{
+    display: block;
+    width: 100%
+}
+
+
+.container{
+    margin: 0 auto;
+    width: 10.0rem;
+    height: 100%;
+    overflow-y: auto;
+    background-color: #fff;
+}
+
+.content{
+    position: relative;
+    width: 100%;
+    background: -webkit-linear-gradient(rgba(239,239,239,1) 0%, rgba(239,239,239,1) 80%, rgba(156,156,156,1) 100%);
+    background: linear-gradient(rgba(239,239,239,1) 0%, rgba(239,239,239,1) 80%, rgba(156,156,156,1) 100%);
+}
+
+.header{
+    margin: 0 auto;
+    padding-top: 1.0rem;
+    width: 5.546667rem
+}
+
+ul.tags{
+    margin: 0 auto;
+    margin-top: 0.266667rem;
+    width: 8.466667rem;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+}
+
+ul.tags li{
+    margin: 0 0.066667rem;
+    height: 0.4rem;
+    border: 1px solid #444;
+    text-align: center;
+    line-height: 0.4rem;
+    font-size: 0.32rem;
+    flex: 1;
+    -webkit-flex: 1;
+    box-flex: 1;
+    -webkit-box-flex: 1;
+}
+
+.stage{
+    margin: 0 auto;
+    margin-top: 0.533333rem;
+    width: 6.266667rem;
+}
+
+.stage .stage-flex{
+    width: 100%;
+    overflow: hidden;
+    color: #2c3d4e;
+    font-size: 0.32rem;
+    font-weight: 600
+}
+
+.stage .stage-flex .s-1 {
+    float: left;
+    width: 20%;
+}
+
+.stage .stage-flex .s-2 {
+    float: left;
+    width: 30%;
+}
+
+.stage .stage-flex .s-3 {
+    float: left;
+    width: 50%;
+}
+
+
+.stage .stage-flex .rec{
+    margin: 0.133333rem 0;
+    height: 0.2rem;
+    border-top: 1px solid #2c3d4e;
+    border-bottom: 1px solid #2c3d4e;
+    border-left: 1px solid #2c3d4e;
+}
+
+.stage .stage-flex  .rec-3{
+    border-right: 1px solid #2c3d4e;
+}
+
+.text-center{
+    text-align: center;
+}
+
+.data{
+    margin-top: 0.333333rem;
+}
+
+.tv{
+    margin: 0 auto;
+    padding:  0.6rem 0;
+    width: 6.666667rem
+}
+
+.rule{
+    width: 100%;
+    height: 7.6rem;
+    line-height: 0.533333rem;
+    padding: 0.533333rem 0.493333rem 0 0.493333rem;
+}
+
+
+.rule h2{
+    position: relative;
+    margin-bottom: 0.213333rem;
+    font-size: 0.453333rem;
+    font-weight: 500;
+    color: #de3232
+}
+
+.rule h2:before{
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0.2rem;
+    left: -0.266667rem;
+    width: 0.2rem;
+    height: 0.2rem;
+    border-radius: 999px;
+    background-color: #de3232;
+}
+
+.rule-icon{
+    float: left;
+    width: 0.333333rem;
+}
+
+.rule-icon span{
+    display: inline-block;
+    border: 0.133333rem solid transparent;
+    border-left-color: #de3232;
+    width: 0;
+    height: 0;
+}
+
+.rule-text{
+    padding-left: 0.333333rem;
+    margin-bottom: 0.4rem
+}
+
+.images{
+    position: relative;
+    width: 100%;
+}
+
+.join{
+    position: absolute;
+    bottom: 0.266667rem;
+    left: 50%;
+    width: 4.533333rem;
+    line-height: 1.866667rem;
+    margin-left: -2.266667rem;
+    background-color: #ff0000;
+    color: #fff;
+    font-size: 0.453333rem;
+    font-weight: 600;
+}
+
+.join img{
+    display: inline-block;
+    width: 0.973333rem;
+    margin: 0 0.2rem 0 0.533333rem;
+    vertical-align: middle;
+}
+
+.form-main{
+    background: rgba(239,239,239,1);
+    height: 100%;
+}
+
+.good{
+    margin: 0 auto;
+    margin-top: 0.4rem;
+    margin-bottom:  0.2rem;
+    width: 5.653333rem
+}
+
+.form-text{
+    width: 100%;
+    text-align: center;
+    color: #de3232;
+    font-size: 0.4rem;
+    line-height: 0.48rem
+}
+
+.form{
+    margin: 0 auto;
+    margin-bottom: 0.6rem;
+    padding-top: 1.0rem;
+    width: 5.8rem;
+    text-align: center;
+}
+
+.form p label{
+    display: block;
+    float: left;
+    width: 1.133333rem;
+    line-height: 0.8rem;
+}
+
+.form p input{
+    margin-bottom: 0.2rem;
+    padding: 0 0.133333rem;
+    width: 4.666667rem;
+    line-height: 0.8rem;
+    border: 1px solid #a0a0a0
+}
+
+.form button{
+    margin-top: 0.8rem;
+    padding:  0.2rem 0.8rem;
+    font-size: 0.346667rem;
+    background-color: #de3232;
+    color: #fff
+}

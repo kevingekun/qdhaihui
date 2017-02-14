@@ -1,0 +1,304 @@
+<include file="Public/header_new" title="首页"/>
+<define name="DEFINE_SIDE_MENU_CURRENT" value="index"/>
+<include file="Public/sideMenu_new"/>
+
+<div class="main home" id="main" style="overflow: auto;">
+    <div class="side clearfix" style="width:56px;height:100px;float:left;">
+    </div>
+    <div class="main-container">
+        <div class="contentpanel">
+            <!--<div class="alert alert-info alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                        aria-hidden="true">×</span></button>
+                【公告】即日起，消费保障已升级，请及时关注和处理买家退款、退换货申请，如逾期未处理将视作默认同意买家诉求。
+                <a href="#" class="alert-link">查看详情</a>
+            </div>-->
+            <div class="row">
+                <div class="col-sm-6 col-md-3">
+                    <div class="panel default-success panel-stat">
+                        <div class="panel-heading">
+                            <div class="stat">
+                                <div class="row">
+                                    <div class="col-xs-4">
+                                        <img src="/new_theme/common/img/is-document.png" alt="">
+                                    </div>
+                                    <div class="col-xs-8">
+                                        <small class="stat-label">今日访问PV</small>
+                                        <h1 id="days_pv"></h1>
+                                    </div>
+                                </div>
+                                <div class="mb15"></div>
+                                <div class="row">
+                                    <div class="col-xs-6">
+                                        <small class="stat-label">访客UV</small>
+                                        <h4 id="days_uv"></h4>
+                                    </div>
+
+                                    <div class="col-xs-6">
+                                        <small class="stat-label">较昨日UV</small>
+                                        <h4 id="uv_yestday_today_growth_rate">+76.43%</h4i>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-3">
+                    <div class="panel default-danger panel-stat">
+                        <div class="panel-heading">
+
+                            <div class="stat">
+                                <div class="row">
+                                    <div class="col-xs-4">
+                                        <img src="/new_theme/common/img/is-money.png" alt="">
+                                    </div>
+                                    <div class="col-xs-8">
+                                        <small class="stat-label">今日成交金额</small>
+                                        <h1 id="sum_real_price">0</h1>
+                                    </div>
+                                </div>
+
+                                <div class="mb15"></div>
+
+                                <div class="row">
+                                    <div class="col-xs-6">
+                                        <small class="stat-label">商城订单数</small>
+                                        <h4 id="days_pay_start">0</h4i>
+                                    </div>
+
+                                    <div class="col-xs-6">
+                                        <small class="stat-label">合伙人成交额</small>
+                                        <h4 id="sum_partner_real_price">0</h4i>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-3">
+                    <div class="panel default-primary panel-stat">
+                        <div class="panel-heading">
+
+                            <div class="stat">
+                                <div class="row">
+                                    <div class="col-xs-4">
+                                        <img src="/new_theme/common/img/is-user.png" alt="">
+                                    </div>
+                                    <div class="col-xs-8">
+                                        <small class="stat-label">今日新增合伙人</small>
+                                        <h1 id="new_partner">0</h1i>
+                                    </div>
+                                </div>
+
+                                <div class="mb15"></div>
+
+                                <div class="row">
+                                    <div class="col-xs-6">
+                                        <small class="stat-label">新增粉丝数</small>
+                                        <h4 id="new_fans">0</h4i>
+                                    </div>
+
+                                    <div class="col-xs-6">
+                                        <small class="stat-label">粉丝成交额</small>
+                                        <h4 id="sum_fans_real_price">0</h4>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-3">
+                    <div class="panel default-dark panel-stat">
+                        <div class="panel-heading">
+
+                            <div class="stat">
+                                <div class="row">
+                                    <div class="col-xs-4">
+                                        <img src="/new_theme/common/img/is-attention.png" alt="">
+                                    </div>
+                                    <div class="col-xs-8">
+                                        <small class="stat-label">今日新增关注</small>
+                                        <h1 id="days_subscribe">0</h1i>
+                                    </div>
+                                </div>
+
+                                <div class="mb15"></div>
+
+                                <div class="row">
+                                    <div class="col-xs-6">
+                                        <small class="stat-label">分享次数</small>
+                                        <h4 id="days_shared_to">0</h4i>
+                                    </div>
+
+                                    <!--<div class="col-xs-6">
+                                        <small class="stat-label">分享点击量</small>
+                                        <h4 id="days_click_shared">0</h4>
+                                    </div>-->
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel">
+                <div class="panel-heading">
+                    <h3>流量趋势
+                        <small>
+                                <span class="round" data-toggle="tooltip" data-placement="bottom"
+                                      data-original-title="为减少系统消耗,此数据有延迟">？</span>
+                        </small>
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    <div id="chartline" style="height:400px"></div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-6 col-md-4">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3>合伙人上月佣金真实排名</h3>
+                        </div>
+
+                        <table class="table table-hover" id="month_commission_ranking">
+                            <thead>
+                            <tr>
+                                <th>排名</th>
+                                <th>昵称/手机号</th>
+                                <th>收入佣金</th>
+
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                            </tbody>
+                        </table>
+                        <!--<div class="panel-footer"><a href="{:U('Admin/Statistics/index')}">更多</a></div>-->
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3>合伙人总佣金真实排名</h3>
+                        </div>
+                        <table class="table table-hover" id="all_commission_ranking">
+                            <thead>
+                            <tr>
+                                <th>排名</th>
+                                <th>昵称/手机号</th>
+                                <th>收入佣金</th>
+
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                            </tbody>
+                        </table>
+                        <!--<div class="panel-footer"><a href="{:U('Admin/Statistics/index')}">更多</a></div>-->
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3>合伙人粉丝数排名</h3>
+                        </div>
+                        <table class="table table-hover" id="fans_ranking">
+                            <thead>
+                            <tr>
+                                <th>排名</th>
+                                <th>昵称/手机号</th>
+                                <th>粉丝+合伙人数量</th>
+
+
+                            </tr>
+                            </thead>
+                            <tbody>
+
+
+                            </tbody>
+                        </table>
+                        <!--<div class="panel-footer"><a href="{:U('Admin/Statistics/index')}">更多</a></div>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/new_theme/common/sui/jquery.min.js"></script>
+<script src="/new_theme/common/sui/sui.min.js"></script>
+<script src="http://echarts.baidu.com/build/dist/echarts.js"></script>
+<script>
+
+
+    function BulldEcharts(option) {
+        // 路径配置
+        require.config({
+            paths: {
+                echarts: 'http://echarts.baidu.com/build/dist'
+            }
+        });
+        // 使用
+        require(
+                [
+                    'echarts',
+                    'echarts/chart/line' // 图形模块，按需加载
+                ],
+                function (ec) {
+                    // 基于准备好的dom，初始化echarts图表
+                    var myChart = ec.init(document.getElementById('chartline'));
+                    myChart.setOption(option);
+
+                    // 为echarts对象加载数据
+
+                }
+        );
+    }
+
+    $( document ).ready(function() {
+        $.getJSON("{:U('Admin/Statistics/Ajax4Home')}", function (data) {
+            BulldEcharts(data.echarts);
+            $.each(data.common_data, function (name, value) {
+                if(value == false){
+                    value = 0;
+                }
+
+                $("#"+name).text(value);
+            });
+            $.each(data.money_data, function (name, value) {
+                if(value == false){
+                    value = 0;
+                }
+
+                $("#"+name).text(value);
+            });
+            $.each(data.people_data, function (name, value) {
+                if(value == false){
+                    value = 0;
+                }
+                $("#"+name).text(value);
+            });
+            $.each(data.rank_data, function (name, value) {
+                var $i= 0;
+                $.each(value,function (name2,value2){
+                    $i++;
+                    if(value2 == false){
+                        value = 0;
+                    }
+                    $("#"+name).append( "<tr><th>"+ $i +"</th><td><a href='{:U('Admin/Partner/fans/id/','',false,false)}/"+ value2.uid +".html'>"+ value2.nickname + " / " + value2.phone + "</a></td><td>"+ value2.field_3 +"</td></tr>" );
+                });
+
+            });
+        });
+    });
+
+</script>
+<include file="Public/footer"/>

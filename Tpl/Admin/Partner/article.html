@@ -1,0 +1,86 @@
+<include file="Public/header_new" title="协议管理"/>
+<define name="DEFINE_SIDE_MENU_CURRENT" value="Tools"/>
+<include file="Public/sideMenu_new"/>
+
+<div class="main home" id="main" style="overflow: auto;">
+    <div class="side clearfix" style="width:56px;height:100px;float:left;">
+    </div>
+    <div class="main-container" style="height:auto;">
+        <div class="gdt-toufang gdt-toufang-account">
+            <div class="tuiguang-tab" id="_hSubNav">
+                <ul>
+                  <li style="width:56px"></li>
+                  <li class="goback"><a href="javascript:history.back(-1)"><i></i></a></li>
+                  <li <eq name="type.id" value="1">class="on"</eq>><a href="{:U('Admin/Partner/article', array('id' => 1))}" onclick="">协议管理</a></li>
+                  <li <eq name="type.id" value="3">class="on"</eq>><a href="{:U('Admin/Partner/article', array('id' => 3))}" onclick="">结算佣金</a></li>
+                </ul>
+            </div>
+            <div class="container-box clearfix">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h2 class="panel-title">更新</h2>
+                    </div>
+                    <div class="panel-body">
+                        <form id="addGoods" novalidate="novalidate" class="form-horizontal" data-toggle="validate"
+                          id="myform" method="post" action="__SELF__">
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">协议内容：</label>
+                                <input type="hidden" name="id" value="{$type.id}">
+                                <div class="col-sm-10">
+                                    <textarea name="content" id="myEditor" style="">{$type.content}</textarea>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-sm-6 col-sm-offset-2">
+                                    <input value="提交" class="btn btn-primary" type="submit"/>
+                                    <input value="重置" class="btn btn-primary" type="reset"/>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<script>
+    window.onload = function () {
+        var _IE = (function () {
+            var v = 3, div = document.createElement('div'), all = div.getElementsByTagName('i');
+            while (
+                    div.innerHTML = '<!--[if gt IE ' + (++v) + ']><i></i><![endif]-->',
+                            all[0]
+                    );
+            return v > 4 ? v : false;
+        }());
+        if (_IE == 9 || _IE == 8 || _IE == 7) {
+            $('#certification').css({'display': 'block'});
+        }
+        ;
+        new uploadPreview({UpBtn: "certification", DivShow: "imgdiv", ImgShow: "imgShow"});
+    }
+</script>
+<script src="/new_theme/common/sui/jquery.min.js"></script>
+<script src="/new_theme/common/sui/sui.min.js"></script>
+<script src="/new_theme/common/js/uploadPreview.js"></script>
+<script src="/new_theme/common/ueditor/ueditor.config.js"></script>
+<script src="/new_theme/common/ueditor/ueditor.all.min.js"></script>
+<script src="/new_theme/common/uploadify/jquery.uploadify.min.js"></script>
+<script src="/new_theme/common/datepicker/WdatePicker.js"></script>
+<script src="/new_theme/common/sisyphus/sisyphus.min.js"></script>
+<script>
+    $(function () {
+        var ue = UE.getEditor('myEditor', {
+            serverUrl: "{:U('Admin/Goods/editor')}",
+            autoHeightEnabled: false,
+            autoFloatEnabled: false,
+            initialFrameWidth: 900,
+            initialFrameHeight: 400
+        });
+    })
+</script>
+
+</body>
+</html>

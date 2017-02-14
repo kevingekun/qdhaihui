@@ -1,0 +1,52 @@
+<include file="Public/header" title="短信记录"/>
+
+<define name="DEFINE_SIDE_MENU_CURRENT" value="tools"/>
+<link rel="stylesheet" rev="stylesheet" href="__ASSETS__/css/gdt-css-api.css" type="text/css" media="screen">
+<include file="Public/sideMenu"/>
+<div class="main home" id="main" style="/*height: 400px;*/ overflow: auto;">
+    <div class="side clearfix" style="width:56px;height:100px;float:left;"></div>
+
+    <div class="main-container" style="height:auto;">
+        <div class="gdt-toufang gdt-toufang-account">
+            <div class="tuiguang-tab" id="_hSubNav">
+                <ul>
+                    <li style="width:56px"></li>
+                    <li class="goback"><a href="javascript:history.back(-1)"><i></i></a></li>
+                    <li class="on"><a href="{:U('Tools/reply')}">短信日志</a></li>
+                </ul>
+            </div>
+
+
+            <div class="content-right fl" style="width:95%;">
+                <div class="tablesWrap">
+
+                    <table class="wxtables mt20">
+                        <thead>
+                        <tr>
+                            <td>手机号</td>
+                            <td>短信类型</td>
+                            <td>验证码</td>
+                            <td>发送结果</td>
+                            <td>提示信息</td>
+                            <td>发送时间</td>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <volist name="list" id="l">
+                            <tr>
+                                <td class="center" scope="row" height="30">{$l.telephone}</td>
+                                <td class="center" scope="row">{$l.code_style}</td>
+                                <td class="center" scope="row">{$l.code}</td>
+                                <td class="center" scope="row">{$l.state}</td>
+                                <td class="center" scope="row">{$l.msg}</td>
+                                <td class="center" scope="row">{$l.create_time|date='Y-m-d H:i:s',###}</td>
+                            </tr>
+                        </volist>
+                        </tbody>
+                    </table>
+</div>
+                </div>
+            </div>
+        {$page}
+        </div>
+    </div>

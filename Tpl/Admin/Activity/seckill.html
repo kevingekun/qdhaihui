@@ -1,0 +1,103 @@
+<include file="Public/header_new" title="活动"/>
+<define name="DEFINE_SIDE_MENU_CURRENT" value="activity"/>
+<include file="Public/sideMenu_new"/>
+
+    <div class="main home" id="main" style="overflow: auto;">
+        <div class="side clearfix" style="width:56px;height:100px;float:left;">
+        </div>
+        <div class="main-container" style="height:auto;">
+            <div class="gdt-toufang gdt-toufang-account">
+                <div class="tuiguang-tab" id="_hSubNav">
+                    <ul>
+                        <li style="width:56px"></li>
+                        <li class="goback"><a href="javascript:history.back(-1)"><i></i></a></li>
+                        <li><a href="{:U('Admin/Activity/menu')}">菜单设置</a></li>
+                        <li><a href="{:U('Admin/Activity/couponlist')}">优惠券</a></li>
+                        <li class="on"><a href="{:U('Admin/Activity/seckill')}">秒杀</a></li>
+                        <li><a href="{:U('Admin/Activity/bookingList')}">预售</a></li>
+                        <li><a href="{:U('Admin/Activity/groupList')}">团购</a></li>
+                    </ul>
+                </div>
+
+                <div class="container-box">
+                    <div class="row">
+                        <a href="{:U('Admin/Activity/seckillAdd')}">
+                            <button type="button" class="btn btn-success">新建秒杀活动</button>
+                        </a>
+                    </div>
+                    <!--<div class="row">-->
+                        <!--<div class="newcearchbox">-->
+                            <!--<form class="form-inline" action="" method="post">-->
+                                <!--<div class="input-group">-->
+                                    <!--<input type="text" class="form-control" placeholder="秒杀活动名称">-->
+                                <!--</div>-->
+                                <!--<div class="form-group input-daterange" data-toggle="datepicker">-->
+                                    <!--<input type="text" name="start_time" class="form-control input-date"-->
+                                           <!--placeholder="开始日期"/> 至-->
+                                    <!--<input type="text" name="end_time" class="form-control input-date"-->
+                                           <!--placeholder="结束时间"/>-->
+                                <!--</div>-->
+                                <!--<button type="button" class="btn btn-info">查询</button>-->
+                            <!--</form>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <div class="row">
+                        <ul class="nav nav-tabs nav-primary newcearchbox">
+                            <li role="presentation" class="active"><a href="seckill.html">秒杀中</a></li>
+                            <li role="presentation"><a href="">已结束活动</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="row newcearchbox">
+                        <table class="table table-primary  table-bordered table-middle">
+                            <thead>
+                            <tr class="">
+                                <th width="10%">活动标题</th>
+                                <th width="10%">活动图片</th>
+                                <th width="25%">开始时间 - 结束时间</th>
+                                <th width="15%">秒杀商品</th>
+                                <th width="10%">秒杀价格</th>
+                                <th width="5%">秒杀数量</th>
+                                <th width="10%">状态</th>
+                                <th>操作</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <volist name="list" id="vo">
+                            <tr>
+                                <td>{$vo.action_name}</td>
+                                <td><img src="/uploads/{$vo.action_header_img}" style="max-height:100px;max-width:200px;"></td>
+                                <td><p style="line-height: 22px; text-align: left;">
+                                    <strong>一阶段</strong>: {$vo.action_sdate|format_date=###,'Y-m-d H:i:s'}　-　{$vo.action_edate|format_date=###,'Y-m-d H:i:s'}<br>
+                                    <strong>二阶段</strong>: {$vo.second_sdate|format_date=###,'Y-m-d H:i:s'}　-　{$vo.second_edate|format_date=###,'Y-m-d H:i:s'}<br>
+                                    <strong>三阶段</strong>: {$vo.third_sdate|format_date=###,'Y-m-d H:i:s'}　-　{$vo.third_edate|format_date=###,'Y-m-d H:i:s'}
+                                </p>
+                                </td>
+                                <td>
+                                    {$vo.goods_info.name}<br>
+                                    <!--{$vo.goods_info.description}<br>-->
+                                    <!--<img src="{$vo.goods_info.image}" alt=""><br>-->
+                                    <!--{$vo.goods_info.price}-->
+                                </td>
+                                <td>￥{$vo.seckill_price|convert_money}</td>
+                                <td>{$vo.seckill_nums}</td>
+                                <td>{$vo['action_open']?禁用:开启}</td>
+                                <td>
+                                    <!--<a class="btn btn-info" href="{:U('seckillOrderList')}">查看活动订单</a>-->
+                                    <a class="btn btn-info" href="{:U('seckillAdd',array('id'=>$vo['action_id']))}">编辑</a>
+                                    <a class="btn btn-danger" href="{:U('seckillDel',array('id'=>$vo['action_id']))}" onclick="return confirm('确定要删除吗?')">删除</a>
+                                </td>
+                            </tr>
+                            </volist>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/new_theme/common/sui/jquery.min.js"></script>
+<script src="/new_theme/common/sui/sui.min.js"></script>
+</body>
+</html>

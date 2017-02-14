@@ -1,0 +1,21 @@
+.fl{
+	float: left;
+}
+.row-mt{
+	margin-top: 20px;
+}
+.new-right {
+    margin-right: 10px;
+}
+.new-left {
+    margin-left: 10px;
+}
+.newcearchbox {
+    padding: 10px 0px 0px;
+}
+.newcearchbox .input-group{
+	width: 180px;
+}
+.media .media-object{
+	width: 64px;
+}

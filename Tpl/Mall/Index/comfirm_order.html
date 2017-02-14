@@ -1,0 +1,450 @@
+<include file="Public:header" title="确认订单" />
+
+<!-- page 容器 -->
+<div class="page">
+    <!-- 标题栏 -->
+    <header class="bar bar-nav">
+        <h1 class="title his-color">确认订单</h1>
+    </header>
+    <div class="content">
+        <div class="list-block com-list">
+            <ul>
+                <li>
+                    <a href="{:U('Mall/Ucenter/address', array('referrer'=>base_encode(get_self_url())))}"
+                       class="item-link item-content external">
+                        <div class="item-media">送至：</div>
+                        <div class="item-inner">
+                            <div class="item-text" id="address" data-id="{$address.id|intval}">
+                                {$address.region.province_name}{$address.region.city_name}{$address.region.district_name}
+                                {$address.full_address} {$address.name} {$address.mobile}
+                            </div>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="ju_list ju_list_v2" id="buyList">
+            <ul class="ju_pro_list"></ul>
+        </div>
+        <form action="" method="post" enctype="multipart/form-data" name="infoForm" id="infoForm">
+            <div class="list-block com-list">
+                <ul>
+                    <li>
+                        <a href="#" class="item-content">
+                            <div class="item-media">配送方式：</div>
+                            <div class="item-inner">
+                                <div class="item-title">由厂家指定第三方物流进行配送（免运费）</div>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="list-block com-list">
+                <ul>
+                    <if condition="$with_invoice eq 0">
+                        <li>
+                            <a href="{:U('setinvoice')}" class="item-link item-content external">
+                                <div class="item-media">发票信息：</div>
+                                <div class="item-inner">
+                                    <div class="item-ele blue">
+                                        <if condition="$invoice_style eq 1">电子发票
+                                            <else/>
+                                            单位发票
+                                        </if>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                    </if>
+                </ul>
+            </div>
+            <notempty name="warr">
+            <div class="list-block com-list">
+                <ul>
+                    <li>
+                        <a href="#" class="item-content">
+                            <div class="item-media">品牌：</div>
+                            <div class="item-inner">
+                                <div class="item-input">
+                                    <input type="text" name="brand" placeholder="请输入品牌"/>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="list-block com-list">
+                <ul>
+                    <li>
+                        <a href="#" class="item-content">
+                            <div class="item-media">型号：</div>
+                            <div class="item-inner">
+                                <div class="item-input">
+                                    <input type="text" name="version" placeholder="请输入型号"/>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="list-block com-list">
+                <ul>
+                    <li>
+                        <a href="#" class="item-content">
+                            <div class="item-media">产品大类：</div>
+                            <div class="item-inner">
+                                <div class="item-input">
+                                    <select name="producttype" id="producttype">
+                                        <option value="">请选择</option>
+                                        <volist name="category" id="vo">
+                                            <option value="{$vo.id}">{$vo.name}</option>
+                                        </volist>
+                                    </select>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="list-block com-list">
+                <ul>
+                    <li>
+                        <a href="#" class="item-content">
+                            <div class="item-media">编码：</div>
+                            <div class="item-inner">
+                                <div class="item-input">
+                                    <input type="text" name="productcode" placeholder="请输入编码信息"/>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="list-block com-list">
+                <ul>
+                    <li>
+                        <a href="#" class="item-content">
+                            <div class="item-media">购买日期：</div>
+                            <div class="item-inner">
+                                <div class="item-input">
+                                    <input type="text" name="data" placeholder="请输入购买日期"/>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="list-block com-list">
+                <ul>
+                    <li>
+                        <a href="#" class="item-content">
+                            <div class="item-media">购买价格：</div>
+                            <div class="item-inner">
+                                <div class="item-input">
+                                    <input type="text" name="productprice" placeholder="请输入购买价格"/>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="list-block com-list">
+                <ul>
+                    <li>
+                        <div class="item-media">发票或收据照片：</div>
+                        <div class="item-inner">
+                            <div id="imgdiv" class="img_main" style="float: none" style="width: 200px; height:105px;">
+                                <img id="imgShow"  src="/assets/sysadmin/images/su.png" width="200" height="105" style="padding-left: 0px;">
+                            </div>
+                            <label class="btn btn-info btn-sm tooltip-info">
+                                选择图片
+                                <input id="certification" name="productimg"  type="file" style="display: none">
+                            </label>
+                        </div>
+
+                    </li>
+                </ul>
+            </div>
+            </notempty>
+            <style>
+                .icon-camera{background-image:url("data:image/svg+xml;charset=utf-8,<svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='1024' height='1024' viewBox='0 0 1024 1024'><path fill='#afb1b4' d='M248.946 842.213h-86.592c-0.5 0-1.083 0.027-1.667 0.027-81.008 0-146.82-65.117-147.959-145.848v-360.091c1.139-80.842 66.951-145.959 147.959-145.959 0.584 0 1.167 0 1.751 0.027h379.982c0 0 0 0 0 0 17.14 0 31.030 13.89 31.030 31.030s-13.89 31.030-31.030 31.030c0 0 0 0 0 0h-380.066c-0.278 0-0.611 0-0.917 0-46.561 0-84.398 37.421-85.036 83.842v360.036c0.639 46.477 38.476 83.898 85.037 83.898 0.333 0 0.666 0 0.973 0h86.537c0.305-0.027 0.639-0.027 0.973-0.027 17.14 0 31.031 13.891 31.031 31.031s-13.891 31.031-31.031 31.031c-0.334 0-0.694 0-1.028-0.027zM732.16 842.213h-81.452c-0.305 0.027-0.639 0.027-0.973 0.027-17.14 0-31.031-13.891-31.031-31.031s13.891-31.031 31.031-31.031c0.334 0 0.694 0 1.028 0.027h81.397c0.278 0 0.612 0 0.972 0 46.615 0 84.453-37.42 85.148-83.842v-164.46c0.555-17.113 14.557-30.78 31.753-30.78s31.198 13.668 31.753 30.725v164.433c-1.139 80.842-66.951 145.959-147.959 145.959-0.584 0-1.167 0-1.751-0.027zM447.244 956.558c-136.931-3.529-246.608-115.401-246.608-252.886 0-139.708 113.261-252.969 252.969-252.969s252.969 113.261 252.969 252.969c-1.945 140.097-115.956 252.887-256.331 252.887-1.055 0-2.111 0-3.14-0.027zM447.244 512.874c-103.371 2.64-186.13 87.065-186.13 190.825 0 105.427 85.48 190.907 190.907 190.907s190.907-85.48 190.907-190.907c0 0 0 0 0 0-1.528-105.732-87.592-190.852-193.52-190.852-0.75 0-1.5 0-2.223 0.027zM292.173 395.975h-106.732c-0.084 0-0.194 0-0.305 0-17.251 0-31.226-13.834-31.531-30.976v-0.028c0.305-17.196 14.28-31.030 31.531-31.030 0.111 0 0.222 0 0.306 0h106.705c0.084 0 0.194 0 0.305 0 17.251 0 31.226 13.834 31.531 30.976v0.028c-0.305 17.196-14.28 31.030-31.531 31.030-0.111 0-0.222 0-0.306 0zM978.824 254.183h-257.608c-0.056 0-0.139 0-0.222 0-17.64 0-31.948-14.141-32.226-31.698v-0.028c0.305-17.558 14.612-31.698 32.225-31.698 0.083 0 0.167 0 0.25 0h257.581c0.083 0 0.166 0 0.223 0 17.613 0 31.92 14.14 32.225 31.67v0.028c-0.278 17.585-14.612 31.726-32.226 31.726-0.083 0-0.166 0-0.223 0zM817.502 350.359v-251.192c0.305-17.585 14.612-31.725 32.226-31.725 0.083 0 0.166 0 0.223 0h-0.027c0.111 0 0.222 0 0.334 0 17.64 0 31.948 14.14 32.254 31.697v251.22c-0.305 17.585-14.613 31.725-32.253 31.725-0.112 0-0.25 0-0.389 0h0.027c-0.083 0-0.166 0-0.223 0-17.613 0-31.947-14.14-32.225-31.697z'></path></svg>");background-size:100%}.LUploader{margin:20px 15px 15px 15px;padding:5px;text-align:center;border-radius:4px;border:1px dashed #dedde2;background:#ffffff;height:100px;position:relative}.LUploader input[data-LUploader]{display:none}.LUploader .icon{font-size:20px;margin:1.5rem auto 5px auto;width:1em;height:1em;display:block}.LUploader p{padding:0 0 20px 0;font-size:13px;color:#afb1b4}.LUploader .LUploader-container{height:100%}.LUploader .LUploader-container+div{position:absolute;top:0;left:0;width:100%;height:100%}.LUploader .LUploader-list{height:100%}.LUploader .LUploader-list li{position:relative;display:inline-block;width:100%;height:100%;background:#fff no-repeat center;background-size:cover}.LUploader .LUploader-progress{position:absolute;width:100%;height:20px;line-height:20px;bottom:0;left:0;background-color:rgba(100,149,198,0.5)}.LUploader .LUploader-progress span{display:block;width:0;height:100%;background-color:#6495c6;text-align:center;color:#FFF;font-size:13px}.LUploader .LUploader-size{position:absolute;width:100%;height:15px;line-height:15px;bottom:-18px;text-align:center;font-size:13px;color:#666}
+            </style>
+            <div class="list-block com-list">
+                <ul>
+                    <li>
+                        <a href="#" class="item-content">
+                            <div class="item-media">备注信息：</div>
+                            <div class="item-inner">
+                                <div class="item-input">
+                                    <input type="text" name="note" placeholder="请输入备注信息"/>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="item-content com-check">
+                <div class="item-inner">
+                    <div class="item-input">
+                        优惠券:
+                        <div class="media">
+                            可用 <span id="allow_nums">0</span> 张优惠券，抵扣￥<span id="cheapNum">0</span>
+                            <label class="label-switch" id="buychecked">
+                                <input type="checkbox" name="is_coupon" value="1">
+
+                                <div class="checkbox"></div>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="com-btn">
+                <input value="" id="price1" type="hidden">
+                <input value="" name="coupon_id" id="coupon_id" type="hidden">
+
+                <p>总计：￥<span id="buyMay">0</span></p>
+                <span id="totalPrice" style="display: none;">0</span>
+
+
+                <a id="addorders" class="com-btn-a blue-bg">微信支付</a>
+                <!--<a class="com-btn-a gray">扫码支付</a>
+                <a class="com-btn-a gray">找人代付</a>
+                <a class="com-btn-a gray">其它方式支付</a>-->
+            </div>
+        </form>
+    </div>
+</div>
+<script src="__ASSETS__/dist/js/sm.js"></script>
+<script src="__ASSETS__/dist/js/sm-extend.js"></script>
+<script src="__ASSETS__/js/jquery.min.js"></script>
+<script src="__ASSETS__/js/jquery.cookie.js"></script>
+<script src="__ASSETS__/js/uploadPreview.js"></script>
+<script>
+    window.onload = function () {
+        var _IE = (function () {
+            var v = 3, div = document.createElement('div'), all = div.getElementsByTagName('i');
+            while (
+                    div.innerHTML = '<!--[if gt IE ' + (++v) + ']><i></i><![endif]-->',
+                            all[0]
+                    );
+            return v > 4 ? v : false;
+        }());
+        if (_IE == 9 || _IE == 8 || _IE == 7) {
+            $('#certification').css({'display': 'block'});
+        }
+        ;
+        new uploadPreview({UpBtn: "certification", DivShow: "imgdiv", ImgShow: "imgShow", Callback:function () {
+            $('#imgdiv').css({'display': 'block'});
+        }});
+    }
+</script>
+<script type="text/javascript">
+    $(function () {
+        // 读取cookie
+        var html = '';
+        var classids = new Array();
+        //console.log($.cookie('goods'));
+        $.get("{:U('checkCoupon')}", {data: $.cookie('goods')}, function (data) {
+            value = eval(data);
+
+            $('#allow_nums').html(value.allow_nums);
+            $('#cheapNum').html(value.allow_max_money);
+            $('#coupon_id').val(value.allow_max_id);
+        });
+        $.get("{:U('getOrderInfo')}", {data: $.cookie('goods')}, function (data) {
+            $.each(data, function (i, e) {
+                html += '<li class="hproduct" attr-pageno="1">' +
+                        '<div class="url"><a class="photo" href="javascript:;">' +
+                        '<img src="/uploads/' + e.image + '"></a><a class="info good_id" href="javascript:;" data-id="' + e.id + '">' +
+                        '<h3 class="tit name">' + e.name + '</h3><div class="item-subtitle">产品规格：' + e.spec + '</div>' +
+                        '<div class="desc"></div><p class="price">价格：<i class="redtext">￥</i>' +
+                        '<span class="price-1 price">' + e.price + '</span><p class="price">描述：<span>'+e.warrany+'</span></p><span class="descri" style="display:none">'+e.description +'</span>'+
+                        '</p></a><div class="ju_shoplink"><p>数量：</p><span class="reduce"></span>' +
+                        '<input class="count-input" type="text" readOnly="true" value="' + e.num + '"><span class="add">+</span></div></div></li>';
+            });
+            $('ul.ju_pro_list').html(html);
+            //订单确认
+            var $buyList = $("#buyList");
+            var buyList = $("#buyList ul li");
+            //console.log(buyList);
+            buyTotal();
+            function buyTotal() {
+                var selected = 0;
+                var price = 0;
+                for (var i = 0; i < buyList.length; i++) {
+                    var newMoney = buyList[i].getElementsByClassName('price-1');
+                    var numInput = buyList[i].getElementsByClassName('count-input');
+                    price += parseFloat(newMoney[0].innerHTML) * numInput[0].value; //计算总计价格
+                    $('#totalPrice').html(price.toFixed(2));
+                    $('#buyMay').html(price.toFixed(2));
+                    $('#price1').val(price.toFixed(2));
+                    gocheck();
+                }
+            }
+            for (var i = 0; i < buyList.length; i++) {
+                buyList[i].onclick = function (e) {
+                    e = e || window.event;
+                    var el = e.srcElement;
+                    var cls = el.className;
+                    var numInput = this.getElementsByClassName('count-input');
+                    var val = parseInt(numInput[0].value);
+                    var reduce = this.getElementsByClassName('reduce')[0];
+                    switch (cls) {
+                        case 'reduce':
+                            if (val > 1) {
+                                numInput[0].value = val - 1;
+                            }
+                            ;
+                            if (val <= 1) {
+                                reduce.innerHTML = '';
+                            }
+                            ;
+                            break;
+                        case 'add':
+                            numInput[0].value = val + 1;
+                            reduce.innerHTML = '-';
+                            break;
+                            defaule:
+                                    break;
+                    }
+                    buyTotal();
+                }
+                buyList[i].getElementsByClassName('count-input')[0].onkeyup = function () {
+                    var val = parseInt(this.value);
+                    var lis = this.parentNode.parentNode.parentNode;
+                    var reduce = lis.getElementsByClassName('reduce')[0];
+                    if (isNaN(val) || val < 1) {
+                        val = 1;
+                    }
+                    ;
+                    this.value = val;
+                    if (val <= 1) {
+                        reduce.innerHTML = '';
+                    } else {
+                        reduce.innerHTML = '-';
+                    }
+                    ;
+                    buyTotal();
+                }
+            }
+            function gocheck() {
+
+                if ($('#buychecked input')[0].checked) {
+                    var buycheapNum = parseFloat($('#price1').val()) - parseFloat($('#cheapNum').html());
+                    if(buycheapNum < 0) buycheapNum = 0;
+                    $('#buyMay').html(buycheapNum.toFixed(2));
+                } else {
+                    var buycheapNum2 = parseFloat($('#price1').val());
+                    $('#buyMay').html(buycheapNum2.toFixed(2));
+                }
+            }
+
+            $('#buychecked input').on('click', function () {
+                allow_nums = $('#allow_nums').html();
+                if (allow_nums == 0) {
+                    $('#buychecked input')[0].checked = false;
+                    alert('无可用优惠券');
+                } else {
+                    gocheck()
+                }
+
+            });
+
+        });
+
+        function setImagePreview() {
+            var preview, img_txt, localImag, file_head = document.getElementById("file_head"),
+                    picture = file_head.value;
+            if (!picture.match(/.jpg|.gif|.png|.bmp/i)) return alert("您上传的图片格式不正确，请重新选择！"),
+                    !1;
+            if (preview = document.getElementById("preview"), file_head.files && file_head.files[0]) preview.style.display = "block",
+                    preview.style.width = "63px",
+                    preview.style.height = "63px",
+                    preview.src = window.navigator.userAgent.indexOf("Chrome") >= 1 || window.navigator.userAgent.indexOf("Safari") >= 1 ? window.webkitURL.createObjectURL(file_head.files[0]) : window.URL.createObjectURL(file_head.files[0]);
+            else {
+                file_head.select(),
+                file_head.blur(),
+                img_txt = document.selection.createRange().text,
+                localImag = document.getElementById("localImag"),
+                localImag.style.width = "63px",
+                localImag.style.height = "63px";
+
+                try {
+                    localImag.style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale)",
+                            localImag.filters.item("DXImageTransform.Microsoft.AlphaImageLoader").src = img_txt
+                } catch(f) {
+                    return alert("您上传的图片格式不正确，请重新选择！"),
+                            !1
+                }
+                preview.style.display = "none",
+                        document.selection.empty()
+            }
+            return document.getElementById("DivUp").style.display = "block",
+                    !0
+        }
+        // 创建订单
+        $('#addorders').on("click",function () {
+            //获取延保商品的信息
+            var brand = $("input[name='brand']").val();
+            var version = $("input[name='version']").val();
+            var producttype = $("#producttype option:selected").val();
+            var productcode = $("input[name='productcode']").val();
+            var yanbaodata = $("input[name='data']").val();
+            var productprice = $("input[name='productprice']").val();
+            var fapiaoimg = $("input[type='file']").val();
+
+            var json2 = '';
+            json2 = '{"brand":"'+ brand +'","version":"'+ version +'","producttype":"'+ producttype +'","productcode":"'+ productcode +'","yanbaodata":"'+ yanbaodata +'","productprice":"'+ productprice +'","fapiaoimg":"'+ fapiaoimg +'"}';
+            
+            var address_id = $('#address').attr('data-id');
+            var data = $('form').serializeArray();
+            var totalPrice = parseFloat($('#totalPrice').html());
+            var real_price = parseFloat($('#buyMay').html());
+            var url = "{:U('addOrder')}";
+            var coupon_id = $('#coupon_id').val();
+
+            //获取订单信息
+            var json = '';
+            $('.ju_pro_list li').each(function () {
+                var id = $(this).find('a.good_id').attr('data-id');
+                var name = $(this).find('h3.name').html();
+                var num = $(this).find('input.count-input').val();
+                var image = $(this).find('a.photo img').attr('src');
+                var description = $(this).find('span.descri').html();
+                var price = $(this).find('span.price-1').html();
+                json += '{"id":"' + id + '","name":"' + name + '","num":"' + num + '","image":"' + image + '","description":"' + description + '","price":"' + price + '"},';
+            });
+            json = json.substring(0, json.length - 1);
+            json = '[' + json + ']';
+
+
+            $.post(url, {
+                yb_brand: brand,
+                yb_model: version,
+                yb_category: producttype,
+                yb_sn: productcode,
+                yb_buydate: yanbaodata,
+                yb_price: productprice,
+                yb_image: fapiaoimg,
+
+                address_id: address_id,
+                data: data,
+                totalPrice: totalPrice,
+                real_price: real_price,
+                coupon_id: coupon_id,
+                cartData: json
+            }, function (data) {
+                if (data.code == 0) {
+                    window.location.href = data.url;
+                } else {
+                    alert(data.msg);
+                }
+            }, 'json');
+
+        });
+    });
+</script>
+
+</body>
+</html>

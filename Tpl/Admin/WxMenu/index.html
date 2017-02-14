@@ -1,0 +1,286 @@
+<include file="Public/header" title="工具箱"/>
+
+<define name="DEFINE_SIDE_MENU_CURRENT" value="tools"/>
+<link rel="stylesheet" rev="stylesheet" href="__ASSETS__/css/gdt-css-api.css" type="text/css" media="screen">
+<include file="Public/sideMenu"/>
+    <div class="main home" id="main" style="/*height: 400px;*/ overflow: auto;">
+        <div class="side clearfix" style="width:56px;height:100px;float:left;"></div>
+
+        <div class="main-container" style="height:auto;">
+            <div class="content-right f1">
+                <h1 class="cst_h3">自定义菜单</h1>
+        <param id="menuid" class="edit-menu" data-id="{$Think.get.id}" change="0" data-count="{$count}" data-edit="{:U('WxMenu/class_edit')}" />
+
+
+    <link rel="stylesheet" type="text/css" href="__ASSETS__/menu/css/cymain.css" />
+    <link rel="stylesheet" type="text/css" href="__ASSETS__/menu/css/menu.css">
+
+    <script type="text/javascript" src="__ASSETS__/menu/js/jquery.js"></script>
+    <script type="text/javascript" src="__ASSETS__/menu/js/diymen.js"></script>
+    <script type="text/javascript">
+    // ajax 获取修改页面
+
+    function setlatlng(longitude,latitude){
+        art.dialog.data('longitude', longitude);
+        art.dialog.data('latitude', latitude);
+        // 此时 iframeA.html 页面可以使用 art.dialog.data('test') 获取到数据，如：
+        // document.getElementById('aInput').value = art.dialog.data('test');
+        art.dialog.open('{:U('Map/setLatLng',array('token'=>$token,'id'=>$id))}',{lock:false,title:'设置经纬度',width:600,height:400,yesText:'关闭',background: '#000',opacity: 0.87});
+    }
+
+    function drop_confirm(msg, url){
+    if(confirm(msg)){
+        window.location = url;
+    }
+}
+    </script>
+
+    <table style="margin:0 auto;">
+    <tr>
+    <td align:center;>
+    <div style="background-image: url('__ASSETS__/menu/img/3CustomLt{$count}.png');width: 344px;height: 623px;position: relative;" class="bgdpng">
+    
+    <volist name="displayMenu" offset="0" length="4" key="key" id="vo">
+    <div style="position: absolute;bottom: 170px;" zcdrel="maincd{$key}" class="child-menu zicaidan{$key}">
+        <volist name="vo.class" offset="0" length="5" key="k" id="v">
+        <div class="zizicd edit-menu" rel="zizicd{$k}"  data-id="{$v.id}" >
+            {$v.title}
+        </div>
+        </volist>
+    </div>
+    </volist>
+    
+    <div style="position: absolute;bottom: 122px;left: 43px;">
+        <table style="border: none;" cellpadding="0" cellspacing="0"  class="caiduannum">
+            <tr>            
+                <volist name="displayMenu" offset="0" length="4" key="k" id="pid">
+                    <td><div data-id="{$pid.id}" style="height: 45px;width: 86px;line-height: 45px;text-align: center;" data-child="{$k}" class="maincd  edit-menu">{$pid.title}</div></td>
+                </volist>
+            </tr>
+        </table>
+    </div>
+    </div>
+    </td>
+    <td valign="top"><br/>
+    <div style="text-align:right;position: relative;width: 100%">
+        <a class="btnGreen"  style="line-height:30px;"  href="{:U('WxMenu/index')}">新增菜单</a>
+    </div><br/>
+    <form action="{:U('WxMenu/class_add')}" id="form" method="post">
+    <div id="czselarea">
+    
+        <div id="top" class="alert alert-info" style="line-height: 16px;padding-bottom:0px;">
+                父级菜单：   <select name="pid" id="pid">
+                    <option selected="selected" value="0">请选择根菜单：</option>
+                    <volist name="class" id="pid">
+                        <option  value="{$pid.id}">{$pid.title}</option>
+                    </volist>
+                </select>
+                <span style="color:red">二级菜单需要选择父菜单</span>
+        </div>
+        <div id="top" class="alert alert-info" style="line-height: 16px;padding-bottom:0px;">
+            菜单名称：<input type="text" id="cdmcinpo" name="title" style="margin-top: 6px;">
+            <span style="color:red">一级菜单最多4个汉字</span>
+        </div>
+        
+        <div class="alert alert-info" style="line-height: 16px;padding-bottom:6px;">
+            显　　示：
+            <input type="radio" name="is_show" checked="checked" value="1">是　　
+            <input type="radio" name="is_show" value="0">否
+        </div>
+        <div class="alert alert-info" style="line-height: 16px;padding-bottom:0px;">
+            排　　序：<input id="sortid" name="sort" title="排序" value="" type="text" >           
+            <span style="color:red">数字大的排在前面（不填默认为0）</span>
+        </div>
+        <div class="system l"></div>
+        
+        <div class="control-group alert alert-info">
+              <label class="control-label" for="answertype">菜单类型:</label>
+                <div class="controls">
+                
+                <select name="menu_type" class="menu_type" id="answertype">
+                    <option value="1" selected="selected">关键词回复菜单</option>      
+                    <option value="2">url链接菜单</option>
+                    <option value="3">微信扩展菜单</option>
+<!--                    <option value="4">一键拨号菜单</option>
+                    <option value="5">一键导航</option> -->
+                </select>
+               </div>
+            </div>      
+
+            <!-- 关键字  -->
+            <div class="szcjbt alert alert-info" style="display:block;" id="res_1">
+                要触发的关键字：<input type="text" name="keyword" id="menu_keyword" >
+                <!-- <a href="###" onclick="addLink('menu_keyword',1)" class="a_choose">从功能库添加</a> -->
+            </div>
+            <!-- url  -->
+            <div class="szcjbt alert alert-info" id="res_2">
+                要链接到的URL地址：<input type="text" id="menu_key" name="url" >
+                <!-- <pigcmsif where="$wxuser['oauth'] eq 1"><a href="###" onclick="addLink('menu_key',0)" class="a_choose">从功能库添加</a></pigcmsif> --><br/>
+                <span style="color:red">必须开启授权, 禁止使用短网址</span><br/>
+            </div>
+            
+            <!-- 扩展菜单  -->
+            <div class="szcjbt alert alert-info" id="res_3">
+                扩展菜单：
+                    <div class="mr15 l">
+                        <select name="wxsys">
+                            <volist name="wxsys" id="wxsys">
+                                <option value="{$wxsys}">{$wxsys}</option>
+                            </volist>
+                        </select>
+                    </div>
+            </div>
+            
+            <!-- 一键拨号 -->
+            <div class="szcjbt alert alert-info" id="res_4">
+                一键拨号：<input type="text" name="tel" ><br/>
+                <span style="color:red">格式：0551-65371998 或 13912345678</span>
+            </div>
+            
+            <!-- 一键导航 -->
+            <div class="szcjbt alert alert-info" id="res_5">
+                一键导航：<input type="text" name="longitude"  id="longitude" style="width:80px;" > <input style="width:80px;" type="text" name="latitude"  id="latitude" ><a href="###" onclick="setlatlng($('#longitude').val(),$('#latitude').val())">在地图中查看/设置</a><br/>
+            </div>
+            
+            <p style="text-align:center;">
+                <button class="btnGreen" style="width:80px;line-height:30px;margin-top:10px;" type="submit">提交</button>
+            </p>
+    </div>
+</form>
+</td>
+</tr>
+</table>
+<p style="margin-bottom:20px;<if condition="$fuwuAppid eq ''">margin-left:220px;</if>">
+    <a class="btnGreen " onclick="drop_confirm('自定义菜单最多勾选3个，每个菜单的子菜单最多5个，请确认!\n （注意：自定义菜单需要第二天，或重新关注才能生效！！！！） ', '{:U('WxMenu/class_send')}');" title="1.级菜单最多只能开启3个，2级子菜单最多开启5个
+2.一级菜单最多4个汉字，二级菜单最多7个汉字">生成微信端自定义菜单</a>&nbsp;&nbsp;&nbsp;&nbsp;
+    
+    <if condition="$fuwuAppid neq ''">
+    <a class="btnGreen " onclick="drop_confirm('自定义菜单最多勾选4个，每个菜单的子菜单最多5个，请确认!\n （注意：服务窗端生成后会立刻生效！！！！）', '{:U('Fuwu/Button/dataReturn')}');" title="1.最多设置4个一级菜单，每个一级菜单最多设置5个二级菜单，当设置4个一级菜单时，左侧的发送消息按钮将被隐藏
+2.一级菜单最多显示4个汉字，二级菜单最多显示12个汉字
+">生成服务窗自定义菜单</a>&nbsp;&nbsp;&nbsp;&nbsp;
+    </if>
+</p>                
+<!-- 列表 -->
+<table width="100%" cellspacing="0" cellpadding="0" border="0" class="ListProduct"> 
+<thead>
+<tr>
+    <th style=" width:60px;">显示顺序</th>
+    <th style=" width:220px;">主菜单名称</th>
+    <th style=" width:170px;">菜单类型</th>
+    <th>类型数值</th>
+    <th class="norightborder" style=" width:160px;">操作</th>
+</tr>
+</thead>
+   <tbody>
+    <volist id="class" name="class">
+    <tr class="hover">
+        <td class="td25">
+            <span>{$class.sort}</span>
+        </td>
+        <td>
+          <div>
+            <span>{$class.title}</span>
+          </div>
+        </td>
+        <td>
+            <span>
+                
+                    <if condition="$class.keyword neq ''">
+                        顶级菜单-【关键词回复菜单】
+                    <elseif condition="$class.url neq ''"/>
+                        顶级菜单-【url外链菜单】
+                    <elseif condition="$class.wxsys neq ''"/>
+                        顶级菜单-【微信扩展菜单】
+                    <elseif condition="$class.tel neq ''"/>
+                        顶级菜单-【一键拨号菜单】
+                    <elseif condition="$class.nav neq ''"/>
+                        顶级菜单-【一键导航菜单】
+                    <else/>
+                        父级菜单
+                    </if>
+            </span>
+        </td>
+        <td>
+            <span>
+                    <if condition="$class.keyword neq ''">
+                        {$class.keyword}
+                    <elseif condition="$class.url neq ''"/>
+                        {$class.url}
+                    <elseif condition="$class.wxsys neq ''"/>
+                        {$class.wxsys}
+                    <elseif condition="$class.tel neq ''"/>
+                        {$class.tel}
+                    <elseif condition="$class.nav neq ''"/>
+                        {$class.nav}
+                    <else/>
+                        无
+                    </if>
+            </span>
+        
+        </td>
+        <td>
+            <a class="ajax btnGreen  cboxElement edit-menu" href="#main" data-id="{$class.id}" title="修改主菜单">修改</a>
+            <a class=" btnGreen " href="javascript:drop_confirm('您确定要删除吗?', '{:U('WxMenu/class_del',array('id'=>$class['id']))}');">删除</a>
+        </td>               
+      </tr>
+      <volist id="class1" name="class['class']">
+      <tr class="td29">
+            <td class="td25" colspan="1">
+                <span>{$class1.sort}</span>
+            </td>
+            <td colspan="1">
+              <div class="board">
+                <span>{$class1.title}</span>
+              </div>
+            </td>
+            
+            <td colspan="1">
+                <span>
+                    <if condition="$class1.keyword neq ''">
+                        关键词回复菜单
+                    <elseif condition="$class1.url neq ''"/>
+                        url外链菜单
+                    <elseif condition="$class1.wxsys neq ''"/>
+                        微信扩展菜单
+                    <elseif condition="$class1.tel neq ''"/>
+                        一键拨号菜单
+                    <elseif condition="$class1.nav neq ''"/>
+                        一键导航菜单
+                    </if>
+                </span>
+            </td>
+             <td>
+                <span>
+                
+                    <if condition="$class1.keyword neq ''">
+                        {$class1.keyword}
+                    <elseif condition="$class1.url neq ''"/>
+                        {$class1.url}
+                    <elseif condition="$class1.wxsys neq ''"/>
+                        {$class1.wxsys}
+                    <elseif condition="$class1.tel neq ''"/>
+                        {$class1.tel}
+                    <elseif condition="$class1.nav neq ''"/>
+                        {$class1.nav}
+                    </if>
+                
+                </span>
+             
+             </td>
+            <td colspan="1">
+            <a class="ajax btnGreen cboxElement edit-menu" data-id="{$class1.id}" href="#main" title="修改子菜单">修改</a>
+            <a class=" btnGreen " href="javascript:drop_confirm('您确定要删除吗?', '{:U('WxMenu/class_del',array('id'=>$class1['id']))}');">删除</a></td>
+     </tr>  
+    </volist>
+    </volist>
+              
+    </tbody>
+</table>
+
+</div>
+
+        </div>
+
+
+</body>
+</html>

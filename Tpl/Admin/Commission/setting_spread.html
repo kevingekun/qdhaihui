@@ -1,0 +1,78 @@
+<include file="Public/header_new" title="推广佣金设置"/>
+<define name="DEFINE_SIDE_MENU_CURRENT" value="Commission"/>
+<include file="Public/sideMenu_new"/>
+
+<div class="main home" id="main" style="overflow: auto;">
+    <div class="side clearfix" style="width:56px;height:100px;float:left;">
+    </div>
+    <div class="main-container" style="height:auto;">
+        <div class="gdt-toufang gdt-toufang-account">
+            <div class="tuiguang-tab" id="_hSubNav">
+                <ul>
+                    <li style="width:56px"></li>
+                    <li class="goback"><a href="javascript:history.back(-1)"><i></i></a></li>
+                    <!--<li><a href="{:U('Admin/Commission/setting_commission')}" onclick="">合伙人佣金设置</a></li>-->
+                    <li class="on"><a href="{:U('Admin/Commission/setting_spread')}" onclick="">推广佣金设置</a></li>
+                    <li><a href="{:U('Admin/Commission/setting_sale')}" onclick="">销售提成设置</a></li>
+                </ul>
+            </div>
+            <div class="container-box clearfix">
+                <div class="col-md-11">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h2 class="panel-title">推广佣金设置</h2>
+                        </div>
+                        <div class="panel-body">
+                            <form action="{:U('Admin/Commission/setting_spread')}" method="post">
+                                <div class="form-inline">
+                                    <div class="form-group col-sm-2 text-right">
+                                        <label class="">推广佣金设置：</label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="sr-only"></label>
+                                        每增加1名粉丝获取佣金
+                                        <div class="input-group">
+                                            <input class="form-control" name="spread" placeholder="金额"
+                                                   style="width:100px;" type="text"
+                                                   value="{$commissionRule.spread|convert_money}">
+
+                                            <div class="input-group-addon">元</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-inline">
+                                    <div class="form-group col-sm-2 text-right">
+                                        <label class="">提现设置：</label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="sr-only"></label>
+                                        按当期应结算销售佣金
+                                        <div class="input-group">
+                                            <input class="form-control" name="withdraw" placeholder="百分"
+                                                   style="width:100px;" type="text"
+                                                   value="{$commissionRule.withdraw}">
+
+                                            <div class="input-group-addon">%</div>
+                                        </div>
+                                        提现
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-sm-6 col-sm-offset-2">
+                                        <input value="保存" class="btn btn-primary" type="submit" name="st">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<script src="/new_theme/common/sui/jquery.min.js"></script>
+<script src="/new_theme/common/sui/sui.min.js"></script>
+</body>
+</html>

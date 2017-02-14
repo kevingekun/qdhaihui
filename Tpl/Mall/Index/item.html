@@ -1,0 +1,67 @@
+<include file="Public:header" title="商品列表" />
+<body>
+    <!-- page 容器 -->
+    <div class="page">
+        <header class="bar bar-nav">
+            <h1 class="title his-color">
+            <empty name="title">
+                {:get_category_name($_GET['menu_id'])}
+                <else/>
+                {$title}
+            </empty>
+            </h1>
+        </header>
+        <include file="Public:nav" />
+        <div class="content con-nav">
+            <div class="scree">
+                <a class="external" href="{:U('item',array('class'=>3, 'menu_id' => $_GET['menu_id'], 'sort' => $sort))}">
+                    <span <if condition="$_GET['class'] eq 3 || empty($_GET['class'])">class="blue"</if>>人气
+                        <i class="sortarrow <eq name='sort' value='desc'>turn</eq>"></i></span>
+                    </span>
+                </a>
+                <a class="external" href="{:U('item',array('class'=>1, 'menu_id' => $_GET['menu_id'], 'sort' => $sort))}">
+                    <span <if condition="$_GET['class'] eq 1">class="blue"</if>>销量
+                        <i class="sortarrow <eq name='sort' value='desc'>turn</eq>"></i></span>
+                    </span>
+                </a>
+                <a class="external" href="{:U('item',array('class'=>4, 'menu_id' => $_GET['menu_id'], 'sort' => $sort))}">
+                    <span <if condition="$_GET['class'] eq 4">class="blue"</if>>价格
+                        <i class="sortarrow <eq name='sort' value='desc'>turn</eq>"></i></span>
+                    </span>
+                </a>
+                <a class="external" href="{:U('item',array('class'=>2, 'menu_id' => $_GET['menu_id'], 'sort' => $sort))}">
+                    <span <if condition="$_GET['class'] eq 2">class="blue"</if>>时间
+                    <i class="sortarrow <eq name='sort' value='desc'>turn</eq>"></i></span>
+                    </span>
+                </a>
+            </div>
+            <div class="row-list">
+            <volist name="list" id="l" empty="没有符合该条件的商品">
+                <div class="item">
+                    <a href="{:U('detail', array('id' => $l['id']))}" class="url external" title="{$l.name}">
+                        <!--<div class="head">-->
+                            <!--<img src="__ASSETS__/img/logo.png">-->
+                        <!--</div>-->
+                        <div class="img">
+                            <img src="{$l.image|create_goods_thumb_url}" alt="{$l.name}">
+                        </div>
+                        <div class="info">
+                            <div class="name">{$l.name}</div>
+                            <div class="cost">
+                                <span class="price">¥{$l.price|convert_money}</span>
+                                <span class="price-lf">¥{$l.old_price|convert_money}</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </volist>
+            </div>
+        </div>
+    </div>
+    <script src="__ASSETS__/dist/js/sm.js"></script>
+    <script src="__ASSETS__/dist/js/sm-extend.js"></script>
+    <script src="__ASSETS__/dist/js/sm-city-picker.js"></script>
+    <script src="__ASSETS__/js/demos.js"></script>
+</body>
+<include file="Public:share" />
+</html>

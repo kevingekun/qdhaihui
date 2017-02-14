@@ -1,0 +1,117 @@
+<include file="Public/header" title="合伙人佣金统计明细"/>
+<define name="DEFINE_SIDE_MENU_CURRENT" value="commission"/>
+<include file="Public/sideMenu"/>
+<div class="main home" id="main" style="/*height: 400px;*/ overflow: auto;">
+    <div class="side clearfix" style="width:56px;height:100px;float:left;"></div>
+    <div class="main-container" style="height:auto;">
+        <div class="gdt-toufang gdt-toufang-account">
+            <div class="tuiguang-tab" id="_hSubNav">
+                <ul>
+                    <li style="width:56px"></li>
+                    <li class="goback"><a href="javascript:history.back(-1)"><i></i></a></li>
+                    <li class="on"><a href="" onclick="">合伙人佣金统计明细</a></li>
+                    <li><a href="{:U('Admin/Commission/checkList')}" onclick="">审核明细</a></li>
+                </ul>
+            </div>
+            <div class="content-right fl">
+                <div class="tablesWrap">
+                    <form action="" method="get" name="form1">
+                        <div class="tables-searchbox">
+                            <input type="text" class="input mini" name="name" value="" placeholder="姓名">
+                            <input type="text" class="input" name="mobile" value="" placeholder="手机号码/微信昵称">
+                            <select name="user_group_id" class="select mini">
+                                <option value="-1" selected="">所有分组</option>
+                                <option value="0">未分组</option>
+                            </select>
+                            <select name="agent_rank_id" class="select mini">
+                                <option value="-1" selected="">所有等级</option>
+                                <option value="0">合伙人</option>
+                                <option value="0">粉丝</option>
+                            </select>
+                            <input type="text" autocomplete="off" name="start_time" value="" placeholder="注册时间"
+                                   class="input mini Wdate" onclick="WdatePicker({ dateFmt:'yyyy-MM-dd'})">
+                            <span class="mgr5">至</span>
+                            <input type="text" autocomplete="off" name="end_time" value="" placeholder="注册时间"
+                                   class="input mini Wdate" onclick="WdatePicker({ dateFmt:'yyyy-MM-dd'})">
+                            <select name="order" class="select small">
+                                <option value="－1">选择排序</option>
+                                <option value="1">下级人数排序</option>
+                                <option value="2">订单笔数排序</option>
+                            </select>
+                            <button class="btn btn-primary"><i class="gicon-search white"></i>查询</button>
+                        </div>
+                    </form>
+                    <!-- end tables-searchbox -->
+                    <table class="wxtables">
+                        <colgroup>
+                            <col width="4%">
+                            <col width="10%">
+                            <col width="8%">
+                            <col width="8%">
+                            <col width="8%">
+                            <col width="10%">
+                            <col width="8%">
+                            <col width="10%">
+                            <col width="10%">
+                            <col width="24%">
+                        </colgroup>
+                        <thead>
+                        <tr>
+                            <td><i class="icon_check"></i></td>
+                            <td>微信号</td>
+                            <td>昵称/手机</td>
+                            <td>分组</td>
+                            <td>等级</td>
+                            <td>订单数</td>
+                            <td>销售金额</td>
+                            <td>佣金汇总</td>
+                            <td>结算金额</td>
+                            <td>推荐人</td>
+                            <td>注册时间</td>
+                            <td>到期时间</td>
+
+
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>fu199181</td>
+                            <td>18562602348</td>
+                            <td>未分组</td>
+                            <td>合伙人</td>
+                            <td><a href="our-list-jmx">30</a></td>
+                            <td>520</td>
+                            <td>120</td>
+                            <td>120</td>
+                            <td>傅盼望</td>
+                            <td>2015.7.31</td>
+                            <td>2016.8.31</td>
+
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>fu199181</td>
+                            <td>18562602348</td>
+                            <td>未分组</td>
+                            <td>粉丝</td>
+                            <td><a href="our-list-jmx">80</a></td>
+                            <td>520</td>
+                            <td>1520</td>
+                            <td>1520</td>
+                            <td>周杰伦</td>
+                            <td>2015.7.31</td>
+                            <td>2016.8.31</td>
+
+                        </tr>
+                        </tbody>
+                    </table>
+                    <!-- end wxtables -->
+                    <!-- end tables-btmctrl -->
+                </div>
+                <!-- end tablesWrap -->
+            </div>
+        </div>
+    </div>
+</div>
+<include file="Public/footer"/>

@@ -1,0 +1,179 @@
+<include file="Public:header" title="申请退货" />
+<body>
+    <div class="page">
+        <header class="bar bar-nav">
+            <h1 class="title his-color">申请退货</h1>
+        </header>
+        <!-- 底部 -->
+        <include file="Public:nav" />
+        <!-- 内容 -->
+        <div class="content con-nav">
+            <div class="list-block list-block-pa returngoods">
+              <form action="" id="form1" onsubmit="return false;">
+                <input type="hidden" name="order_number" value="{$order.order_number}">
+                <input type="hidden" name="user_id" value="{$user.uid}">
+                <input type="hidden" name="user_name" value="{$user.realname}">
+                <input type="hidden" name="mobile" value="{$user.phone}">
+                <input type="hidden" name="type" id="type" value="1">
+                <input type="hidden" name="good_id" value="{$good_data.id}">
+                <input type="hidden" name="good_name" value="{$good_data.name}">
+                <input type="hidden" name="good_price"
+                value="{$good_data.price}">
+                <ul>
+                    <li>
+                        <div class="item-content">
+                            <div class="item-inner">
+                              订单编号：{$order.order_number}
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title label">申请服务</div>
+                                <div class="choice">
+                                    <div class="row">
+                                        <a href="#" class="button col-50 his-color" id="choiceAll">退货退款</a>
+                                        <a href="#" class="button col-50" id="choiceMay">仅退款</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li id="theGoods" style="">
+                        <div class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title label">货物状态</div>
+                                <div class="item-input">
+                                    <select
+                                      id="good_status" name="good_status">
+                                        <option value="0">请选择原因</option>
+                                        <option value="1">已拒收</option>
+                                        <option value="2">商品已退回</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title label">退款原因</div>
+                                <div class="item-input">
+                                    <select name="reason">
+                                        <option value="0">请选择原因</option>
+                                        <option value="1">未收到货</option>
+                                        <option value="2">未按约定时间发货</option>
+                                        <option value="3">协商一致退款</option>
+                                        <option value="4">缺货</option>
+                                        <option value="5">收到商品破损</option>
+                                        <option value="6">商品错发/漏发</option>
+                                        <option value="7">收到商品与描述不符</option>
+                                        <option value="8">商品质量问题</option>
+                                        <option value="9">多拍/错拍/不想要了</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title label">退款金额</div>
+                                <div class="item-input">
+                                  <input type="text" name="money_amount"
+                                  placeholder="不能大于总金额{$max_refund}">
+                                  <input type="hidden" id="max_refund"
+                                  name="max_refund" value="{$max_refund}">
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="align-top">
+                        <div class="item-content">
+                            <div class="item-inner">
+                              <div class="item-title label">退款说明</div>
+                              <div class="item-input">
+                                <textarea placeholder="描述详情" name="note"></textarea>
+                              </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                </form>
+                <div class="add-foot">
+                    <div>服务电话：<i></i>400-6111-111</div>
+                    <p>如有需要请直接拨打人工服务电话</p>
+                </div>
+                <div class="row row-button row-bottom">
+                    <div class=""><a href="#" id="submit" class="button button-del">提交</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="__ASSETS__/dist/js/sm.js"></script>
+    <script src="__ASSETS__/dist/js/sm-extend.js"></script>
+    <script src="__ASSETS__/dist/js/sm-city-picker.js"></script>
+    <script src="__ASSETS__/js/demos.js"></script>
+    <script>
+        $("#city-picker").cityPicker({
+            toolbarTemplate: '<header class="bar bar-nav">\
+            <button class="button button-link pull-right close-picker">确定</button>\
+            <h1 class="title">选择收货地址</h1>\
+            </header>'
+          });
+        $("#datetime-picker").calendar();
+        $(document).on('click','#choiceMay',function(){
+            $('#type').val(2);
+            $('#theGoods').hide();
+            $('#choiceMay').addClass("his-color");
+            $('#choiceAll').removeClass("his-color");
+        });
+        $(document).on('click','#choiceAll',function(){
+            $('#type').val(1);
+            $('#theGoods').show();
+            $('#choiceAll').addClass("his-color");
+            $('#choiceMay').removeClass("his-color");
+        });
+
+    //提交
+    $('#submit').click(function(){
+        var amount_applied = $('#money_amount').val();
+//        var max_refund = $('#max_refund').val();
+//        if (amount_applied > max_refund) {
+//          alert('申请金额不能大于订单总金额');
+//          return false;
+//        }
+        $.showPreloader();
+        $.ajax({
+            type: "post",
+            url: "{:U('Mall/Ucenter/serviceReturn')}",
+            timeout: 20000,
+            data: $('#form1').serialize(),
+            success: function(data) {
+              $.hidePreloader();
+              if (data.code != 0) {
+                $.toast(data.msg);
+              } else {
+                $.toast(data.msg);
+                window.location.href = data.url;
+              }
+            },
+            compelete: function (XMLHttpRequest, textstatus) {
+                if (textStatus == "success") {
+                    $.hidePreloader();
+                }
+            },
+            error: function(xhr, status, type) {
+                if (status == "timeout") {
+                    $.toast("请求超时");
+                }
+                $.hidePreloader();
+            }
+        });
+    });
+
+    </script>
+</body>
+<include file="Public:share" />
+</html>

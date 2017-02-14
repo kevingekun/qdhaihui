@@ -1,0 +1,348 @@
+<include file="Public/header_new" title="订单详情 - 订单管理"/>
+<define name="DEFINE_SIDE_MENU_CURRENT" value="Orders"/>
+<include file="Public/sideMenu_new"/>
+
+    <div class="main home" id="main" style="overflow: auto;">
+        <div class="side clearfix" style="width:56px;height:100px;float:left;">
+        </div>
+        <div class="main-container" style="height:auto;">
+            <div class="gdt-toufang gdt-toufang-account">
+                <div class="tuiguang-tab" id="_hSubNav">
+                    <ul>
+                        <li style="width:56px"></li>
+                        <li class="goback"><a href="javascript:history.back(-1)"><i></i></a></li>
+                        <li class="on"><a href="{:U('Admin/Orders/index')}">产品订单</a></li>
+                        <li><a href="{:U('Admin/Workcard/index')}">售后服务</a></li>
+                        <li><a href="{:U('Admin/Refund/index')}">退款申请</a></li>
+                        <li><a href="{:U('Admin/Logistics/index')}">物流信息</a></li>
+                    </ul>
+                </div>
+                <div class="container-box clearfix">
+                    <div class="col-md-9">
+                        <div class="row">
+                            <ol class="breadcrumb">
+                                <li><h5>订单详情</h5></li>
+                            </ol>
+                            <div class="alert  alert-info" role="alert">
+                                订单编号：<strong >{$info.order_number}</strong>
+                            </div>
+                            <ul class="steps-round">
+                                <li class="finished col-md-3">
+                                    <div class="wrap">
+                                        <div class="round">1</div>
+                                    </div>
+                                    <label>
+                                        创建订单
+                                        <br/>
+                                        {$info.create_time|date='Y-m-d H:i:s', ###}
+                                    </label>
+                                </li>
+                                <li class="<if condition='!empty($info[pay_time])'>current</if> col-md-3">
+                                    <div class="wrap">
+                                        <div class="round">2</div>
+                                    </div>
+                                    <label>
+                                        买家付款
+                                        <br/>
+                                        <if condition="!empty($info['pay_time'])">
+                                            {$info.pay_time|date='Y-m-d H:i:s', ###}
+                                        </if>
+                                    </label>
+                                </li>
+                                <li class="<if condition='!empty($info[delivery_time])'>current</if> col-md-3">
+                                    <div class="wrap">
+                                        <div class="round">3</div>
+                                    </div>
+                                    <label>
+                                        卖家发货
+                                        <br/>
+                                        <if condition="!empty($info['delivery_time'])">
+                                            {$info.delivery_time|date='Y-m-d H:i:s', ###}
+                                        </if>
+                                    </label>
+                                </li>
+                                <li class="<if condition='!empty($info[complete_time])'>current</if> col-md-3">
+                                    <div class="wrap">
+                                        <div class="round">4</div>
+                                    </div>
+                                    <label>
+                                        确认收货
+                                        <br/>
+                                        <if condition="!empty($info['complete_time'])">
+                                            {$info.complete_time|date='Y-m-d H:i:s', ###}
+                                        </if>
+                                    </label>
+                                </li>
+                            </ul>
+                            <table class="table table-bordered">
+                                <thead>
+                                <tr class="active">
+                                    <th width="30%">商品详情</th>
+                                    <th width="8%">付款人</th>
+                                    <th width="9%">实付金额</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td width="30%">
+                                        <volist name="info['cart_data_list']" id="g">
+                                            <div class="media">
+                                                <div class="media-left">
+                                                    <a href="#"><img class="media-object" src="{$g.image}" alt="{$g.name}"></a>
+                                                </div>
+                                                <div class="media-body">
+                                                    <h4 class="media-heading">{$g.name}</h4>
+                                                    LED48EC290N 48英寸 全高清 智能 网络 LED液晶电视
+                                                </div>
+                                                <div class="media-right">
+                                                    {$g.num} x {$g.price}
+                                                </div>
+                                            </div>
+                                        </volist>
+                                    </td>
+                                    <td width="8%">{$info.realname}</td>
+                                    <td width="8%">
+                                        {$info.real_price|convert_money}
+                                        <?php if($info['order_status_id'] == \Common\Model\MallModel::ORDER_STATUS_WAIT_PAY): ?>
+                                        <a href="" class="btn btn-link" data-toggle="modal" data-target="#D-update-price">修改价格</a>
+                                        <?php endif; ?>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <table class="table table-bordered">
+                                <thead>
+                                <tr class="active">
+                                    <th colspan="9">
+                                        <div class="order-checkbox">
+                                            <label class="pull-left">
+                                                收货人信息
+                                            </label>
+                                        </div>
+                                    </th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td colspan="9">
+                                        收&nbsp;货&nbsp;人: {$info.name} <br>
+                                        地&nbsp;&nbsp;&nbsp;&nbsp;址: {$info.address.province_name} {$info.address.city_name} {$info.address.district_name} {$info.full_address} <br>
+                                        手机号码: {$info.mobile} <br>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <table class="table table-bordered">
+                                <thead>
+                                <tr class="active">
+                                    <th colspan="9">
+                                        <div class="order-checkbox">
+                                            <label class="pull-left">
+                                                支付及配送时间
+                                            </label>
+                                        </div>
+                                    </th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td colspan="9">
+                                    <eq name="info.pay_status" value="1">
+                                        支付方式 : {$info.pay_style} <br>
+                                        支付日期 : {$info.pay_time|date='Y-m-d H:i:s', ###} <br>
+                                        配送时间 : {$info.delivery_type} <br>
+                                    <else/>
+                                        支付方式 : 暂未付款<br>
+                                        配送时间 : 无
+                                        <eq name="info.order_status_id" value="2">
+                                          <a href="" class="btn btn-link" data-toggle="modal" data-target="#D-toEms">标记发货</a>
+                                        </eq>
+                                    </eq>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <table class="table table-bordered">
+                                <thead>
+                                <tr class="active">
+                                    <th colspan="9">
+                                        <div class="order-checkbox">
+                                            <label class="pull-left">
+                                                发票信息
+                                            </label>
+                                        </div>
+                                    </th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td colspan="9">
+                                    <eq name="info.need_invoice" value="1">
+                                        发票类型 : {$info[is_elec]?电子发票:纸质发票} <br>
+                                        发票抬头 : {$info.pay_time|date='Y-m-d H:i:s', ###} <br>
+                                        发票内容 : 明细 <br>
+                                        发票状态 : {$info['invoice'] == 0 ? 待开票 : 已开票}
+                                    <else/>
+                                    无需开票
+                                    </eq>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <table class="table table-bordered">
+                                <thead>
+                                <tr class="active">
+                                    <th colspan="9">
+                                        <div class="order-checkbox">
+                                            <label class="pull-left">
+                                                买家留言
+                                            </label>
+                                        </div>
+                                    </th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td colspan="9">
+                                    {$info.note|default='暂无留言'}
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+
+                            <table class="table table-bordered">
+                                <thead>
+                                <tr class="active">
+                                    <th colspan="9">
+                                        <div class="order-checkbox">
+                                            <label class="pull-left">
+                                                商家备注 <button id="remark" class="btn btn-link" data-toggle="modal" data-target="#D-remarks">修改备注</button>
+                                            </label>
+                                        </div>
+                                    </th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td colspan="9">
+                                        {$info['remark'] ? $info['remark'] : 暂无备注}
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="D-toEms" tabindex="-1" role="dialog" aria-labelledby="D-toEms" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h5 class="modal-title">标记发货</h5>
+            </div>
+            <form  class="form-horizontal" action="{:U('Admin/Logistics/manual')}" method="post" data-toggle="validate">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label  class="col-sm-3 control-label">物流公司:</label>
+                        <div class="col-sm-8">
+                          <select name="logistics" class="form-control" data-rule-required="true">
+                              <option value="sf" selected>顺丰快递</option>
+                              <option value="csn">菜鸟物流</option>
+                          </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label  class="col-sm-3 control-label">快递单号:</label>
+                        <div class="col-sm-8">
+                          <input id="order_id" type="hidden" name="order_id" value="">
+                          <input type="text" class="form-control" name="way_bill_no" data-rule-required="true">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary btn-lg">确定</button>
+                    <button type="button" class="btn btn-default btn-lg" data-dismiss="modal">取消</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!--修改备注 begin-->
+<div class="modal fade" id="D-remarks" tabindex="-1" role="dialog" aria-labelledby="D-remarks" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h5 class="modal-title">商家备注</h5>
+            </div>
+            <form action="{:U('addRemarks')}" method="post" class="form-horizontal" data-toggle="validate">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label  class="col-sm-3 control-label">填写内容:</label>
+                        <div class="col-sm-8">
+                            <input type="hidden" name="order_id" value="{$info.order_id}">
+                            <textarea id="getremark" type="text" class="form-control" name="remark" data-rule-required="true"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary btn-lg">确定</button>
+                    <button type="button" class="btn btn-default btn-lg" data-dismiss="modal">取消</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!--修改备注 end-->
+
+<?php if($info['order_status_id'] == \Common\Model\MallModel::ORDER_STATUS_WAIT_PAY): ?>
+<!--修改价格 begin-->
+<div class="modal fade" id="D-update-price" tabindex="-1" role="dialog" aria-labelledby="D-update-price" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h5 class="modal-title">商家备注</h5>
+            </div>
+            <form action="{:U('updatePrice')}" method="post" class="form-horizontal" data-toggle="validate">
+                <div class="modal-body">
+                    <div class="form-group">
+                            <label  class="col-sm-3 control-label">修改价格:</label>
+                        <div class="col-sm-8">
+                            <input type="hidden" name="order_id" value="{$info.order_id}">
+                            <input type="text" name="real_price" class="form-control" data-rule-required="true" placeholder="请输入价格, 最小单位为分"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary btn-lg">确定</button>
+                    <button type="button" class="btn btn-default btn-lg" data-dismiss="modal">取消</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!--修改价格end-->
+<?php endif; ?>
+
+<script src="/new_theme/common/sui/jquery.min.js"></script>
+<script src="/new_theme/common/sui/sui.min.js"></script>
+<script type="text/javascript">
+$(function(){
+  $("#remark").click(function(){
+    var url = "{:U('addRemarks')}";
+    var id = "{$info.order_id}";
+
+    $.get(url,{id:id},function(data) {
+      $("#getremark").val(data);
+    })
+  });
+});
+</script>
+</body>
+</html>

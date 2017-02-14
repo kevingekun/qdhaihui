@@ -1,0 +1,409 @@
+
+
+
+a{
+	text-decoration:none;
+	color:#007caf
+}
+
+
+.clearfix:after{
+	content:".";
+	display:block;
+	height:0;
+	visibility:hidden;
+	clear:both
+}
+
+
+.clearfix{
+	*zoom:1
+}
+
+
+body{
+	background-color:#F2F3F4
+}
+
+
+.wraper{
+	padding:20px 20px 40px
+}
+
+
+.c-red{
+	color:#d92626
+}
+
+
+.none{
+	display:none
+}
+
+
+.s-btnline{
+	background:#f9f9f9
+}
+
+
+.s-button-right{
+	background:#12bb9d;
+	color:#fff
+}
+
+
+.s-button-right:hover{
+	background:#5dccb0
+}
+
+
+.s-button-right-disable{
+	background:#e4e4e4;
+	color:#ccc;
+	cursor:default
+}
+
+
+.s-button-back{
+	color:#666
+}
+
+
+.s-button-back:hover{
+	background:#fff
+}
+
+
+.icon{
+	display:inline-block;
+	*display:inline;
+	*zoom:1;
+	font-size:0;
+	line-height:0;
+	height:10px;
+	position:relative;
+	width:13px
+}
+
+
+.icon i{
+	display:block;
+	height:13px;
+	width:13px;
+	position:absolute
+}
+
+
+.ico-help i{
+	background-image:url(sprite/account-frame.png);
+	background-position:0 0;
+	top:0;
+	left:2px;
+	cursor:pointer
+}
+
+
+.account-tip-area{
+	height:auto;
+	padding:15px 20px;
+	border:1px solid #E3E0CF;
+	background-color:#FCF7E4;
+	overflow:hidden;
+	zoom:1;
+	margin-bottom:20px;
+	color:#876D51
+}
+
+
+.account-tip-area strong{
+	font-size:14px
+}
+
+
+.account-tip-area p{
+	line-height:21px;
+	margin-bottom:10px
+}
+
+
+.account-tip-area .id{
+	float:right;
+	text-align:right
+}
+
+
+.lump{
+	/*border:1px solid #DDDFE1;*/
+	font-family:'\5B8B\4F53';
+	background-color:#fff;
+	margin-bottom:15px;
+	box-shadow:0 1px 0 rgba(230,231,232,1)
+}
+
+
+.lump .lump-hd{
+	border-bottom:1px solid #E5E6E7;
+	height:44px;
+	line-height:44px;
+	padding:0 0 0 20px
+}
+
+
+.lump .lump-hd h3{
+	font-size:14px
+}
+
+
+.lump .i-star{
+	color:#D35E55;
+	font-weight:normal;
+	font-style:normal
+}
+
+
+.lump h3 .lump-subtitile{
+	font-size:12px;
+	color:#666;
+	font-weight:normal;
+	margin-left:8px
+}
+
+
+.account-list{
+	font-size:12px;
+	padding:20px 0 0 20px;
+	padding-bottom:15px
+}
+
+
+.account-list li{
+	overflow:hidden;
+	zoom:1;
+	margin-bottom:20px;
+	margin-bottom:5px
+}
+
+
+.account-list .account-list-name{
+	float:left;
+	width:120px;
+	text-align:right;
+	margin-right:20px;
+	color:#666;
+	line-height:28px;
+	font-weight:bold
+}
+
+
+.account-list .account-list-con{
+	float:left
+}
+
+
+.account-list .account-text{
+	position:relative;
+	line-height:28px;
+	color:#666
+}
+
+
+.account-list .account-text .account-input{
+	width:275px;
+	height:28px;
+	border:1px solid #C3C6C9;
+	padding-left:5px;
+	line-height:normal;
+	line-height:28px\9
+}
+
+
+.account-list .account-tip{
+	color:#909090
+}
+
+
+.account-list .account-wrongtip{
+	color:#e33244;
+	font-size:12px;
+	margin-left:8px;
+	display:inline-block
+}
+
+
+.account-list .account-wrongtip .ico-warning{
+	display:inline-block;
+	width:16px;
+	height:16px;
+	background-image:url(sprite/account-frame.32.png);
+	background-position:0 0;
+	vertical-align:top;
+	margin-top:6px
+}
+
+
+.account-list .account-upload-la{
+	display:inline-block;
+	width:46px;
+	height:28px;
+	line-height:28px;
+	text-align:center;
+	border:1px solid #C3C6C9;
+	color:#666;
+	cursor: pointer;
+	background-color:#fff
+}
+
+
+.account-list .account-upload{
+	opacity:0;
+	filter:alpha(opacity=0);
+	width:48px;
+	height:30px;
+	position:absolute;
+	left:0;
+	top:0;
+	cursor: pointer;
+	overflow:hidden;
+}
+
+
+.account-list .account-demo{
+	color:#007caf;
+	margin-left:10px
+}
+
+
+.account-list .account-select-w{
+	width:282px;
+	height:28px;
+	border:1px solid #C3C6C9
+}
+
+
+.account-list .account-select{
+	width:136px;
+	height:28px;
+	border:1px solid #C3C6C9;
+	margin-right:10px
+}
+
+
+.account-list .account-textarea{
+	width:280px;
+	height:62px;
+	margin-top:10px
+}
+
+
+.account-list .account-pic{
+	padding-top:8px
+}
+
+
+.account-list .account-pic img{
+	vertical-align:top;
+	margin-right:8px;
+	width:220px;
+	height:160px
+}
+
+
+.account-list .account-pic a{
+	font-size:12px;
+	margin-right:12px
+}
+
+
+.account-list .account-pic-add{
+	padding-left:140px
+}
+
+
+.account-list .account-pic-add span{
+	font-size:12px;
+	padding-right:3px;
+	vertical-align:top;
+	font-family:'Arial,Simson'
+}
+
+
+.account-show{
+	padding-bottom:15px
+}
+
+
+.account-show li{
+	margin-bottom:5px
+}
+
+
+.account-edit{
+	margin-bottom:20px
+}
+
+
+.save-btn{
+	display:block;
+	margin:0 auto;
+	width:125px;
+	height:45px;
+	line-height:45px;
+	text-align:center;
+	color:#fff;
+	background-color:#56BDA3;
+	border-radius: 4px;
+	margin-top:10px;
+	font-weight:bold;
+	border: none;
+	font-family:'\5B8B\4F53'
+}
+
+
+.attest{
+	float:none;
+	height:auto;
+	width:100%;
+	overflow:hidden
+}
+
+
+.attest .inner{
+	float:left;
+	margin:5px 140px 10px 140px;
+	border:1px solid #F2F3F4;
+	background:#f5f5f5;
+	padding:15px
+}
+
+
+.attest-w{
+	color:#666;
+	font-size:14px
+}
+
+
+.attest-w-tit{
+	height:24px;
+	margin-bottom:5px;
+	line-height:21px
+}
+
+
+.attest-detail{
+	text-indent:30px;
+	line-height:24px
+}
+
+
+.account-list .attest .account-list-name{
+	width:80px;
+	font-weight:normal
+}
+
+
+#CssGaga{
+	content:"150430170339,hai,333"
+}
+#ge-change{
+	padding-top: 50px;
+}

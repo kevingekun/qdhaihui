@@ -1,0 +1,217 @@
+<include file="Public:header" title="订单详情" />
+<body>
+    <div class="page">
+        <header class="bar bar-nav">
+            <h1 class="title his-color">订单详情</h1>
+        </header>
+        <!-- 底部 -->
+        <include file="Public:nav" />
+        <!-- 内容 -->
+        <div class="content con-nav">
+            <div class="order-list" id="ordersList">
+                <ul>
+                    <li class="main">
+                        <div class="order-num">
+                          <p>订单编号：<span>{$list.order_number}</span></p>
+                          <p>订单金额：<span>{$list.total_price|convert_money}</span></p>
+                          <p>订单时间：<span>{$list.create_time|date="y-m-d",
+                            ###}</span></p>
+                        </div>
+                    </li>
+                    <li class="main">
+                        <div class="order-table">
+                            <div class="url">
+                                <a class="photo" href="javascript:;">
+                                  <img src="{$list.image|create_goods_thumb_url}">
+                                </a>
+                                <a class="info" href="javascript:;">
+                                  <h3 class="tit">{$list.description}</h3>
+                                    <div class="item-subtitle red-label">周年大促，限时秒杀，火热抢购中</div>
+                                    <div class="item-subtitle
+                                      spec">{$list.good_name}</div>
+                                    <div class="desc"></div>
+                                    <p class="price">
+                                    <span class="price-1">{$list.price|convert_money}</span>
+                                        <i>￥</i>
+                                        <br>
+                                        <span>X<span
+                                            class="countNum">{$list.quantity}</span></span>
+                                    </p>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="main">
+                        <div class="list-block">
+                            <ul>
+                                <li class="item-content">
+                                    <div class="item-inner">
+                                      <div class="item-title">{$list.name}</div>
+                                      <div class="item-after">{$list.mobile}</div>
+                                    </div>
+                                </li>
+                                <li class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-text">
+                                          {$list.address}
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="main">
+                        <div class="list-block">
+                            <ul>
+                                <li class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-title">付款方式</div>
+                                        <div class="item-after">微信支付</div>
+                                    </div>
+                                </li>
+                                <li class="item-porder">
+                                    <p>
+                                        商品价格:
+                                        <span class="pull-right
+                                          redtext">{$list.price|convert_money}</span>
+                                    </p>
+                                    <p>
+                                        代金券:
+                                        <span class="pull-right
+                                        redtext">￥
+                                            <empty name="list.money_cut">0</empty>
+                                            <notempty name="list.money_cut">{$list.money_cut|convert_money}</empty>
+                                        </span>
+                                    </p>
+                                    <p>
+                                        运费:
+                                        <span class="pull-right redtext">￥0.00</span>
+                                    </p>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="main">
+                        <div class="list-block">
+                            <ul>
+                                <li class="item-porder">
+                                    <p>
+                                        品牌:
+                                        <span class="pull-right redtext">{$list.yb_brand}</span>
+                                    </p>
+                                    <p>
+                                        型号:
+                                        <span class="pull-right redtext">{$list.yb_model}</span>
+                                    </p>
+                                    <p>
+                                        编码:
+                                        <span class="pull-right redtext">{$list.yb_sn}</span>
+                                    </p>
+                                    <p>
+                                        购买日期:
+                                        <span class="pull-right redtext">{$list.yb_buydate}</span>
+                                    </p>
+                                    <p>
+                                        购买价格:
+                                        <span class="pull-right redtext">{$list.yb_price}</span>
+                                    </p>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="main">
+                        <div class="list-block">
+                            <ul>
+                                <li class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-title">发票信息</div>
+                                    </div>
+                                </li>
+                                <if condition="$list.invoice_status eq 1">
+                                <p style="margin-left: 15px"> 发票已开出，请前往电子发票服务平台(http://shop.hisense.com/fp/index.html)输入订单编号即可打印发票
+                                </p>
+                                <else />
+                                <p style="margin-left: 15px">
+                                    发票尚未开出，请耐心等待
+                                    </p>
+                                </if>
+                                <!--
+                                <li class="item-porder">
+                                    <if condition="$list.type_invoice eq '1'">
+                                    <p>
+                                        发票类型:增值税发票
+                                    </p>
+                                    <p>
+                                    发票抬头:{$list.title}
+                                    </p>
+                                    <p>
+                                    纳税人识别号:{$list.payer_ident}
+                                    </p>
+                                    <p>
+                                    开户银行:{$list.bank}
+                                    </p>
+                                    <p>
+                                    银行账号:{$list.bank_account}
+                                    </p>
+                                        <else />
+                                    </if>
+                                </li>
+                                -->
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="main">
+                        <div class="list-block  media-list">
+                            <ul>
+                                <li class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-title">配送信息</div>
+                                    </div>
+                                </li>
+                                <empty name="list.routes">
+                                <a class="item-content item-link external">
+                                    <div class="item-inner">
+                                        <div class="item-title-row">
+                                            <div class="item-title blue">您的订单待配货</div>
+                                        </div>
+                                    </div>
+                                </a>
+                                </empty>
+                                <!--
+                                <a class="item-content item-link external">
+                                    <div class="item-inner">
+                                        <div class="item-title-row">
+                                            <div class="item-title blue">您的订单待配货</div>
+                                        </div>
+                                        <div class="item-subtitle">201511-14 16:35:32</div>
+                                    </div>
+                                </a>
+                                -->
+                                <volist name="list.routes" id="vo">
+                                <a class="item-content item-link external">
+                                    <div class="item-inner">
+                                        <div class="item-title-row">
+                                          <div class="item-title
+                                            blue">{$vo:remark}</div>
+                                        </div>
+                                        <div class="item-subtitle">{$vo:accept_time}</div>
+                                    </div>
+                                </a>
+                                </volist>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+                <div class="content-block">
+                    <p>
+                        <a href="{:U('Mall/Ucenter/serviceList',array('order_id'=>$list['order_id'], 'good_id'=>$list['good_id'], 'total'=>$list['total']))}" class="button button-success external">申请售后</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+<script src="__ASSETS__/dist/js/sm.js"></script>
+<include file="Public:share" />
+</html>

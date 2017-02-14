@@ -1,0 +1,88 @@
+<include file="Public:header" title="粉丝福利"  />
+<body>
+    <div class="page">
+        <header class="bar bar-nav">
+            <h1 class="title his-color">粉丝福利</h1>
+        </header>
+        <div class="welfare" id="welfareNum">
+            <div class="walfare-nav">
+                <img src="__ASSETS__/img/wf-nav.png" alt="">
+            </div>
+                <div class="voucher-content wf-top">
+                    <volist name="list" id="v">
+                        <ul class="use use-shadow">
+                            <li class="voucher-date">
+                                <ol class="voucher-arc">
+                                    <li></li>
+                                    <li></li>
+                                    <li></li>
+                                    <li></li>
+                                    <li></li>
+                                    <li></li>
+                                </ol>
+                                <a href="">立<br>减</a>
+                            </li>
+                            <li class="voucher-text voucher-samll">
+                                <div></div>
+                                <h2>{$v.money_cut|convert_money=###}元优惠券</h2>
+                                <span>{$v.start_time|date='Y.m.d',###}-{$v.end_time|date='Y.m.d',###}</span>
+                                <a class="change openRule" onclick="view('{$v.id}')">使用规则<span class="icon icon-right"></span></a>
+                            </li>
+                            <li class="voucher-state">
+                                <ol class="voucher-arc">
+                                    <li></li>
+                                    <li></li>
+                                    <li></li>
+                                    <li></li>
+                                    <li></li>
+                                    <li></li>
+                                </ol>
+                                <if condition="$v.status eq 0">
+                                    <a class="external" onclick="getCoupon('{$v.id}')">立即领取</a>
+                                <else/>
+                                    <a>已领取</a>
+                                </if>
+                            </li>
+                        </ul>
+                    </volist>
+                </div>
+        </div>
+    </div>
+    <div class="popup popup-about">
+        <header class="bar bar-nav">
+            <a class="button button-link button-nav pull-right close-popup">
+                关闭
+            </a>
+            <h1 class="title his-color">优惠券规则</h1>
+        </header>
+        <div class="content native-scroll">
+            <div class="content-inner">
+                <div class="content-block" id="use_rule">
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="__ASSETS__/dist/js/sm.js"></script>
+    <script src="__ASSETS__/js/demos.js"></script>
+    <script>
+        function getCoupon(id){
+            $.post("{:U('Ucenter/getCoupon')}",{id:id},function(data){
+                $arr=eval(data);
+                alert($arr.msg);
+                window.location.href="{:U('Ucenter/coupon')}";
+
+             })
+        }
+        function view(id){
+            $.post("{:U('Ucenter/getRule')}",{id:id},function(data){
+//                alert(data);
+                $('#use_rule').html(data);
+
+            })
+        }
+    </script>
+
+</body>
+<include file="Public:share" />
+</html>

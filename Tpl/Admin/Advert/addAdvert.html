@@ -1,0 +1,82 @@
+<include file="Public/header_new" title="工具箱"/>
+<define name="DEFINE_SIDE_MENU_CURRENT" value="Tools"/>
+<include file="Public/sideMenu_new"/>
+
+    <div class="main home" id="main" style="overflow: auto;">
+        <div class="side clearfix" style="width:56px;height:100px;float:left;">
+        </div>
+        <div class="main-container" style="height:auto;">
+            <div class="gdt-toufang gdt-toufang-account">
+                <div class="tuiguang-tab" id="_hSubNav">
+                    <ul>
+                        <li style="width:56px"></li>
+                        <li class="goback"><a href="javascript:history.back(-1)"><i></i></a></li>
+                        <li><a href="{:U('Advert/adList')}" onclick="">广告列表</a></li>
+                        <li class="on"><a href="{:U('Advert/addAdvert')}">新增广告</a></li>
+                    </ul>
+                </div>
+                <div class="container-box clearfix">
+                    <div class="col-md-7">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <h2 class="panel-title">新增修改</h2>
+                            </div>
+                            <div class="panel-body">
+                                <form novalidate="novalidate" class="form-horizontal" data-toggle="validate" action="__SELF__" method="post" enctype="multipart/form-data">
+                                    <div class="form-group">
+                                        <label for="input-sku" class="col-sm-2 control-label">标题：</label>
+                                        <div class="col-sm-6">
+                                            <input class="form-control" id="input-sku" name="title" placeholder="" data-rule-required="true" type="text">
+                                        </div>
+                                        <div class="col-sm-4 error-container"></div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label">描述：</label>
+                                        <div class="col-sm-6">
+                                            <textarea  class="form-control" name="description" placeholder=""></textarea>
+                                        </div>
+                                        <div class="col-sm-4 error-container"></div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label">广告图片：</label>
+                                        <div class="col-sm-6" id="show_images">
+                                            <input name="image" placeholder="" data-rule-required="true" multiple="multiple" type="file">
+                                            <div class="help-block color-danger">允许的附件文件类型: jpg,gif,png,jpeg 图片尺寸: 640px * 260px</div>
+                                            <div class="img_box"></div>
+                                        </div>
+                                        <div class="col-sm-4 error-container"></div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="input-description" class="col-sm-2 control-label">跳转链接：</label>
+                                        <div class="col-sm-6">
+                                            <input class="form-control" id="input-description" name="url" placeholder="" data-rule-required="true" type="text">
+                                        </div>
+                                        <div class="col-sm-4 error-container"></div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label">是否在首页显示：</label>
+                                        <div class="col-sm-6">
+                                            <input type="radio" name="status" value="1" checked /> 显示
+                                            <input type="radio" name="status" value="0" /> 不显示
+                                            <div class="help-block color-danger"></div>
+                                        </div>
+                                        <div class="col-sm-4 error-container"></div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-sm-6 col-sm-offset-2">
+                                            <input value="提交" class="btn btn-primary" type="submit">
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/new_theme/common/sui/jquery.min.js"></script>
+<script src="/new_theme/common/sui/sui.min.js"></script>
+</body>
+</html>

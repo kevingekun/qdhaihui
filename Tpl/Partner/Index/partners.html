@@ -1,0 +1,32 @@
+<include file="Index/header" title="我的二级合伙人"/>
+<div class="content con-nav">
+    <div class="info">
+        <img src="__ASSETS__/index/img/two.jpg" alt="" width="100%"/>
+    </div>
+    <div class="content-block-title">
+        <i class="rec-blue"></i>
+        二级合伙人合计<span class="text-blue">{$count}</span>人
+    </div>
+    <div class="content-padded push-main">
+        <div class="list-block">
+            <ul id="list"></ul>
+        </div>
+        <section class="share_box">
+            <div id="loading_box" class="clear" style="display: none;">
+                <img src="__ASSETS__/index/img/loading_tip.gif" class="loading_tip">
+                <span id="loading_span">加载中……</span>
+            </div>
+            <div class="waterfall_tip hidden"></div>
+            <div id="click_for_more_sec" class="click_for_more_sec" style="display: block;">
+                <span href="javascript:;" class="click_for_more_btn">点击加载更多</span>
+            </div>
+        </section>
+    </div>
+</div>
+<script>
+    var count = {$count};
+    var pageSize = {$pageSize};
+    var URL = "{:U('Partner/Index/partners', '', true, true)}";
+</script>
+<script src="__ASSETS__/index/js/partners.js"></script>
+<include file="Index/footer"/>

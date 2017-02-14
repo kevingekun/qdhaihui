@@ -1,0 +1,41 @@
+<include file="Public:header" title="帮助中心"/>
+<body>
+<div class="page">
+    <header class="bar">
+        <h1 class="title his-color">帮助中心</h1>
+    </header>
+    <div class="content native-scroll">
+        <div class="hele-main">
+            <div class="item">
+                <div class="list-row">
+
+                    <volist name="category" id="vo">
+                        <if condition="$key == 0">
+                            <div class="item-list item-bor">
+                                <else/>
+                                <div class="item-list item-bor{$key+1}">
+                        </if>
+                        <a class="external" href="{:U('Mall/Ucenter/help', array('cid'=>$vo['id']))}">
+                            <img src="__ASSETS__/img/he{$vo.id}.png" alt="{$vo.title}"/>
+
+                            <h3>{$vo.title}</h3>
+
+                            <p>{$vo.value}</p>
+                        </a>
+                </div>
+                <eq name="mod" value="1">
+            </div>
+            <div class="list-row">
+
+                </eq>
+                </volist>
+            </div>
+
+        </div>
+    </div>
+</div>
+</div>
+<script src="__ASSETS__/dist/js/sm.js"></script>
+</body>
+<include file="Public:share"/>
+</html>

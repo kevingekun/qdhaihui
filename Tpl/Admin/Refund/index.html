@@ -1,0 +1,324 @@
+<include file="Public/header_new" title="退款申请"/>
+<define name="DEFINE_SIDE_MENU_CURRENT" value="Orders"/>
+<include file="Public/sideMenu_new"/>
+
+    <div class="main home" id="main" style="overflow: auto;">
+        <div class="side clearfix" style="width:56px;height:100px;float:left;">
+        </div>
+        <div class="main-container" style="height:auto;">
+            <div class="gdt-toufang gdt-toufang-account">
+                <div class="tuiguang-tab" id="_hSubNav">
+                    <ul>
+                        <li style="width:56px"></li>
+                        <li class="goback"><a href="javascript:history.back(-1)"><i></i></a></li>
+                        <li><a href="{:U('Admin/Orders/index')}">产品订单</a></li>
+                        <li><a href="{:U('Admin/Workcard/index')}">售后服务</a></li>
+                        <li class="on"><a href="{:U('Admin/Refund/index')}">退款申请</a></li>
+                        <li><a href="{:U('Admin/Logistics/index')}">物流信息</a></li>
+                    </ul>
+                </div>
+                <div class="container-box">
+                    <div class="row">
+                        <div class="newcearchbox">
+                            <form class="form-inline" action="__SELF__"
+                              method="post">
+                                <input type="hidden" name="search" value="1" />
+                                <div class="input-group">
+                                    <input type="text" class="form-control" name="order_number" placeholder="订单号">
+                                </div>
+                                <div class="input-group">
+                                    <input type="text" class="form-control"
+                                    name="user_name" placeholder="申请人姓名">
+                                </div>
+                                <div class="form-group input-daterange" data-toggle="datepicker" >
+                                    <input type="text" class="form-control input-date" name="from" placeholder="开始日期"/> -
+                                    <input type="text" class="form-control input-date" name="to" placeholder="结束日期"/>
+                                </div>
+                                <div class="form-group">
+                                    <select name="type" class="form-control">
+                                        <option value="">申请服务</option>
+                                        <option value="1" >退货退款</option>
+                                        <option value="2" >仅退款</option>
+                                    </select>
+                                </div>
+                                <button type="submit" class="btn btn-success">查询</button>
+                                <a href="{:U('Admin/Refund/index?action=export', $map)}" class="btn btn-info">导出</a>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <ul class="nav nav-tabs nav-primary newcearchbox">
+                            <li role="presentation" <if
+                              condition='empty($_GET[s])'>class="active"</if>><a
+                                href="{:U('Refund/index')}">所有订单 ({$StatusNum[all]?$StatusNum[all]:0})</a></li>
+                            <li role="presentation" <eq name='_GET[s]'
+                                value='1'>class="active"</eq>><a
+                                href="{:U('Refund/index', array('s'=>1))}">待审核({$StatusNum[1]?$StatusNum[1]:0})</a></li>
+                            <li role="presentation" <eq name='_GET[s]'
+                              value='4'>class="active"</eq>><a
+                                href="{:U('Refund/index',
+                                array('s'=>4))}">待返库({$StatusNum[4]?$StatusNum[4]:0})</a></li>
+                            <li role="presentation" <eq name='_GET[s]'
+                              value='5'>class="active"</eq>><a
+                                href="{:U('Refund/index',
+                                array('s'=>5))}">待退款({$StatusNum[5]?$StatusNum[5]:0})</a></li>
+                            <li role="presentation" <eq name='_GET[s]'
+                              value='-1'>class="active"</eq>><a
+                                href="{:U('Refund/index',
+                                array('s'=>-1))}">已拒绝({$StatusNum[-1]?$StatusNum[-1]:0})</a></li>
+                        </ul>
+                    </div>
+                    <div class="row newcearchbox">
+                        <table class="table table-hover table-bordered">
+                            <thead>
+                            <tr class="active">
+                                <th class="center">
+                                    <input id="checkedAll" type="checkbox" class="ace"> <span class="lbl"></span>
+                                </th>
+                                <th width="10%">订单编号</th>
+                                <th width="24%">商品详情</th>
+                                <th width="8%">申请人姓名</th>
+                                <th width="10%">申请原因</th>
+                                <th width="8%">货物状态</th>
+                                <th width="6%">退款类型</th>
+                                <th width="8%">卖家留言</th>
+                                <th width="5%">商品原价</th>
+                                <th width="6%">退款金额</th>
+                                <th width="6%">退款状态</th>
+                                <th width="10%">操作</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <volist name="result" id="r">
+                            <tr>
+                                <td class="center"><input type="checkbox" class="ace checkSingle" data-id="{$r.id}"></td>
+                                <td>{$r.order_number}</td>
+                                <td>
+                                    <volist name="r['cart_data_list']" id="good">
+                                    <div class="media">
+                                        <div class="media-left">
+                                            <img src="{$good.image}" width="100" alt="{$good.name}">
+                                        </div>
+                                        <div class="media-body">
+                                            <h4 class="media-heading">{$r.name}</h4>
+                                            {$good.name}
+                                        </div>
+                                    </div>
+                                    </volist>
+                                </td>
+                                <td>
+                                    {$r.user_name}
+                                    <br/>
+                                    {$r.create_at|date="Y-m-d H:i", ###}
+                                </td>
+                                <td>
+                                    <eq name="r.reason" value="1">未收到货</eq>
+                                    <eq name="r.reason" value="2">未按约定时间发货</eq>
+                                    <eq name="r.reason" value="3">协商一致退款</eq>
+                                    <eq name="r.reason" value="4">缺货</eq>
+                                    <eq name="r.reason" value="5">收到商品破损</eq>
+                                    <eq name="r.reason" value="6">商品错发/漏发</eq>
+                                    <eq name="r.reason" value="7">收到商品与描述不符</eq>
+                                    <eq name="r.reason" value="8">商品质量问题</eq>
+                                    <eq name="r.reason" value="9">多拍/错拍/不想要了</eq>
+                                </td>
+                                <td>
+                                    <eq name="r.good_status" value="1">拒收</eq>
+                                    <eq name="r.good_status" value="2">商品已退回</eq>
+                                </td>
+                                <td class="text-danger">
+                                    <eq name="r.type" value="1">退货退款</eq>
+                                    <eq name="r.type" value="2">仅退款</eq>
+                                </td>
+                                <td>{$r.refund_reason}</td>
+                                <td>{$r.good_price}</td>
+                                <td>{$r.refund_amount|convert_money}</td>
+                                <td>
+                                    <eq name="r.status" value="-1">
+                                        卖家已拒绝 
+                                    </eq>
+                                    <eq name="r.status" value="1">
+                                        买家已申请 
+                                    </eq>
+                                    <eq name="r.status" value="4">
+                                        卖家已同意
+                                    </eq>
+                                    <eq name="r.status" value="5">
+                                        商品已返库
+                                    </eq>
+                                    <eq name="r.status" value="9">
+                                        卖家已打款
+                                    </eq>
+                                </td>
+                                <td>
+                                    <a href="{:U('Admin/Refund/detail', array('id'=>$r['id']))}">查看详情</a> <br />
+                                    <eq name="r.status" value="-1">
+                                        <a>已拒绝</a> <br>
+                                    </eq>
+                                    <eq name="r.status" value="1">
+                                        <a class="auditing" href="#toExamine"
+                                          data-toggle="modal"
+                                          data-id="{$r.id}"
+                                          data-openid="{$r.openid}">审核</a> <br>
+                                    </eq>
+                                    <eq name="r.status" value="4">
+                                        <a class="receipt-confirm" href="#" data-id="{$r.id}">货物回仓确认</a>
+                                    </eq>
+                                    <eq name="r.status" value="5">
+                                        <a class="refund-confirm" href="#"
+                                          data-id="{$r.id}"
+                                          data-openid="{$r.openid}">退款确认</a>
+                                    </eq>
+                                    <!--
+                                    <lt name="r.status" value="9">
+                                        <a class="auditing" href="#toExamine" data-toggle="modal" data-id="{$r.id}">审核</a> <br>
+                                        <a class="receipt-confirm" href="#" data-id="{$r.id}">货物回仓确认</a>
+                                    </lt>
+                                    -->
+                                    <!--
+                                    <eq name="r.status" value="9">
+                                        <a href="{:U('Admin/Workcard/del', array('id'=>$r['id']))}">删除</a>
+                                    </eq>
+                                    -->
+                                </td>
+                            </tr>
+                            </volist>
+                            </tbody>
+                        </table>
+                        <a id="batchAudit" data-toggle="modal" data-target="#toExamine" class="btn-primary btn">批量审核</a>
+                        <div id="page">
+                            {$page}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="toExamine" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <form  class="form-horizontal" data-toggle="validate" action="{:U('Admin/Refund/prove')}" method="post">
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label  class="col-sm-3 control-label">审核操作:</label>
+                                <div class="col-sm-8">
+                                  <input id="auditing_id" type="hidden" name="id" value="">
+                                  <input id="openid" type="hidden" name="openid" value="">
+                                    <select name="status" class="form-control input-lg">
+                                        <option value="0">请选择</option>
+                                        <option value="4">通过</option>
+                                        <option value="-1">拒绝</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group" style="margin-top:15px;">
+                                <label class="col-sm-3 control-label">操作理由:</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" name="admin_note" value="{$vo.reason}" data-rule-required="true">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary btn-lg">确定</button>
+                            <button type="button" class="btn btn-default btn-lg" data-dismiss="modal">取消</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/new_theme/common/sui/jquery.min.js"></script>
+<script src="/new_theme/common/sui/sui.min.js"></script>
+<script>
+$(function(){
+    $("#checkedAll").change(function(){
+        if(this.checked){
+            $(".checkSingle").each(function(){
+                this.checked=true;
+            })
+        }else{
+            $(".checkSingle").each(function(){
+                this.checked=false;
+            })
+        }
+    });
+
+    $(".checkSingle").click(function () {
+        if ($(this).is(":checked")){
+            var isAllChecked = 0;
+            $(".checkSingle").each(function(){
+                if(!this.checked)
+                    isAllChecked = 1;
+            })
+            if(isAllChecked == 0){ $("#select_all").prop("checked", true); }
+        }
+        else {
+            $("#checkedAll").prop("checked", false);
+        }
+    });
+
+    // 审核
+    $('a.auditing').click(function(){
+        var id = $(this).attr('data-id');
+        var openid = $(this).attr('data-openid');
+        $("#auditing_id").val(id);
+        $("#openid").val(openid);
+    });
+
+    // 批量审核
+    $('#batchAudit').click(function(){
+        var id = "";
+        $(".checkSingle").each(function(k,v){
+            if(this.checked){
+                id += $(this).data('id') + ',';
+            }
+        });
+        $("#auditing_id").val(id);
+    })
+
+
+    $('a.receipt-confirm').click(function(){
+        var id = $(this).attr('data-id');
+        if (confirm("要确认收到退货吗？")) {
+            $.ajax({
+                url: "{:U('Refund/confirm')}",
+                method: "POST",
+                data: { id: id, action: 'receipt' },
+                dataType: "json",
+                success: function(data) {
+                    if (data.code == 0) {
+                        alert("确认成功，请联系财务付款");
+                        window.location.reload();
+                    } else {
+                        alert("确认收货失败，请联系技术人员");
+                    }
+                }
+            });
+        };
+    });
+
+    $('a.refund-confirm').click(function(){
+        var id = $(this).attr('data-id');
+        var openid = $(this).attr('data-openid');
+        if (confirm("要确认已打款吗？")) {
+            $.ajax({
+                url: "{:U('Refund/confirm')}",
+                method: "POST",
+                data: { id: id, openid: openid,  action: 'refund' },
+                dataType: "json",
+                success: function(data) {
+                  console.log(data.msg);
+                    if (data.code == 0) {
+                        alert("确认成功");
+                        window.location.reload();
+                    } else {
+                        alert("确认退款失败，请联系技术人员");
+                    }
+                }
+            });
+        };
+    });
+})
+</script>
+</body>
+</html>

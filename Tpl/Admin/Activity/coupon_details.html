@@ -1,0 +1,165 @@
+<include file="Public/header_new" title="活动"/>
+<define name="DEFINE_SIDE_MENU_CURRENT" value="activity"/>
+<include file="Public/sideMenu_new"/>
+<link rel="stylesheet" href="/new_theme/common/css/diy.css"/>
+
+    <div class="main home" id="main" style="overflow: auto;">
+        <div class="side clearfix" style="width:56px;height:100px;float:left;">
+        </div>
+        <div class="main-container" style="height:auto;">
+            <div class="gdt-toufang gdt-toufang-account">
+                <div class="tuiguang-tab" id="_hSubNav">
+                    <ul>
+                        <li style="width:56px"></li>
+                        <li class="goback"><a href="javascript:history.back(-1)"><i></i></a></li>
+                        <li class="on"><a href="{:U('Activity/couponlist')}">优惠券</a></li>
+                        <!-- <li><a href="seckill.html">秒杀</a></li>
+                        <li><a href="seckill.html">抢购</a></li>
+                        <li><a href="seckill.html">团购</a></li> -->
+                    </ul>
+                </div>
+                <div class="container-box clearfix">
+
+                    <div class="row">
+                        <div class="bs-callout bs-callout-info">
+                            <h4>优惠券活动详情</h4>
+                        </div>
+                        <form class="form-horizontal" >
+                            <input type="hidden" name="couponid" value="">
+
+                            <div class="diy clearfix">
+                                <div id="diy-phone">
+                                    <div class="diy-phone-header">
+                                        <i class="diy-phone-receiver"></i>
+
+                                        <div class="diy-phone-title">优惠券</div>
+                                    </div>
+                                    <div class="diy-phone-contain">
+                                        <section class="coupons_con">
+                                            <ul>
+                                                <li>
+                                                    <section class="coupons_conbox g-box">
+                                                        <section class="coupons_conbox_le"></section>
+                                                        <section class="coupons_conbox_ri g-flex">
+
+
+                                                        </section>
+                                                    </section>
+                                                </li>
+                                            </ul>
+                                        </section>
+                                    </div>
+                                    <i class="diy-phone-footer"></i>
+                                </div>
+
+                                <div id="diy-ctrl">
+                                    <div class="diy-ctrl-item">
+
+                                        <div class="panel-body">
+                                            <div class="form-group">
+                                                <label class="col-sm-3 control-label">活动名称：</label>
+                                                <div class="col-sm-5 checkbox">
+                                                    {$info.coupon_name}
+                                                </div>
+                                            </div>
+                                            <!-- <div class="form-group">
+                                                <label class="col-sm-3 control-label">自定义图片：</label>
+                                                <div class="col-sm-5 checkbox">
+                                                    <img src="/uploads/{$info.coupon_pic}" width="200" />
+                                                </div>
+                                            </div> -->
+                                            <div class="form-group">
+                                                <label class="col-sm-3 control-label">面值：</label>
+                                                <div class="col-sm-5 checkbox">
+                                                    {$info.money_cut|convert_money} 元
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-3 control-label">订单金额：</label>
+                                                <div class="col-sm-5 checkbox">
+                                                    订单满 {$info.money_over|convert_money} 元可用!
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-3 control-label">发放总量：</label>
+                                                <div class="col-sm-5 checkbox">
+                                                    {$info.total_num} 张
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-3 control-label">限购数量：</label>
+                                                <div class="col-sm-5 checkbox">
+                                                    每人可领取 {$info.per_num} 张
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-3 control-label">限定分类：</label>
+
+                                                <div class="col-sm-7">
+                                                    <div class="panel panel-default">
+                                                        <div class="panel-heading bg-info">
+                                                          商品分类列表
+                                                        </div>
+                                                        <div class="panel-body" id="show_class_list">
+                                                          <foreach name="info.class_name" item="vo" >
+                                                            {$vo} <br>
+                                                          </foreach>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-3 control-label">限定商品：</label>
+
+                                                <div class="col-sm-7">
+                                                    <div class="panel panel-default">
+                                                        <div class="panel-heading bg-info">
+                                                          商品列表
+                                                        </div>
+                                                        <div class="panel-body" id="goods_list">
+                                                          <foreach name="info.goods_name" item="vo" >
+                                                            {$vo} <br>
+                                                          </foreach>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-3 control-label">活动日期：</label>
+                                                <div class="col-sm-5 checkbox">
+                                                    {$info.start_time|date="Y-m-d H:i:s", ###} 至
+                                                    <br/>
+                                                    {$info.end_time|date="Y-m-d H:i:s", ###}
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-3 control-label">活动介绍：</label>
+                                                <div class="col-sm-7 checkbox">
+                                                    {$info.use_rule|htmlspecialchars_decode}
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+<script src="/new_theme/common/sui/jquery.min.js"></script>
+<script src="/new_theme/common/sui/sui.min.js"></script>
+
+</body>
+</html>

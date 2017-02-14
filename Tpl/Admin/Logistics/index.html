@@ -1,0 +1,102 @@
+<include file="Public/header_new" title="订单管理"/>
+<define name="DEFINE_SIDE_MENU_CURRENT" value="Orders"/>
+<include file="Public/sideMenu_new"/>
+
+    <div class="main home" id="main" style="overflow: auto;">
+        <div class="side clearfix" style="width:56px;height:100px;float:left;">
+        </div>
+        <div class="main-container" style="height:auto;">
+            <div class="gdt-toufang gdt-toufang-account">
+                <div class="tuiguang-tab" id="_hSubNav">
+                    <ul>
+                        <li style="width:56px"></li>
+                        <li class="goback"><a href="javascript:history.back(-1)"><i></i></a></li>
+                        <li><a href="{:U('Admin/Orders/index')}">产品订单</a></li>
+                        <li><a href="{:U('Admin/Workcard/index')}">售后服务</a></li>
+                        <li><a href="{:U('Admin/Refund/index')}">退款申请</a></li>
+                        <li class="on"><a href="{:U('Admin/Logistics/index')}">物流信息</a></li>
+                    </ul>
+                </div>
+                <div class="container-box">
+
+                    <div class="row">
+                        <div class="newcearchbox">
+                            <form class="form-inline" action="__SELF__" method="get">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" name="mailno_orderno" placeholder="输入运单号或者订单号" value="{$map.mailno_orderno}">
+                                </div>
+                                <button type="submit" class="btn btn-success">查询</button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="row newcearchbox">
+                        <table class="table table-bordered">
+                            <thead>
+                            <tr class="active">
+                                <th width="10%">订单编号</th>
+                                <th width="8%">商品</th>
+                                <th width="15%">联系人|联系方式|地址</th>
+                                <th width="10%">公司|物流单号</th>
+                                <th width="8%">发货时间</th>
+                                <th width="8%">订单状态</th>
+                                <th width="20%">物流状态</th>
+                                <th width="15%">卖家留言</th>
+                                <th width="10%">操作</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <volist name="result" id="r">
+                            <tr>
+                                <td>{$r.order_number}</td>
+                                <td>
+                                    <div class="media">
+                                        <div class="media-left">
+                                            <volist name="r['cart_data_list']" id="good">
+                                            <img src="{$good.image}" width="100" alt="{$good.name}">
+                                            </volist>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    {$r.address_data.name}
+                                    <br/>
+                                    {$r.address_data.mobile}|{$r.address_data.telephone}
+                                    <br/>
+                                    {$r.address_data.province_name}-{$r.address_data.city_name}-{$r.address_data.district_name}-{$r.address_data.full_address}
+                                </td>
+                                <td>
+                                    {$r.logistics_id}<br>
+                                    {$r.way_bill_no|default='--'}
+                                </td>
+                                <td>{$r.logistics_create_at|format_date=###,"Y-m-d h:i:s"}</td>
+                                <td class="text-danger">{$r.order_status_text}</td>
+                                <td>
+                                    <a class="text-info">
+                                        {$r.last_route_text.accept_time}<br>
+                                        {$r.last_route_text.accept_address}<br>
+                                        {$r.last_route_text.remark}
+                                    </a>
+                                </td>
+                                <td>{$r.note}</td>
+                                <td>
+                                    <?php if($r['order_status'] != \Common\Model\MallModel::ORDER_STATUS_FINISH): ?>
+                                    <a href="{:U('signFor', array('id'=>$r['id']))}" onclick="return confirm('确定要将该订单设为签收吗?')">设为签收</a>
+                                    <?php endif; ?>
+                                </td>
+                            </tr>
+                            </volist>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div id="page">
+                        {$page}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/new_theme/common/sui/jquery.min.js"></script>
+<script src="/new_theme/common/sui/sui.min.js"></script>
+</body>
+</html>
