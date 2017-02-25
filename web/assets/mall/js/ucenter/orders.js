@@ -160,7 +160,7 @@ function loadPostList() {
                                     //'           </label>' +
                                     //'           <a class="photo external" href="' + v2.url + '">' +
                                     '           <a class="photo external" href="' + v2.orderDetailUrl + '">' +
-                                    '               <img src="' + v2.image + '">' +
+                                    '               <img src="/uploads/' + v2.image + '">' +
                                     '           </a>' +
                                     //'           <a class="info external" href="' + v2.url + '">' +
                                     '           <a class="info external" href="' + v2.orderDetailUrl + '">' +

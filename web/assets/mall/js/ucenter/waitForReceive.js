@@ -87,7 +87,7 @@ function loadPostList() {
                                     '               <div class="item-media"><i class="icon cat-icon-checkbox"></i></div>' +
                                     '           </label>' +
                                     '           <a class="photo external" href="' + orderDetailUrl + '">' +
-                                    '               <img src="' + orderDetailUrl + '">' +
+                                    '               <img src="/uploads/' + v2.image + '">' +
                                     '           </a>' +
                                     '           <a class="info external" href="' + orderDetailUrl + '">' +
                                     '               <h3 class="tit">' + v2.name + '</h3>' +
