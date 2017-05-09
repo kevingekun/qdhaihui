@@ -47,7 +47,8 @@ class IndexController extends WmallController
         // 查询商品 每个分类查询 4个商品
         $model = new \Think\Model();
 
-        $order = "a.top desc, a.sort desc, a.id desc";
+        //$order = "a.top desc, a.sort desc, a.id desc";
+        $order = "a.sort desc";
 
         // 商品数据写入缓存
         if (!S('goods')) {
