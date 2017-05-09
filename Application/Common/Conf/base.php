@@ -5,6 +5,6 @@ return array (
   'URL_MODEL' => '2',
   'SHOW_PAGE_TRACE' => false,
   'PAGE_SIZE' => '25',
-  'DISPLAY_NUMBERS' => '4',
+  'DISPLAY_NUMBERS' => '8',
   'ERROR_PAGE' => '/404.html',
 );
